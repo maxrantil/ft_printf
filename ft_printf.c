@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/27 19:26:25 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/27 19:33:06 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	is_int(size_t c, const char *p, va_list	ap)
+void	int_innit(size_t c, const char *p, va_list	ap)
 {
 	if (*p == 'd')
 	{
@@ -22,13 +22,13 @@ void	is_int(size_t c, const char *p, va_list	ap)
 	}
 }
 
-void	is_char(const char *p, va_list	ap)
+void	char_innit(const char *p, va_list	ap)
 {
 	if (*p == 'c')
 		ft_putchar(va_arg(ap, int));
 }
 
-void	is_str(const char *p, va_list	ap)
+void	str_innit(const char *p, va_list	ap)
 {
 	char	*str;
 
@@ -42,9 +42,9 @@ void	is_str(const char *p, va_list	ap)
 
 void	check_ptr(size_t	c, const char	*p, va_list	ap)
 {
-	is_int(c, p, ap);
-	is_char(p, ap);
-	is_str(p, ap);
+	int_innit(c, p, ap);
+	char_innit(p, ap);
+	str_innit(p, ap);
 	if (*p == '\n')
 		ft_putchar('\n');
 }
