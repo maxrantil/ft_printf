@@ -6,86 +6,72 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/26 20:59:43 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/01/27 19:26:25 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h> //ToDo: remove later
 
-int	is_int(const char *placeholders, int i, va_list	args, t_var	var)
+void	is_int(size_t c, const char *p, va_list	ap)
 {
-	if (placeholders[i] == '%' && placeholders[i + 1] == 'd')
+	if (*p == 'd')
 	{
-		var.d = va_arg(args, int);
-		ft_putnbr(var.d);
-		return (1);
+		if (c--)
+			ft_putchar(' ');
+		ft_putnbr(va_arg(ap, int));
 	}
-	return (0);
 }
 
-int	is_char(const char *placeholders, int i, va_list	args, t_var	var)
+void	is_char(const char *p, va_list	ap)
 {
-	if (placeholders[i] == '%' && placeholders[i + 1] == 'c')
-	{
-		var.c = va_arg(args, int);
-		ft_putchar(var.c);
-		return (1);
-	}
-	return (0);
+	if (*p == 'c')
+		ft_putchar(va_arg(ap, int));
 }
 
-/*
-**		ToDo: Fix this
-*/
-
-int	is_str(const char *placeholders, int i, va_list	args, t_var	var)
+void	is_str(const char *p, va_list	ap)
 {
-	int	index;
+	char	*str;
 
-	index = 0;
-	if (placeholders[i] == '%' && placeholders[i + 1] == 's')
+	if (*p == 's')
 	{
-		var.s = (char *)ft_memalloc(5);
-		var.s[index] = va_arg(args, int);
-		ft_putchar(var.s[index]);
-		return (1);
+		str = va_arg(ap, char *);
+		while (*str)
+			ft_putchar(*str++);
 	}
-	return (0);
 }
 
-void	ft_printf(const char *placeholders, ...)
+void	check_ptr(size_t	c, const char	*p, va_list	ap)
 {
-	va_list	args;
-	t_var	var;
-	int		num_args;
-	int		i;
-
-	va_start(args, placeholders);
-	num_args = ft_strlen(placeholders);
-	i = -1;
-	while (++i < num_args)
-	{
-		if (is_int(placeholders, i, args, var))
-			i++;
-		else if (is_char(placeholders, i, args, var))
-			i++;
-		else if (is_str(placeholders, i, args, var))
-			i++;
-		else if (placeholders[i] == '\n')
-			ft_putchar('\n');
-		else
-			ft_putchar(placeholders[i]);
-
-	}
-	va_end(args);
+	is_int(c, p, ap);
+	is_char(p, ap);
+	is_str(p, ap);
+	if (*p == '\n')
+		ft_putchar('\n');
 }
 
-int	main(void)
+int	ft_printf(const char *restrict fmt, ...)
 {
-	ft_printf("test  %d this %d %c %c %s", 4, 1, 'h', 'r', "end string");
-	//system("leaks a.out");
+	va_list		ap;
+	const char	*p;
+	size_t		c;
 
-	//printf("\n%s\n", "this is printf string");
-	return (0);
+	va_start(ap, fmt);
+	p = fmt;
+	c = 0;
+	while (*p)
+	{
+		if (*p != '%')
+		{
+			ft_putchar(*p++);
+			continue ;
+		}
+		p++;
+		while (*p == ' ' && ++c)
+			p++;
+		check_ptr(c, p, ap);
+		p++;
+		c = 0;
+	}
+	va_end(ap);
+	return (1);
 }
