@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/01/27 19:53:34 by mrantil          ###   ########.fr        #
+#    Updated: 2022/01/28 12:00:00 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,10 @@ LIBFT = libft/libft.a
 all: $(NAME)
 
 $(NAME):
-	@echo "Compiling..."
+	@echo "Compiling(libft)..."
 	@make -C libft
-	@gcc $(FLAGS) $(SRCS) -c -o $(LIBFT)
+	@echo "Compiling(libftprintf)..."
+	@gcc $(FLAGS) -c $(SRCS) -I $(LIBFT)
 	@ar rc $(NAME) $(O_FILES)
 	@echo "$(NAME) created"
 	@ranlib $(NAME)
