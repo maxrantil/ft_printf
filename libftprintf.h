@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/01/27 19:29:02 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 19:48:57 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 # include <stdio.h> // remove before eval
 
+typedef int	(*t_table)(size_t c, const char *p, va_list ap);
+
 typedef struct s_var
 {
-	int		d;
-	double	f;
-	char	c;
-	char	*s;
+	size_t		count;
+	size_t		char_counter;
 }				t_var;
 
 int	ft_printf(const char *restrict fmt, ...);
