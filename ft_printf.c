@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/01 20:00:23 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/01 21:53:47 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	int_print(t_var st, const char *p, va_list ap)
 {
-	if (*p == 'd')
+	if (*p == 'd' || *p == 'i')
 	{
 		if (st.count-- && st.char_counter++)
 			ft_putchar(' ');
@@ -63,6 +63,24 @@ int	check_ptr(t_var st, const char	*p, va_list	ap)
 		ft_putchar('%');
 	return (st.char_counter);
 }
+
+/*int	check_ptr(t_var st, const char	*p, va_list	ap)
+{	
+	int	*t_table[];
+
+	t_table = {
+		int_print(st, p, ap),
+		char_print(st, p, ap),
+		str_print(st, p, ap)
+	};
+//	const int NUM_MESSAGES = (sizeof(t_table)) / sizeof(int)
+	t_table[]
+	if (*p == '\n' && ++st.char_counter)
+		ft_putchar('\n');
+	else if (*p == '%' && ++st.char_counter)
+		ft_putchar('%');
+	return (st.char_counter);
+}*/
 
 int	ft_printf(const char *restrict fmt, ...)
 {
