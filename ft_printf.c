@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/01 21:53:47 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/03 20:28:17 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	int_print(t_var st, const char *p, va_list ap)
+int	int_print(t_var st, const char *p, va_list ap)
 {
 	if (*p == 'd' || *p == 'i')
 	{
@@ -24,7 +24,7 @@ static int	int_print(t_var st, const char *p, va_list ap)
 	return (st.char_counter);
 }
 
-static int	char_print(t_var st, const char *p, va_list ap)
+int	char_print(t_var st, const char *p, va_list ap)
 {
 	if (*p == 'c' && ++st.char_counter)
 	{
@@ -34,7 +34,7 @@ static int	char_print(t_var st, const char *p, va_list ap)
 	return (st.char_counter);
 }
 
-static int	str_print(t_var st, const char *p, va_list ap)
+int	str_print(t_var st, const char *p, va_list ap)
 {
 	char	*str;
 
@@ -52,7 +52,7 @@ static int	str_print(t_var st, const char *p, va_list ap)
 ** //more cases comming with %% and more
 */
 
-int	check_ptr(t_var st, const char	*p, va_list	ap)
+/* int	check_ptr(t_var st, const char	*p, va_list	ap)
 {
 	st.char_counter = int_print(st, p, ap);
 	st.char_counter = char_print(st, p, ap);
@@ -62,25 +62,23 @@ int	check_ptr(t_var st, const char	*p, va_list	ap)
 	else if (*p == '%' && ++st.char_counter)
 		ft_putchar('%');
 	return (st.char_counter);
-}
+} */
 
-/*int	check_ptr(t_var st, const char	*p, va_list	ap)
+int	check_ptr(t_var st, const char	*p, va_list	ap)
 {	
-	int	*t_table[];
-
-	t_table = {
-		int_print(st, p, ap),
-		char_print(st, p, ap),
-		str_print(st, p, ap)
-	};
-//	const int NUM_MESSAGES = (sizeof(t_table)) / sizeof(int)
-	t_table[]
+	if (*p == 'd' || *p == 'i')
+		st.char_counter = dispatch_table[0](st, p, ap);
+	else if (*p == 'c')
+		st.char_counter = dispatch_table[1](st, p, ap);
+	else if (*p == 's')
+		st.char_counter = dispatch_table[2](st, p, ap);
 	if (*p == '\n' && ++st.char_counter)
 		ft_putchar('\n');
 	else if (*p == '%' && ++st.char_counter)
 		ft_putchar('%');
+	//st.char_counter = CHECK(st, *p, ap);
 	return (st.char_counter);
-}*/
+}
 
 int	ft_printf(const char *restrict fmt, ...)
 {
@@ -105,12 +103,34 @@ int	ft_printf(const char *restrict fmt, ...)
 		if (st.count > 1)
 			st.char_counter -= st.count - 1;
 		st.char_counter = check_ptr(st, p, ap);
+		//st.char_counter = CHECK(st, *p, ap);
 		p++;
+		//st.char_counter++;
 		st.count = 0;
 	}
 	va_end(ap);
 	return (st.char_counter);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*
 t_print		**init_dispatch_table(void)

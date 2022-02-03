@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/01 20:38:40 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/03 20:28:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,20 @@ int	main(void)
 	int	b;
 	a = ft_printf("test%%%      d this %    i %s %c %c\n", 4, 1, "hej", 'a', 'b');
 	b = printf("test%%%      d this %    i %s %c %c\n", 4, 1, "hej", 'a', 'b');
-	printf("\nft_printf ret = %d\n", a);
-	printf("\nprintf ret = %d\n", b);
+	printf("\nft_printf ret\t= %d\n", a);
+	printf("printf ret\t= %d\n", b);
 	return (0);
 }
+
+/* int	main(void)
+{
+	int	a;
+	int	b;
+	a = ft_printf("test%d \n", 4);
+	b = printf("test%d \n", 4);
+	printf("\nft_printf ret\t= %d\n", a);
+	printf("printf ret\t= %d\n", b);
+	return (0);
+} */
+
+//line 108 fixex second main, but fucked up first main. fix that tomorrow

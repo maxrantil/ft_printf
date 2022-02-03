@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/01 18:33:02 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/03 19:49:26 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ $(NAME):
 #after this line is just for testing, erase later	
 	@gcc main.c libftprintf.a libft/libft.a -g
 	@echo "Compiling main.c..."
-	@echo '\n'a.out ready to fire!
+	@echo '\n'a.out ready to \(run\)fire!
 
 clean:
 	@echo "Cleaning object files..."
