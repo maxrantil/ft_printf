@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/03 20:25:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/04 12:12:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ typedef struct s_var
 }				t_var;
 
 typedef int	(*print_fn_ptr)(t_var st, const char	*p, va_list	ap);
+
+/* typedef struct s_table
+{
+	print_fn_ptr	;
+	size_t		char_counter;
+}				t_table; */
 
 int	ft_printf(const char *restrict fmt, ...);
 

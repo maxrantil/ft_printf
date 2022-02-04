@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/03 20:28:17 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/04 11:59:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	int_print(t_var st, const char *p, va_list ap)
 		if (st.count-- && st.char_counter++)
 			ft_putchar(' ');
 		ft_putnbr(va_arg(ap, int));
-		return (st.char_counter++);
+		return (++st.char_counter);
 	}
 	return (st.char_counter);
 }
@@ -74,7 +74,7 @@ int	check_ptr(t_var st, const char	*p, va_list	ap)
 		st.char_counter = dispatch_table[2](st, p, ap);
 	if (*p == '\n' && ++st.char_counter)
 		ft_putchar('\n');
-	else if (*p == '%' && ++st.char_counter)
+	if (*p == '%' && ++st.char_counter)
 		ft_putchar('%');
 	//st.char_counter = CHECK(st, *p, ap);
 	return (st.char_counter);
@@ -101,7 +101,7 @@ int	ft_printf(const char *restrict fmt, ...)
 		while (*p == ' ' && ++st.count && ++st.char_counter)
 			p++;
 		if (st.count > 1)
-			st.char_counter -= st.count - 1;
+			st.char_counter -= st.count;
 		st.char_counter = check_ptr(st, p, ap);
 		//st.char_counter = CHECK(st, *p, ap);
 		p++;
