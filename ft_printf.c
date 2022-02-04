@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/04 17:27:48 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/04 18:02:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	check_ptr(t_var st, const char	*p, va_list	ap)
 		st.char_counter = dispatch_table[CHAR](st, p, ap);
 	else if (*p == 's')
 		st.char_counter = dispatch_table[STR](st, p, ap);
-	if (*p == '\n' && ++st.char_counter)
+	else if (*p == '\n' && ++st.char_counter)
 		ft_putchar('\n');
-	if (*p == '%' && ++st.char_counter)
+	else if (*p == '%' && ++st.char_counter)
 		ft_putchar('%');
 	return (st.char_counter);
 }
