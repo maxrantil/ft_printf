@@ -6,13 +6,16 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/04 18:10:36 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/07 16:41:38 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRCS = ft_printf.c
-O_FILES = $(SRCS:.c=.o)
+SRCS_PATH = srcs/
+SRCS = $(SRCS_PATH)ft_printf.c $(SRCS_PATH)check_ptr.c $(SRCS_PATH)int_print.c \
+	$(SRCS_PATH)char_print.c $(SRCS_PATH)str_print.c $(SRCS_PATH)uint_print.c
+O_FILES = ft_printf.o check_ptr.o int_print.o \
+	char_print.o str_print.o uint_print.o
 FLAGS = -Wall -Werror -Wextra
 LIBFT = libft/libft.a
 
@@ -34,6 +37,7 @@ $(NAME):
 
 clean:
 	@echo "Cleaning object files..."
+	@rm -f $(O_FILES)
 	@make -C libft clean
 
 fclean: clean

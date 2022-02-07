@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/07 15:57:15 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/07 16:35:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFTPRINTF_H
 
 # include <stdarg.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 # include <stdio.h> // remove before eval
 
@@ -29,7 +29,7 @@ typedef struct s_var
 typedef int	(*t_print_op)(t_var *st, const char	*p, va_list	ap);
 
 int	ft_printf(const char *restrict fmt, ...);
-
+int	check_ptr(t_var *st, const char	*p, va_list	ap);
 int	int_print(t_var *st, const char *p, va_list ap);
 int	char_print(t_var *st, const char *p, va_list ap);
 int	str_print(t_var *st, const char *p, va_list ap);
