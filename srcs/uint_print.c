@@ -3,20 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   uint_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/08 16:00:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/08 22:27:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	pf_putuint(int n, t_var *st)
+static int	pf_putuint(unsigned int nbr, t_var *st)
 {
-	unsigned int	nbr;
-
-	nbr = (unsigned int)n;
 	if (nbr > 9)
 	{
 		pf_putuint(nbr / 10, st);
@@ -32,13 +29,9 @@ static int	pf_putuint(int n, t_var *st)
 
 int	uint_print(t_var *st, const char *p, va_list ap)
 {
-	int		ret;
-
-	ret = va_arg(ap, int);
 	if (*p == 'u')
 	{
-		if (ret)
-			st->char_count = pf_putuint(ret, st);
+		st->char_count = pf_putuint(va_arg(ap, unsigned int), st);
 		return (st->char_count);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/08 21:37:47 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/08 22:25:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void mix_ez(void)
 {
 	int	a;
 	int	b;
-	a = ft_printf("test%u %d %%this %i %s %c %c \n", -3, 4, 1, "hej", 'a', 'b');
-	b = printf("test%u %d %%this %i %s %c %c \n", -3, 4, 1, "hej", 'a', 'b');
+	a = ft_printf("test%u %d %%this %i %s %c %c \n", 0, 4, 1, "hej", 'a', 'b');
+	b = printf("test%u %d %%this %i %s %c %c \n", 0, 4, 1, "hej", 'a', 'b');
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
