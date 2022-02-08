@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/08 09:33:53 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/08 09:45:26 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <stdio.h> // remove before eval
 
 # define TABLE_POS "dicsu"
-# define INT 0
-# define DEC 1
+# define DEC 0
+# define INT 1
 # define CHAR 2
 # define STR 3
 # define UINT 4
