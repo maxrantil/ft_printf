@@ -6,19 +6,33 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/08 15:07:04 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/08 16:39:40 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-SRCS_PATH = srcs/
-SRCS = $(SRCS_PATH)ft_printf.c $(SRCS_PATH)disp_table.c $(SRCS_PATH)int_print.c \
-	$(SRCS_PATH)char_print.c $(SRCS_PATH)str_print.c $(SRCS_PATH)uint_print.c \
-	$(SRCS_PATH)oct_print.c $(SRCS_PATH)hex_print.c
-O_FILES = ft_printf.o disp_table.o int_print.o char_print.o str_print.o uint_print.o \
-	oct_print.o hex_print.o
+
+CC = gcc
 FLAGS = -Wall -Werror -Wextra
-LIBFT = libft
+
+SRCS_PATH = srcs/
+
+FUNCTIONS =	ft_printf \
+ 			check_ptr \
+			int_print \
+			char_print \
+			str_print \
+			uint_print \
+			oct_print \
+			hex_print
+
+SOURCE_FILES = $(foreach f, $(FUNCTIONS), $(SRCS_PATH)$(f))
+
+SRCS = $(foreach src, $(SOURCE_FILES), $(addsuffix .c, $(src)))
+
+OBJS = *.o
+
+INC = -Iincludes/ -Ilibft/libft.a
 
 all: $(NAME)
 
@@ -26,20 +40,19 @@ $(NAME):
 	@echo "Compiling(libft)..."
 	@make -C libft
 	@echo "Compiling(libftprintf)..."
-	@gcc $(FLAGS) -c $(SRCS)
-# $(LIBFT)
-	@ar rc $(NAME) $(O_FILES)
+	@$(CC) $(FLAGS) -c $(SRCS) $(INC)
+	@ar rc $(NAME) $(OBJS)
 	@echo "$(NAME) created"
 	@ranlib $(NAME)
 	@echo "$(NAME) indexed"
-#after this line is just for testing, erase later
+#after this line is just for testing, erase later	
 	@gcc main.c libftprintf.a libft/libft.a -g
 	@echo "Compiling main.c..."
 	@echo '\n'a.out ready to \(run\)fire!
 
 clean:
 	@echo "Cleaning object files..."
-	@rm -f $(O_FILES)
+	@rm -f $(OBJS)
 	@make -C libft clean
 
 fclean: clean
