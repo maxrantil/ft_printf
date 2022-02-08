@@ -3,28 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   hex_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/08 16:34:41 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/08 21:01:52 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	pf_intlen_hex(long nbr, int base)
+static int	pf_intlen_hex(unsigned int nbr, int base)
 {
 	int	count;
 
-	count = 1;
-	if (nbr < 0)
-	{
-		nbr *= -1;
-		if (nbr == 0)
-			count = 0;
-		count++;
-	}
-	while (nbr > 9)
+	count = 0;
+	while (nbr)
 	{
 		nbr = nbr / base;
 		count++;
@@ -42,8 +35,6 @@ static char	*pf_itoa_hex(unsigned int nbr, int base, const char *p) // 87 for sm
 	if (!s)
 		return (NULL);
 	s[l] = '\0';
-	if (nbr < 0)
-		nbr *= -1;
 	while (l--)
 	{
 		if (*p == 'x' && nbr % base > 9)
@@ -54,29 +45,22 @@ static char	*pf_itoa_hex(unsigned int nbr, int base, const char *p) // 87 for sm
 			s[l] = (nbr % base) + 48;
 		nbr /= base;
 	}
-	if (nbr < 0)
-		s[0] = '-';
 	return (s);
 }
 
 int	hex_print(t_var *st, const char *p, va_list ap)
 {
-	int		ret;
 	int		i;
 	char 	*str;
 
-	ret = va_arg(ap, unsigned int);
 	i = 0;
 	if (*p == 'x' || *p == 'X')
 	{
 		if (st->space_count-- && ++st->char_count)
 			ft_putchar(' ');
-		if (ret)
-		{
-			str = pf_itoa_hex(ret, 16, p);
-			while (str[i] && ++st->char_count)
-				ft_putchar(str[i++]);
-		}
+		str = pf_itoa_hex(va_arg(ap, unsigned int), 16, p);
+		while (str[i] && ++st->char_count)
+			ft_putchar(str[i++]);
 		ft_strdel(&str);
 		return (st->char_count);
 	}
