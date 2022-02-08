@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/07 16:35:20 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/08 16:00:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,5 @@ int	uint_print(t_var *st, const char *p, va_list ap)
 			st->char_count = pf_putuint(ret, st);
 		return (st->char_count);
 	}
-	return (st->char_count);
+	return (0);
 }

@@ -3,19 +3,20 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/08 09:22:04 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/08 15:07:04 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 SRCS_PATH = srcs/
 SRCS = $(SRCS_PATH)ft_printf.c $(SRCS_PATH)disp_table.c $(SRCS_PATH)int_print.c \
-	$(SRCS_PATH)char_print.c $(SRCS_PATH)str_print.c $(SRCS_PATH)uint_print.c
-O_FILES = ft_printf.o disp_table.o int_print.o \
-	char_print.o str_print.o uint_print.o
+	$(SRCS_PATH)char_print.c $(SRCS_PATH)str_print.c $(SRCS_PATH)uint_print.c \
+	$(SRCS_PATH)oct_print.c $(SRCS_PATH)hex_print.c
+O_FILES = ft_printf.o disp_table.o int_print.o char_print.o str_print.o uint_print.o \
+	oct_print.o hex_print.o
 FLAGS = -Wall -Werror -Wextra
 LIBFT = libft
 
