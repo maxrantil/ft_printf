@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/09 16:51:35 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/09 17:10:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	pf_intlen(unsigned int nbr, unsigned int base)
 	count = 0;
 	if (!nbr)
 		return (1);
-	while (nbr) // >base or >= base?
+	while (nbr)
 	{
 		nbr /= base;
 		count++;
@@ -35,7 +35,7 @@ static char	*pf_itoa_oct(unsigned int nbr, unsigned int base)
 	l = pf_intlen(nbr, base);
 	s = (char *)malloc(sizeof(char) * l + 1);
 	if (!s)
-		return (NULL);
+		exit(1);
 	s[l] = '\0';
 	while (l--)
 	{

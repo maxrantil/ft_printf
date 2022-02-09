@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/09 17:03:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/09 17:11:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static char	*pf_itoa_hex(unsigned int nbr, int base, const char *ptr)
 	l = pf_intlen(nbr, base);
 	s = (char *)malloc(sizeof(char) * l + 1);
 	if (!s)
-		return (NULL);
+		exit(1);
 	s[l] = '\0';
 	while (l--)
 	{
