@@ -6,17 +6,14 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/08 16:30:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/09 17:03:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	pf_putint(int n, t_var *st)
+static int	pf_putint(int nbr, t_var *st)
 {
-	long	nbr;
-
-	nbr = (long)n;
 	if (nbr < 0)
 	{
 		write(1, "-", 1);
@@ -35,12 +32,12 @@ static int	pf_putint(int n, t_var *st)
 	return (st->char_count);
 }
 
-int	int_print(t_var *st, const char *p, va_list ap)
+int	int_print(t_var *st, const char *ptr, va_list ap)
 {
 	int		ret;
 
 	ret = va_arg(ap, int);
-	if (*p == 'd' || *p == 'i')
+	if (*ptr == 'd' || *ptr == 'i')
 	{
 		if (st->space_count-- && ++st->char_count)
 			ft_putchar(' ');

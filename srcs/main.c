@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/09 14:13:55 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/09 16:55:15 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,19 @@ void	test_hex(void)
 	++done;
 }
 
+void	test_hex_zero(void)
+{
+	int	a;
+	int	b;
+	a = ft_printf("hex: %X \n", 0);
+	b = printf("hex: %X \n", 0);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_hex failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 void	test_dec(void)
 {
 	int	a;
@@ -86,14 +99,29 @@ void	test_dec(void)
 	++done;
 }
 
+void	test_hex_random(void)
+{
+	int	a;
+	int	b;
+	a = ft_printf("hex: %X \n", 17);
+	b = printf("hex: %X \n", 17);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_hex failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
 	mix_ez();
 	test_oct_zero();
 	test_oct();
 	test_hex();
+	test_hex_zero();
 	test_dec();
+	test_hex_random();
 
-	printf("%d/%d completed\n", tests, done);
+	printf("\n%d/%d completed\n", tests, done);
 	return (0);
 }

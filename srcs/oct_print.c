@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   oct_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/08 20:06:37 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/09 16:51:35 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	pf_intlen_oct(unsigned int nbr, unsigned int base)
+int	pf_intlen(unsigned int nbr, unsigned int base)
 {
 	int	count;
 
@@ -32,7 +32,7 @@ static char	*pf_itoa_oct(unsigned int nbr, unsigned int base)
 	char	*s;
 	int		l;
 
-	l = pf_intlen_oct(nbr, base);
+	l = pf_intlen(nbr, base);
 	s = (char *)malloc(sizeof(char) * l + 1);
 	if (!s)
 		return (NULL);

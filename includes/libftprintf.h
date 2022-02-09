@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/08 16:34:20 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/09 16:51:52 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	str_print(t_var *st, const char *p, va_list ap);
 int	uint_print(t_var *st, const char *p, va_list ap);
 int	oct_print(t_var *st, const char *p, va_list ap);
 int	hex_print(t_var *st, const char *p, va_list ap);
+
+int	pf_intlen(unsigned int nbr, unsigned int base);
 
 static const t_fptr_print_op disp_table[8] = {
 	int_print,
