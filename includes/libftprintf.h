@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 15:44:57 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/10 16:47:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef int	(*t_fptr_flag_op)(t_var *st, va_list	ap);
 */
 
 int	ft_printf(const char *fmt, ...);
-int	check_ptr(t_var *st, va_list ap);
 int	int_print(t_var *st, va_list ap);
 int	char_print(t_var *st, va_list ap);
 int	str_print(t_var *st, va_list ap);
@@ -57,7 +56,7 @@ int	plus_flag(t_var *st, va_list ap);
 ** Other functions
 */
 
-//int	symbol_print(t_var *st, const char	*p, va_list	ap);
+int	check_str(t_var st, va_list ap);
 int	pf_intlen(unsigned int nbr, unsigned int base);
 int	procentage_print(t_var *st);
 

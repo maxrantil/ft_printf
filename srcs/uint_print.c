@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 16:30:56 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/10 16:40:36 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static int	pf_putuint(unsigned int nbr, int char_count)
 {
 	if (nbr > 9)
 	{
-		pf_putuint(nbr / 10, st);
-		pf_putuint(nbr % 10, st);
+		pf_putuint(nbr / 10, char_count);
+		pf_putuint(nbr % 10, char_count);
 	}
 	else
 	{
