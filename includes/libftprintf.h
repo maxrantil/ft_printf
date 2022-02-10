@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 16:47:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/10 17:18:42 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # include <stdio.h> // remove before eval
 
-# define CHAR_CONV "dicsuoxX"
+# define CHAR_CONV "dicsuoxXb"
 # define FLAGS "+%"
 # define ON 1
 # define OFF 0
@@ -45,6 +45,7 @@ int	str_print(t_var *st, va_list ap);
 int	uint_print(t_var *st, va_list ap);
 int	oct_print(t_var *st, va_list ap);
 int	hex_print(t_var *st, va_list ap);
+int	binary_print(t_var *st, va_list ap);
 
 /*
 ** Functions for flags dispatch table
@@ -60,7 +61,7 @@ int	check_str(t_var st, va_list ap);
 int	pf_intlen(unsigned int nbr, unsigned int base);
 int	procentage_print(t_var *st);
 
-static const t_fptr_print_op print_disp_tbl[8] = {
+static const t_fptr_print_op print_disp_tbl[9] = {
 	int_print,
 	int_print,
 	char_print,
@@ -69,6 +70,7 @@ static const t_fptr_print_op print_disp_tbl[8] = {
 	oct_print,
 	hex_print,
 	hex_print,
+	binary_print
 };
 
 static const t_fptr_flag_op flag_disp_tbl[1] = {

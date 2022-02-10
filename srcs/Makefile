@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/09 18:26:59 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/10 17:20:06 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ FUNCTIONS = ft_printf \
 			uint_print \
 			oct_print \
 			hex_print \
+			binary_print \
 			flags
 				
 _OBJ = $(foreach function, $(FUNCTIONS), $(function).o)

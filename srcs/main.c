@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 15:35:26 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/10 17:16:39 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,6 +181,21 @@ void	test_procentage(void)
 	++done;
 }
 
+void	test_binary(void)
+{
+	int	a;
+	//int	b;
+	a = ft_printf("ft_pri dec: %b\n", 2);
+	//b = printf("printf dec: %b\n", 2);
+	printf("ret: %d \n", a);
+	//printf("ret: %d \n", b);
+	//if (a == b)
+	//	printf("%d tests complete.\n\n", ++tests);
+	//else
+	//	assert(printf("\n\x1b[1m _______test_binary failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
 	mix_ez();
@@ -195,6 +210,7 @@ int	main(void)
 	test_int_plus_flag();
 	test_int_minusminus_flag();
 	test_procentage();
+	test_binary();
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);
