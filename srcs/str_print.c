@@ -6,17 +6,17 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/08 16:00:51 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/10 15:17:22 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int	str_print(t_var *st, const char *p, va_list ap)
+int	str_print(t_var *st, va_list ap)
 {
 	char	*str;
 
-	if (*p == 's')
+	if (*st->ptr == 's')
 	{
 		str = va_arg(ap, char *);
 		while (*str && ++st->char_count)

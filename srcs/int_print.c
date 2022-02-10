@@ -6,28 +6,30 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/09 18:45:56 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/10 15:16:13 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	pf_putint(int nbr, t_var *st, const char *ptr)
+static int	pf_putint(int nbr, t_var *st)
 {
-	if (nbr < 0)
+	if (nbr < 0 && ++st->char_count)
 	{
 		write(1, "-", 1);
 		nbr *= -1;
+		if (st->flag == ON && --st->char_count)
+			st->flag = OFF;
 	}
-	if (*(--ptr) == '+')
+	else if (st->flag == ON)
 	{
-		write(1, "+", 1);
-		ptr += 2;
+		ft_putchar('+');
+		st->flag = OFF;
 	}
 	if (nbr > 9)
 	{
-		pf_putint(nbr / 10, st, ptr);
-		pf_putint(nbr % 10, st, ptr);
+		pf_putint(nbr / 10, st);
+		pf_putint(nbr % 10, st);
 	}
 	else
 	{
@@ -37,14 +39,17 @@ static int	pf_putint(int nbr, t_var *st, const char *ptr)
 	return (st->char_count);
 }
 
-int	int_print(t_var *st, const char *ptr, va_list ap)
+int	int_print(t_var *st, va_list ap)
 {
-	if (*ptr == 'd' || *ptr == 'i')
+	if (st->flag == ON)
+	{
+		st->ptr++;
+	}
+	if (*st->ptr == 'd' || *st->ptr == 'i')
 	{
 		if (st->space_count-- && ++st->char_count)
 			ft_putchar(' ');
-		st->char_count = pf_putint(va_arg(ap, int), st, ptr);
-		return (st->char_count);
+		return (st->char_count = pf_putint(va_arg(ap, int), st));
 	}
 	return (0);
 }

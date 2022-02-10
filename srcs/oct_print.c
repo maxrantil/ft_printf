@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/09 17:10:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/10 15:16:47 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,13 +45,13 @@ static char	*pf_itoa_oct(unsigned int nbr, unsigned int base)
 	return (s);
 }
 
-int	oct_print(t_var *st, const char *p, va_list ap)
+int	oct_print(t_var *st, va_list ap)
 {
 	int		i;
 	char 	*str;
 
 	i = 0;
-	if (*p == 'o')
+	if (*st->ptr == 'o')
 	{
 		if (st->space_count-- && ++st->char_count)
 			ft_putchar(' ');

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/09 18:55:28 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/10 15:35:26 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,32 +121,80 @@ void	test_int_zero(void)
 	++done;
 }
 
-void	test_int_plus(void)
+void	test_int_minus(void)
 {
 	int	a;
 	int	b;
-	a = ft_printf("dec: %+d \n", 22);
-	b = printf("dec: %+d \n", 22);
+	a = ft_printf("ft_pri dec: %d \n", -22);
+	b = printf("printf dec: %d \n", -22);
 	printf("ret: %d \n", a);
 	printf("ret: %d \n", b);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_int_plus failed_______\x1b[0m\n\n"));
+		assert(printf("\n\x1b[1m _______test_int_minus failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	test_int_plus_flag(void)
+{
+	int	a;
+	int	b;
+	a = ft_printf("ft_pri dec: %+d more\n", 234);
+	b = printf("printf dec: %+d more\n", 234);
+	printf("ret: %d \n", a);
+	printf("ret: %d \n", b);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_int_plus_flag failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	test_int_minusminus_flag(void)
+{
+	int	a;
+	int	b;
+	a = ft_printf("ft_pri dec: %+d more\n", -2);
+	b = printf("printf dec: %+d more\n", -2);
+	printf("ret: %d \n", a);
+	printf("ret: %d \n", b);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_int_minusminus_flag failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	test_procentage(void)
+{
+	int	a;
+	int	b;
+	a = ft_printf("ft_pri dec: %%\n");
+	b = printf("printf dec: %%\n");
+	printf("ret: %d \n", a);
+	printf("ret: %d \n", b);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_procentage failed_______\x1b[0m\n\n"));
 	++done;
 }
 
 int	main(void)
 {
-/* 	mix_ez();
+	mix_ez();
 	test_oct_zero();
 	test_oct();
 	test_hex();
 	test_hex_zero();
 	test_dec();
 	test_hex_random();
-	test_int_zero(); */
-	test_int_plus();
+	test_int_zero();
+	test_int_minus();
+	test_int_plus_flag();
+	test_int_minusminus_flag();
+	test_procentage();
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);
