@@ -3,17 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/10 17:20:06 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/10 21:59:43 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 CC = gcc
-WFLAGS = -Wall -Werror -Wextra
+WFLAGS = -Wall -Werror -Wextra -O3
+# -Wconversion
 
 IDIR = ../includes
 HFILE = -I$(IDIR)
@@ -36,7 +37,7 @@ FUNCTIONS = ft_printf \
 			hex_print \
 			binary_print \
 			flags
-				
+
 _OBJ = $(foreach function, $(FUNCTIONS), $(function).o)
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
@@ -44,7 +45,7 @@ SRCS = $(foreach function, $(FUNCTIONS), $(function).c)
 
 $(ODIR)/%.o: %.c $(DEPS)
 	@$(CC) $(WFLAGS) -c -o $@ $< $(HFILE)
-	
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
@@ -66,11 +67,11 @@ $(NAME): $(OBJ)
 
 clean:
 	@echo "Cleaning object files..."
-	@rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
+	@rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~
 	@echo "/obj clean."
 	@make -C $(LDIR) clean
 	@echo "libft clean."
-	
+
 fclean: clean
 	@echo "Cleaning .a files..."
 	@make -C $(LDIR) fclean

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 15:16:13 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/10 21:58:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	pf_putint(int nbr, t_var *st)
 {
 	if (nbr < 0 && ++st->char_count)
 	{
-		write(1, "-", 1);
+		ft_putchar('-');
 		nbr *= -1;
 		if (st->flag == ON && --st->char_count)
 			st->flag = OFF;
@@ -33,7 +33,7 @@ static int	pf_putint(int nbr, t_var *st)
 	}
 	else
 	{
-		ft_putchar(nbr + 48);
+		ft_putchar(*ft_itoa(nbr));
 		st->char_count++;
 	}
 	return (st->char_count);
