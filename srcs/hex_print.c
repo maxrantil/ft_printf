@@ -6,13 +6,28 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 15:23:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/11 14:48:46 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static char	*pf_itoa_hex(unsigned int nbr, int base, const char *ptr)
+static int	pf_intlen(unsigned int nbr, unsigned int base)
+{
+	int	count;
+
+	count = 0;
+	if (!nbr)
+		return (1);
+	while (nbr)
+	{
+		nbr /= base;
+		count++;
+	}
+	return (count);
+}
+
+char	*pf_itoa_base(unsigned int nbr, int base, const char *ptr)
 {
 	char	*s;
 	int		l;
@@ -45,7 +60,7 @@ int	hex_print(t_var *st, va_list ap)
 	{
 		if (st->space_count-- && ++st->char_count)
 			ft_putchar(' ');
-		str = pf_itoa_hex(va_arg(ap, unsigned int), 16, st->ptr );
+		str = pf_itoa_base(va_arg(ap, unsigned int), 16, st->ptr);
 		while (str[i] && ++st->char_count)
 			ft_putchar(str[i++]);
 		ft_strdel(&str);

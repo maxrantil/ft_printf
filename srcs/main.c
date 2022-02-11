@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 17:16:39 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/11 14:50:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,7 +210,7 @@ int	main(void)
 	test_int_plus_flag();
 	test_int_minusminus_flag();
 	test_procentage();
-	test_binary();
+//	test_binary();
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);

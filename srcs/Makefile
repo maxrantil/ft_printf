@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/10 21:59:43 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/11 14:50:05 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,8 +35,9 @@ FUNCTIONS = ft_printf \
 			uint_print \
 			oct_print \
 			hex_print \
-			binary_print \
 			flags
+
+#			binary_print \
 
 _OBJ = $(foreach function, $(FUNCTIONS), $(function).o)
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))

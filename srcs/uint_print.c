@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 16:40:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/11 14:33:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	pf_putuint(unsigned int nbr, int char_count)
 	}
 	else
 	{
-		ft_putchar(nbr + 48);
+		ft_putchar((char)nbr + 48);
 		char_count++;
 	}
 	return (char_count);

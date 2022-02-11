@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 17:18:42 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/11 14:50:42 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	str_print(t_var *st, va_list ap);
 int	uint_print(t_var *st, va_list ap);
 int	oct_print(t_var *st, va_list ap);
 int	hex_print(t_var *st, va_list ap);
-int	binary_print(t_var *st, va_list ap);
+//int	binary_print(t_var *st, va_list ap);
 
 /*
 ** Functions for flags dispatch table
@@ -57,9 +57,9 @@ int	plus_flag(t_var *st, va_list ap);
 ** Other functions
 */
 
-int	check_str(t_var st, va_list ap);
-int	pf_intlen(unsigned int nbr, unsigned int base);
-int	procentage_print(t_var *st);
+int		check_str(t_var st, va_list ap);
+char	*pf_itoa_base(unsigned int nbr, int base, const char *ptr);
+int		procentage_print(t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[9] = {
 	int_print,
@@ -70,7 +70,6 @@ static const t_fptr_print_op print_disp_tbl[9] = {
 	oct_print,
 	hex_print,
 	hex_print,
-	binary_print
 };
 
 static const t_fptr_flag_op flag_disp_tbl[1] = {
