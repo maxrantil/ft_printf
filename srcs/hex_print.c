@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/11 14:48:46 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/11 14:57:34 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static int	pf_intlen(unsigned int nbr, unsigned int base)
 	return (count);
 }
 
-char	*pf_itoa_base(unsigned int nbr, int base, const char *ptr)
+char	*pf_itoa_base(unsigned int nbr, unsigned int base, const char *ptr)
 {
 	char	*s;
 	int		l;
@@ -40,11 +40,11 @@ char	*pf_itoa_base(unsigned int nbr, int base, const char *ptr)
 	while (l--)
 	{
 		if (*ptr == 'x' && nbr % base > 9)
-			s[l] = (nbr % base) + 87;
+			s[l] = (char)(nbr % base) + 87;
 		else if (*ptr == 'X' && nbr % base > 9)
-			s[l] = (nbr % base) + 55;
+			s[l] = (char)(nbr % base) + 55;
 		else
-			s[l] = (nbr % base) + 48;
+			s[l] = (char)(nbr % base) + 48;
 		nbr /= base;
 	}
 	return (s);

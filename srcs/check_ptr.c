@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 16:49:09 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/11 17:53:50 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ int	flags(t_var *st, va_list ap)
 
 int	check_ptr(t_var *st, va_list ap)
 {
-	int		i;
-
+	t_enum_conversions	e_conv;
+	int					i;
+	
 	i = 0;
 	while (CHAR_CONV[i] && CHAR_CONV[i] != *st->ptr)
 		i++;
@@ -38,7 +39,10 @@ int	check_ptr(t_var *st, va_list ap)
 		return (++st->char_count);
 	else if (CHAR_CONV[i] == '\0')
 		return (0);
-	return (st->char_count = print_disp_tbl[i](st, ap));
+	e_conv = CHAR_CONV[i];
+	printf("%d\n", CHAR_CONV[i]);
+	printf("%d\n", e_conv);
+	return (st->char_count = print_disp_tbl[e_conv](st, ap));
 }
 
 int	check_str(t_var st, va_list ap)
