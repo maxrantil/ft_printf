@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/12 12:10:55 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/12 18:30:19 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ _DEPS = libftprintf.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 FUNCTIONS = ft_printf \
-			check_ptr \
+			check_parser \
 			int_print \
 			char_print \
 			str_print \

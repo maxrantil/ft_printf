@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/11 17:23:30 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 18:29:15 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -210,16 +210,17 @@ void	test_binary(void)
 	++done;
 }
 
+
 int	main(void)
 {
-	/* mix_ez(); */
-	/* test_oct_zero(); */
-/* 	test_oct();
+/* 	mix_ez();
+	test_oct_zero();
+	test_oct();
 	test_int();
 	test_hex();
-	test_hex_zero(); */
+	test_hex_zero();
 	test_dec();
-/* 	test_hex_random();
+	test_hex_random();
 	test_int_zero();
 	test_int_minus();
 	test_int_plus_flag();

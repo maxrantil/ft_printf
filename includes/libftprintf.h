@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/11 18:15:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 16:43:47 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,17 +22,18 @@
 # define FLAGS "+%"
 # define ON 1
 # define OFF 0
+//# define NUM_DISP sizeof(print_disp_tbl) / sizeof(print_disp_tbl[0]);
 
 typedef enum e_conversions
 {
-	d = 0,
-	i = 0,
-	c = 1,
-	s = 2,
-	u = 3,
-	o = 4,
-	x = 5,
-	bx = 5
+	D = 0,
+	I = 0,
+	C = 2,
+	S = 3,
+	U = 4,
+	O = 5,
+	X = 6,
+	BX = 7
 }	t_enum_conversions;
 
 typedef struct s_var
@@ -73,12 +74,14 @@ int		check_str(t_var st, va_list ap);
 char	*pf_itoa_base(unsigned int nbr, unsigned int base, const char *ptr);
 int		procentage_print(t_var *st);
 
-static const t_fptr_print_op print_disp_tbl[7] = {
+static const t_fptr_print_op print_disp_tbl[8] = {
+	int_print,
 	int_print,
 	char_print,
 	str_print,
 	uint_print,
 	oct_print,
+	hex_print,
 	hex_print,
 };
 
@@ -86,5 +89,4 @@ static const t_fptr_flag_op flag_disp_tbl[1] = {
 	plus_flag
 };
 
-//int num_dispatches = sizeof(dispatch_table) / sizeof(dispatch_table[0]);
 #endif
