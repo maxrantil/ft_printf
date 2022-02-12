@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 20:46:48 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 21:59:04 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,10 +261,24 @@ void	test_address(void)
 		assert(printf("\n\x1b[1m _______test_address failed_______\x1b[0m\n\n"));
 	++done;
 }
+void	test_asterix(void)
+{
+	int	a;
+	int	b;
+	b = printf("printf: %*d\n", 20, 21);
+	a = ft_printf("ft_pri: %*d\n", 20, 21);
+	printf("\nret: %d \n", a);
+	printf("ret: %d \n", b);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_asterix failed_______\x1b[0m\n\n"));
+	++done;
+}
 
 int	main(void)
 {
-	mix_ez1();
+/* 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
 	mix_ez4();
@@ -280,7 +294,8 @@ int	main(void)
 	test_int_plus_flag();
 	test_int_minusminus_flag();
 	test_procentage();
-	test_address();
+	test_address(); */
+	test_asterix();
 //	test_binary();
 
 	printf("\n%d/%d completed\n", tests, done);

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 20:39:13 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 22:17:09 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,26 @@ int	pf_putint(int nbr, t_var *st)
 
 int	int_print(t_var *st, va_list ap)
 {
-	if (*st->ptr == 'd' || *st->ptr == 'i')
+	int	len;
+	int	astx_ret;
+	int	int_ret;
+	
+	if (*st->ptr == 'd' || *st->ptr == 'i' || *st->ptr == '*')
 	{
-		if (st->space_count-- && ++st->char_count)
-			ft_putchar(' ');
-		return (st->char_count = pf_putint(va_arg(ap, int), st));
+		if (*st->ptr == '*')
+		{
+			astx_ret = va_arg(ap, int);
+			int_ret = va_arg(ap, int);
+			len = ft_intlen((long)int_ret);
+			while (astx_ret-- > len && ++st->char_count)
+				ft_putchar(' ');
+			st->ptr++;
+			return (st->char_count = pf_putint(int_ret, st)); //duble code
+		}
+		/* if (st->space_count-- && ++st->char_count) /// my oold flag space code
+			ft_putchar(' '); */
+		else
+			return (st->char_count = pf_putint(va_arg(ap, int), st));
 	}
 	return (0);
 }

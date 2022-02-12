@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 20:41:14 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 22:12:15 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # include <stdio.h> // remove before eval
 
-# define CHAR_CONV "dicsuoxXp"
+# define CHAR_CONV "dicsuoxXp*"
 # define FLAGS "+%"
 # define ON 1
 # define OFF 0
@@ -38,7 +38,8 @@
 
 typedef struct s_var
 {
-	const char *ptr;
+	const char	*ptr;
+	const char	*start;
 	int			space_count;
 	int			char_count;
 	int			flag;
@@ -59,6 +60,7 @@ int	uint_print(t_var *st, va_list ap);
 int	oct_print(t_var *st, va_list ap);
 int	hex_print(t_var *st, va_list ap);
 int	address_print(t_var *st, va_list ap);
+int	asterix_print(t_var *st, va_list ap);
 
 //int	binary_print(t_var *st, va_list ap);
 
@@ -66,17 +68,19 @@ int	address_print(t_var *st, va_list ap);
 ** Functions for flags dispatch table
 */
 
-int	plus_flag(t_var *st, va_list ap);
+int	flag_plus(t_var *st, va_list ap);
+
 
 /*
 ** Other functions
 */
 
 int		parser_loop(t_var st, va_list ap);
+int		check_parser(t_var *st, va_list ap);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
 int		procentage_print(t_var *st);
 
-static const t_fptr_print_op print_disp_tbl[9] = {
+static const t_fptr_print_op print_disp_tbl[10] = {
 	int_print,
 	int_print,
 	char_print,
@@ -86,10 +90,11 @@ static const t_fptr_print_op print_disp_tbl[9] = {
 	hex_print,
 	hex_print,
 	address_print,
+	int_print,
 };
 
 static const t_fptr_flag_op flag_disp_tbl[1] = {
-	plus_flag
+	flag_plus,
 };
 
 #endif

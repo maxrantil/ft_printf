@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 20:34:37 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 20:55:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int plus_flag(t_var *st, va_list ap)
+int flag_plus(t_var *st, va_list ap)
 {
 	if (*st->ptr == '+')
 	{
