@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/11 15:09:35 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/12 12:10:55 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 CC = gcc
-WFLAGS = -Wall -Werror -Wextra -O3
-# -Wconversion
+WFLAGS = -Wall -Werror -Wextra -g
+# -Wconversion -O3
 
 IDIR = ../includes
 HFILE = -I$(IDIR)

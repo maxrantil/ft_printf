@@ -1,5 +1,5 @@
 NAME = libft.a
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 HEADER_PATH = libft.h
 C_FILES = ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 		  ft_itoa.c ft_memalloc.c ft_memccpy.c ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memdel.c \
@@ -18,9 +18,9 @@ all: $(NAME)
 
 $(NAME):
 	@gcc $(FLAGS) -c $(C_FILES) $(HEADER_PATH)
-	@ar rc $(NAME) $(O_FILES) 
+	@ar rc $(NAME) $(O_FILES)
 	@ranlib $(NAME)
-	
+
 clean:
 	@rm -rf $(O_FILES)
 
