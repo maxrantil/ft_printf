@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/11 17:53:50 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 14:53:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,7 @@ int	check_ptr(t_var *st, va_list ap)
 		return (++st->char_count);
 	else if (CHAR_CONV[i] == '\0')
 		return (0);
-	e_conv = CHAR_CONV[i];
-	printf("%d\n", CHAR_CONV[i]);
-	printf("%d\n", e_conv);
+	e_conv = i;
 	return (st->char_count = print_disp_tbl[e_conv](st, ap));
 }
 

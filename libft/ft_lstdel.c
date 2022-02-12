@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 14:51:09 by mrantil           #+#    #+#             */
-/*   Updated: 2021/11/23 12:26:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 14:35:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list	*head;
-	t_list	*temp;
+	t_list	*upcoming;
+	t_list	*current;
 
-	temp = *alst;
-	while (temp != NULL)
+	current = *alst;
+	while (current != NULL)
 	{
-		head = temp->next;
-		del(temp->content, temp->content_size);
-		free(temp);
-		temp = head;
+		upcoming = current->next;
+		(*del)(current->content, current->content_size);
+		free(current);
+		current = upcoming;
 	}
 	*alst = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstaddend.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/23 16:00:48 by mrantil           #+#    #+#             */
-/*   Updated: 2021/11/24 13:39:42 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 14:40:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	ft_lstaddend(t_list **alst, t_list *new)
 {
 	t_list	*last;
 
-	new = (t_list *)malloc(sizeof(t_list));
 	if (!new)
 		return ;
 	new->next = NULL;
