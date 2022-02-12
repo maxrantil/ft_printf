@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 16:43:47 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 20:41:14 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@
 
 # include <stdio.h> // remove before eval
 
-# define CHAR_CONV "dicsuoxX"
+# define CHAR_CONV "dicsuoxXp"
 # define FLAGS "+%"
 # define ON 1
 # define OFF 0
 //# define NUM_DISP sizeof(print_disp_tbl) / sizeof(print_disp_tbl[0]);
 
-typedef enum e_conversions
+/* typedef enum e_conversions
 {
 	D = 0,
 	I = 0,
@@ -34,7 +34,7 @@ typedef enum e_conversions
 	O = 5,
 	X = 6,
 	BX = 7
-}	t_enum_conversions;
+}	t_enum_conversions; */
 
 typedef struct s_var
 {
@@ -58,6 +58,8 @@ int	str_print(t_var *st, va_list ap);
 int	uint_print(t_var *st, va_list ap);
 int	oct_print(t_var *st, va_list ap);
 int	hex_print(t_var *st, va_list ap);
+int	address_print(t_var *st, va_list ap);
+
 //int	binary_print(t_var *st, va_list ap);
 
 /*
@@ -70,11 +72,11 @@ int	plus_flag(t_var *st, va_list ap);
 ** Other functions
 */
 
-int		check_str(t_var st, va_list ap);
-char	*pf_itoa_base(unsigned int nbr, unsigned int base, const char *ptr);
+int		parser_loop(t_var st, va_list ap);
+char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
 int		procentage_print(t_var *st);
 
-static const t_fptr_print_op print_disp_tbl[8] = {
+static const t_fptr_print_op print_disp_tbl[9] = {
 	int_print,
 	int_print,
 	char_print,
@@ -83,6 +85,7 @@ static const t_fptr_print_op print_disp_tbl[8] = {
 	oct_print,
 	hex_print,
 	hex_print,
+	address_print,
 };
 
 static const t_fptr_flag_op flag_disp_tbl[1] = {

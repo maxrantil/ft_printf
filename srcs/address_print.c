@@ -1,37 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uint_print.c                                       :+:      :+:    :+:   */
+/*   address_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 20:45:06 by mrantil          ###   ########.fr       */
+/*   Created: 2022/02/12 18:31:57 by mrantil           #+#    #+#             */
+/*   Updated: 2022/02/12 20:20:09 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	pf_putuint(unsigned int nbr, int char_count)
+int	address_print(t_var *st, va_list ap)				//only minus and width flags for pointers
 {
-	if (nbr > 9)
+	int		i;
+	char	*str;
+	
+	i = 0;
+	if (*st->ptr == 'p')
 	{
-		pf_putuint(nbr / 10, char_count);
-		pf_putuint(nbr % 10, char_count);
-	}
-	else
-	{
-		ft_putchar((char)nbr + 48);
-		char_count++;
-	}
-	return (char_count);
-}
-
-int	uint_print(t_var *st, va_list ap)
-{
-	if (*st->ptr == 'u')
-	{
-		st->char_count = pf_putuint(va_arg(ap, unsigned int), st->char_count);
+		str = pf_itoa_base(va_arg(ap, long), 16, st->ptr);
+		if (!str)
+			return (0);
+		write(1, "0x", 2);
+		st->char_count += 2;
+		while (str[i] && ++st->char_count)
+			ft_putchar(str[i++]);
+		ft_strdel(&str);
 		return (st->char_count);
 	}
 	return (0);

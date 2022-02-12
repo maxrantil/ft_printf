@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_ptr.c                                        :+:      :+:    :+:   */
+/*   parser_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 16:57:52 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 20:22:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static int	check_parser(t_var *st, va_list ap)
 	return (st->char_count = print_disp_tbl[i](st, ap));
 }
 
-int	check_str(t_var st, va_list ap)
+int	parser_loop(t_var st, va_list ap)
 {
 	while (*st.ptr)
 	{
