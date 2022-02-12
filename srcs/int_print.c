@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 22:17:09 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/12 22:28:49 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	int_print(t_var *st, va_list ap)
 	{
 		if (*st->ptr == '*')
 		{
-			astx_ret = va_arg(ap, int);
+			astx_ret = va_arg(ap, int); // put this into the struct and use it later in the print_func
 			int_ret = va_arg(ap, int);
 			len = ft_intlen((long)int_ret);
 			while (astx_ret-- > len && ++st->char_count)
