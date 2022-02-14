@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 17:59:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 18:01:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -429,9 +429,9 @@ int	main(void)
 	test_asterix_with_str();
 	test_width_single();
 	test_width_multi();
-	test_width_multi2(); */
-	test_mindfuck();
-//	test_mindfuck_minus();
+	test_width_multi2();
+	test_mindfuck(); */
+	test_mindfuck_minus();  //next up MINUS FLAG! woohoo good job today!
 //	test_asterix_with_int_plus(); //need to fix one decrement for +
 //	test_binary();
 
