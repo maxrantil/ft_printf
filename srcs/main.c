@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 17:07:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 17:59:36 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -380,8 +380,8 @@ void test_mindfuck(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %10.5dLol\n", 42);
-	a = ft_printf("ft_: %10.5dLol\n", 42);
+	b = printf("pri: %8.3dLol\n", 42);
+	a = ft_printf("ft_: %8.3dLol\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -408,7 +408,7 @@ void test_mindfuck_minus(void)
 
 int	main(void)
 {
-	mix_ez1();
+/* 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
 	mix_ez4();
@@ -429,7 +429,7 @@ int	main(void)
 	test_asterix_with_str();
 	test_width_single();
 	test_width_multi();
-	test_width_multi2();
+	test_width_multi2(); */
 	test_mindfuck();
 //	test_mindfuck_minus();
 //	test_asterix_with_int_plus(); //need to fix one decrement for +
