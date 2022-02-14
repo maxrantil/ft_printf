@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 18:01:11 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 18:03:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -440,5 +440,6 @@ int	main(void)
 }
 
 
-
+	//you can use exit for malloc errors!
+	
 	//- %[flags][width][.precision][length]specifier
