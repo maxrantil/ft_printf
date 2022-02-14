@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 22:12:01 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 11:01:35 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	flags(t_var *st, va_list ap)
 
 int	check_parser(t_var *st, va_list ap)
 {
-/* 	t_enum_conversions	e_conv; */
 	int					i;
 
 	i = 0;
@@ -39,7 +38,6 @@ int	check_parser(t_var *st, va_list ap)
 		return (++st->char_count);
 	else if (CHAR_CONV[i] == '\0')
 		return (0);
-/* 	e_conv = i; */
 	return (st->char_count = print_disp_tbl[i](st, ap));
 }
 

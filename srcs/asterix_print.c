@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 20:56:07 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 22:16:47 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 11:48:08 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,14 @@
 
 int	asterix_print(t_var *st, va_list ap)
 {
-	int	len;
-	int	astx_ret;
-	int	int_ret;
-	
 	if (*st->ptr == '*')
 	{
-		astx_ret = va_arg(ap, int);
-		int_ret = va_arg(ap, int);
-		len = ft_intlen((long)int_ret);
-		while (astx_ret-- > len && ++st->char_count)
-			ft_putchar(' ');
+		st->astx_ret = va_arg(ap, int);
 		st->ptr++;
-		return (st->char_count = check_parser(st, ap)); //	send it to the check_parser would be awesome, but how
-														//	to combine the second va_arg all into them all?
+		return (st->char_count = check_parser(st, ap));
 	}
+	else
+		while (st->astx_ret-- > st->len_va_arg && ++st->char_count)
+			ft_putchar(' ');
 	return (0); 						// return is unnessasary on this one
 }

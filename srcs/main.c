@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 21:59:04 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 11:24:32 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,8 +265,8 @@ void	test_asterix(void)
 {
 	int	a;
 	int	b;
-	b = printf("printf: %*d\n", 20, 21);
-	a = ft_printf("ft_pri: %*d\n", 20, 21);
+	b = printf("printf: %*d %*s\n", 20, 21, 76, "this is a string");
+	a = ft_printf("ft_pri: %*d %*s\n", 20, 21, 76, "this is a string");
 	printf("\nret: %d \n", a);
 	printf("ret: %d \n", b);
 	if (a == b)

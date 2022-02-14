@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 22:12:15 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 11:33:37 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,14 @@
 # define OFF 0
 //# define NUM_DISP sizeof(print_disp_tbl) / sizeof(print_disp_tbl[0]);
 
-/* typedef enum e_conversions
-{
-	D = 0,
-	I = 0,
-	C = 2,
-	S = 3,
-	U = 4,
-	O = 5,
-	X = 6,
-	BX = 7
-}	t_enum_conversions; */
-
 typedef struct s_var
 {
-	const char	*ptr;
-	const char	*start;
+	char		*ptr;
 	int			space_count;
 	int			char_count;
+	int			astx_ret;
+	int			len_va_arg;
+	//char 		strlen_va_arg;
 	int			flag;
 }				t_var;
 
@@ -90,7 +80,7 @@ static const t_fptr_print_op print_disp_tbl[10] = {
 	hex_print,
 	hex_print,
 	address_print,
-	int_print,
+	asterix_print,
 };
 
 static const t_fptr_flag_op flag_disp_tbl[1] = {
