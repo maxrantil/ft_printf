@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 15:07:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 17:07:36 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -361,9 +361,54 @@ void	test_width_multi(void)
 	++done;
 }
 
+void	test_width_multi2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %114d\n", 21);
+	a = ft_printf("ft_: %114d\n", 21);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_width_multi2 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_mindfuck(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %10.5dLol\n", 42);
+	a = ft_printf("ft_: %10.5dLol\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_mindfuck_minus(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-10.5dLol\n", 42);
+	a = ft_printf("ft_: %-10.5dLol\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck_minus failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
-/* 	mix_ez1();
+	mix_ez1();
 	mix_ez2();
 	mix_ez3();
 	mix_ez4();
@@ -381,9 +426,12 @@ int	main(void)
 	test_procentage();
 	test_address();
 	test_asterix_with_int();
-	test_asterix_with_str(); */
+	test_asterix_with_str();
 	test_width_single();
 	test_width_multi();
+	test_width_multi2();
+	test_mindfuck();
+//	test_mindfuck_minus();
 //	test_asterix_with_int_plus(); //need to fix one decrement for +
 //	test_binary();
 
@@ -391,8 +439,6 @@ int	main(void)
 	return (0);
 }
 
-/* i1 = printf("%-10.5dLol\n", 42);
-    i2 = ft_printf("%10.5dLol\n", 42);
-    printf("\nReturn from og: %d\n return from our guy: %d\n", i1, i2); */
+
 
 	//- %[flags][width][.precision][length]specifier

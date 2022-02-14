@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 15:52:07 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 17:13:15 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_var
 	//char 		strlen_va_arg;
 	int			flag;
 	int			width;
+	int			precision;
 }				t_var;
 
 typedef int	(*t_fptr_print_op)(t_var *st);
@@ -66,10 +67,11 @@ int	asterix_print(t_var *st);
 int	flag_plus(t_var *st);
 
 /*
-** check_width
+** check width and precision functions
 */
 
 int	check_width(t_var *st);
+int	check_precision(t_var *st);
 
 /*
 ** Other functions

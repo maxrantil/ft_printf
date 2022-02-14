@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 15:51:32 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 17:08:43 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@ int	check_parser(t_var *st)
 	if (check_flags(st))
 		return (++st->char_count); //this might be more then one later?
 	if (check_width(st))
-		return (st->char_count); //this can be more then one
+		return (st->char_count);
+	if (check_precision(st))
+		return (st->char_count);
 	else if (SPECIF[i] == '\0')
 		return (0);
 	return (st->char_count = print_disp_tbl[i](st));

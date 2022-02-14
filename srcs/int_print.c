@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 15:58:34 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 17:13:51 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ int	int_print(t_var *st)
 		st->len_va_arg = ft_intlen(int_ret);
 		asterix_print(st);
 		check_width(st);
+		check_precision(st);
 		return (st->char_count = pf_putint(int_ret, st));
 	}
 	return (0);
