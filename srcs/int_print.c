@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 11:36:42 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 15:58:34 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	pf_putint(int nbr, t_var *st)
 	}
 	else if (st->flag == ON)
 	{
-		ft_putchar('+');
 		st->flag = OFF;
+		ft_putchar('+');
 	}
 	if (nbr > 9)
 	{
@@ -39,18 +39,19 @@ int	pf_putint(int nbr, t_var *st)
 	return (st->char_count);
 }
 
-int	int_print(t_var *st, va_list ap)
+int	int_print(t_var *st)
 {
 	int	int_ret;
 	
-	if (*st->ptr == 'd' || *st->ptr == 'i' || asterix_print(st, ap))
+	if (*st->ptr == 'd' || *st->ptr == 'i' || asterix_print(st))
 	{
-		int_ret = va_arg(ap, int);
-		st->len_va_arg = ft_intlen((long)int_ret);
-		asterix_print(st, ap);
+		if (st->space_count-- && ++st->char_count) /// my oold flag space code
+			ft_putchar(' ');
+		int_ret = va_arg(st->ap, int);
+		st->len_va_arg = ft_intlen(int_ret);
+		asterix_print(st);
+		check_width(st);
 		return (st->char_count = pf_putint(int_ret, st));
-		/* if (st->space_count-- && ++st->char_count) /// my oold flag space code
-			ft_putchar(' '); */
 	}
 	return (0);
 }

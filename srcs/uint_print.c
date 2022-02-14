@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 20:45:06 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 15:54:53 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ static int	pf_putuint(unsigned int nbr, int char_count)
 	return (char_count);
 }
 
-int	uint_print(t_var *st, va_list ap)
+int	uint_print(t_var *st)
 {
 	if (*st->ptr == 'u')
 	{
-		st->char_count = pf_putuint(va_arg(ap, unsigned int), st->char_count);
+		st->char_count = pf_putuint(va_arg(st->ap, unsigned int), st->char_count);
 		return (st->char_count);
 	}
 	return (0);

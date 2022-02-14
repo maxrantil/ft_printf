@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:12:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/10 17:17:21 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/14 15:53:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*pf_itoa_binary(unsigned int nbr, unsigned int base)
 	return (s);
 }
 
-int	binary_print(t_var *st, va_list ap)
+int	binary_print(t_var *st)
 {
 	int		i;
 	char 	*str;
@@ -38,7 +38,7 @@ int	binary_print(t_var *st, va_list ap)
 	i = 0;
 	if (*st->ptr == 'b')
 	{
-		str = pf_itoa_binary(va_arg(ap, unsigned int), 2);
+		str = pf_itoa_binary(va_arg(st->ap, unsigned int), 2);
 		while (str[i] && ++st->char_count)
 			ft_putchar(str[i++]);
 		ft_strdel(&str);
