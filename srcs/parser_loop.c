@@ -6,26 +6,11 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 18:23:09 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 19:38:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
-
-/* int	check_flags(t_var *st)
-{
-	int	i;
-
-	i = 0;
-	if (*st->ptr == '%' && ++st->char_count)
-		return (st->char_count = procentage_print(st));
-	while (FLAGS[i] && FLAGS[i] != *st->ptr) //FLAGS[i] && 
-		++i;
-	//if (FLAGS[i] == '\0')
-	//	return (0);
-	//else
-	return (flag_disp_tbl[i](st));
-} */
 
 void	check_parser(t_var *st)
 {
@@ -35,7 +20,7 @@ void	check_parser(t_var *st)
 	while (FLAGS[i] && FLAGS[i] != *st->ptr)
 		++i;
 	flag_disp_tbl[i](st);
-	if (ft_isdigit(*st->ptr) || *st->ptr == '.')
+	if (ft_isdigit(*st->ptr) || *st->ptr == '.')				///do sommething cleaner here??
 	{
 		check_width(st);
 		check_precision(st);
@@ -57,7 +42,7 @@ int	parser_loop(t_var st)
 			continue ;
 		}
 		st.ptr++;
-		while (*st.ptr == ' ' && ++st.space_count && ++st.char_count)
+		while (*st.ptr == ' ' && ++st.space_count && ++st.char_count)			//shall you put this into a flag space function???
 			st.ptr++;
 		if (st.space_count > 1)
 			st.char_count -= st.space_count;

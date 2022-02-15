@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 19:33:18 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 19:35:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	exec_width(t_var *st)
 	int sub;
 	
 	sub = 0;
-	if (st->len_va_arg && st->width_flag == ON)
+	if (st->len_va_arg && st->width_flag == ON)							//can you shorten this into somthing cleaner?
 	{
 		if (st->precision_flag == ON && st->minus_flag == ON)
 			check_precision(st);

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 16:56:56 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 19:39:31 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	initialize_st(const char *fmt, t_var *st)
 	st->plus_flag = OFF;
 	st->minus_flag = OFF;
 	st->width = 0;
-	st->int_ret = 0; // unnessasary?
+	st->int_ret = 0; 						//change this later to not only int and cast it to anything?
 	st->unnessesary = 0; // unnessasary?
 	//st->enum_flags[0] = ERROR;
 	/* st->enum_flags[0] = ERROR; */
@@ -36,7 +36,7 @@ int	ft_printf(const char *fmt, ...)
 
 	va_start(st.ap, fmt);
 	initialize_st(fmt, &st);
-	st.char_count = parser_loop(st);
+	st.char_count = parser_loop(st);		//change this to void return also??
 	va_end(st.ap);
 	return (st.char_count);
 }

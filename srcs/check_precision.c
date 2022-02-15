@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:09:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 19:19:51 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 19:36:48 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,8 @@ void	exec_precision(t_var *st)
 	{
 		if (st->minus_flag == ON)
 		{
-			while (st->precision-- > st->len_va_arg && ++st->char_count)			//need fixing ....??....???...
-			{
+			while (st->precision-- > st->len_va_arg && ++st->char_count)			//need fixing ....??....???...is it the same????
 				ft_putchar('0');
-				//st->minus_flag = OFF;
-				//st->precision_flag = OFF;
-				//check_width(st);
-			}
 		}
 		else
 		{
@@ -57,7 +52,6 @@ void	exec_precision(t_var *st)
 				ft_putchar('0');
 		}
 		st->precision_flag = OFF;
-		//check_width(st);
 	}
 	return ;
 }
