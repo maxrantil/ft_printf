@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:09:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 14:31:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 19:19:51 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int	check_precision(t_var *st)
+void	check_precision(t_var *st)
 {
 	int c;
 
@@ -29,7 +29,15 @@ int	check_precision(t_var *st)
 				st->precision = st->width * 10 + (*st->ptr - 48);
 			st->ptr++;
 		}
-		return (check_parser(st));
+	}
+	return ;
+}
+
+void	exec_precision(t_var *st)
+{
+	if (st->int_ret < 0)
+	{
+		st->len_va_arg--;
 	}
 	if (st->len_va_arg && st->precision_flag == ON)
 	{
@@ -51,5 +59,5 @@ int	check_precision(t_var *st)
 		st->precision_flag = OFF;
 		//check_width(st);
 	}
-	return (0);
+	return ;
 }

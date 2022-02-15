@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/14 17:12:40 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/15 17:34:28 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ FUNCTIONS = ft_printf \
 			hex_print \
 			address_print \
 			asterix_print \
+			null_print \
 			flags \
 			check_width \
 			check_precision

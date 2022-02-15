@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 15:34:55 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 18:46:57 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 
 //# define NUM_DISP sizeof(print_disp_tbl) / sizeof(print_disp_tbl[0]);
 
+/* typedef enum e_flags
+{
+	PLUS = 1,
+	MINUS = 2,
+	ERROR = 0
+}	t_enum_flags; */
+
 typedef struct s_var
 {
 	va_list		ap;
@@ -38,35 +45,31 @@ typedef struct s_var
 	//char 		strlen_va_arg;
 	int			plus_flag;
 	int			minus_flag;
+/* 	t_enum_flags	enum_flags[2]; */
 	int			width;
 	int			width_flag;
 	int			precision;
 	int			precision_flag;
 	int			int_ret;
+	int			unnessesary;
 }				t_var;
 
-typedef enum e_flags
-{
-	PLUS = 1,
-	MINUS = 2,	
-}	t_enum_flags;
-
-typedef int	(*t_fptr_print_op)(t_var *st);
-typedef int	(*t_fptr_flag_op)(t_var *st);
+typedef void	(*t_fptr_print_op)(t_var *st);
+typedef void	(*t_fptr_flag_op)(t_var *st);
 
 /*
 ** Functions for print dispatch table
 */
 
-int	ft_printf(const char *fmt, ...);				//*restrict?
-int	int_print(t_var *st);
-int	char_print(t_var *st);
-int	str_print(t_var *st);
-int	uint_print(t_var *st);
-int	oct_print(t_var *st);
-int	hex_print(t_var *st);
-int	address_print(t_var *st);
-int	asterix_print(t_var *st);
+void	int_print(t_var *st);
+void	char_print(t_var *st);
+void	str_print(t_var *st);
+void	uint_print(t_var *st);
+void	oct_print(t_var *st);
+void	hex_print(t_var *st);
+void	address_print(t_var *st);
+void	asterix_print(t_var *st);
+void	null_print(t_var *st);
 
 //int	binary_print(t_var *st);
 
@@ -74,27 +77,31 @@ int	asterix_print(t_var *st);
 ** Functions for flags dispatch table
 */
 
-int	flag_plus(t_var *st);
-int flag_minus(t_var *st);
+void	flag_plus(t_var *st);
+void	flag_minus(t_var *st);
+void	procentage_print(t_var *st);
+void	null_flag(t_var *st);
 
 /*
 ** check width and precision functions
 */
 
-int	check_width(t_var *st);
-int	check_precision(t_var *st);
+void	check_width(t_var *st);
+void	exec_width(t_var *st);
+void	check_precision(t_var *st);
+void	exec_precision(t_var *st);
 
 /*
 ** Other functions
 */
 
+int		ft_printf(const char *fmt, ...);				//*restrict?
 int		parser_loop(t_var st);
-int		check_parser(t_var *st);
+void	check_parser(t_var *st);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
-int		procentage_print(t_var *st);
 int		pf_putint(int nbr, t_var *st);
 
-static const t_fptr_print_op print_disp_tbl[10] = {
+static const t_fptr_print_op print_disp_tbl[11] = {
 	int_print,
 	int_print,
 	char_print,
@@ -105,11 +112,14 @@ static const t_fptr_print_op print_disp_tbl[10] = {
 	hex_print,
 	address_print,
 	asterix_print,
+	null_print,
 };
 
-static const t_fptr_flag_op flag_disp_tbl[2] = {
+static const t_fptr_flag_op flag_disp_tbl[4] = {
 	flag_plus,
 	flag_minus,
+	procentage_print,
+	null_flag,
 };
 
 #endif

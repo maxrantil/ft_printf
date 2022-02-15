@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 14:40:28 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 19:25:20 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,22 @@
 
 static unsigned int tests;
 static unsigned int done;
+
+void mix_ezz(void)
+{
+	int	a;
+	int	b;
+	b = printf("%u\n", 4);
+	a = ft_printf("%u\n", 4);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_ezz failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 
 void mix_ez1(void)
 {
@@ -30,6 +46,7 @@ void mix_ez1(void)
 		assert(printf("\n\x1b[1m _______test_ez1 failed_______\x1b[0m\n\n"));
 	++done;
 }
+
 void mix_ez2(void)
 {
 	int	a;
@@ -451,8 +468,54 @@ void test_mindfuck_minus(void)
 	++done;
 }
 
+void test_mindfuck_minusminus(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-10.5dLol\n", -42);
+	a = ft_printf("ft_: %-10.5dLol\n", -42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck_minusminus failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_mindfuck_simpleminus(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %10.5dLol\n", -42);
+	a = ft_printf("ft_: %10.5dLol\n", -42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck_simpleminus failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_mindfuck_minusminint(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-10.5dLol\n", -2147483647);
+	a = ft_printf("ft_: %-10.5dLol\n", -2147483647);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck_minusminint failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
+	mix_ezz();
 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
@@ -472,14 +535,17 @@ int	main(void)
 	test_procentage();
 	test_address();
 	test_asterix_with_int();
-	test_asterix_with_str();
+	test_asterix_with_str(); 
 	test_width_single();
 	test_width_multi();
 	test_width_multi2();
  	test_precision();
  	test_precision_1();
 	test_mindfuck();
-	test_mindfuck_minus();  //next up MINUS FLAG! woohoo good job today!
+	test_mindfuck_minus();   //next up MINUS FLAG! woohoo good job today!
+	test_mindfuck_minusminus();
+	test_mindfuck_simpleminus();
+	test_mindfuck_minusminint();
 //	test_asterix_with_int_plus(); //need to fix one decrement for +
 //	test_binary();
 

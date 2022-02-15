@@ -6,33 +6,29 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 15:54:53 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 17:38:37 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static int	pf_putuint(unsigned int nbr, int char_count)
+static void	pf_putuint(unsigned int nbr, t_var	*st)
 {
 	if (nbr > 9)
 	{
-		pf_putuint(nbr / 10, char_count);
-		pf_putuint(nbr % 10, char_count);
+		pf_putuint(nbr / 10, st);
+		pf_putuint(nbr % 10, st);
 	}
 	else
 	{
 		ft_putchar((char)nbr + 48);
-		char_count++;
+		st->char_count++;
 	}
-	return (char_count);
+	return ;
 }
 
-int	uint_print(t_var *st)
+void	uint_print(t_var *st)
 {
-	if (*st->ptr == 'u')
-	{
-		st->char_count = pf_putuint(va_arg(st->ap, unsigned int), st->char_count);
-		return (st->char_count);
-	}
-	return (0);
+	pf_putuint(va_arg(st->ap, unsigned int), st);
+	return ;
 }
