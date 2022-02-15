@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 16:19:00 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:45:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,21 @@ int flag_plus(t_var *st)
 {
 	if (*st->ptr == '+')
 	{
-		st->flag = ON;
+		st->plus_flag = ON;
 		st->ptr++;
+		st->char_count++;
 		return (check_parser(st));
+	}
+	return (0);
+}
+
+int flag_minus(t_var *st)
+{
+	if (*st->ptr == '-')
+	{
+		st->minus_flag = ON;
+		st->ptr++;
+		return (check_parser(st)); // can this to go checkk_width directly?
 	}
 	return (0);
 }

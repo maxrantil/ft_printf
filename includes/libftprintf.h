@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 17:13:15 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 15:34:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h> // remove before eval
 
 # define SPECIF "dicsuoxXp*"
-# define FLAGS "+%"
+# define FLAGS "+-%"
 # define ON 1
 # define OFF 0
 
@@ -36,10 +36,20 @@ typedef struct s_var
 	int			astx_ret;
 	int			len_va_arg;
 	//char 		strlen_va_arg;
-	int			flag;
+	int			plus_flag;
+	int			minus_flag;
 	int			width;
+	int			width_flag;
 	int			precision;
+	int			precision_flag;
+	int			int_ret;
 }				t_var;
+
+typedef enum e_flags
+{
+	PLUS = 1,
+	MINUS = 2,	
+}	t_enum_flags;
 
 typedef int	(*t_fptr_print_op)(t_var *st);
 typedef int	(*t_fptr_flag_op)(t_var *st);
@@ -65,6 +75,7 @@ int	asterix_print(t_var *st);
 */
 
 int	flag_plus(t_var *st);
+int flag_minus(t_var *st);
 
 /*
 ** check width and precision functions
@@ -81,6 +92,7 @@ int		parser_loop(t_var st);
 int		check_parser(t_var *st);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
 int		procentage_print(t_var *st);
+int		pf_putint(int nbr, t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[10] = {
 	int_print,
@@ -95,8 +107,9 @@ static const t_fptr_print_op print_disp_tbl[10] = {
 	asterix_print,
 };
 
-static const t_fptr_flag_op flag_disp_tbl[1] = {
+static const t_fptr_flag_op flag_disp_tbl[2] = {
 	flag_plus,
+	flag_minus,
 };
 
 #endif

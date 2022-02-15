@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 17:34:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:29:17 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	pf_putint(int nbr, t_var *st)
 	{
 		ft_putchar('-');
 		nbr *= -1;
-		if (st->flag == ON && --st->char_count)
-			st->flag = OFF;
+		if (st->plus_flag == ON && --st->char_count)
+			st->plus_flag = OFF;
 	}
-	else if (st->flag == ON)
+	else if (st->plus_flag == ON)
 	{
-		st->flag = OFF;
+		st->plus_flag = OFF;
 		ft_putchar('+');
 	}
 	if (nbr > 9)
@@ -41,19 +41,22 @@ int	pf_putint(int nbr, t_var *st)
 
 int	int_print(t_var *st)
 {
-	int	int_ret;
+	///int	int_ret;
 	
 	if (*st->ptr == 'd' || *st->ptr == 'i' || asterix_print(st))
 	{
 		if (st->space_count-- && ++st->char_count) /// my oold flag space code
 			ft_putchar(' ');
-		int_ret = va_arg(st->ap, int);
-		st->len_va_arg = ft_intlen(int_ret);
-		//st->precision -= st->len_va_arg; 
+		st->int_ret = va_arg(st->ap, int);
+		st->len_va_arg = ft_intlen(st->int_ret);
 		asterix_print(st);
-		check_width(st);
+		if (st->minus_flag == OFF)
+			check_width(st);
 		check_precision(st);
-		return (st->char_count = pf_putint(int_ret, st));
+		st->char_count = pf_putint(st->int_ret, st);
+		if (st->minus_flag == ON)
+			check_width(st);
+		return (st->char_count);
 	}
 	return (0);
 }

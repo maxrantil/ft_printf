@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 17:44:18 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:46:04 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	check_flags(t_var *st)
 	int	i;
 
 	i = 0;
-	if (*st->ptr == '%')
+	if (*st->ptr == '%' && ++st->char_count)
 		return (st->char_count = procentage_print(st));
 	while (FLAGS[i] && FLAGS[i] != *st->ptr)
 		++i;
-	if (FLAGS[i] == '\0' || !st->char_count)
+	if (FLAGS[i] == '\0')// || !st->char_count)
 		return (0);
 	else
 		return (st->char_count = flag_disp_tbl[i](st));
@@ -35,11 +35,14 @@ int	check_parser(t_var *st)
 	while (SPECIF[i] && SPECIF[i] != *st->ptr)
 		i++;
 	if (check_flags(st))
-		return (++st->char_count); //this might be more then one later?
-	if (check_width(st))
-		return (st->char_count);
- 	/* if (check_precision(st))
-		return (st->char_count); */
+		return (st->char_count); //this might be more then one later?
+	if (ft_isdigit(*st->ptr) || *st->ptr == '.')
+	{
+		if (check_width(st))
+			return (st->char_count);
+		if (check_precision(st))
+			return (st->char_count);
+	}
 	else if (SPECIF[i] == '\0')
 		return (0);
 	return (st->char_count = print_disp_tbl[i](st));

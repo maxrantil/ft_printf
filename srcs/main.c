@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 18:03:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 14:40:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -225,6 +225,21 @@ void	test_int_plus_flag(void)
 	++done;
 }
 
+void	test_int_plus_flag2(void)
+{
+	int	a;
+	int	b;
+	b = printf("%+dtext", 21);
+	a = ft_printf("%+dtext", 21);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_int_plus_flag2 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 void	test_int_minusminus_flag(void)
 {
 	int	a;
@@ -376,6 +391,36 @@ void	test_width_multi2(void)
 	++done;
 }
 
+void	test_precision(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.4d\n", 21);
+	a = ft_printf("ft_: %.4d\n", 21);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_precision failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	test_precision_1(void)
+{
+	int	a;
+	int	b;
+	b = printf("%.8d\n", 21);
+	a = ft_printf("%.8d\n", 21);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_precision_1 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 void test_mindfuck(void)
 {
 	int	a;
@@ -408,7 +453,7 @@ void test_mindfuck_minus(void)
 
 int	main(void)
 {
-/* 	mix_ez1();
+	mix_ez1();
 	mix_ez2();
 	mix_ez3();
 	mix_ez4();
@@ -422,6 +467,7 @@ int	main(void)
 	test_int_zero();
 	test_int_minus();
 	test_int_plus_flag();
+	test_int_plus_flag2();
 	test_int_minusminus_flag();
 	test_procentage();
 	test_address();
@@ -430,7 +476,9 @@ int	main(void)
 	test_width_single();
 	test_width_multi();
 	test_width_multi2();
-	test_mindfuck(); */
+ 	test_precision();
+ 	test_precision_1();
+	test_mindfuck();
 	test_mindfuck_minus();  //next up MINUS FLAG! woohoo good job today!
 //	test_asterix_with_int_plus(); //need to fix one decrement for +
 //	test_binary();
