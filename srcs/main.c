@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 19:25:20 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/15 19:41:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -542,18 +542,15 @@ int	main(void)
  	test_precision();
  	test_precision_1();
 	test_mindfuck();
-	test_mindfuck_minus();   //next up MINUS FLAG! woohoo good job today!
+	test_mindfuck_minus();
 	test_mindfuck_minusminus();
 	test_mindfuck_simpleminus();
-	test_mindfuck_minusminint();
+	test_mindfuck_minusminint(); //next up length! WOOP WOOOP YOU ROCK!
 //	test_asterix_with_int_plus(); //need to fix one decrement for +
 //	test_binary();
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);
 }
-
-
-	//you can use exit for malloc errors!
 	
 	//- %[flags][width][.precision][length]specifier
