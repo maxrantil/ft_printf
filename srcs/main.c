@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 14:00:13 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/16 20:33:00 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -472,8 +472,8 @@ void test_mindfuck_minusminus(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %-10.5dLol\n", -42);
-	a = ft_printf("ft_: %-10.5dLol\n", -42);
+	b = printf("pri: %-10.7dLol\n", -42);
+	a = ft_printf("ft_: %-10.7dLol\n", -42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -498,18 +498,33 @@ void test_mindfuck_simpleminus(void)
 	++done;
 }
 
-void test_mindfuck_minusminint(void)
+void test_mindfuck_minusminint(void) // cast this to exact int min
 {
-	int	a;
-	int	b;
-	b = printf("pri: %-10.5dLol\n", -2147483647);
-	a = ft_printf("ft_: %-10.5dLol\n", -2147483647);
+	int	a = -2147483648;
+	int	b = -2147483648;
+	b = printf("pri: %-30.25dLol\n", b);
+	a = ft_printf("ft_: %-30.25dLol\n",a);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\n\x1b[1m _______test_mindfuck_minusminint failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_mindfuck_minusminint2(void)  ///cast this to under min int
+{
+	long	a = -2147483648;
+	long	b = -2147483648;
+	b = printf("pri: %13.13dLol\n", (int)b);
+	a = ft_printf("ft_: %13.13dLol\n",(int)a);
+	printf("\nret: %ld \n", b);
+	printf("ret: %ld \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck_minusminint2 failed_______\x1b[0m\n\n"));
 	++done;
 }
 
@@ -540,6 +555,145 @@ void test_flag_space(void)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\n\x1b[1m _______test_flag_space failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_length_h(void)
+{
+	int	a = -32769;
+	int	b = -32769;
+/* 	int b;
+	int a; */
+	b = printf("pri: %hd\n", (short)b);
+	a = ft_printf("ft_: %hd\n", (short)a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_h failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_length_h2(void)
+{
+	int	a = -327;
+	int	b = -327;
+/* 	int b;
+	int a; */
+	b = printf("%hd\n", (short)b);
+	a = ft_printf("%hd\n", (short)a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_h2 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_42hex(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %x\n", 42);
+	a = ft_printf("ft_: %x\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_42hex failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_length_hh(void)
+{
+	int	a;
+	int	b;
+	b = printf("%hhd\n", (signed char)287);
+	a = ft_printf("%hhd\n", (signed char)287);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_hh failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_length_hh2(void)
+{
+	signed char	a = 40;
+	signed char	b = 40;
+	b = printf("%hhd\n", b);
+	a = ft_printf("%hhd\n", a);
+	printf("\nret: %hhd \n", b);
+	printf("ret: %hhd \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_hh2 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_length_hh_unsigned_int(void)
+{
+	int	a = 4000000;
+	int	b = 4000000;
+	b = printf("%hhu\n", (unsigned char)b);
+	a = ft_printf("%hhu\n", (unsigned char)a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_hh_unsigned_int failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_length_hh_unsigned_int2(void)
+{
+	int	a = -400;
+	int	b = -400;
+	b = printf("pri: %hhu\n", (unsigned char)b);
+	a = ft_printf("ft_: %hhu\n", (unsigned char)a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_hh_unsigned_int failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_length_h_unsigned_int(void)
+{
+	int	a = 4000000;
+	int	b = 4000000;
+	b = printf("%hu\n", (unsigned short)b);
+	a = ft_printf("%hu\n", (unsigned short)a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_h_unsigned_int failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_length_h_unsigned_int2(void)
+{
+	int	a = -400;
+	int	b = -400;
+	b = printf("pri: %hu\n", (unsigned short)b);
+	a = ft_printf("ft_: %hu\n", (unsigned short)a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_h_unsigned_int failed_______\x1b[0m\n\n"));
 	++done;
 }
 
@@ -575,9 +729,19 @@ int	main(void)
 	test_mindfuck_minus();
 	test_mindfuck_minusminus();
 	test_mindfuck_simpleminus();
-	test_mindfuck_minusminint(); //next up length! WOOP WOOOP YOU ROCK!
+ 	test_mindfuck_minusminint(); //need to fix for min_int number, good job today! 
+	test_mindfuck_minusminint2();
 	test_flag_space_minus();
 	test_flag_space();
+	test_length_h();
+	test_length_h2();
+	test_length_hh();
+	test_length_hh2();
+	test_length_hh_unsigned_int();
+	test_length_hh_unsigned_int2();
+	test_length_h_unsigned_int();
+	test_length_h_unsigned_int2();
+//	test_42hex();
 //	test_asterix_with_int_plus(); //need to fix one decrement for +
 //	test_binary();
 

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 13:33:11 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/16 17:47:39 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,17 @@ static void	initialize_st(const char *fmt, t_var *st)
 	st->char_count = 0;
 	st->astx_ret = 0;
 	st->len_va_arg = 0;
+	st->width = 0;
 	st->width_flag = OFF;
+	st->precision = 0; //is it nessesary to init to 0?????
 	st->precision_flag = OFF;
 	st->plus_flag = OFF;
 	st->minus_flag = OFF;
-	st->width = 0;
 	st->int_ret = 0; 						//change this later to not only int and cast it to anything?
 	st->unnessesary = 0; // unnessasary?
+	st->le_short = OFF;
+	st->le_signed_char = OFF;
+	st->le_unsigned_short = OFF;
 	//st->enum_flags[0] = ERROR;
 	/* st->enum_flags[0] = ERROR; */
 }

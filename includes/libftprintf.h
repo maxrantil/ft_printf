@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 13:55:44 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/16 17:18:53 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 # define SPECIF "dicsuoxXp*"
 # define FLAGS "+-% "
+# define LENGTH "hl"
 # define ON 1
 # define OFF 0
 
@@ -52,6 +53,9 @@ typedef struct s_var
 	int			precision_flag;
 	int			int_ret;
 	int			unnessesary;
+	int			le_short;
+	int			le_unsigned_short;
+	int			le_signed_char;
 }				t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);

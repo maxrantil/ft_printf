@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 14:01:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/16 20:32:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int	pf_putint(int nbr, t_var *st)
+int	pf_putint(int nbr, t_var *st)				//can this function print min_int??? seems like not, thats for tomorrow
 {
 	if (nbr < 0 && ++st->char_count)
 	{
@@ -43,6 +43,7 @@ int	pf_putint(int nbr, t_var *st)
 
 void	int_print(t_var *st)
 {
+
 	st->int_ret = va_arg(st->ap, int);
 	st->len_va_arg = ft_intlen(st->int_ret);
 	asterix_print(st);
@@ -53,7 +54,12 @@ void	int_print(t_var *st)
 		exec_flag_space(st);
 		exec_precision(st);
 	}
-	st->char_count = pf_putint(st->int_ret, st);
+	if (st->le_short == ON)
+		st->char_count = pf_putint((short)st->int_ret, st);
+	else if (st->le_signed_char == ON)
+		st->char_count = pf_putint((signed char)st->int_ret, st);
+	else
+		st->char_count = pf_putint(st->int_ret, st);
 	if (st->minus_flag == ON)
 		exec_width(st);
 	return ;

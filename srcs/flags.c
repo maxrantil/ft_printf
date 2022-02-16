@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 14:00:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/16 18:25:53 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	null_flag(t_var *st)
 
 void	get_flag_space(t_var *st)
 {
-	while (*st->ptr == ' ' && ++st->space_count && ++st->char_count)			//shall you put this into a flag space function???
+	while (*st->ptr == ' ' && ++st->space_count && ++st->char_count)
 			st->ptr++;
 	if (st->space_count > 1)
 		st->char_count -= st->space_count;
@@ -31,7 +31,7 @@ void	exec_flag_space(t_var *st)
 {
 	if (st->int_ret < 0)
 		return ;
-	if (st->space_count-- && ++st->char_count) /// my oold flag space code
+	if (st->space_count-- && ++st->char_count)
 		ft_putchar(' ');
 }
 
@@ -60,7 +60,7 @@ void	flag_minus(t_var *st)
 {
 	if (*st->ptr == '-')
 	{
-		st->minus_flag = ON;
+		st->minus_flag = ON;  //here i can inplement the bitwise number
 		st->ptr++;
 		//check_parser(st); // can this to go checkk_width directly?
 		//check_width(st); // can this to go checkk_width directly?
