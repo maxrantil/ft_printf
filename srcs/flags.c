@@ -6,20 +6,36 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 18:07:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/16 14:00:36 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void null_flag(t_var *st)
+void	null_flag(t_var *st)
 {
 	st->unnessesary = 1;
 	//if (st->ptr == '\0')
 	return ;
 }
 
-void flag_plus(t_var *st)
+void	get_flag_space(t_var *st)
+{
+	while (*st->ptr == ' ' && ++st->space_count && ++st->char_count)			//shall you put this into a flag space function???
+			st->ptr++;
+	if (st->space_count > 1)
+		st->char_count -= st->space_count;
+}
+
+void	exec_flag_space(t_var *st)
+{
+	if (st->int_ret < 0)
+		return ;
+	if (st->space_count-- && ++st->char_count) /// my oold flag space code
+		ft_putchar(' ');
+}
+
+void	flag_plus(t_var *st)
 {
 	if (*st->ptr == '+')
 	{
@@ -40,7 +56,7 @@ void flag_plus(t_var *st)
 	return ;
 }
 
-void flag_minus(t_var *st)
+void	flag_minus(t_var *st)
 {
 	if (*st->ptr == '-')
 	{

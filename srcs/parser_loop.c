@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 19:38:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/16 13:43:34 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,20 @@ void	check_parser(t_var *st)
 	return ;
 }
 
-int	parser_loop(t_var st)
+void	parser_loop(t_var *st)
 {
-	while (*st.ptr)
+	while (*st->ptr)
 	{
-		if (*st.ptr != '%' && ++st.char_count)
+		if (*st->ptr != '%' && ++st->char_count)
 		{
-			ft_putchar(*st.ptr++);
+			ft_putchar(*st->ptr++);
 			continue ;
 		}
-		st.ptr++;
-		while (*st.ptr == ' ' && ++st.space_count && ++st.char_count)			//shall you put this into a flag space function???
-			st.ptr++;
-		if (st.space_count > 1)
-			st.char_count -= st.space_count;
-		check_parser(&st);
-		if (!st.char_count)
-			return (-1);
-		st.ptr++;
-		st.space_count = 0;
+		st->ptr++;
+		check_parser(st);
+		if (!st->char_count)
+			exit(1);
+		st->ptr++;
+		st->space_count = 0;
 	}
-	return (st.char_count);
 }

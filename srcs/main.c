@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 19:41:11 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/16 14:00:13 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -513,6 +513,36 @@ void test_mindfuck_minusminint(void)
 	++done;
 }
 
+void test_flag_space_minus(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %     dLol\n", -2147483647);
+	a = ft_printf("ft_: %     dLol\n", -2147483647);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_space_minus failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_flag_space(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %  dLol\n", 7483647);
+	a = ft_printf("ft_: %  dLol\n", 7483647);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_space failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
 	mix_ezz();
@@ -546,6 +576,8 @@ int	main(void)
 	test_mindfuck_minusminus();
 	test_mindfuck_simpleminus();
 	test_mindfuck_minusminint(); //next up length! WOOP WOOOP YOU ROCK!
+	test_flag_space_minus();
+	test_flag_space();
 //	test_asterix_with_int_plus(); //need to fix one decrement for +
 //	test_binary();
 

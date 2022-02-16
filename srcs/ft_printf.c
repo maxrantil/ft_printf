@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 19:39:31 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/16 13:33:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_printf(const char *fmt, ...)
 
 	va_start(st.ap, fmt);
 	initialize_st(fmt, &st);
-	st.char_count = parser_loop(st);		//change this to void return also??
+	parser_loop(&st);
 	va_end(st.ap);
 	return (st.char_count);
 }
