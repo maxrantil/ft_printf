@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 17:39:06 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 16:50:54 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,18 @@ void	hex_print(t_var *st)
 	char 	*str;
 
 	i = 0;
-	if (st->space_count-- && ++st->char_count)
-		ft_putchar(' ');
+	if (st->hash_flag == ON)
+	{
+		st->char_count += 2;
+		if (*st->ptr == 'x')
+			write(1, "0x", 2);
+		else
+			write(1, "0X", 2);
+		st->hash_flag = OFF;
+	}
 	str = pf_itoa_base(va_arg(st->ap, unsigned int), 16, st->ptr);
 	if (!str)
-		exit (1);
+		exit(1);
 	while (str[i] && ++st->char_count)
 		ft_putchar(str[i++]);
 	ft_strdel(&str);

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 17:18:53 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 17:14:51 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 # include <stdio.h> // remove before eval
 
-# define SPECIF "dicsuoxXp*"
-# define FLAGS "+-% "
+# define SPECIF "dicsuoxXp*b" // (b is binary, maybe change that later)
+# define FLAGS "+-% #"
 # define LENGTH "hl"
 # define ON 1
 # define OFF 0
@@ -56,6 +56,7 @@ typedef struct s_var
 	int			le_short;
 	int			le_unsigned_short;
 	int			le_signed_char;
+	int			hash_flag;
 }				t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);
@@ -73,6 +74,7 @@ void	oct_print(t_var *st);
 void	hex_print(t_var *st);
 void	address_print(t_var *st);
 void	asterix_print(t_var *st);
+void	binary_print(t_var *st);
 void	null_print(t_var *st);
 
 //int	binary_print(t_var *st);
@@ -86,6 +88,7 @@ void	flag_minus(t_var *st);
 void	procentage_print(t_var *st);
 void	get_flag_space(t_var *st);
 void	exec_flag_space(t_var *st);
+void	hash_flag(t_var *st);
 void	null_flag(t_var *st);
 
 /*
@@ -107,7 +110,7 @@ void	check_parser(t_var *st);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
 int		pf_putint(int nbr, t_var *st);
 
-static const t_fptr_print_op print_disp_tbl[11] = {
+static const t_fptr_print_op print_disp_tbl[12] = {
 	int_print,
 	int_print,
 	char_print,
@@ -118,14 +121,16 @@ static const t_fptr_print_op print_disp_tbl[11] = {
 	hex_print,
 	address_print,
 	asterix_print,
+	binary_print,
 	null_print,
 };
 
-static const t_fptr_flag_op flag_disp_tbl[5] = {
+static const t_fptr_flag_op flag_disp_tbl[6] = {
 	flag_plus,
 	flag_minus,
 	procentage_print,
 	get_flag_space,
+	hash_flag,
 	null_flag,
 };
 

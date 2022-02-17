@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/17 14:03:30 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 17:31:43 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,22 +288,6 @@ void	test_procentage(void)
 	++done;
 }
 
-/* void	test_binary(void)
-{
-	int	a;
-	//int	b;
-	a = ft_printf("ft_pri dec: %b\n", 2);
-	//b = printf("printf dec: %b\n", 2);
-	printf("\nret: %d \n", a);
-	//printf("ret: %d \n", b);
-	//if (a == b)
-	//	printf("%d tests complete.\n\n", ++tests);
-	//else
-	//	assert(printf("\n\x1b[1m _______test_binary failed_______\x1b[0m\n\n"));
-	++done;
-}
- */
-
 void	test_address(void)
 {
 	int	a;
@@ -499,7 +483,7 @@ void test_mindfuck_simpleminus(void)
 	++done;
 }
 
-void test_mindfuck_minusminint(void) // cast this to exact int min
+void test_mindfuck_minusminint(void) 
 {
 	int	a = -2147483648;
 	int	b = -2147483648;
@@ -514,7 +498,7 @@ void test_mindfuck_minusminint(void) // cast this to exact int min
 	++done;
 }
 
-void test_mindfuck_minusminint2(void)  ///cast this to under min int
+void test_mindfuck_minusminint2(void) 
 {
 	long	a = -2147483648;
 	long	b = -2147483648;
@@ -529,7 +513,7 @@ void test_mindfuck_minusminint2(void)  ///cast this to under min int
 	++done;
 }
 
-void test_mindfuck_plus_craz(void)  ///cast this to under min int
+void test_mindfuck_plus_craz(void) 
 {
 	long	a = -214;
 	long	b = -214;
@@ -544,7 +528,7 @@ void test_mindfuck_plus_craz(void)  ///cast this to under min int
 	++done;
 }
 
-void test_mindfuck_plus_craz2(void)  ///cast this to under min int
+void test_mindfuck_plus_craz2(void) 
 {
 	long	a = 2147483647;
 	long	b = 2147483647;
@@ -559,7 +543,7 @@ void test_mindfuck_plus_craz2(void)  ///cast this to under min int
 	++done;
 }
 
-void test_mindfuck_plus_craz3(void)  ///cast this to under min int
+void test_mindfuck_plus_craz3(void) 
 {
 	long	a = -214;
 	long	b = -214;
@@ -574,7 +558,7 @@ void test_mindfuck_plus_craz3(void)  ///cast this to under min int
 	++done;
 }
 
-void test_mindfuck_plus_craz4(void)  ///cast this to under min int
+void test_mindfuck_plus_craz4(void) 
 {
 	long	a = 2147483647;
 	long	b = 2147483647;
@@ -773,6 +757,75 @@ void test_intmin(void)
 	++done;
 }
 
+void test_hashoct(void)
+{
+	int	a = 648;
+	int	b = 648;
+	b = printf("pri: %#o\n", b);
+	a = ft_printf("ft_: %#o\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_hashoct failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_hashoct_intmin(void)
+{
+	int	a = -2147483648;
+	int	b = -2147483648;
+	b = printf("pri: %#o\n", b);
+	a = ft_printf("ft_: %#o\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_hashoct_intmin failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_hashhex_intmax(void)
+{
+	int	a = 2147483647;
+	int	b = 2147483647;
+	b = printf("pri: %#x\n", b);
+	a = ft_printf("ft_: %#x\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_hashhex_intmax failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_hashhex_intmin(void)
+{
+	int	a = -2147483648;
+	int	b = -2147483648;
+	b = printf("pri: %#X\n", b);
+	a = ft_printf("ft_: %#X\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_hashhex_intmin failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	test_binary(void)
+{
+	ft_printf("(ft_printf binary: %b)\n", 128);
+	++tests;
+	++done;
+}
+
+
+
 int	main(void)
 {
 	mix_ezz();
@@ -824,8 +877,11 @@ int	main(void)
 	test_intmin();
 	test_42hex();
 	test_asterix_with_int_plus(); //need more tests shere with width, precision, and minus flag
-	
-//	test_binary();
+	test_hashoct();
+	test_hashoct_intmin();
+	test_hashhex_intmin();
+	test_hashhex_intmax();
+	test_binary();
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);

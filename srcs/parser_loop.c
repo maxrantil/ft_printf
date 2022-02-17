@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/17 13:18:57 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 16:36:35 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	check_parser(t_var *st)
 		check_width(st);
 		check_precision(st);
 	}
-	i = 0;
 	check_length(st);
+	i = 0;
 	while (SPECIF[i] && SPECIF[i] != *st->ptr)
 		i++;
 	print_disp_tbl[i](st);

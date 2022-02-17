@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/17 14:17:47 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 16:37:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,13 @@
 void	null_flag(t_var *st)
 {
 	st->unnessesary = 1;
-	//if (st->ptr == '\0')
 	return ;
+}
+
+void	hash_flag(t_var *st)
+{
+	st->hash_flag = ON;
+	st->ptr++;
 }
 
 void	get_flag_space(t_var *st)

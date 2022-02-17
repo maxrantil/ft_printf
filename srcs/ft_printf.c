@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 17:47:39 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 16:22:03 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	initialize_st(const char *fmt, t_var *st)
 	st->len_va_arg = 0;
 	st->width = 0;
 	st->width_flag = OFF;
-	st->precision = 0; //is it nessesary to init to 0?????
+	st->precision = 0;					//is it nessesary to init to 0?????
 	st->precision_flag = OFF;
 	st->plus_flag = OFF;
 	st->minus_flag = OFF;
@@ -30,6 +30,7 @@ static void	initialize_st(const char *fmt, t_var *st)
 	st->le_short = OFF;
 	st->le_signed_char = OFF;
 	st->le_unsigned_short = OFF;
+	st->hash_flag = OFF;
 	//st->enum_flags[0] = ERROR;
 	/* st->enum_flags[0] = ERROR; */
 }

@@ -6,43 +6,48 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:12:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/14 15:53:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 17:15:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static char	*pf_itoa_binary(unsigned int nbr, unsigned int base)
+/* void	print_bits(unsigned char octet)
 {
-	char	*s;
-	int		l;
+	int	i;
 
-	l = pf_intlen(nbr, base);
-	s = (char *)malloc(sizeof(char) * l + 1);
-	if (!s)
-		exit(1);
-	s[l] = '\0';
-	while (l--)
+	i = 128;
+	while (octet >= 0 && i)
 	{
-		s[l] = (nbr % base) + 48;
-		nbr /= base;
+		if ((octet / i) == 1)
+			write(1, "1", 1);
+		else
+			write(1, "0", 1);
+		if ((octet / i) == 1)
+			octet -= i;
+		i /= 2;
 	}
-	return (s);
+} */
+
+void	binary_print(t_var *st)
+{
+	int	i;
+	unsigned char octet;
+	
+	i = 256;
+	octet = (unsigned char)va_arg(st->ap, int);
+	while (i >>= 1)
+	{
+		if (octet & i)
+		{
+			write(1, "1", 1);
+			++st->char_count;
+		}
+		else
+		{
+			write(1, "0", 1);
+			++st->char_count;
+		}
+	}
 }
 
-int	binary_print(t_var *st)
-{
-	int		i;
-	char 	*str;
-
-	i = 0;
-	if (*st->ptr == 'b')
-	{
-		str = pf_itoa_binary(va_arg(st->ap, unsigned int), 2);
-		while (str[i] && ++st->char_count)
-			ft_putchar(str[i++]);
-		ft_strdel(&str);
-		return (st->char_count);
-	}
-	return (0);
-}
