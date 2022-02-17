@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 20:33:00 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 14:03:30 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void mix_ezz(void)
 		assert(printf("\n\x1b[1m _______test_ezz failed_______\x1b[0m\n\n"));
 	++done;
 }
-
 
 void mix_ez1(void)
 {
@@ -61,6 +60,7 @@ void mix_ez2(void)
 		assert(printf("\n\x1b[1m _______test_ez2 failed_______\x1b[0m\n\n"));
 	++done;
 }
+
 void mix_ez3(void)
 {
 	int	a;
@@ -75,6 +75,7 @@ void mix_ez3(void)
 		assert(printf("\n\x1b[1m _______test_ez3 failed_______\x1b[0m\n\n"));
 	++done;
 }
+
 void mix_ez4(void)
 {
 	int	a;
@@ -528,6 +529,66 @@ void test_mindfuck_minusminint2(void)  ///cast this to under min int
 	++done;
 }
 
+void test_mindfuck_plus_craz(void)  ///cast this to under min int
+{
+	long	a = -214;
+	long	b = -214;
+	b = printf("pri: %+13.13dLol\n", (int)b);
+	a = ft_printf("ft_: %+13.13dLol\n",(int)a);
+	printf("\nret: %ld \n", b);
+	printf("ret: %ld \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck_plus_craz failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_mindfuck_plus_craz2(void)  ///cast this to under min int
+{
+	long	a = 2147483647;
+	long	b = 2147483647;
+	b = printf("pri: %+13.13dLol\n", (int)b);
+	a = ft_printf("ft_: %+13.13dLol\n",(int)a);
+	printf("\nret: %ld \n", b);
+	printf("ret: %ld \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck_plus_craz2 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_mindfuck_plus_craz3(void)  ///cast this to under min int
+{
+	long	a = -214;
+	long	b = -214;
+	b = printf("pri: %+113.13dLol\n", (int)b);
+	a = ft_printf("ft_: %+113.13dLol\n",(int)a);
+	printf("\nret: %ld \n", b);
+	printf("ret: %ld \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck_plus_craz3 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_mindfuck_plus_craz4(void)  ///cast this to under min int
+{
+	long	a = 2147483647;
+	long	b = 2147483647;
+	b = printf("pri: %+13.83dLol\n", (int)b);
+	a = ft_printf("ft_: %+13.83dLol\n",(int)a);
+	printf("\nret: %ld \n", b);
+	printf("ret: %ld \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_mindfuck_plus_craz4 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 void test_flag_space_minus(void)
 {
 	int	a;
@@ -697,6 +758,21 @@ void test_length_h_unsigned_int2(void)
 	++done;
 }
 
+void test_intmin(void)
+{
+	int	a = -2147483648;
+	int	b = -2147483648;
+	b = printf("pri: %d\n", b);
+	a = ft_printf("ft_: %d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_test_intmin failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
 	mix_ezz();
@@ -729,8 +805,12 @@ int	main(void)
 	test_mindfuck_minus();
 	test_mindfuck_minusminus();
 	test_mindfuck_simpleminus();
- 	test_mindfuck_minusminint(); //need to fix for min_int number, good job today! 
+ 	test_mindfuck_minusminint();
 	test_mindfuck_minusminint2();
+	test_mindfuck_plus_craz();
+	test_mindfuck_plus_craz2();
+	test_mindfuck_plus_craz3();
+	test_mindfuck_plus_craz4();
 	test_flag_space_minus();
 	test_flag_space();
 	test_length_h();
@@ -741,8 +821,10 @@ int	main(void)
 	test_length_hh_unsigned_int2();
 	test_length_h_unsigned_int();
 	test_length_h_unsigned_int2();
-//	test_42hex();
-//	test_asterix_with_int_plus(); //need to fix one decrement for +
+	test_intmin();
+	test_42hex();
+	test_asterix_with_int_plus(); //need more tests shere with width, precision, and minus flag
+	
 //	test_binary();
 
 	printf("\n%d/%d completed\n", tests, done);

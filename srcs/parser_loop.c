@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 19:42:01 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 13:18:57 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_parser(t_var *st)
 	flag_disp_tbl[i](st);
 	if (ft_isdigit(*st->ptr) || *st->ptr == '.')				///do sommething cleaner here??
 	{
-		check_width(st);					//is the precision call inside check_width nessesary??
+		check_width(st);
 		check_precision(st);
 	}
 	i = 0;
@@ -57,8 +57,6 @@ void	parser_loop(t_var *st)
 		}
 		st->ptr++;
 		check_parser(st);
-		/* if (!st->char_count)
-			exit(1); */
 		st->ptr++;
 		st->space_count = 0;
 	}

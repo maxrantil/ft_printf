@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 20:19:08 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 14:11:23 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 void	check_width(t_var *st)
 {
-	int c;
+	int c_single;
 
-	c = 0;
+	c_single = 0;
 	if (ft_isdigit(*st->ptr))
 	{	
 		st->width_flag = ON;
-		while (ft_isdigit(*st->ptr) && ++c)
+		while (ft_isdigit(*st->ptr) && ++c_single)
 		{
-			if (c == 1 && ++c)
+			if (c_single == 1 && ++c_single)
 				st->width = *st->ptr - 48;
 			else	
 				st->width = st->width * 10 + (*st->ptr - 48);
 			st->ptr++;
 		}
-		//if (*st->ptr == '.')
-			//check_precision(st);
 	}
 	return ;
 }
@@ -41,25 +39,15 @@ void	exec_width(t_var *st)
 	
 	sub = 0;
 	c = st->width;
-	if (st->len_va_arg && st->width_flag == ON)		//this is allways true? can take it away//can you shorten this into somthing cleaner?
+	if (st->len_va_arg && st->width_flag == ON)
 	{
-		if (st->precision_flag == ON)
+		if (st->precision_flag == ON || (st->precision_flag == OFF && st->minus_flag == ON))
 		{
 			if (st->int_ret < 0)
 				sub = -1;
 			sub =  sub + ft_imax(st->width, st->precision) - ft_imin(st->width, st->precision);
-			if (sub < 0) 	//make this to one line
-				sub = 0;
-			while (sub-- && ++st->char_count) // > st->len_va_arg  ??? or not
-				ft_putchar(' ');
-		}
-		else if (st->precision_flag == OFF && st->minus_flag == ON)
-		{
-			if (st->int_ret < 0)
-				sub = -1;
-			sub = sub + ft_imax(st->width, st->precision) - ft_imin(st->width, st->precision);
-			if (sub < 0) 	//make this to one line
-				sub = 0;
+			sub *= (st->width > st->precision);
+			sub *= (sub > 0);
 			while (sub-- && ++st->char_count)
 				ft_putchar(' ');
 		}

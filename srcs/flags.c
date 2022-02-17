@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/16 18:25:53 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/17 14:17:47 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,6 @@ void	flag_minus(t_var *st)
 	{
 		st->minus_flag = ON;  //here i can inplement the bitwise number
 		st->ptr++;
-		//check_parser(st); // can this to go checkk_width directly?
-		//check_width(st); // can this to go checkk_width directly?
 	}
 	return ;
 }
