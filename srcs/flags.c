@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 17:06:04 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 21:44:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,19 @@ void	null_flag(t_var *st)
 
 void	exec_flag_zero(t_var *st)
 {
+	int sub;
+
+	sub = st->zero;
 	if (st->int_ret < 0)
-		--st->zero;
-	while (st->zero-- > st->len_va_arg && ++st->char_count)
+		--sub;
+	/* if (st->zero > st->precision)
+		sub = st->zero - st->precision; */
+	//sub =  sub + ft_imax(st->zero, st->precision) - ft_imin(st->zero, st->precision);
+	//sub *= (st->precision > st->zero);
+	if (st->precision && st->zero_flag == ON)
+		sub = st->precision - st->len_va_arg + st->len_va_arg;
+	sub *= (sub > 0);
+	while (sub-- > st->len_va_arg && ++st->char_count)
 		ft_putchar('0');
 	st->zero_flag = OFF;
 }

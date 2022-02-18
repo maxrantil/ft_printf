@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 16:10:06 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 22:00:42 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -873,8 +873,8 @@ void test_flag_zero_with_pre(void)
 {
 	int	a = -2147483648;
 	int	b = -2147483648;
-	b = printf("pri: %014.12d\n", b);
-	a = ft_printf("ft_: %014.12d\n", a);
+	b = printf("pri: %014.16d\n", b);
+	a = ft_printf("ft_: %014.16d\n", a);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -888,14 +888,75 @@ void test_flag_zero_with_pre2(void)
 {
 	int	a = 3648;
 	int	b = 3648;
-	b = printf("pri: %014.12d\n", b);
-	a = ft_printf("ft_: %014.12d\n", a);
+	b = printf("pri: %019.12d\n", b);
+	a = ft_printf("ft_: %019.12d\n", a);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre2 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+
+void test_flag_zero_with_pre3(void)
+{
+	int	a = 3648;
+	int	b = 3648;
+	b = printf("pri: %085.12d\n", b);
+	a = ft_printf("ft_: %085.12d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre3 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_flag_zero_with_pre4(void)
+{
+	int	a = 3648;
+	int	b = 3648;
+	b = printf("pri: %0850.12d\n", b);
+	a = ft_printf("ft_: %0850.12d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre4 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_flag_zero_with_pre5(void)
+{
+	int	a = 3648;
+	int	b = 3648;
+	b = printf("pri: %085.120d\n", b);
+	a = ft_printf("ft_: %085.120d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre5 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_flag_zero_with_pre6(void)
+{
+	int	a = -3648;
+	int	b = -3648;
+	b = printf("pri: %085.120d\n", b);
+	a = ft_printf("ft_: %085.120d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre6 failed_______\x1b[0m\n\n"));
 	++done;
 }
 
@@ -960,6 +1021,10 @@ int	main(void)
 	test_flag_zero2();
 	test_flag_zero_with_pre();
 	test_flag_zero_with_pre2();
+	test_flag_zero_with_pre3();
+	test_flag_zero_with_pre4();
+	test_flag_zero_with_pre5();
+	test_flag_zero_with_pre6(); //you rock Max! incredible determination and stamina
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);
