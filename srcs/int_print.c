@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 21:33:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 23:25:06 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	int_print(t_var *st)
 	st->int_ret = va_arg(st->ap, int);
 	st->len_va_arg = ft_intlen(st->int_ret);
 	asterix_print(st);
-	if (st->minus_flag == OFF && st->width_flag == ON)
+	if (st->minus_flag == OFF && st->width)
 		exec_width(st);
 	//if ((st->enum_flags[1] & MINUS) == 0)
 	if (st->int_ret >= 0)
@@ -69,7 +69,7 @@ void	int_print(t_var *st)
 	if (st->minus_flag == ON)
 	{
 		exec_width(st);
-		//exec_flag_zero(st);	
+		//exec_flag_zero(st);
 	}
 	//if ((st->enum_flags[1] & MINUS) != 0)
 	return ;

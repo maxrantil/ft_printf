@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 22:00:42 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 23:30:30 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -483,7 +483,7 @@ void test_mindfuck_simpleminus(void)
 	++done;
 }
 
-void test_mindfuck_minusminint(void) 
+void test_mindfuck_minusminint(void)
 {
 	int	a = -2147483648;
 	int	b = -2147483648;
@@ -498,7 +498,7 @@ void test_mindfuck_minusminint(void)
 	++done;
 }
 
-void test_mindfuck_minusminint2(void) 
+void test_mindfuck_minusminint2(void)
 {
 	long	a = -2147483648;
 	long	b = -2147483648;
@@ -513,7 +513,7 @@ void test_mindfuck_minusminint2(void)
 	++done;
 }
 
-void test_mindfuck_plus_craz(void) 
+void test_mindfuck_plus_craz(void)
 {
 	long	a = -214;
 	long	b = -214;
@@ -528,7 +528,7 @@ void test_mindfuck_plus_craz(void)
 	++done;
 }
 
-void test_mindfuck_plus_craz2(void) 
+void test_mindfuck_plus_craz2(void)
 {
 	long	a = 2147483647;
 	long	b = 2147483647;
@@ -543,7 +543,7 @@ void test_mindfuck_plus_craz2(void)
 	++done;
 }
 
-void test_mindfuck_plus_craz3(void) 
+void test_mindfuck_plus_craz3(void)
 {
 	long	a = -214;
 	long	b = -214;
@@ -558,7 +558,7 @@ void test_mindfuck_plus_craz3(void)
 	++done;
 }
 
-void test_mindfuck_plus_craz4(void) 
+void test_mindfuck_plus_craz4(void)
 {
 	long	a = 2147483647;
 	long	b = 2147483647;
@@ -960,6 +960,21 @@ void test_flag_zero_with_pre6(void)
 	++done;
 }
 
+void test_dubbleint(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %d%d%i%i\n", 1, 1, 2, 2);
+	a = ft_printf("ft_: %d%d%i%i\n", 1, 1, 2, 2);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_dubbleint failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
 	mix_ezz();
@@ -982,7 +997,7 @@ int	main(void)
 	test_procentage();
 	test_address();
 	test_asterix_with_int();
-	test_asterix_with_str(); 
+	test_asterix_with_str();
 	test_width_single();
 	test_width_multi();
 	test_width_multi2();
@@ -1025,9 +1040,10 @@ int	main(void)
 	test_flag_zero_with_pre4();
 	test_flag_zero_with_pre5();
 	test_flag_zero_with_pre6(); //you rock Max! incredible determination and stamina
+	test_dubbleint();
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);
 }
-	
+
 	//- %[flags][width][.precision][length]specifier

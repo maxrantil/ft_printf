@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 15:27:21 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 23:25:45 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ typedef struct s_var
 	int			minus_flag;
 /* 	t_enum_flags	enum_flags[3]; */
 	int			width;
-	int			width_flag;
+//	int			width_flag;
 	int			precision;
-	int			precision_flag;
+//	int			precision_flag;
 	int			int_ret;
 	int			unnessesary;
 	int			le_short;

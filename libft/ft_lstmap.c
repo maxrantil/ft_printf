@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/18 15:06:34 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/12 14:16:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 23:16:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static void	ft_delnode(void *content, size_t content_size)
 {
 	if (content != NULL)
 	{
+		ft_bzero(content, content_size);
 		free(content);
 		content = NULL;
 	}
-	content_size = 0;
 }
 
 t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
