@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/17 17:31:43 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 16:10:06 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -819,12 +819,85 @@ void test_hashhex_intmin(void)
 
 void	test_binary(void)
 {
-	ft_printf("(ft_printf binary: %b)\n", 128);
+	ft_printf("\n(ft_printf binary: %b)\n\n\n", 128);
 	++tests;
 	++done;
 }
 
+void test_flag_zero(void)
+{
+	int	a = 483648;
+	int	b = 483648;
+	b = printf("pri: %012d\n", b);
+	a = ft_printf("ft_: %012d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_zero failed_______\x1b[0m\n\n"));
+	++done;
+}
 
+void test_flag_zero1(void)
+{
+	int	a = -2147;
+	int	b = -2147;
+	b = printf("pri: %0000012d\n", b);
+	a = ft_printf("ft_: %0000012d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_zero1 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_flag_zero2(void)
+{
+	int	a = -2147483648;
+	int	b = -2147483648;
+	b = printf("pri: %014d\n", b);
+	a = ft_printf("ft_: %014d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_zero2 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_flag_zero_with_pre(void)
+{
+	int	a = -2147483648;
+	int	b = -2147483648;
+	b = printf("pri: %014.12d\n", b);
+	a = ft_printf("ft_: %014.12d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_flag_zero_with_pre2(void)
+{
+	int	a = 3648;
+	int	b = 3648;
+	b = printf("pri: %014.12d\n", b);
+	a = ft_printf("ft_: %014.12d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre2 failed_______\x1b[0m\n\n"));
+	++done;
+}
 
 int	main(void)
 {
@@ -882,6 +955,11 @@ int	main(void)
 	test_hashhex_intmin();
 	test_hashhex_intmax();
 	test_binary();
+	test_flag_zero();
+	test_flag_zero1();
+	test_flag_zero2();
+	test_flag_zero_with_pre();
+	test_flag_zero_with_pre2();
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);

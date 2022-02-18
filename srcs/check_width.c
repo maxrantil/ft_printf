@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/17 14:11:23 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 15:58:18 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,21 @@ void	check_width(t_var *st)
 	int c_single;
 
 	c_single = 0;
-	if (ft_isdigit(*st->ptr))
-	{	
-		st->width_flag = ON;
-		while (ft_isdigit(*st->ptr) && ++c_single)
-		{
-			if (c_single == 1 && ++c_single)
-				st->width = *st->ptr - 48;
-			else	
-				st->width = st->width * 10 + (*st->ptr - 48);
-			st->ptr++;
+	if (st->zero_flag == OFF) //maybe unnessesary
+	{
+		if (ft_isdigit(*st->ptr))
+		{	
+			st->width_flag = ON;
+			while (ft_isdigit(*st->ptr) && ++c_single)
+			{
+				if (c_single == 1 && ++c_single)
+					st->width = *st->ptr - 48;
+				else	
+					st->width = st->width * 10 + (*st->ptr - 48);
+				st->ptr++;
+			}
 		}
 	}
-	return ;
 }
 
 void	exec_width(t_var *st)
@@ -58,5 +60,4 @@ void	exec_width(t_var *st)
 		}
 		st->width_flag = OFF;
 	}
-	return ;
 }

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/17 13:57:06 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 15:20:34 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	pf_putint(int n, t_var *st)
 		nbr *= -1;
 		exec_flag_space(st);
 		exec_precision(st);
+		exec_flag_zero(st);
 	}
 	else if (st->plus_flag == ON)
 	{
@@ -50,10 +51,12 @@ void	int_print(t_var *st)
 	asterix_print(st);
 	if (st->minus_flag == OFF)
 		exec_width(st);
+	//if ((st->enum_flags[1] & MINUS) == 0)
 	if (st->int_ret >= 0)
 	{
 		exec_flag_space(st);
 		exec_precision(st);
+		exec_flag_zero(st);
 	}
 	if (st->le_short == ON)
 		st->char_count = pf_putint((short)st->int_ret, st);
@@ -62,6 +65,10 @@ void	int_print(t_var *st)
 	else
 		st->char_count = pf_putint(st->int_ret, st);
 	if (st->minus_flag == ON)
+	{
 		exec_width(st);
+		//exec_flag_zero(st);	
+	}
+	//if ((st->enum_flags[1] & MINUS) != 0)
 	return ;
 }

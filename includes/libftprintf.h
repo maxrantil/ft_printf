@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/17 17:14:51 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 15:27:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h> // remove before eval
 
 # define SPECIF "dicsuoxXp*b" // (b is binary, maybe change that later)
-# define FLAGS "+-% #"
+# define FLAGS "+-% #0"
 # define LENGTH "hl"
 # define ON 1
 # define OFF 0
@@ -32,8 +32,12 @@
 {
 	PLUS = 1,
 	MINUS = 2,
+	PROCENT = 4,
+	SPACE = 8,
+	HASH = 16,
 	ERROR = 0
 }	t_enum_flags; */
+
 
 typedef struct s_var
 {
@@ -46,7 +50,7 @@ typedef struct s_var
 	//char 		strlen_va_arg;
 	int			plus_flag;
 	int			minus_flag;
-/* 	t_enum_flags	enum_flags[2]; */
+/* 	t_enum_flags	enum_flags[3]; */
 	int			width;
 	int			width_flag;
 	int			precision;
@@ -57,6 +61,9 @@ typedef struct s_var
 	int			le_unsigned_short;
 	int			le_signed_char;
 	int			hash_flag;
+	int			zero;
+	int			zero_count;
+	int			zero_flag;
 }				t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);
@@ -89,6 +96,8 @@ void	procentage_print(t_var *st);
 void	get_flag_space(t_var *st);
 void	exec_flag_space(t_var *st);
 void	hash_flag(t_var *st);
+void	get_flag_zero(t_var *st);
+void	exec_flag_zero(t_var *st);
 void	null_flag(t_var *st);
 
 /*
@@ -105,7 +114,7 @@ void	exec_precision(t_var *st);
 */
 
 int		ft_printf(const char *fmt, ...);				//*restrict?
-void		parser_loop(t_var *st);
+void	parser_loop(t_var *st);
 void	check_parser(t_var *st);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
 int		pf_putint(int nbr, t_var *st);
@@ -125,12 +134,13 @@ static const t_fptr_print_op print_disp_tbl[12] = {
 	null_print,
 };
 
-static const t_fptr_flag_op flag_disp_tbl[6] = {
+static const t_fptr_flag_op flag_disp_tbl[7] = {
 	flag_plus,
 	flag_minus,
 	procentage_print,
 	get_flag_space,
 	hash_flag,
+	get_flag_zero,
 	null_flag,
 };
 

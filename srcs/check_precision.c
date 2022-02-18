@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:09:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/17 13:55:25 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/18 16:00:32 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	exec_precision(t_var *st)
 	int sum;
 
 	sum = st->precision;
-	if (st->int_ret < 0)
+	if (st->int_ret < 0) //more checks here for 0 flags?
 		--st->len_va_arg;
 	if (st->len_va_arg && st->precision_flag == ON && st->plus_flag == OFF)
 	{
