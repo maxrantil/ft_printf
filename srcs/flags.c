@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 18:07:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 19:17:48 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,16 +79,6 @@ void	flag_plus(t_var *st)
 	if (*st->ptr == '+')
 	{
 		st->plus_flag = ON;
-		//st->enum_flags[0] ^= 1 << 0; 
-		//st->enum_flags[0] = 1 << 0; 		//hardcoded 0 			// 0000 0000 0000 0001 to 0000 0000 0000 0001
-		//st->enum_flags[0] = 2 << 1; 		//hardcoded 0 			// 0000 0000 0000 0010 to 0000 0000 0000 0100
-		// enum_flags[0] == 1 // 0000 0000 0000 0001
-		// if flags0 == PLUS; // om flag0 (1) == MINUS (2) // FALSE
-		// if flag0 & MINUS != 0 // om flag0 (0000 0000 0000 0001) och MINUS (0000 0000 0000 0010) = 0000 0000 0000 0001
-		// minus + space = 2 + 4 == 6; //  0000 0000 0000 0110
-		// if flag0 & minus + space != 0 // om flag0 (0000 0000 0000 0001) och minus + space (0000 0000 0000 0110) 
-		//= 0000 0000 0000 0000
-		
 		st->ptr++;
 		st->char_count++;
 	}
