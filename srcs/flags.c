@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 19:33:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 23:37:45 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,12 @@ void	exec_flag_zero(t_var *st)
 
 void	get_flag_zero(t_var *st)
 {
-	int c_single;
-	
-	c_single = 0;
 	st->zero_flag = ON;
 	while (*st->ptr == '0')
 		st->ptr++;
 	/* if (st->int_ret < 0)         			//why is this here? i dont need it, but will it make it faster?
 		return ; */
-	while (ft_isdigit(*st->ptr) && ++c_single)			//function make
-	{
-		if (c_single == 1 && ++c_single)
-			st->zero = *st->ptr - 48;
-		else	
-			st->zero = st->zero * 10 + (*st->ptr - 48);
-		st->ptr++;
-	}
+	st->zero = get_it(st);
 }
 
 void	hash_flag(t_var *st)
@@ -70,8 +60,8 @@ void	exec_flag_space(t_var *st)
 {
 	if (st->int_ret < 0)
 		return ;
-	if (st->space_count-- && ++st->char_count)
-		ft_putchar(' ');
+	if (st->space_count)
+		st->char_count += write(1, " ", 1);
 }
 
 void	flag_plus(t_var *st)
@@ -92,13 +82,9 @@ void	flag_minus(t_var *st)
 		//st->enum_flags[1] ^= 1 << 1;
 		st->ptr++;
 	}
-	return ;
 }
 
 void	procentage_print(t_var *st)
 {
-	/* ft_putchar(*st->ptr);
-	++st->char_count; */
 	st->char_count += write(1, st->ptr, 1);
-	return ;
 }

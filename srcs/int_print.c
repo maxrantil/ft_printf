@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 18:21:00 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 23:47:20 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ void	pf_putint(int n, t_var *st)
 	{
 		if (st->plus_flag == ON && --st->char_count)
 			st->plus_flag = OFF;
-		/* if (st->zero_flag == ON)
-				write(1, " ", 1); */
-		ft_putchar('-');
+		write(1, "-", 1);
 		nbr *= -1;
 		exec_flag_space(st);
 		exec_precision(st);
@@ -32,7 +30,7 @@ void	pf_putint(int n, t_var *st)
 	else if (st->plus_flag == ON)
 	{
 		st->plus_flag = OFF;
-		ft_putchar('+');
+		write(1, "+", 1);
 		exec_precision(st);
 	}
 	if (nbr > 9)
@@ -52,7 +50,6 @@ void	int_print(t_var *st)
 	asterix_print(st);
 	if (st->minus_flag == OFF && st->width)
 		exec_width(st);
-	//if ((st->enum_flags[1] & MINUS) == 0)
 	if (st->int_ret >= 0)
 	{
 		exec_flag_space(st);

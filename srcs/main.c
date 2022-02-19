@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 18:23:33 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 23:04:32 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1061,4 +1061,14 @@ int	main(void)
 	return (0);
 }
 
-	//- %[flags][width][.precision][length]specifier
+//- %[flags][width][.precision][length]specifier
+//print order:
+    /*
+        width (if flagcombo != dash)
+        PLUS FLAG (plus/minus) / - om negativt
+        HASHflag (0/0x/0X)
+        0 / precision // 0 flag ignored when precision > 0.
+        (precision == absolute number of 0 + digits - HASH_num.
+        width (if flagcombo == dash)
+
+    */

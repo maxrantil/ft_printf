@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/17 16:55:24 by mrantil          ###   ########.fr        #
+#    Updated: 2022/02/19 23:13:55 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,9 +40,7 @@ FUNCTIONS = ft_printf \
 			binary_print \
 			null_print \
 			flags \
-			check_width \
-			check_precision
-
+			check_width_and_precision
 
 _OBJ = $(foreach function, $(FUNCTIONS), $(function).o)
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))

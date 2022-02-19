@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 19:12:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 23:34:17 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@
 # define OFF 0
 # define NUM_CHECK_DISP sizeof(check_disp_tbl) / sizeof(check_disp_tbl[0])
 
-//- %[flags][width][.precision][length]specifier
-
-
 /* typedef enum e_flags
 {
 	PLUS = 1,
@@ -37,18 +34,6 @@
 	HASH = 16,
 	ERROR = 0
 }	t_enum_flags; */
-
-
-//print order:
-    /*
-        width (if flagcombo != dash) 
-        PLUS FLAG (plus/minus) / - om negativt
-        HASHflag (0/0x/0X)
-        0 / precision // 0 flag ignored when precision > 0.
-        (precision == absolute number of 0 + digits - HASH_num.
-        width (if flagcombo == dash)
-        
-    */
 
 typedef struct s_var
 {
@@ -131,6 +116,7 @@ void	parser_loop(t_var *st);
 void	check_parser(t_var *st);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
 void	pf_putint(int nbr, t_var *st);
+int		get_it(t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[12] = {
 	int_print,
