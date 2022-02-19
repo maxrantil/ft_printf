@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_precision.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:09:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 23:26:57 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 18:39:49 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@ void	check_precision(t_var *st)
 	c_single = 0;
 	if (*st->ptr == '.')
 	{
-		//st->precision_flag = ON;
 		st->ptr++;
-		while (ft_isdigit(*st->ptr) && ++c_single)
+		while (ft_isdigit(*st->ptr) && ++c_single)		///make a function for precision and widrth together
 		{
 			if (c_single == 1 && ++c_single)
 				st->precision = *st->ptr - 48;
@@ -38,27 +37,18 @@ void	exec_precision(t_var *st)
 	int sub;
 
 	sum = st->precision;
-	if (st->int_ret < 0) 				//possible with one line???
-		--st->len_va_arg;
-	//st->int_ret -= (st->int_ret < 0); //a try to make it to one line without success, time to call it a night now
+	st->len_va_arg -= (st->int_ret < 0);
 	if (st->len_va_arg && st->precision && st->plus_flag == OFF)
 	{
 			if (st->zero_flag == ON)
 			{
-				sub = ft_imax(st->precision, st->zero) - ft_imin(st->precision, st->zero);
-				if (st->int_ret < 0 || st->precision > st->zero)													//make this into one line??
-					sub = 0;
+				sub =  st->zero - st->precision;	//ft_imax(st->precision, st->zero) - ft_imin(st->precision, st->zero);
+				sub *= (st->int_ret > 0 && st->precision < st->zero);
 				while (sub--)
-				{
-					write(1, " ", 1);
-					++st->char_count;
-				}
-				if (st->zero > st->precision || st->int_ret < 0 || st->precision > st->zero)
-					sum = 0;
-
+					st->char_count += write(1, " ", 1);
+				sum *= (st->zero < st->precision && st->int_ret > 0 && st->precision < st->zero);
 			}
-			while (sum-- > st->len_va_arg && ++st->char_count)
-				ft_putchar('0');
-		//st->precision_flag = OFF;
+			while (sum-- > st->len_va_arg)
+				st->char_count += write(1, "0", 1);
 	}
 }

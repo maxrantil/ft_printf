@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 23:23:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 18:32:37 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ static void	initialize_st(const char *fmt, t_var *st)
 	st->astx_ret = 0;
 	st->len_va_arg = 0;
 	st->width = 0;
-	//st->width_flag = OFF;
 	st->precision = 0;						//is it nessesary to init to 0?????
-	//st->precision_flag = OFF;
 	st->plus_flag = OFF;
 	st->minus_flag = OFF;
 	st->int_ret = 0; 						//change this later to not only int and cast it to anything?

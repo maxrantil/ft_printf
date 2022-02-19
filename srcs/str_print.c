@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/15 17:27:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 18:25:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ void	str_print(t_var *st)
 	str = va_arg(st->ap, char *);
 	st->len_va_arg = ft_strlen(str);
 	asterix_print(st);
-	while (*str && ++st->char_count)
-		ft_putchar(*str++);
+	/* while (*str && ++st->char_count)
+		ft_putchar(*str++); */
+	st->char_count += write(1, str, st->len_va_arg);
 	return ;
 }

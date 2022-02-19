@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 15:45:04 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 19:12:02 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,18 +27,15 @@ void	check_length(t_var *st)
 
 void	check_parser(t_var *st)
 {
-	int	i;
-
+	size_t	i;
+	
 	i = 0;
 	while (FLAGS[i] && FLAGS[i] != *st->ptr)
 		++i;
 	flag_disp_tbl[i](st);
-	if (ft_isdigit(*st->ptr) || *st->ptr == '.')				///do sommething cleaner here??
-	{
-		check_width(st);
-		check_precision(st);
-	}
-	check_length(st);
+	i = 0;
+	while (i < NUM_CHECK_DISP)
+		check_disp_tbl[i++](st);
 	i = 0;
 	while (SPECIF[i] && SPECIF[i] != *st->ptr)
 		i++;

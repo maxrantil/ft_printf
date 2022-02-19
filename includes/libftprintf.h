@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 23:25:45 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 19:12:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 
 # include <stdio.h> // remove before eval
 
-# define SPECIF "dicsuoxXp*b" // (b is binary, maybe change that later)
+# define SPECIF "dicsuoxXp*b"
 # define FLAGS "+-% #0"
 # define LENGTH "hl"
 # define ON 1
 # define OFF 0
+# define NUM_CHECK_DISP sizeof(check_disp_tbl) / sizeof(check_disp_tbl[0])
 
 //- %[flags][width][.precision][length]specifier
 
-//# define NUM_DISP sizeof(print_disp_tbl) / sizeof(print_disp_tbl[0]);
 
 /* typedef enum e_flags
 {
@@ -38,6 +38,17 @@
 	ERROR = 0
 }	t_enum_flags; */
 
+
+//print order:
+    /*
+        width (if flagcombo != dash) 
+        PLUS FLAG (plus/minus) / - om negativt
+        HASHflag (0/0x/0X)
+        0 / precision // 0 flag ignored when precision > 0.
+        (precision == absolute number of 0 + digits - HASH_num.
+        width (if flagcombo == dash)
+        
+    */
 
 typedef struct s_var
 {
@@ -68,6 +79,7 @@ typedef struct s_var
 
 typedef void	(*t_fptr_print_op)(t_var *st);
 typedef void	(*t_fptr_flag_op)(t_var *st);
+typedef void	(*t_fptr_check_op)(t_var *st);
 
 /*
 ** Functions for print dispatch table
@@ -108,6 +120,7 @@ void	check_width(t_var *st);
 void	exec_width(t_var *st);
 void	check_precision(t_var *st);
 void	exec_precision(t_var *st);
+void	check_length(t_var *st);
 
 /*
 ** Other functions
@@ -117,7 +130,7 @@ int		ft_printf(const char *fmt, ...);				//*restrict?
 void	parser_loop(t_var *st);
 void	check_parser(t_var *st);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
-int		pf_putint(int nbr, t_var *st);
+void	pf_putint(int nbr, t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[12] = {
 	int_print,
@@ -142,6 +155,12 @@ static const t_fptr_flag_op flag_disp_tbl[7] = {
 	hash_flag,
 	get_flag_zero,
 	null_flag,
+};
+
+static const t_fptr_check_op check_disp_tbl[3] = {
+	check_width,
+	check_precision,
+	check_length,
 };
 
 #endif

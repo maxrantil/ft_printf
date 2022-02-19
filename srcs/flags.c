@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 21:44:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 18:07:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,12 @@ void	exec_flag_zero(t_var *st)
 	int sub;
 
 	sub = st->zero;
-	if (st->int_ret < 0)
-		--sub;
-	/* if (st->zero > st->precision)
-		sub = st->zero - st->precision; */
-	//sub =  sub + ft_imax(st->zero, st->precision) - ft_imin(st->zero, st->precision);
-	//sub *= (st->precision > st->zero);
+	sub -= (st->int_ret < 0);
 	if (st->precision && st->zero_flag == ON)
 		sub = st->precision - st->len_va_arg + st->len_va_arg;
 	sub *= (sub > 0);
-	while (sub-- > st->len_va_arg && ++st->char_count)
-		ft_putchar('0');
+	while (sub-- > st->len_va_arg)
+		st->char_count += write(1, "0", 1);
 	st->zero_flag = OFF;
 }
 
@@ -45,18 +40,15 @@ void	get_flag_zero(t_var *st)
 	st->zero_flag = ON;
 	while (*st->ptr == '0')
 		st->ptr++;
-	/* if (st->int_ret < 0)
+	/* if (st->int_ret < 0)         			//why is this here? i dont need it, but will it make it faster?
 		return ; */
-	if (ft_isdigit(*st->ptr))			//take aaway?
-	{	
-		while (ft_isdigit(*st->ptr) && ++c_single)
-		{
-			if (c_single == 1 && ++c_single)
-				st->zero = *st->ptr - 48;
-			else	
-				st->zero = st->zero * 10 + (*st->ptr - 48);
-			st->ptr++;
-		}
+	while (ft_isdigit(*st->ptr) && ++c_single)
+	{
+		if (c_single == 1 && ++c_single)
+			st->zero = *st->ptr - 48;
+		else	
+			st->zero = st->zero * 10 + (*st->ptr - 48);
+		st->ptr++;
 	}
 }
 
@@ -68,10 +60,10 @@ void	hash_flag(t_var *st)
 
 void	get_flag_space(t_var *st)
 {
-	while (*st->ptr == ' ' && ++st->space_count && ++st->char_count)
+	while (*st->ptr == ' ' && ++st->space_count) // && ++st->char_count) //cleaning up
 			st->ptr++;
-	if (st->space_count > 1)					//is this nessesary?
-		st->char_count -= st->space_count;
+	/* if (st->space_count > 1)					//is this nessesary?
+		st->char_count -= st->space_count; */
 }
 
 void	exec_flag_space(t_var *st)
@@ -115,7 +107,8 @@ void	flag_minus(t_var *st)
 
 void	procentage_print(t_var *st)
 {
-	ft_putchar(*st->ptr);
-	++st->char_count;
+	/* ft_putchar(*st->ptr);
+	++st->char_count; */
+	st->char_count += write(1, st->ptr, 1);
 	return ;
 }

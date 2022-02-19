@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 23:30:30 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 18:23:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -899,7 +899,6 @@ void test_flag_zero_with_pre2(void)
 	++done;
 }
 
-
 void test_flag_zero_with_pre3(void)
 {
 	int	a = 3648;
@@ -975,6 +974,21 @@ void test_dubbleint(void)
 	++done;
 }
 
+void test_simple_string(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %s\n", "this is a simple string");
+	a = ft_printf("ft_: %s\n", "this is a simple string");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_simple_string failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
 	mix_ezz();
@@ -1041,6 +1055,7 @@ int	main(void)
 	test_flag_zero_with_pre5();
 	test_flag_zero_with_pre6(); //you rock Max! incredible determination and stamina
 	test_dubbleint();
+	test_simple_string();
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);

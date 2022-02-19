@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   int_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/18 23:25:06 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 18:21:00 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int	pf_putint(int n, t_var *st)
+void	pf_putint(int n, t_var *st)
 {
 	long	nbr;
 
@@ -42,7 +42,6 @@ int	pf_putint(int n, t_var *st)
 	}
 	else if (++st->char_count)
 		ft_putchar((char)nbr + 48);
-	return (st->char_count);
 }
 
 void	int_print(t_var *st)
@@ -61,11 +60,11 @@ void	int_print(t_var *st)
 		exec_flag_zero(st);
 	}
 	if (st->le_short == ON)
-		st->char_count = pf_putint((short)st->int_ret, st);
+		pf_putint((short)st->int_ret, st);
 	else if (st->le_signed_char == ON)
-		st->char_count = pf_putint((signed char)st->int_ret, st);
+		pf_putint((signed char)st->int_ret, st);
 	else
-		st->char_count = pf_putint(st->int_ret, st);
+		pf_putint(st->int_ret, st);
 	if (st->minus_flag == ON)
 	{
 		exec_width(st);
