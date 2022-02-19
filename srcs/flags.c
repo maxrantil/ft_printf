@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 19:17:48 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/19 19:33:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	get_flag_zero(t_var *st)
 		st->ptr++;
 	/* if (st->int_ret < 0)         			//why is this here? i dont need it, but will it make it faster?
 		return ; */
-	while (ft_isdigit(*st->ptr) && ++c_single)
+	while (ft_isdigit(*st->ptr) && ++c_single)			//function make
 	{
 		if (c_single == 1 && ++c_single)
 			st->zero = *st->ptr - 48;
