@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 23:34:17 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/20 17:34:15 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 # define OFF 0
 # define NUM_CHECK_DISP sizeof(check_disp_tbl) / sizeof(check_disp_tbl[0])
 
+//- %[flags][width][.precision][length]specifier
+
+
 /* typedef enum e_flags
 {
 	PLUS = 1,
@@ -34,6 +37,18 @@
 	HASH = 16,
 	ERROR = 0
 }	t_enum_flags; */
+
+
+//print order:
+    /*
+        width (if flagcombo != dash) 
+        PLUS FLAG (plus/minus) / - om negativt
+        HASHflag (0/0x/0X)
+        0 / precision // 0 flag ignored when precision > 0.
+        (precision == absolute number of 0 + digits - HASH_num.
+        width (if flagcombo == dash)
+        
+    */
 
 typedef struct s_var
 {
@@ -48,10 +63,8 @@ typedef struct s_var
 	int			minus_flag;
 /* 	t_enum_flags	enum_flags[3]; */
 	int			width;
-//	int			width_flag;
 	int			precision;
-//	int			precision_flag;
-	int			int_ret;
+	long long	va_ret;
 	int			unnessesary;
 	int			le_short;
 	int			le_unsigned_short;
@@ -60,6 +73,11 @@ typedef struct s_var
 	int			zero;
 	int			zero_count;
 	int			zero_flag;
+	int			le_unsigned_char;
+	int			le_long;
+	int			le_unsigned_long;
+	int			le_long_long;
+	int			le_unsigned_long_long;
 }				t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);

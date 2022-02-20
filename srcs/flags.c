@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 23:37:45 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/20 17:27:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	exec_flag_zero(t_var *st)
 	int sub;
 
 	sub = st->zero;
-	sub -= (st->int_ret < 0);
+	sub -= (st->va_ret < 0);
 	if (st->precision && st->zero_flag == ON)
 		sub = st->precision - st->len_va_arg + st->len_va_arg;
 	sub *= (sub > 0);
@@ -37,7 +37,7 @@ void	get_flag_zero(t_var *st)
 	st->zero_flag = ON;
 	while (*st->ptr == '0')
 		st->ptr++;
-	/* if (st->int_ret < 0)         			//why is this here? i dont need it, but will it make it faster?
+	/* if (st->va_ret < 0)         			//why is this here? i dont need it, but will it make it faster?
 		return ; */
 	st->zero = get_it(st);
 }
@@ -58,7 +58,7 @@ void	get_flag_space(t_var *st)
 
 void	exec_flag_space(t_var *st)
 {
-	if (st->int_ret < 0)
+	if (st->va_ret < 0)
 		return ;
 	if (st->space_count)
 		st->char_count += write(1, " ", 1);

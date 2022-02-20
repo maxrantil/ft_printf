@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 19:12:02 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/20 17:33:02 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,32 @@ void	check_length(t_var *st)
 {
 	if (*st->ptr == 'h' && (*++st->ptr == 'd' || *st->ptr == 'i'))
 		st->le_short = ON;
-	if (*st->ptr == 'h' && *++st->ptr == 'u')
+	else if (*st->ptr == 'h' && *++st->ptr == 'u')
 		st->le_unsigned_short = ON;
-	else if (*st->ptr == 'h' && *++st->ptr == 'h')
+	else if (*st->ptr == 'h' && *++st->ptr == 'h' && (*++st->ptr == 'd' || *st->ptr == 'i'))
 	{
 		st->le_signed_char = ON;
 		++st->ptr;
 	}
+/* 	else if (*st->ptr == 'h' && *++st->ptr == 'h' && *++st->ptr == 'u')
+	{
+		st->le_unsigned_char = ON;
+		++st->ptr;
+	}
+	else if (*st->ptr == 'l' && (*++st->ptr == 'd' || *st->ptr == 'i'))
+		st->le_long = ON;
+	else if (*st->ptr == 'l' && *++st->ptr == 'u')
+		st->le_unsigned_long = ON;
+	else if (*st->ptr == 'l' && *++st->ptr == 'l' && (*++st->ptr == 'd' || *st->ptr == 'i'))
+	{
+		st->le_long_long = ON;
+		++st->ptr;
+	}
+	else if (*st->ptr == 'l' && *++st->ptr == 'l' && *++st->ptr == 'u')
+	{
+		st->le_unsigned_long_long = ON;
+		++st->ptr;
+	} */
 }
 
 void	check_parser(t_var *st)
@@ -31,7 +50,7 @@ void	check_parser(t_var *st)
 	
 	i = 0;
 	while (FLAGS[i] && FLAGS[i] != *st->ptr)
-		++i;
+		i++;
 	flag_disp_tbl[i](st);
 	i = 0;
 	while (i < NUM_CHECK_DISP)
@@ -58,3 +77,6 @@ void	parser_loop(t_var *st)
 		st->space_count = 0;
 	}
 }
+
+
+//error handling for only one % with nothing after.
