@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/20 17:34:15 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/21 19:54:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # include <stdio.h> // remove before eval
 
-# define SPECIF "dicsuoxXp*b"
+# define SPECIF "cspdiouxX*b"
 # define FLAGS "+-% #0"
 # define LENGTH "hl"
 # define ON 1
@@ -41,13 +41,13 @@
 
 //print order:
     /*
-        width (if flagcombo != dash) 
+        width (if flagcombo != dash)
         PLUS FLAG (plus/minus) / - om negativt
         HASHflag (0/0x/0X)
         0 / precision // 0 flag ignored when precision > 0.
         (precision == absolute number of 0 + digits - HASH_num.
         width (if flagcombo == dash)
-        
+
     */
 
 typedef struct s_var
@@ -78,6 +78,7 @@ typedef struct s_var
 	int			le_unsigned_long;
 	int			le_long_long;
 	int			le_unsigned_long_long;
+	char		*hold_str;
 }				t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);
@@ -133,19 +134,19 @@ int		ft_printf(const char *fmt, ...);				//*restrict?
 void	parser_loop(t_var *st);
 void	check_parser(t_var *st);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
-void	pf_putint(int nbr, t_var *st);
+void	pf_putint(t_var *st);
 int		get_it(t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[12] = {
-	int_print,
-	int_print,
 	char_print,
 	str_print,
-	uint_print,
-	oct_print,
-	hex_print,
-	hex_print,
 	address_print,
+	int_print,
+	int_print,
+	oct_print,
+	uint_print,
+	hex_print,
+	hex_print,
 	asterix_print,
 	binary_print,
 	null_print,

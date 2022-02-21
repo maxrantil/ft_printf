@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/20 17:33:02 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/21 15:20:04 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	check_length(t_var *st)
 void	check_parser(t_var *st)
 {
 	size_t	i;
-	
+
 	i = 0;
 	while (FLAGS[i] && FLAGS[i] != *st->ptr)
 		i++;
@@ -59,7 +59,6 @@ void	check_parser(t_var *st)
 	while (SPECIF[i] && SPECIF[i] != *st->ptr)
 		i++;
 	print_disp_tbl[i](st);
-	return ;
 }
 
 void	parser_loop(t_var *st)

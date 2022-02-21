@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/20 17:18:51 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/21 13:33:18 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ static void	initialize_st(const char *fmt, t_var *st)
 	st->le_unsigned_long = OFF;
 	st->le_long_long = OFF;
 	st->le_unsigned_long_long = OFF;
+	st->hold_str = NULL;
 }
 
 int	ft_printf(const char *fmt, ...)

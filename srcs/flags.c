@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/20 17:27:01 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/21 20:47:31 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	get_flag_space(t_var *st)
 
 void	exec_flag_space(t_var *st)
 {
-	if (st->va_ret < 0)
+	if (*st->hold_str == '-') //never true now
 		return ;
 	if (st->space_count)
 		st->char_count += write(1, " ", 1);

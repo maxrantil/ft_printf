@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/20 17:33:49 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/21 20:01:56 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1049,8 +1049,40 @@ void test_length_ll_minus(void)
 	++done;
 }
 
+void test_length_ll_test(void)
+{
+	int	a = -400;
+	int	b = -400;
+	b = printf("pri: %d\n", b);
+	a = ft_printf("ft_: %d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_ll_test failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_length_ll_str(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %s\n", "we try this");
+	a = ft_printf("ft_: %s\n", "we try this");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_ll_str failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
+	test_length_ll_test();
+	test_length_ll_str();
 	mix_ezz();
 	mix_ez1();
 	mix_ez2();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_width_and_precision.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/20 17:31:33 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/21 20:51:17 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	check_width(t_var *st)
 void	exec_precision(t_var *st)
 {
 	int sum;
-	int sub;
+	int sub; //make one variable??
 
 	sum = st->precision;
 	st->len_va_arg -= (st->va_ret < 0);
@@ -69,12 +69,11 @@ void	exec_precision(t_var *st)
 
 void	exec_width(t_var *st)
 {
-	int sub;
+	int sub; //one veriable is possible i think.
 	int sum;
 
-	sum = st->width;
-	if (st->len_va_arg && st->width)
-	{
+	//if (st->len_va_arg && st->width) //is this nessesary?
+	//{
 		if (st->precision || (!st->precision && st->minus_flag == ON))
 		{
 			sub = 0;
@@ -86,8 +85,9 @@ void	exec_width(t_var *st)
 		}
 		else
 		{
+			sum = st->width; //use the same variable?? sub and sum
 			while (sum-- > st->len_va_arg)
 				st->char_count += write(1, " ", 1);
 		}
-	}
+	//}
 }
