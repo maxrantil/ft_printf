@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/21 20:01:56 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 16:23:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -708,7 +708,7 @@ void test_length_hh_unsigned_int2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_hh_unsigned_int failed_______\x1b[0m\n\n"));
+		assert(printf("\n\x1b[1m _______test_length_hh_unsigned_int2 failed_______\x1b[0m\n\n"));
 	++done;
 }
 
@@ -738,7 +738,7 @@ void test_length_h_unsigned_int2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_h_unsigned_int failed_______\x1b[0m\n\n"));
+		assert(printf("\n\x1b[1m _______test_length_h_unsigned_int2 failed_______\x1b[0m\n\n"));
 	++done;
 }
 
@@ -1000,18 +1000,18 @@ void test_length_l(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_hh_unsigned_int failed_______\x1b[0m\n\n"));
+		assert(printf("\n\x1b[1m _______test_length_l failed_______\x1b[0m\n\n"));
 	++done;
 }
 
 void test_length_l_minus(void)
 {
-	int	a = -400;
-	int	b = -400;
-	b = printf("pri: %lu\n", (unsigned long)b);
-	a = ft_printf("ft_: %lu\n", (unsigned long)a);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
+	unsigned long	a = -400;
+	unsigned long	b = -400;
+	b = printf("pri: %lu\n", b);
+	a = ft_printf("ft_: %lu\n", a);
+	printf("\nret: %lu \n", b);
+	printf("ret: %lu \n", a);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
@@ -1079,10 +1079,23 @@ void test_length_ll_str(void)
 	++done;
 }
 
+void test_length_ll_test_uint(void)
+{
+	unsigned int	a = 400;
+	unsigned int	b = 400;
+	b = printf("pri: %d\n", b);
+	a = ft_printf("ft_: %d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_length_ll_test_uint failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
-	test_length_ll_test();
-	test_length_ll_str();
 	mix_ezz();
 	mix_ez1();
 	mix_ez2();
@@ -1148,10 +1161,13 @@ int	main(void)
 	test_flag_zero_with_pre6(); //you rock Max! incredible determination and stamina
 	test_dubbleint();
 	test_simple_string();
-/* 	test_length_l();
+	test_length_l();
 	test_length_l_minus();
 	test_length_ll();
-	test_length_ll_minus(); */
+	test_length_ll_minus();
+	test_length_ll_test();
+	test_length_ll_str();
+	test_length_ll_test_uint();
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);

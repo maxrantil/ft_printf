@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/21 20:47:31 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 16:12:20 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 void	null_flag(t_var *st)
 {
 	st->unnessesary = 1;
-	return ;
 }
 
 void	exec_flag_zero(t_var *st)

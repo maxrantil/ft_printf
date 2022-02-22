@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/21 15:20:04 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 16:02:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,34 +14,25 @@
 
 void	check_length(t_var *st)
 {
-	if (*st->ptr == 'h' && (*++st->ptr == 'd' || *st->ptr == 'i'))
+	if (*st->ptr == 'h' && *++st->ptr == 'h' && *++st->ptr == 'i')
+		st->le_signed_char = ON; // skip this and call directly
+	else if (*st->ptr == 'h' && *++st->ptr == 'h' && *++st->ptr == 'u')
+		st->le_unsigned_char = ON;
+	else if (*st->ptr == 'h' && (*++st->ptr == 'd' || *st->ptr == 'i'))
 		st->le_short = ON;
 	else if (*st->ptr == 'h' && *++st->ptr == 'u')
 		st->le_unsigned_short = ON;
-	else if (*st->ptr == 'h' && *++st->ptr == 'h' && (*++st->ptr == 'd' || *st->ptr == 'i'))
-	{
-		st->le_signed_char = ON;
-		++st->ptr;
-	}
-/* 	else if (*st->ptr == 'h' && *++st->ptr == 'h' && *++st->ptr == 'u')
-	{
-		st->le_unsigned_char = ON;
-		++st->ptr;
-	}
 	else if (*st->ptr == 'l' && (*++st->ptr == 'd' || *st->ptr == 'i'))
 		st->le_long = ON;
 	else if (*st->ptr == 'l' && *++st->ptr == 'u')
 		st->le_unsigned_long = ON;
 	else if (*st->ptr == 'l' && *++st->ptr == 'l' && (*++st->ptr == 'd' || *st->ptr == 'i'))
-	{
 		st->le_long_long = ON;
-		++st->ptr;
-	}
 	else if (*st->ptr == 'l' && *++st->ptr == 'l' && *++st->ptr == 'u')
 	{
 		st->le_unsigned_long_long = ON;
-		++st->ptr;
-	} */
+		//++st->ptr;
+	}
 }
 
 void	check_parser(t_var *st)

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/21 20:51:17 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 16:15:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	check_precision(t_var *st)
 }
 
 void	check_width(t_var *st)
-{
-	if (st->zero_flag == OFF)
+{//maybe done with isdigit, but check do a better check here so it doesnt allways go in here
+	if (ft_isdigit(*st->ptr ) && st->zero_flag == OFF)
 		st->width = get_it(st);
 }
 
