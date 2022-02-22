@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 18:36:54 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 21:29:03 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@
 	ERROR = 0
 }	t_enum_flags; */
 
+/* typedef enum e_length
+{
+	PLUS = 1,
+	MINUS = 2,
+	PROCENT = 4,
+	SPACE = 8,
+	HASH = 16,
+	ERROR = 0
+}	t_enum_length; */
 
 //print order:
     /*
@@ -136,7 +145,7 @@ void	parser_loop(t_var *st);
 void	check_parser(t_var *st);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
 void	pf_putint(t_var *st);
-int		get_it(t_var *st);
+size_t	get_it(t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[12] = {
 	char_print,

@@ -6,16 +6,16 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 16:45:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 21:21:36 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-int	get_it(t_var *st)
+size_t	get_it(t_var *st)
 {
-	int c_single;
-	int	ret;
+	size_t	c_single;
+	size_t	ret;
 
 	c_single = 0;
 	ret = 0;
