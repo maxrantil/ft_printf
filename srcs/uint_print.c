@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 16:19:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 16:36:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
 	char	*str; //can you use pointer instead of index? shall you send in st to take the return directly in here insted of sending it out?
 	int		l;
 
-	st->va_ret = nbr;
+	st->va_u_ret = nbr; //change a to va_u_ret that is involved in unit
 	l = uint_nbrlen(nbr);
 	str = (char *)malloc(sizeof(char) * l + 1); //need to be freed
 	if (!str)

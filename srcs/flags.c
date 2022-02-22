@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 16:12:20 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 16:43:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ void	null_flag(t_var *st)
 
 void	exec_flag_zero(t_var *st)
 {
-	int sub;
+	long sub;
 
 	sub = st->zero;
 	sub -= (st->va_ret < 0);
 	if (st->precision && st->zero_flag == ON)
 		sub = st->precision - st->len_va_arg + st->len_va_arg;
 	sub *= (sub > 0);
-	while (sub-- > st->len_va_arg)
+	while ((size_t)sub-- > st->len_va_arg)
 		st->char_count += write(1, "0", 1);
 	st->zero_flag = OFF;
 }

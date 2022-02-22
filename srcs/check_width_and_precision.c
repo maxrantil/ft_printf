@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 16:15:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 16:45:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	check_width(t_var *st)
 
 void	exec_precision(t_var *st)
 {
-	int sum;
-	int sub; //make one variable??
+	long sum;
+	long sub; //make one variable??
 
 	sum = st->precision;
 	st->len_va_arg -= (st->va_ret < 0);
@@ -62,15 +62,15 @@ void	exec_precision(t_var *st)
 					st->char_count += write(1, " ", 1);
 				sum *= (st->zero < st->precision && st->va_ret > 0 && st->precision < st->zero);
 			}
-			while (sum-- > st->len_va_arg)
+			while ((size_t)sum-- > st->len_va_arg)
 				st->char_count += write(1, "0", 1);
 	}
 }
 
 void	exec_width(t_var *st)
 {
-	int sub; //one veriable is possible i think.
-	int sum;
+	long sub; //one veriable is possible i think.
+	long sum; // why not long long?
 
 	//if (st->len_va_arg && st->width) //is this nessesary?
 	//{
@@ -86,7 +86,7 @@ void	exec_width(t_var *st)
 		else
 		{
 			sum = st->width; //use the same variable?? sub and sum
-			while (sum-- > st->len_va_arg)
+			while ((size_t)sum-- > st->len_va_arg)
 				st->char_count += write(1, " ", 1);
 		}
 	//}

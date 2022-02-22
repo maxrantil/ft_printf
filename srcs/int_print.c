@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 15:13:00 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 18:28:50 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	nbrlen(long long nbr) //write this cleaner, you can
 char	*conv_to_str(long long nbr, t_var *st) //can you use pointer instead of index? //shall you send in st to take the return directly in here insted of sending it out?
 {
 	char		*str;
-	int			l;
+	size_t		l;
 	long long	n;
 
 	n = nbr;

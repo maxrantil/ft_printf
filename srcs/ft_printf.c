@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/21 13:33:18 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 18:29:48 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ int	ft_printf(const char *fmt, ...)
 	initialize_st(fmt, &st);
 	parser_loop(&st);
 	va_end(st.ap);
-	return (st.char_count);
+	return ((int)st.char_count);
 }

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/21 19:54:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/22 18:36:54 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define SPECIF "cspdiouxX*b"
 # define FLAGS "+-% #0"
-# define LENGTH "hl"
+# define LENGTH "hhll"
 # define ON 1
 # define OFF 0
 # define NUM_CHECK_DISP sizeof(check_disp_tbl) / sizeof(check_disp_tbl[0])
@@ -52,34 +52,34 @@
 
 typedef struct s_var
 {
-	va_list		ap;
-	const char		*ptr;
-	int			space_count;
-	int			char_count;
-	int			astx_ret;
-	int			len_va_arg;
-	//char 		strlen_va_arg;
-	int			plus_flag;
-	int			minus_flag;
+	va_list				ap;
+	const char			*ptr;
+	int					space_count;
+	ssize_t				char_count;
+	size_t				astx_ret;
+	size_t				len_va_arg;
+	int					plus_flag;
+	int					minus_flag;
 /* 	t_enum_flags	enum_flags[3]; */
-	int			width;
-	int			precision;
-	long long	va_ret;
-	int			unnessesary;
-	int			le_short;
-	int			le_unsigned_short;
-	int			le_signed_char;
-	int			hash_flag;
-	int			zero;
-	int			zero_count;
-	int			zero_flag;
-	int			le_unsigned_char;
-	int			le_long;
-	int			le_unsigned_long;
-	int			le_long_long;
-	int			le_unsigned_long_long;
-	char		*hold_str;
-}				t_var;
+	size_t				width;
+	size_t				precision;
+	long long			va_ret;
+	unsigned long long	va_u_ret;
+	int					unnessesary;
+	int					le_short;
+	int					le_unsigned_short;
+	int					le_signed_char;
+	int					hash_flag;
+	size_t				zero;
+	size_t				zero_count;
+	int					zero_flag;
+	int					le_unsigned_char;
+	int					le_long;
+	int					le_unsigned_long;
+	int					le_long_long;
+	int					le_unsigned_long_long;
+	char				*hold_str;
+}						t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);
 typedef void	(*t_fptr_flag_op)(t_var *st);
@@ -124,7 +124,8 @@ void	check_width(t_var *st);
 void	exec_width(t_var *st);
 void	check_precision(t_var *st);
 void	exec_precision(t_var *st);
-void	check_length(t_var *st);
+void	check_signed_length(t_var *st);
+void	check_unsigned_length(t_var *st);
 
 /*
 ** Other functions
@@ -162,10 +163,11 @@ static const t_fptr_flag_op flag_disp_tbl[7] = {
 	null_flag,
 };
 
-static const t_fptr_check_op check_disp_tbl[3] = {
+static const t_fptr_check_op check_disp_tbl[4] = {
 	check_width,
 	check_precision,
-	check_length,
+	check_signed_length,
+	check_unsigned_length,
 };
 
 #endif
