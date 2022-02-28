@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 18:29:48 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/28 20:01:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,12 @@ static void	initialize_st(const char *fmt, t_var *st)
 	st->zero = 0;
 	st->zero_count = 0;
 	st->zero_flag = OFF;
-/* 	st->enum_flags[0] = 0;
-	st->enum_flags[1] = 0;
-	st->enum_flags[2] = 0; */
 	st->le_unsigned_char = OFF;
 	st->le_long = OFF;
 	st->le_unsigned_long = OFF;
 	st->le_long_long = OFF;
 	st->le_unsigned_long_long = OFF;
-	st->hold_str = NULL;
+	st->hold_str = NULL;					//can memset the whole struct to 0, try that later, also i dont need ptr and can use fmt directly
 }
 
 int	ft_printf(const char *fmt, ...)
@@ -51,5 +48,5 @@ int	ft_printf(const char *fmt, ...)
 	initialize_st(fmt, &st);
 	parser_loop(&st);
 	va_end(st.ap);
-	return ((int)st.char_count);
+	return ((int)st.char_count); //will it return -1 on fail? then the cast wont work...
 }

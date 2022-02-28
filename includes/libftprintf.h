@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 21:29:03 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/28 20:01:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h> // remove before eval
 
 # define SPECIF "cspdiouxX*b"
-# define FLAGS "+-% #0"
+# define FLAGS "+- #0"
 # define LENGTH "hhll"
 # define ON 1
 # define OFF 0
@@ -146,6 +146,7 @@ void	check_parser(t_var *st);
 char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
 void	pf_putint(t_var *st);
 size_t	get_it(t_var *st);
+void	exec_flags_and_length(t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[12] = {
 	char_print,
@@ -162,10 +163,9 @@ static const t_fptr_print_op print_disp_tbl[12] = {
 	null_print,
 };
 
-static const t_fptr_flag_op flag_disp_tbl[7] = {
+static const t_fptr_flag_op flag_disp_tbl[6] = {
 	flag_plus,
 	flag_minus,
-	procentage_print,
 	get_flag_space,
 	hash_flag,
 	get_flag_zero,

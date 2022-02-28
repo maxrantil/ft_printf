@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_width_and_precision.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 21:21:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/28 19:25:37 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ void	exec_width(t_var *st)
 		if (st->precision || (!st->precision && st->minus_flag == ON))
 		{
 			sub = 0;
-			sub -= (st->va_ret < 0);
+			sub -= (st->va_ret < 0 || st->plus_flag > 0);
 			sub += (ft_imax(st->width, st->precision) - ft_imin(st->width, st->precision));
 			sub *= (st->width > st->precision && sub > 0);
-			while (sub--)
+			while (sub--) //is sub 5 too much?
 				st->char_count += write(1, " ", 1);
 		}
 		else

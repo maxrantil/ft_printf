@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 16:23:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/28 20:13:34 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1094,6 +1094,127 @@ void test_length_ll_test_uint(void)
 	++done;
 }
 
+void test_multi_flags0(void)			//this need debugging
+{
+	int	a = -2147483648;
+	int	b = -2147483648;
+	b = printf("pri: %+016d\n", b);
+	a = ft_printf("ft_: %+016d\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_multi_flags0 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_multi_flags1(void)
+{
+	int	a = -2147483648;
+	int	b = -2147483648;
+	b = printf("pri: %u\n", (unsigned int)b);
+	a = ft_printf("ft_: %u\n", (unsigned int)a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_multi_flags1 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_multi_flags2(void)
+{
+	long long unsigned a = 1844674407370951615;
+	long long unsigned b = 1844674407370951615;
+	b = printf("pri: %030llu\n", b);
+	a = ft_printf("ft_: %030llu\n", a);
+	printf("\nret: %llu \n", b);
+	printf("ret: %llu \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_multi_flags2 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_multi_flags3(void)
+{
+	long long	a = -9223372036854775807;
+	long long	b = -9223372036854775807;
+	b = printf("pri: %045lld\n", b);
+	a = ft_printf("ft_: %045lld\n", a);
+	printf("\nret: %lld \n", b);
+	printf("ret: %lld \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_multi_flags3 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void test_multi_flags4(void)
+{
+	unsigned long	a = 4294967295;
+	unsigned long	b = 4294967295;
+	b = printf("pri: %-lu\n", b);
+	a = ft_printf("ft_: %-lu\n", a);
+	printf("\nret: %lu \n", b);
+	printf("ret: %lu \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_multi_flags4 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	leo_test(void)
+{
+	int	a = 429;
+	int	b = 429;										//debugg this
+	b = printf("pri: %+10.5dLol\n", b);
+	a = ft_printf("ft_: %+10.5dLol\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______leo_test failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	pro_test(void)
+{
+	int	a = 429;
+	int	b = 429;										//debugg this
+	b = printf("pri: %%%%%%+10.5dLol\n", b);
+	a = ft_printf("ft_: %%%%%%+10.5dLol\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______pro_test failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	pro_test1(void)
+{
+	int	a = 429;
+	int	b = 429;										//debugg this
+	b = printf("pri: %%%%%%%+10.5dLol\n", b);
+	a = ft_printf("ft_: %%%%%%%+10.5dLol\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______pro_test1 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+
 int	main(void)
 {
 	mix_ezz();
@@ -1168,6 +1289,14 @@ int	main(void)
 	test_length_ll_test();
 	test_length_ll_str();
 	test_length_ll_test_uint();
+	test_multi_flags0();
+	test_multi_flags1();
+	test_multi_flags2();
+	test_multi_flags3();
+	test_multi_flags4();
+	leo_test();
+	pro_test();
+	pro_test1();					//need more 0 tests. BUT YOU ARE AMAZING DUDE! <3
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 20:16:13 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/28 20:04:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,24 @@ void	exec_flag_zero(t_var *st)
 
 void	get_flag_zero(t_var *st)
 {
-	st->zero_flag = ON;
-	while (*st->ptr == '0')
-		st->ptr++;
-	/* if (st->va_ret < 0)         			//why is this here? i dont need it, but will it make it faster?
-		return ; */
-	st->zero = get_it(st);
+	if (*st->ptr == '0')
+	{
+		st->zero_flag = ON;
+		while (*st->ptr == '0')
+			st->ptr++;
+		/* if (st->va_ret < 0)         			//why is this here? i dont need it, but will it make it faster?
+			return ; */
+		st->zero = get_it(st);
+	}
 }
 
 void	hash_flag(t_var *st)
 {
-	st->hash_flag = ON;
-	st->ptr++;
+	if (*st->ptr == '#')
+	{
+		st->hash_flag = ON;
+		st->ptr++;
+	}
 }
 
 void	get_flag_space(t_var *st)
@@ -81,9 +87,4 @@ void	flag_minus(t_var *st)
 		//st->enum_flags[1] ^= 1 << 1;
 		st->ptr++;
 	}
-}
-
-void	procentage_print(t_var *st)
-{
-	st->char_count += write(1, st->ptr, 1);
 }

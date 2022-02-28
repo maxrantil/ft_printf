@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   uint_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 16:36:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/28 13:04:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,13 @@ void	pf_put_uint(t_var *st)
 		exec_width(st);
 }
 
-int	uint_nbrlen(unsigned long long nbr) //write this cleaner, you can
+int	uint_nbrlen(unsigned long long nbr)
 {
 	int	c;
 
 	c = 0;
-	while (nbr > 9)
-	{
+	while (nbr > 9 && ++c)
 		nbr = nbr / 10;
-		c++;
-	}
 	return (++c);
 }
 
@@ -57,9 +54,10 @@ char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
 	return (str);
 }
 
-void	uint_print(t_var *st)
+
+static void	get_uint(t_var *st)
 {
-	if (st->le_unsigned_short == ON) //make this into a function in itself
+	if (st->le_unsigned_short == ON)
 		st->hold_str = conv_uint_to_str((unsigned short)va_arg(st->ap, unsigned long long), st);
 	else if (st->le_unsigned_char == ON)
 		st->hold_str = conv_uint_to_str((unsigned char)va_arg(st->ap, unsigned long long), st);
@@ -69,18 +67,12 @@ void	uint_print(t_var *st)
 		st->hold_str = conv_uint_to_str((unsigned long long)va_arg(st->ap, unsigned long long), st);
 	else
 		st->hold_str = conv_uint_to_str((unsigned int)va_arg(st->ap, unsigned long long), st);
+}
 
-	st->len_va_arg = ft_strlen(st->hold_str); // can all this be one function??
-
-	asterix_print(st);
-	if (st->minus_flag == OFF && st->width)
-	{
-		exec_width(st);
-	}
-	exec_flag_space(st);
-	exec_precision(st);
-	exec_flag_zero(st);
-
-	pf_put_uint(st);  //this is all the same as int, make one function?
+void	uint_print(t_var *st)
+{
+	get_uint(st);
+	exec_flags_and_length(st);
+	pf_put_uint(st);
 	//need to free after there somewhere
 }

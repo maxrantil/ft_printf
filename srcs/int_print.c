@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 18:28:50 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/02/28 16:33:56 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,16 @@ void	pf_putint(t_var *st)
 		exec_width(st);
 }
 
-int	nbrlen(long long nbr) //write this cleaner, you can
+static int	nbrlen(long long nbr)
 {
 	int	c;
 
-	c = 1;
-	if (nbr <= 0) //test this = sign if it makes difference
-	{
+	c = 0;
+	if (nbr < 0 && ++c)
 		nbr *= -1;
-		if (nbr == 0)
-			c = 0;
-		c++;
-	}
-	while (nbr > 9)
-	{
+	while (nbr > 9 && ++c)
 		nbr = nbr / 10;
-		c++;
-	}
-	return (c);
+	return (++c);
 }
 
 char	*conv_to_str(long long nbr, t_var *st) //can you use pointer instead of index? //shall you send in st to take the return directly in here insted of sending it out?
@@ -79,9 +71,9 @@ char	*conv_to_str(long long nbr, t_var *st) //can you use pointer instead of ind
 	return (str);
 }
 
-void	int_print(t_var *st)
+static void	get_signed(t_var *st)
 {
-	if (st->le_short == ON) //make this into a function in itself
+	if (st->le_short == ON)
 		st->hold_str = conv_to_str((short)va_arg(st->ap, long long), st);
 	else if (st->le_signed_char == ON)
 		st->hold_str = conv_to_str((char)va_arg(st->ap, long long), st);
@@ -91,10 +83,11 @@ void	int_print(t_var *st)
 		st->hold_str = conv_to_str(va_arg(st->ap, long long), st);
 	else
 		st->hold_str = conv_to_str((int)va_arg(st->ap, long long), st);
+}
 
-
+void	exec_flags_and_length(t_var *st)
+{
 	st->len_va_arg = ft_strlen(st->hold_str);
-
 	asterix_print(st);
 	if (st->minus_flag == OFF && st->width)
 	{
@@ -108,7 +101,12 @@ void	int_print(t_var *st)
 	}
 	if (*st->hold_str == '-') //plug_flag == ON put "+"?
 		st->char_count += write(1, "-", 1);
+}
 
+void	int_print(t_var *st)
+{
+	get_signed(st);
+	exec_flags_and_length(st);
 	pf_putint(st);
 	//ft_strdel(&st->hold_str);
 }
