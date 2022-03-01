@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/28 20:13:34 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/01 15:44:00 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1186,10 +1186,10 @@ void	leo_test(void)
 
 void	pro_test(void)
 {
-	int	a = 429;
-	int	b = 429;										//debugg this
-	b = printf("pri: %%%%%%+10.5dLol\n", b);
-	a = ft_printf("ft_: %%%%%%+10.5dLol\n", a);
+	int	a;
+	int	b;										//debugg this
+	b = printf("pri: %%%%%%+10.5dLol\n", 429);
+	a = ft_printf("ft_: %%%%%%+10.5dLol\n", 429);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
