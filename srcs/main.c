@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/01 15:44:00 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/02 19:43:56 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1214,10 +1214,25 @@ void	pro_test1(void)
 	++done;
 }
 
+void	test_float0(void)
+{
+	int	a;
+	int	b;										//debugg this
+	b = printf("pri: %fLol\n", 3.3333);
+	a = ft_printf("ft_: %fLol\n", 3.3333);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______test_float0 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 
 int	main(void)
 {
-	mix_ezz();
+	/* mix_ezz();
 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
@@ -1296,7 +1311,8 @@ int	main(void)
 	test_multi_flags4();
 	leo_test();
 	pro_test();
-	pro_test1();					//need more 0 tests. BUT YOU ARE AMAZING DUDE! <3
+	pro_test1(); */
+	test_float0();				//need more 0 tests. BUT YOU ARE AMAZING DUDE! <3
 
 	printf("\n%d/%d completed\n", tests, done);
 	return (0);

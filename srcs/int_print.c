@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/28 16:33:56 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/02 20:01:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,25 @@ static int	nbrlen(long long nbr)
 	return (++c);
 }
 
-char	*conv_to_str(long long nbr, t_var *st) //can you use pointer instead of index? //shall you send in st to take the return directly in here insted of sending it out?
+static char	*conv_to_str(long long nbr, t_var *st) //can you use pointer instead of index? //shall you send in st to take the return directly in here insted of sending it out?
 {
 	char		*str;
 	size_t		l;
-	long long	n;
 
-	n = nbr;
 	st->va_ret = nbr;
-	l = nbrlen(n);
+	l = nbrlen(nbr);
 	str = (char *)malloc(sizeof(char) * l + 1); //need to be freed
 	if (!str)
 		exit(1);
 	str[l] = '\0';
-	if (n < 0)
-		n *= -1;
+	if (nbr < 0)
+		nbr *= -1;
 	while (l--)
 	{
-		str[l] = n % 10 + 48;
-		n /= 10;
+		str[l] = nbr % 10 + 48;
+		nbr /= 10;
 	}
-	if (nbr < 0)
+	if (st->va_ret < 0)
 		str[0] = '-';
 	return (str);
 }
@@ -108,5 +106,12 @@ void	int_print(t_var *st)
 	get_signed(st);
 	exec_flags_and_length(st);
 	pf_putint(st);
-	//ft_strdel(&st->hold_str);
+	if (*--st->hold_str == '-') //this is not good practice, try fix
+		ft_strdel(&st->hold_str);
+	else
+	{
+		++st->hold_str;
+		ft_strdel(&st->hold_str);
+	}
+
 }

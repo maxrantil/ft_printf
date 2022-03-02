@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   uint_print.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/28 13:04:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/02 20:02:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	pf_put_uint(t_var *st)
 	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	if (st->minus_flag == ON)
 		exec_width(st);
+	ft_strdel(&st->hold_str);
 }
 
 int	uint_nbrlen(unsigned long long nbr)
@@ -35,15 +36,14 @@ int	uint_nbrlen(unsigned long long nbr)
 	return (++c);
 }
 
-char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
+static char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
 {
 	char	*str; //can you use pointer instead of index? shall you send in st to take the return directly in here insted of sending it out?
 	int		l;
 
 	st->va_u_ret = nbr; //change a to va_u_ret that is involved in unit
 	l = uint_nbrlen(nbr);
-	str = (char *)malloc(sizeof(char) * l + 1); //need to be freed
-	if (!str)
+	str = (char *)malloc(sizeof(char) * l + 1);
 		exit(1);
 	str[l] = '\0';
 	while (l--)
@@ -74,5 +74,4 @@ void	uint_print(t_var *st)
 	get_uint(st);
 	exec_flags_and_length(st);
 	pf_put_uint(st);
-	//need to free after there somewhere
 }

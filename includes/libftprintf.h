@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/28 20:01:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/02 17:39:34 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # include <stdio.h> // remove before eval
 
-# define SPECIF "cspdiouxX*b"
+# define SPECIF "cspdiouxXf*b"
 # define FLAGS "+- #0"
 # define LENGTH "hhll"
 # define ON 1
@@ -105,6 +105,7 @@ void	uint_print(t_var *st);
 void	oct_print(t_var *st);
 void	hex_print(t_var *st);
 void	address_print(t_var *st);
+void	float_print(t_var *st);
 void	asterix_print(t_var *st);
 void	binary_print(t_var *st);
 void	null_print(t_var *st);
@@ -148,7 +149,7 @@ void	pf_putint(t_var *st);
 size_t	get_it(t_var *st);
 void	exec_flags_and_length(t_var *st);
 
-static const t_fptr_print_op print_disp_tbl[12] = {
+static const t_fptr_print_op print_disp_tbl[13] = {
 	char_print,
 	str_print,
 	address_print,
@@ -158,6 +159,7 @@ static const t_fptr_print_op print_disp_tbl[12] = {
 	uint_print,
 	hex_print,
 	hex_print,
+	float_print,
 	asterix_print,
 	binary_print,
 	null_print,
