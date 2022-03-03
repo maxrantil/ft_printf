@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/02 20:01:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/03 21:45:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	pf_putint(t_var *st)
 	{
 		if (st->plus_flag == ON && --st->char_count)
 			st->plus_flag = OFF;
-		exec_flag_space(st);
+//		exec_flag_space(st);
 		exec_precision(st);
 		exec_flag_zero(st);
 		st->hold_str++;
@@ -93,7 +93,7 @@ void	exec_flags_and_length(t_var *st)
 	}
 	if (st->va_ret >= 0)
 	{
-		exec_flag_space(st);
+	//	exec_flag_space(st);
 		exec_precision(st);
 		exec_flag_zero(st);
 	}

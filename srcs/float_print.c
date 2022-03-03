@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/03 19:20:55 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/03 19:27:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ char	*conv_float_str(double nbr, int flag, t_var *st)
 	long	n;
 	long	y;
 	
+	if (flag == 0)
+		flag = 6;
 	y = nbr;
 	n = nbr;
 	i = 0;
@@ -87,8 +89,9 @@ char	*conv_float_str(double nbr, int flag, t_var *st)
 
 void	float_print(t_var *st)
 {
-	//pf_putfloat(va_arg(st->ap, double));
-	st->hold_str = conv_float_str(va_arg(st->ap, double), 6, st);
+	int flag = 6; 								//this is to be changed with the char specifier flag
+	
+	st->hold_str = conv_float_str(va_arg(st->ap, double), flag, st);
 	ft_putstr(st->hold_str);
 	st->char_count += ft_strlen(st->hold_str);
 	ft_strdel(&st->hold_str);

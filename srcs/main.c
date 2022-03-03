@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/03 19:12:43 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/03 21:47:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1187,9 +1187,9 @@ void	leo_test(void)
 void	pro_test(void)
 {
 	int	a;
-	int	b;										//debugg this
-	b = printf("pri: %%%%%%+10.5dLol\n", 429);
-	a = ft_printf("ft_: %%%%%%+10.5dLol\n", 429);
+	int	b;										
+	b = printf("pri: %%%%%%%+10.5dLol\n", 429);
+	a = ft_printf("ft_: %%%%%%%+10.5dLol\n", 429);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1202,7 +1202,7 @@ void	pro_test(void)
 void	pro_test1(void)
 {
 	int	a = 429;
-	int	b = 429;										//debugg this
+	int	b = 429;
 	b = printf("pri: %%%%%%%+10.5dLol\n", b);
 	a = ft_printf("ft_: %%%%%%%+10.5dLol\n", a);
 	printf("\nret: %d \n", b);
@@ -1217,7 +1217,7 @@ void	pro_test1(void)
 void	pro_test2(void)
 {
 	int	a = 429;
-	int	b = 429;										//debugg this
+	int	b = 429;
 	b = printf("pri: % %  %   %    %     %      %+10.5dLol\n", b);
 	a = ft_printf("ft_: % %  %   %    %     %      %+10.5dLol\n", a);
 	printf("\nret: %d \n", b);
@@ -1232,7 +1232,7 @@ void	pro_test2(void)
 void	pro_test3(void)
 {
 	int	a = 429;
-	int	b = 429;										//debugg this
+	int	b = 429;
 	b = printf("pri: %   %%%%%%+10.5dLol\n", b);
 	a = ft_printf("ft_: %   %%%%%%+10.5dLol\n", a);
 	printf("\nret: %d \n", b);
@@ -1247,7 +1247,7 @@ void	pro_test3(void)
 void	pro_test4(void)
 {
 	int	a = 429;
-	int	b = 429;										//debugg this
+	int	b = 429;
 	b = printf("pri: %   % %%%   %  %+10.5dLol\n", b);
 	a = ft_printf("ft_: %   % %%%   %  %+10.5dLol\n", a);
 	printf("\nret: %d \n", b);
@@ -1262,9 +1262,9 @@ void	pro_test4(void)
 void	test_float0(void)
 {
 	int	a;
-	int	b;										//debugg this
-	b = printf("pri: %fLol\n", 3.3333);
-	a = ft_printf("ft_: %fLol\n", 3.3333);
+	int	b;
+	b = printf("pri: %fLol\n", 3.3433);
+	a = ft_printf("ft_: %fLol\n", 3.3433);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1277,7 +1277,7 @@ void	test_float0(void)
 
 int	main(void)
 {
-	/* mix_ezz();
+	mix_ezz();
 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
@@ -1354,9 +1354,9 @@ int	main(void)
 	test_multi_flags2();
 	test_multi_flags3();
 	test_multi_flags4();
-	leo_test(); */
-/* 	pro_test();
-	pro_test1(); */
+	leo_test();
+	pro_test();
+	pro_test1();
 	pro_test2();
 	pro_test3();
 	pro_test4();

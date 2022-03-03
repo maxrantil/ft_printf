@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/28 20:10:03 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/03 22:03:17 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,9 +108,21 @@ void	parser_loop(t_var *st)
 			st->char_count += write(1, st->ptr++, 1);
 			continue ;
 		}
-		if (*++st->ptr == '%')
+		/* if (*st->ptr == ' ')			//this is not working..
 		{
 			st->char_count += write(1, st->ptr++, 1);
+			continue ;
+		} */
+		if (*++st->ptr == '%' || *st->ptr == ' ')			//this is not working..
+		{
+			while (*st->ptr == ' ' && ++st->space_count) // && ++st->char_count) //cleaning up
+				st->ptr++;
+			if (*st->ptr == '%')
+				st->char_count += write(1, st->ptr++, 1);
+			/* if (*st->ptr == ' ')// && ++st->space_count) // && ++st->char_count) //cleaning up
+				st->char_count += write(1, st->ptr++, 1); */
+			/* if (st->space_count > 1)					
+				st->char_count -= st->space_count; */
 			continue ;
 		}
 		check_parser(st);
@@ -118,6 +130,5 @@ void	parser_loop(t_var *st)
 		st->space_count = 0;
 	}
 }
-
 
 //error handling for only one % with nothing after.
