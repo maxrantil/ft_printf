@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/02 19:43:56 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/03 19:12:43 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1214,6 +1214,51 @@ void	pro_test1(void)
 	++done;
 }
 
+void	pro_test2(void)
+{
+	int	a = 429;
+	int	b = 429;										//debugg this
+	b = printf("pri: % %  %   %    %     %      %+10.5dLol\n", b);
+	a = ft_printf("ft_: % %  %   %    %     %      %+10.5dLol\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______pro_test2 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	pro_test3(void)
+{
+	int	a = 429;
+	int	b = 429;										//debugg this
+	b = printf("pri: %   %%%%%%+10.5dLol\n", b);
+	a = ft_printf("ft_: %   %%%%%%+10.5dLol\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______pro_test3 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
+void	pro_test4(void)
+{
+	int	a = 429;
+	int	b = 429;										//debugg this
+	b = printf("pri: %   % %%%   %  %+10.5dLol\n", b);
+	a = ft_printf("ft_: %   % %%%   %  %+10.5dLol\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\n\x1b[1m _______pro_test4 failed_______\x1b[0m\n\n"));
+	++done;
+}
+
 void	test_float0(void)
 {
 	int	a;
@@ -1309,9 +1354,12 @@ int	main(void)
 	test_multi_flags2();
 	test_multi_flags3();
 	test_multi_flags4();
-	leo_test();
-	pro_test();
+	leo_test(); */
+/* 	pro_test();
 	pro_test1(); */
+	pro_test2();
+	pro_test3();
+	pro_test4();
 	test_float0();				//need more 0 tests. BUT YOU ARE AMAZING DUDE! <3
 
 	printf("\n%d/%d completed\n", tests, done);
