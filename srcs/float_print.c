@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 18:23:41 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 18:59:52 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,15 +59,13 @@ char	*conv_float_str(long double nbr, int flag, t_var *st)
 	y = 0;
 	if (!flag)
 		flag = 6;
-/* 	if (1 / nbr > 0)
-	{
-		st->char_count += write(1, "-", 1);
-	} */
 	if (nbr < 0)
 	{
 		nbr *= -1;
 		st->char_count += write(1, "-", 1);
 	}
+	if (1 / nbr < 0)
+		st->char_count += write(1, "-", 1);
 	n = nbr;
 	i = 0;
 	st->va_ret = nbr;
