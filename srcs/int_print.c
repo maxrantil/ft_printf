@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 13:42:35 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 15:25:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	pf_putint(t_var *st)
 		exec_width(st);
 }
 
-static int	nbrlen(long long nbr)
+static int	pf_nbrlen(long long nbr)
 {
 	int	c;
 
@@ -42,7 +42,7 @@ static int	nbrlen(long long nbr)
 	if (nbr < 0 && ++c)
 		nbr *= -1;
 	while (nbr > 9 && ++c)
-		nbr = nbr / 10;
+		nbr /= 10;
 	return (++c);
 }
 
@@ -52,7 +52,7 @@ static int	nbrlen(long long nbr)
 	size_t		l;
 
 	st->va_ret = nbr;
-	l = nbrlen(nbr);
+	l = pf_nbrlen(nbr);
 	str = (char *)malloc(sizeof(char) * l + 1); //need to be freed
 	if (!str)
 		exit(1);

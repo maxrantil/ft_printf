@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 13:18:47 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 17:07:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1248,8 +1248,8 @@ void	pro_test4(void)
 {
 	int	a = 429;
 	int	b = 429;
-	b = printf("pri: %   % %%%   %  %+10.5dLol\n", b);
-	a = ft_printf("ft_: %   % %%%   %  %+10.5dLol\n", a);
+	b = printf("pri: %   % %%%   %  %+10.5d	Lol\n", b);
+	a = ft_printf("ft_: %   % %%%   %  %+10.5d	Lol\n", a);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1263,8 +1263,8 @@ void	test_float0(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %fLol\n", 3.3433);
-	a = ft_printf("ft_: %fLol\n", 3.3433);
+	b = printf("pri: %.9f	Lol\n", 5.43211234567890);
+	a = ft_printf("ft_: %.9f	Lol\n", 5.43211234567890);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1274,6 +1274,140 @@ void	test_float0(void)
 	++done;
 }
 
+void	test_float1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.13f	Lol\n", -5.43211234567890);
+	a = ft_printf("ft_: %.13f	Lol\n", -5.43211234567890);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.3f	Lol\n", 5.43211234567890);
+	a = ft_printf("ft_: %.3f	Lol\n", 5.43211234567890);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float3(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.15f	Lol\n", 5.43211234567890123456789098765);
+	a = ft_printf("ft_: %.15f	Lol\n", 5.43211234567890123456789098765);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float3 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float4(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.17f	Lol\n", 5.43211234567890123456789098765);
+	a = ft_printf("ft_: %.17f	Lol\n", 5.43211234567890123456789098765);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float4 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float5(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.17f	Lol\n", 5.432112345678911111);
+	a = ft_printf("ft_: %.17f	Lol\n", 5.432112345678911111);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float5 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float6(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.17Lf	Lol\n", 5.43211234567890123456789098765L);
+	a = ft_printf("ft_: %.17Lf	Lol\n", 5.43211234567890123456789098765L);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float6 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float7(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %f\n", 999999999.9999996);
+	a = ft_printf("ft_: %f\n", 999999999.9999996);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float7 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float8(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %Lf\n", -0.0L);
+	a = ft_printf("ft_: %Lf\n", -0.0L);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float8 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float9(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %f\n", 0.0);
+	a = ft_printf("ft_: %f\n", 0.0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float9 failed_______\033[0m\n\n"));
+	++done;
+}
 
 int	main(void)
 {
@@ -1361,7 +1495,17 @@ int	main(void)
 	pro_test3();
 	pro_test4();
 	test_float0();				//need more 0 tests. BUT YOU ARE AMAZING DUDE! <3
+	test_float1();
+	test_float2();
+	test_float3();
+	test_float4();
+	test_float5();
+	test_float6();
+	test_float7();
+	test_float8();
+	test_float9();
 
+	
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
 	else

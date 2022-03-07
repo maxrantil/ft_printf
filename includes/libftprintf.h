@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 14:44:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 16:14:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 # define SPECIF "cspdiouxXf*b"
 # define FLAGS "+-#0"
-# define LENGTH "hhll"
+# define LENGTH "hhllL"
 # define ON 1
 # define OFF 0
 # define NUM_CHECK_DISP sizeof(check_disp_tbl) / sizeof(check_disp_tbl[0])
@@ -79,6 +79,7 @@ typedef struct s_var
 	size_t				zero_count;
 	int					zero_flag;
 	char				*hold_str;
+	int					le_F;
 }						t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/03 19:27:44 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 18:23:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,17 +48,26 @@
 	return (++c);
 } */
 
-char	*conv_float_str(double nbr, int flag, t_var *st)
+char	*conv_float_str(long double nbr, int flag, t_var *st)
 {
 	char	*str;
 	size_t	l;
 	int		i;
-	long	n;
-	long	y;
+	long long	n;
+	char		y;
 	
-	if (flag == 0)
+	y = 0;
+	if (!flag)
 		flag = 6;
-	y = nbr;
+/* 	if (1 / nbr > 0)
+	{
+		st->char_count += write(1, "-", 1);
+	} */
+	if (nbr < 0)
+	{
+		nbr *= -1;
+		st->char_count += write(1, "-", 1);
+	}
 	n = nbr;
 	i = 0;
 	st->va_ret = nbr;
@@ -67,31 +76,36 @@ char	*conv_float_str(double nbr, int flag, t_var *st)
 	if (!str)
 		exit(1);
 	str[l + flag + 1] = '\0';
-	/* if (nbr < 0)
-		nbr *= -1; */
 	while (l--)
 	{
-		str[i++] = n % 10 + 48;
+		str[i++] = n % 10 + 48;					//use write to write out the number before one by one. (probably before this function.)
 		n /= 10;
 	}
-	/* if (st->va_ret < 0)
-		str[0] = '-'; */
 	str[i++] = '.';
+	n = nbr;
 	while (flag--)
 	{
-		y = nbr * 10;
-		str[i++] = y % 10 + 48;
-		//nbr *= 10;
-		//ft_putnbr(nbr * 10);
+		n = nbr * 10;
+		str[i++] = n % 10 + 48;
+		nbr *= 10;
 	}
+	n = nbr * 10;
+	y = n % 10 + 48;
+	if (str[--i] < y && st->precision < 17)			///17 is hardcoded because that the maximum i can print correct ATM
+		++str[i];
 	return (str);
 }
 
 void	float_print(t_var *st)
 {
-	int flag = 6; 								//this is to be changed with the char specifier flag
-	
-	st->hold_str = conv_float_str(va_arg(st->ap, double), flag, st);
+	int flag = 6; 			
+
+	if (st->precision)
+		flag = st->precision;
+	if (st->le_F == ON)
+		st->hold_str = conv_float_str(va_arg(st->ap, long double), flag, st);
+	else 
+		st->hold_str = conv_float_str(va_arg(st->ap, double), flag, st);
 	ft_putstr(st->hold_str);
 	st->char_count += ft_strlen(st->hold_str);
 	ft_strdel(&st->hold_str);

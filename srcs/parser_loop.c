@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 14:48:31 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 16:19:40 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,11 @@ void	check_unsigned_length(t_var *st)
 		st->fmt += 2;
 		st->hold_str = conv_uint_to_str((unsigned long long)va_arg(st->ap, unsigned long long), st);
 		return ;
+	}
+	else if (*st->fmt == 'L')
+	{
+		++st->fmt;
+		st->le_F = ON;
 	}
 }
 
