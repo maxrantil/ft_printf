@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 13:28:44 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:46:40 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ void	exec_flag_zero(t_var *st)
 
 void	get_flag_zero(t_var *st)
 {
-	if (*st->ptr == '0')
+	if (*st->fmt == '0')
 	{
 		st->zero_flag = ON;
-		while (*st->ptr == '0')
-			st->ptr++;
+		while (*st->fmt == '0')
+			st->fmt++;
 		/* if (st->va_ret < 0)         			//why is this here? i dont need it, but will it make it faster?
 			return ; */
 		st->zero = get_it(st);
@@ -46,10 +46,10 @@ void	get_flag_zero(t_var *st)
 
 void	hash_flag(t_var *st)
 {
-	if (*st->ptr == '#')
+	if (*st->fmt == '#')
 	{
 		st->hash_flag = ON;
-		st->ptr++;
+		st->fmt++;
 	}
 }
 
@@ -63,20 +63,20 @@ void	hash_flag(t_var *st)
 
 void	flag_plus(t_var *st)
 {
-	if (*st->ptr == '+')
+	if (*st->fmt == '+')
 	{
 		st->plus_flag = ON;
-		st->ptr++;
+		st->fmt++;
 		st->char_count++;
 	}
 }
 
 void	flag_minus(t_var *st)
 {
-	if (*st->ptr == '-')
+	if (*st->fmt == '-')
 	{
 		st->minus_flag = ON;  //here i can inplement the bitwise number
 		//st->enum_flags[1] ^= 1 << 1;
-		st->ptr++;
+		st->fmt++;
 	}
 }

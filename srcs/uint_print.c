@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 13:47:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:49:08 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,24 +55,8 @@ char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
 	return (str);
 }
 
-
-/* static void	get_uint(t_var *st)
-{
-	if (st->le_unsigned_short == ON)
-		st->hold_str = conv_uint_to_str((unsigned short)va_arg(st->ap, unsigned long long), st);
-	else if (st->le_unsigned_char == ON)
-		st->hold_str = conv_uint_to_str((unsigned char)va_arg(st->ap, unsigned long long), st);
-	else if (st->le_unsigned_long == ON)
-		st->hold_str = conv_uint_to_str((unsigned long)va_arg(st->ap, unsigned long long), st);
-	else if (st->le_unsigned_long_long == ON)
-		st->hold_str = conv_uint_to_str((unsigned long long)va_arg(st->ap, unsigned long long), st);
-	else
-		st->hold_str = conv_uint_to_str((unsigned int)va_arg(st->ap, unsigned long long), st);
-} */
-
 void	uint_print(t_var *st)
 {
-//	get_uint(st);
-	exec_flags_and_length(st);
+	exec_flags_and_length(st);				//need to impllements the fags here.
 	pf_put_uint(st);
 }

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 13:24:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:46:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,29 @@ size_t	get_it(t_var *st)
 
 	c_single = 0;
 	ret = 0;
-	while (ft_isdigit(*st->ptr) && ++c_single)
+	while (ft_isdigit(*st->fmt) && ++c_single)
 	{
 		if (c_single == 1 && ++c_single)
-			ret = *st->ptr - 48;
+			ret = *st->fmt - 48;
 		else
-			ret = ret * 10 + (*st->ptr - 48);
-		st->ptr++;
+			ret = ret * 10 + (*st->fmt - 48);
+		st->fmt++;
 	}
 	return (ret);
 }
 
 void	check_precision(t_var *st)
 {
-	if (*st->ptr == '.')
+	if (*st->fmt == '.')
 	{
-		st->ptr++;
+		st->fmt++;
 		st->precision = get_it(st);
 	}
 }
 
 void	check_width(t_var *st)
 {															//maybe done with isdigit, but check do a better check here so it doesnt allways go in here
-	if (ft_isdigit(*st->ptr ) && st->zero_flag == OFF)
+	if (ft_isdigit(*st->fmt ) && st->zero_flag == OFF)
 		st->width = get_it(st);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asterix_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 20:56:07 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/22 16:40:04 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:45:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	asterix_print(t_var *st)
 {
 	size_t	sub;
 
-	if (*st->ptr == '*')
+	if (*st->fmt == '*')
 	{
 		st->astx_ret = va_arg(st->ap, int);
-		st->ptr++;
+		st->fmt++;
 		check_parser(st);
 	}
 	else if (st->astx_ret)

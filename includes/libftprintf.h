@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 14:05:22 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:44:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@
 typedef struct s_var
 {
 	va_list				ap;
-	const char			*ptr;
+	const char			*fmt;
 	int					space_count;
 	ssize_t				char_count;
 	size_t				astx_ret;
