@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 12:54:20 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 13:42:35 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	nbrlen(long long nbr)
 	return (++c);
 }
 
-static char	*conv_to_str(long long nbr, t_var *st) //can you use pointer instead of index? //shall you send in st to take the return directly in here insted of sending it out?
+ char	*conv_to_str(long long nbr, t_var *st) //can you use pointer instead of index? //shall you send in st to take the return directly in here insted of sending it out?
 {
 	char		*str;
 	size_t		l;
@@ -69,20 +69,6 @@ static char	*conv_to_str(long long nbr, t_var *st) //can you use pointer instead
 	return (str);
 }
 
-static void	get_signed(t_var *st)
-{
-	if (st->le_short == ON)
-		st->hold_str = conv_to_str((short)va_arg(st->ap, long long), st);
-	else if (st->le_signed_char == ON)
-		st->hold_str = conv_to_str((char)va_arg(st->ap, long long), st);
-	else if (st->le_long == ON)
-		st->hold_str = conv_to_str((long)va_arg(st->ap, long long), st);
-	else if (st->le_long_long == ON)
-		st->hold_str = conv_to_str(va_arg(st->ap, long long), st);
-	else
-		st->hold_str = conv_to_str((int)va_arg(st->ap, long long), st);
-}
-
 void	exec_flags_and_length(t_var *st)
 {
 	st->len_va_arg = ft_strlen(st->hold_str);
@@ -97,16 +83,15 @@ void	exec_flags_and_length(t_var *st)
 		exec_precision(st);
 		exec_flag_zero(st);
 	}
-	if (*st->hold_str == '-') //plug_flag == ON put "+"?
+	if (*st->hold_str == '-')					 //plug_flag == ON put "+"?
 		st->char_count += write(1, "-", 1);
 }
 
 void	int_print(t_var *st)
 {
-	get_signed(st);
 	exec_flags_and_length(st);
 	pf_putint(st);
-	if (*--st->hold_str == '-') //this is not good practice, try fix
+	if (*--st->hold_str == '-')				 //this is not good practice, try fix
 		ft_strdel(&st->hold_str);
 	else
 	{

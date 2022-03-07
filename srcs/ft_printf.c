@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/28 20:01:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:04:47 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,18 +25,10 @@ static void	initialize_st(const char *fmt, t_var *st)
 	st->minus_flag = OFF;
 	st->va_ret = 0; 						//change this later to not only int and cast it to anything?
 	st->unnessesary = 0;					// unnessasary?
-	st->le_short = OFF;
-	st->le_signed_char = OFF;
-	st->le_unsigned_short = OFF;
 	st->hash_flag = OFF;
 	st->zero = 0;
 	st->zero_count = 0;
 	st->zero_flag = OFF;
-	st->le_unsigned_char = OFF;
-	st->le_long = OFF;
-	st->le_unsigned_long = OFF;
-	st->le_long_long = OFF;
-	st->le_unsigned_long_long = OFF;
 	st->hold_str = NULL;					//can memset the whole struct to 0, try that later, also i dont need ptr and can use fmt directly
 }
 

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/03 21:30:14 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 13:47:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	uint_nbrlen(unsigned long long nbr)
 	return (++c);
 }
 
-static char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
+char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
 {
 	char	*str; //can you use pointer instead of index? shall you send in st to take the return directly in here insted of sending it out?
 	int		l;
@@ -56,7 +56,7 @@ static char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
 }
 
 
-static void	get_uint(t_var *st)
+/* static void	get_uint(t_var *st)
 {
 	if (st->le_unsigned_short == ON)
 		st->hold_str = conv_uint_to_str((unsigned short)va_arg(st->ap, unsigned long long), st);
@@ -68,11 +68,11 @@ static void	get_uint(t_var *st)
 		st->hold_str = conv_uint_to_str((unsigned long long)va_arg(st->ap, unsigned long long), st);
 	else
 		st->hold_str = conv_uint_to_str((unsigned int)va_arg(st->ap, unsigned long long), st);
-}
+} */
 
 void	uint_print(t_var *st)
 {
-	get_uint(st);
+//	get_uint(st);
 	exec_flags_and_length(st);
 	pf_put_uint(st);
 }

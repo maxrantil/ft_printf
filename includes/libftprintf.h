@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 12:31:46 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 14:05:22 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include "../libft/libft.h"
 
-# include <stdio.h> // remove before eval
+# include <stdio.h> 						// remove before eval
 
 # define SPECIF "cspdiouxXf*b"
 # define FLAGS "+-#0"
@@ -69,24 +69,15 @@ typedef struct s_var
 	size_t				len_va_arg;
 	int					plus_flag;
 	int					minus_flag;
-/* 	t_enum_flags	enum_flags[3]; */
 	size_t				width;
 	size_t				precision;
 	long long			va_ret;
 	unsigned long long	va_u_ret;
 	int					unnessesary;
-	int					le_short;
-	int					le_unsigned_short;
-	int					le_signed_char;
 	int					hash_flag;
 	size_t				zero;
 	size_t				zero_count;
 	int					zero_flag;
-	int					le_unsigned_char;
-	int					le_long;
-	int					le_unsigned_long;
-	int					le_long_long;
-	int					le_unsigned_long_long;
 	char				*hold_str;
 }						t_var;
 
@@ -148,6 +139,8 @@ char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
 void	pf_putint(t_var *st);
 size_t	get_it(t_var *st);
 void	exec_flags_and_length(t_var *st);
+char	*conv_to_str(long long nbr, t_var *st);
+char	*conv_uint_to_str(unsigned long long nbr, t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[13] = {
 	char_print,
@@ -168,7 +161,6 @@ static const t_fptr_print_op print_disp_tbl[13] = {
 static const t_fptr_flag_op flag_disp_tbl[5] = {
 	flag_plus,
 	flag_minus,
-	//get_flag_space,
 	hash_flag,
 	get_flag_zero,
 	null_flag,
