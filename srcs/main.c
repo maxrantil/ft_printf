@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/03 21:47:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 13:18:47 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void mix_ezz(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_ezz failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_ezz failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -42,7 +42,7 @@ void mix_ez1(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_ez1 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_ez1 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -57,7 +57,7 @@ void mix_ez2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_ez2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_ez2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -72,7 +72,7 @@ void mix_ez3(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_ez3 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_ez3 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -87,7 +87,7 @@ void mix_ez4(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_ez4 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_ez4 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -102,7 +102,7 @@ void	test_oct_zero(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_oct_zero failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_oct_zero failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -117,7 +117,7 @@ void	test_oct(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_oct failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_oct failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -132,7 +132,7 @@ void	test_hex(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_hex failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_hex failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -147,7 +147,7 @@ void	test_hex_zero(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_hex_zero failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_hex_zero failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -163,7 +163,7 @@ void	test_dec(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n _______test_dec failed_______\x1b[0m\n\n"));
+		assert(printf("\n _______test_dec failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -179,7 +179,7 @@ void	test_int(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n _______test_int failed_______\x1b[0m\n\n"));
+		assert(printf("\n _______test_int failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -194,7 +194,7 @@ void	test_hex_random(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_hex_random failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_hex_random failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -209,7 +209,7 @@ void	test_int_zero(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_int_zero failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_int_zero failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -224,7 +224,7 @@ void	test_int_minus(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_int_minus failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_int_minus failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -239,7 +239,7 @@ void	test_int_plus_flag(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_int_plus_flag failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_int_plus_flag failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -254,7 +254,7 @@ void	test_int_plus_flag2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_int_plus_flag2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_int_plus_flag2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -269,22 +269,7 @@ void	test_int_minusminus_flag(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_int_minusminus_flag failed_______\x1b[0m\n\n"));
-	++done;
-}
-
-void	test_procentage(void)
-{
-	int	a;
-	int	b;
-	b = printf("printf dec: %%\n");
-	a = ft_printf("ft_pri dec: %%\n");
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\n\x1b[1m _______test_procentage failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_int_minusminus_flag failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -299,7 +284,7 @@ void	test_address(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_address failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_address failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -314,7 +299,7 @@ void	test_asterix_with_int(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_asterix_with_int failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_asterix_with_int failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -329,7 +314,7 @@ void	test_asterix_with_str(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_asterix_with_str failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_asterix_with_str failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -344,7 +329,7 @@ void	test_asterix_with_int_plus(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_asterix_with_int failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_asterix_with_int failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -359,7 +344,7 @@ void	test_width_single(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_width_single failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_width_single failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -374,7 +359,7 @@ void	test_width_multi(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_width_multi failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_width_multi failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -389,7 +374,7 @@ void	test_width_multi2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_width_multi2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_width_multi2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -404,7 +389,7 @@ void	test_precision(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_precision failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_precision failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -419,7 +404,7 @@ void	test_precision_1(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_precision_1 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_precision_1 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -434,7 +419,7 @@ void test_mindfuck(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -449,7 +434,7 @@ void test_mindfuck_minus(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck_minus failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck_minus failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -464,7 +449,7 @@ void test_mindfuck_minusminus(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck_minusminus failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck_minusminus failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -479,7 +464,7 @@ void test_mindfuck_simpleminus(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck_simpleminus failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck_simpleminus failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -494,7 +479,7 @@ void test_mindfuck_minusminint(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck_minusminint failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck_minusminint failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -509,7 +494,7 @@ void test_mindfuck_minusminint2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck_minusminint2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck_minusminint2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -524,7 +509,7 @@ void test_mindfuck_plus_craz(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck_plus_craz failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck_plus_craz failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -539,7 +524,7 @@ void test_mindfuck_plus_craz2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck_plus_craz2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck_plus_craz2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -554,7 +539,7 @@ void test_mindfuck_plus_craz3(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck_plus_craz3 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck_plus_craz3 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -569,37 +554,7 @@ void test_mindfuck_plus_craz4(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_mindfuck_plus_craz4 failed_______\x1b[0m\n\n"));
-	++done;
-}
-
-void test_flag_space_minus(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %     dLol\n", -2147483647);
-	a = ft_printf("ft_: %     dLol\n", -2147483647);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\n\x1b[1m _______test_flag_space_minus failed_______\x1b[0m\n\n"));
-	++done;
-}
-
-void test_flag_space(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %  dLol\n", 7483647);
-	a = ft_printf("ft_: %  dLol\n", 7483647);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\n\x1b[1m _______test_flag_space failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_mindfuck_plus_craz4 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -616,7 +571,7 @@ void test_length_h(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_h failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_h failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -633,7 +588,7 @@ void test_length_h2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_h2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_h2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -648,7 +603,7 @@ void test_42hex(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_42hex failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_42hex failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -663,7 +618,7 @@ void test_length_hh(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_hh failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_hh failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -678,7 +633,7 @@ void test_length_hh2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_hh2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_hh2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -693,7 +648,7 @@ void test_length_hh_unsigned_int(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_hh_unsigned_int failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_hh_unsigned_int failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -708,7 +663,7 @@ void test_length_hh_unsigned_int2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_hh_unsigned_int2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_hh_unsigned_int2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -723,7 +678,7 @@ void test_length_h_unsigned_int(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_h_unsigned_int failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_h_unsigned_int failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -738,7 +693,7 @@ void test_length_h_unsigned_int2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_h_unsigned_int2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_h_unsigned_int2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -753,7 +708,7 @@ void test_intmin(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_test_intmin failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_test_intmin failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -768,7 +723,7 @@ void test_hashoct(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_hashoct failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_hashoct failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -783,7 +738,7 @@ void test_hashoct_intmin(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_hashoct_intmin failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_hashoct_intmin failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -798,7 +753,7 @@ void test_hashhex_intmax(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_hashhex_intmax failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_hashhex_intmax failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -813,7 +768,7 @@ void test_hashhex_intmin(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_hashhex_intmin failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_hashhex_intmin failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -835,7 +790,7 @@ void test_flag_zero(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_flag_zero failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_flag_zero failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -850,7 +805,7 @@ void test_flag_zero1(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_flag_zero1 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_flag_zero1 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -865,7 +820,7 @@ void test_flag_zero2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_flag_zero2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_flag_zero2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -880,7 +835,7 @@ void test_flag_zero_with_pre(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_flag_zero_with_pre failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -895,7 +850,7 @@ void test_flag_zero_with_pre2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_flag_zero_with_pre2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -910,7 +865,7 @@ void test_flag_zero_with_pre3(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre3 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_flag_zero_with_pre3 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -925,7 +880,7 @@ void test_flag_zero_with_pre4(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre4 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_flag_zero_with_pre4 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -940,7 +895,7 @@ void test_flag_zero_with_pre5(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre5 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_flag_zero_with_pre5 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -955,7 +910,7 @@ void test_flag_zero_with_pre6(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_flag_zero_with_pre6 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_flag_zero_with_pre6 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -970,7 +925,7 @@ void test_dubbleint(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_dubbleint failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_dubbleint failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -985,7 +940,7 @@ void test_simple_string(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_simple_string failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_simple_string failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1000,7 +955,7 @@ void test_length_l(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_l failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_l failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1015,7 +970,7 @@ void test_length_l_minus(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_l_minus failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_l_minus failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1030,7 +985,7 @@ void test_length_ll(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_ll failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_ll failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1045,7 +1000,7 @@ void test_length_ll_minus(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_ll_minus failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_ll_minus failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1060,7 +1015,7 @@ void test_length_ll_test(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_ll_test failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_ll_test failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1075,7 +1030,7 @@ void test_length_ll_str(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_ll_str failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_ll_str failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1090,7 +1045,7 @@ void test_length_ll_test_uint(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_length_ll_test_uint failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_length_ll_test_uint failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1105,7 +1060,7 @@ void test_multi_flags0(void)			//this need debugging
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_multi_flags0 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_multi_flags0 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1120,7 +1075,7 @@ void test_multi_flags1(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_multi_flags1 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_multi_flags1 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1135,7 +1090,7 @@ void test_multi_flags2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_multi_flags2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_multi_flags2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1150,7 +1105,7 @@ void test_multi_flags3(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_multi_flags3 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_multi_flags3 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1165,7 +1120,7 @@ void test_multi_flags4(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_multi_flags4 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_multi_flags4 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1180,7 +1135,52 @@ void	leo_test(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______leo_test failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______leo_test failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_procentage(void)
+{
+	int	a;
+	int	b;
+	b = printf("printf dec: %%\n");
+	a = ft_printf("ft_pri dec: %%\n");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_procentage failed_______\033[0m\n\n"));
+	++done;
+}
+
+void test_flag_space_minus(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %     dLol\n", -2147483647);
+	a = ft_printf("ft_: %     dLol\n", -2147483647);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_flag_space_minus failed_______\033[0m\n\n"));
+	++done;
+}
+
+void test_flag_space(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %  d Lol\n", 7483647);
+	a = ft_printf("ft_: %  d Lol\n", 7483647);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_flag_space failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1195,7 +1195,7 @@ void	pro_test(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______pro_test failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______pro_test failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1210,7 +1210,7 @@ void	pro_test1(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______pro_test1 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______pro_test1 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1225,7 +1225,7 @@ void	pro_test2(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______pro_test2 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______pro_test2 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1240,7 +1240,7 @@ void	pro_test3(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______pro_test3 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______pro_test3 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1255,7 +1255,7 @@ void	pro_test4(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______pro_test4 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______pro_test4 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1270,7 +1270,7 @@ void	test_float0(void)
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\n\x1b[1m _______test_float0 failed_______\x1b[0m\n\n"));
+		assert(printf("\033[1;31m _______test_float0 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1294,7 +1294,6 @@ int	main(void)
 	test_int_plus_flag();
 	test_int_plus_flag2();
 	test_int_minusminus_flag();
-	test_procentage();
 	test_address();
 	test_asterix_with_int();
 	test_asterix_with_str();
@@ -1313,8 +1312,6 @@ int	main(void)
 	test_mindfuck_plus_craz2();
 	test_mindfuck_plus_craz3();
 	test_mindfuck_plus_craz4();
-	test_flag_space_minus();
-	test_flag_space();
 	test_length_h();
 	test_length_h2();
 	test_length_hh();
@@ -1339,7 +1336,7 @@ int	main(void)
 	test_flag_zero_with_pre3();
 	test_flag_zero_with_pre4();
 	test_flag_zero_with_pre5();
-	test_flag_zero_with_pre6(); //you rock Max! incredible determination and stamina
+	test_flag_zero_with_pre6();
 	test_dubbleint();
 	test_simple_string();
 	test_length_l();
@@ -1355,6 +1352,9 @@ int	main(void)
 	test_multi_flags3();
 	test_multi_flags4();
 	leo_test();
+	test_procentage();
+	test_flag_space_minus();
+	test_flag_space();
 	pro_test();
 	pro_test1();
 	pro_test2();
@@ -1362,7 +1362,10 @@ int	main(void)
 	pro_test4();
 	test_float0();				//need more 0 tests. BUT YOU ARE AMAZING DUDE! <3
 
-	printf("\n%d/%d completed\n", tests, done);
+	if (tests == done)
+		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
+	else
+		printf("\n\033[1;31m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
 	return (0);
 }
 

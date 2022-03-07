@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/28 19:25:37 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 13:24:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	check_precision(t_var *st)
 }
 
 void	check_width(t_var *st)
-{//maybe done with isdigit, but check do a better check here so it doesnt allways go in here
+{															//maybe done with isdigit, but check do a better check here so it doesnt allways go in here
 	if (ft_isdigit(*st->ptr ) && st->zero_flag == OFF)
 		st->width = get_it(st);
 }
@@ -69,8 +69,7 @@ void	exec_precision(t_var *st)
 
 void	exec_width(t_var *st)
 {
-	long sub; //one veriable is possible i think.
-	long sum; // why not long long?
+	long sub; //  why not long long?
 
 	//if (st->len_va_arg && st->width) //is this nessesary?
 	//{
@@ -85,8 +84,8 @@ void	exec_width(t_var *st)
 		}
 		else
 		{
-			sum = st->width; //use the same variable?? sub and sum
-			while ((size_t)sum-- > st->len_va_arg)
+			sub = st->width;
+			while ((size_t)sub-- > st->len_va_arg)
 				st->char_count += write(1, " ", 1);
 		}
 	//}

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/03 22:03:17 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/07 13:18:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	check_signed_length(t_var *st)
 		++st->ptr;
 		return ;
 	}
-	if (*st->ptr == 'h' && st->ptr[i] == 'h' && st->ptr[i + 1] == 'i')
+	if (*st->ptr == 'h' && st->ptr[i] == 'h' && (st->ptr[i + 1] == 'd' || st->ptr[i + 1] == 'i'))
 	{
 		st->le_signed_char = ON; // skip this and call directly
 		++st->ptr;
@@ -63,16 +63,16 @@ void	check_unsigned_length(t_var *st)
 		++st->ptr;
 		return ;
 	}
-	else if (*st->ptr == 'l' && st->ptr[i] == 'l' && st->ptr[i + 1] == 'u')
+	else if (*st->ptr == 'l' && st->ptr[i] == 'l' &&(st->ptr[i + 1] == 'd' || st->ptr[i + 1] == 'i'))
 	{
-		st->le_unsigned_long_long = ON;
+		st->le_long_long = ON;
 		++st->ptr;
 		++st->ptr;
 		return ;
 	}
-	else if (*st->ptr == 'l' && st->ptr[i] == 'l' &&(st->ptr[i + 1] == 'd' || st->ptr[i + 1] == 'i'))
+	else if (*st->ptr == 'l' && st->ptr[i] == 'l' && st->ptr[i + 1] == 'u')
 	{
-		st->le_long_long = ON;
+		st->le_unsigned_long_long = ON;
 		++st->ptr;
 		++st->ptr;
 		return ;
@@ -108,22 +108,14 @@ void	parser_loop(t_var *st)
 			st->char_count += write(1, st->ptr++, 1);
 			continue ;
 		}
-		/* if (*st->ptr == ' ')			//this is not working..
+		if (*++st->ptr == '%' || *st->ptr == ' ')
 		{
-			st->char_count += write(1, st->ptr++, 1);
-			continue ;
-		} */
-		if (*++st->ptr == '%' || *st->ptr == ' ')			//this is not working..
-		{
-			while (*st->ptr == ' ' && ++st->space_count) // && ++st->char_count) //cleaning up
+			while (*st->ptr == ' ' && ++st->space_count)
 				st->ptr++;
 			if (*st->ptr == '%')
 				st->char_count += write(1, st->ptr++, 1);
-			/* if (*st->ptr == ' ')// && ++st->space_count) // && ++st->char_count) //cleaning up
-				st->char_count += write(1, st->ptr++, 1); */
-			/* if (st->space_count > 1)					
-				st->char_count -= st->space_count; */
-			continue ;
+			if (!ft_isalpha(*st->ptr))
+				continue ;
 		}
 		check_parser(st);
 		st->ptr++;
