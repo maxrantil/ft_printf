@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 16:14:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 16:37:50 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	initialize_st(const char *format, t_var *st)
 	st->zero_flag = OFF;
 	st->hold_str = NULL;					//can memset the whole struct to 0, try that later, also i dont need ptr and can use fmt directly
 	st->le_F = OFF;
+	st->prec_noll = 0;
 }
 
 int	ft_printf(const char *format, ...)

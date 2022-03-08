@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 17:07:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 19:06:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -352,8 +352,8 @@ void	test_width_multi(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %14d\n", 21);
-	a = ft_printf("ft_: %14d\n", 21);
+	b = printf("pri: %-14d\n", 21);
+	a = ft_printf("ft_: %-14d\n", 21);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1409,6 +1409,114 @@ void	test_float9(void)
 	++done;
 }
 
+void	test_float10(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.0f\n", 0.5);
+	a = ft_printf("ft_: %.0f\n", 0.5);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float10 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float11(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.0f\n", 1.5);
+	a = ft_printf("ft_: %.0f\n", 1.5);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float11 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_float12(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.3f\n", 1.8999);
+	a = ft_printf("ft_: %.3f\n", 1.8999);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_float12 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_basic0(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %5%\n");
+	a = ft_printf("ft_: %5%\n");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_basic0 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_basic1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-5%\n");
+	a = ft_printf("ft_: %-5%\n");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_basic1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_basic2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %10x\n", 42);
+	a = ft_printf("ft_: %10x\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_basic2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_basic3(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-10x\n", 42);
+	a = ft_printf("ft_: %-10x\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_basic3 failed_______\033[0m\n\n"));
+	++done;
+}
+
+
+//0.5 rounds down to 0; 1.5 rounds up to 2
+
 int	main(void)
 {
 	mix_ezz();
@@ -1504,6 +1612,13 @@ int	main(void)
 	test_float7();
 	test_float8();
 	test_float9();
+	test_float10();
+	test_float11();
+	test_float12();
+	test_basic0();
+	test_basic1();
+	test_basic2();
+	test_basic3();
 
 	
 	if (tests == done)

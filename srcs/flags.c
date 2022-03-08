@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 14:46:40 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 18:12:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,26 @@ void	hash_flag(t_var *st)
 		st->fmt++;
 	}
 }
+
+ void	exec_flag_proc(t_var *st)
+ {
+	size_t i;
+
+	i = 0;
+	if (*st->fmt == '%' && st->minus_flag == OFF)
+	{
+		while (++i < st->width)
+			st->char_count += write(1, " ", 1);
+		st->char_count += write(1, st->fmt, 1);
+	}
+	else if (*st->fmt == '%' && st->minus_flag == ON)
+	{
+		st->char_count += write(1, st->fmt, 1);
+		while (++i < st->width)
+			st->char_count += write(1, " ", 1);
+	}
+ }
+		
 
  void	exec_flag_space(t_var *st)
 {

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 16:14:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 18:14:34 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # include <stdio.h> 						// remove before eval
 
-# define SPECIF "cspdiouxXf*b"
+# define SPECIF "cspdiouxXf*b%"
 # define FLAGS "+-#0"
 # define LENGTH "hhllL"
 # define ON 1
@@ -80,6 +80,7 @@ typedef struct s_var
 	int					zero_flag;
 	char				*hold_str;
 	int					le_F;
+	int					prec_noll;
 }						t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);
@@ -112,6 +113,7 @@ void	flag_plus(t_var *st);
 void	flag_minus(t_var *st);
 void	procentage_print(t_var *st);
 //void	get_flag_space(t_var *st);
+void	exec_flag_proc(t_var *st);
 void	exec_flag_space(t_var *st);
 void	hash_flag(t_var *st);
 void	get_flag_zero(t_var *st);
@@ -143,7 +145,7 @@ void	exec_flags_and_length(t_var *st);
 char	*conv_to_str(long long nbr, t_var *st);
 char	*conv_uint_to_str(unsigned long long nbr, t_var *st);
 
-static const t_fptr_print_op print_disp_tbl[13] = {
+static const t_fptr_print_op print_disp_tbl[14] = {
 	char_print,
 	str_print,
 	address_print,
@@ -156,6 +158,7 @@ static const t_fptr_print_op print_disp_tbl[13] = {
 	float_print,
 	asterix_print,
 	binary_print,
+	exec_flag_proc,
 	null_print,
 };
 

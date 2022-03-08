@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 14:46:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 19:12:13 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	get_it(t_var *st)
 
 	c_single = 0;
 	ret = 0;
-	while (ft_isdigit(*st->fmt) && ++c_single)
+	while (ft_isdigit(*st->fmt) && ++c_single && ++st->prec_noll)
 	{
 		if (c_single == 1 && ++c_single)
 			ret = *st->fmt - 48;
@@ -71,22 +71,19 @@ void	exec_width(t_var *st)
 {
 	long sub; //  why not long long?
 
-	//if (st->len_va_arg && st->width) //is this nessesary?
-	//{
-		if (st->precision || (!st->precision && st->minus_flag == ON))
-		{
-			sub = 0;
-			sub -= (st->va_ret < 0 || st->plus_flag > 0);
-			sub += (ft_imax(st->width, st->precision) - ft_imin(st->width, st->precision));
-			sub *= (st->width > st->precision && sub > 0);
-			while (sub--) //is sub 5 too much?
-				st->char_count += write(1, " ", 1);
-		}
-		else
-		{
-			sub = st->width;
-			while ((size_t)sub-- > st->len_va_arg)
-				st->char_count += write(1, " ", 1);
-		}
-	//}
+	if (st->precision)
+	{
+		sub = 0;
+		sub -= (st->va_ret < 0 || st->plus_flag > 0);
+		sub += (ft_imax(st->width, st->precision) - ft_imin(st->width, st->precision));
+		sub *= (st->width > st->precision && sub > 0);
+		while (sub--)
+			st->char_count += write(1, " ", 1);
+	}
+	else
+	{
+		sub = st->width;
+		while ((size_t)sub-- > st->len_va_arg)
+			st->char_count += write(1, " ", 1);
+	}
 }

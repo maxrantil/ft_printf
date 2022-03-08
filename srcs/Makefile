@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/03/02 17:36:07 by mrantil          ###   ########.fr        #
+#    Updated: 2022/03/08 19:11:08 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 CC = gcc
-WFLAGS = -Wall -Werror -Wextra -g
+WFLAGS = -Wall -Werror -Wextra -g -O3
 # -Wconversion -O3
 
 IDIR = ../includes
@@ -41,7 +41,8 @@ FUNCTIONS = ft_printf \
 			binary_print \
 			null_print \
 			flags \
-			check_width_and_precision
+			check_width_and_precision \
+			check_length
 
 _OBJ = $(foreach function, $(FUNCTIONS), $(function).o)
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
@@ -66,7 +67,7 @@ $(NAME): $(OBJ)
 	@ranlib $@
 	@echo "$@ indexed"
 #after this line is just for testing, erase later
-	@gcc main.c $@ $(HFILE) -I$(LDIR) -g
+	@gcc main.c $@ $(HFILE) -I$(LDIR) -g -O3
 	@echo "Compiling main.c..."
 	@echo '\n'a.out ready to \(run\)fire!
 
