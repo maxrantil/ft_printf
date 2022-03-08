@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 18:59:52 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 12:37:05 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char	*conv_float_str(long double nbr, int flag, t_var *st)
 	int		i;
 	long long	n;
 	char		y;
-	
+
 	y = 0;
 	if (!flag)
 		flag = 6;
@@ -90,19 +90,26 @@ char	*conv_float_str(long double nbr, int flag, t_var *st)
 	n = nbr * 10;
 	y = n % 10 + 48;
 	if (str[--i] < y && st->precision < 17)			///17 is hardcoded because that the maximum i can print correct ATM
+	{
 		++str[i];
+/* 		while (str[i] == '9')
+		{
+			str[i--] = '0';
+			++str[i];
+		} */
+	}
 	return (str);
 }
 
 void	float_print(t_var *st)
 {
-	int flag = 6; 			
+	int flag = 6;
 
 	if (st->precision)
 		flag = st->precision;
 	if (st->le_F == ON)
 		st->hold_str = conv_float_str(va_arg(st->ap, long double), flag, st);
-	else 
+	else
 		st->hold_str = conv_float_str(va_arg(st->ap, double), flag, st);
 	ft_putstr(st->hold_str);
 	st->char_count += ft_strlen(st->hold_str);
