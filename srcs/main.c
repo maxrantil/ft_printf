@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 20:27:08 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 23:00:36 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1187,7 +1187,7 @@ void test_flag_space(void)
 void	pro_test(void)
 {
 	int	a;
-	int	b;										
+	int	b;
 	b = printf("pri: %%%%%%%+10.5dLol\n", 429);
 	a = ft_printf("ft_: %%%%%%%+10.5dLol\n", 429);
 	printf("\nret: %d \n", b);
@@ -1665,7 +1665,7 @@ int	main(void)
 	test_basic5();
 	test_basic6();
 
-	
+
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
 	else

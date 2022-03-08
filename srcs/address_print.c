@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   address_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:31:57 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 19:31:25 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 22:52:26 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 
 void	address_print(t_var *st)				//only minus and width flags for pointers
 {
-	char	*str;
-	
 	pf_itoa_base(va_arg(st->ap, long), 16, st);
-	write(1, "0x", 2);
-	st->char_count += 2;
+	st->char_count += write(1, "0x", 2);
 	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	ft_strdel(&str);
+	ft_strdel(&st->hold_str);
 	return ;
 }

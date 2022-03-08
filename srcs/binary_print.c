@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:12:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/02/19 22:54:42 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 22:44:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,9 @@ void	binary_print(t_var *st)
 	while (i >>= 1)
 	{
 		if (octet & i)
-		{
-			write(1, "1", 1);
-			++st->char_count;
-		}
+			st->char_count += write(1, "1", 1);
 		else
-		{
-			write(1, "0", 1);
-			++st->char_count;
-		}
+			st->char_count += write(1, "0", 1);
 	}
 }
 

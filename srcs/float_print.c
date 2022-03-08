@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 17:34:20 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 23:15:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 
 
-char	*conv_float_str(long double nbr, int flag, t_var *st)
+void	conv_float_str(long double nbr, int flag, t_var *st)
 {
-	char	*str;
 	size_t	l;
 	int		i;
 	long long	n;
@@ -34,42 +33,43 @@ char	*conv_float_str(long double nbr, int flag, t_var *st)
 	i = 0;
 	st->va_ret = nbr;
 	l = ft_intlen(n);
-	str = (char *)ft_strnew(l + flag + 1);
-	if (!str)
+	st->hold_str = (char *)ft_strnew(l + flag + 1);
+	if (!st->hold_str)
 		exit(1);
 	while (l--)
 	{
-		str[i++] = n % 10 + 48;					//use write to write out the number before one by one. (probably before this function.)
+		st->hold_str[i++] = n % 10 + 48;					//use write to write out the number before one by one. (probably before this function.)
 		n /= 10;
 	}
 	if (flag)
-		str[i++] = '.';
+		st->hold_str[i++] = '.';
 	n = nbr;
 	while (flag--)
 	{
 		n = nbr * 10;
-		str[i++] = n % 10 + 48;
+		st->hold_str[i++] = n % 10 + 48;
 		nbr *= 10;
 	}
 	n = nbr * 10;
 	y = n % 10 + 48;
-	if (y >= 5 && y > str[--i] && st->precision < 17)			///17 is hardcoded because that the maximum i can print correct ATM
+	if (y >= 5 && y > st->hold_str[--i] && st->precision < 17)			///17 is hardcoded because that the maximum i can print correct ATM
 	{
-		if (str[0] % 2 == 0 && str[--i] != 0)					// All this i fucked, clean it!
-			--str[i];
+		if (st->hold_str[0] % 2 == 0 && st->hold_str[i - 1] != 0)	//changed here to i - 1 instead of --i, All this i fucked, clean it!
+			--st->hold_str[i];
 		else
 		{
-			if (str[i] == '9')		
-				while (str[i] == '9')
+			if (st->hold_str[i] == '9')
+			{
+				while (st->hold_str[i] == '9')
 				{
-					str[i--] = '0';
-					++str[i];
+					st->hold_str[i--] = '0';
+					++st->hold_str[i];
 				}
+			}
 			else
-				++str[i];	
+				++st->hold_str[i];
 		}
 	}
-	return (str);
 }
 
 void	float_print(t_var *st)
@@ -79,11 +79,10 @@ void	float_print(t_var *st)
 	if (st->prec_noll)
 		flag = st->precision;
 	if (st->le_F == ON)
-		st->hold_str = conv_float_str(va_arg(st->ap, long double), flag, st);
+		conv_float_str(va_arg(st->ap, long double), flag, st);
 	else
-		st->hold_str = conv_float_str(va_arg(st->ap, double), flag, st);
-	ft_putstr(st->hold_str);
-	st->char_count += ft_strlen(st->hold_str);
+		conv_float_str(va_arg(st->ap, double), flag, st);
+	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	ft_strdel(&st->hold_str);
 }
 
