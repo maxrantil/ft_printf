@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 18:43:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 20:30:22 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,32 +27,29 @@ static int	pf_intlen(long nbr, unsigned int base)
 	return (count);
 }
 
-char	*pf_itoa_base(long int nbr, unsigned int base, const char *ptr)
+void	pf_itoa_base(long long nbr, unsigned int base, t_var *st)
 {
-	char	*s;
 	int		l;
 
 	l = pf_intlen(nbr, base);
-	s = (char *)malloc(sizeof(char) * l + 1);
-	if (!s)
+	st->hold_str = (char *)ft_strnew(sizeof(char) * l);
+	if (!st->hold_str)
 		exit(1);
-	s[l] = '\0';
 	while (l--)
 	{
-		if ((*ptr == 'x' || *ptr == 'p') && nbr % base > 9)
-			s[l] = (char)(nbr % base) + 87;
-		else if (*ptr == 'X' && nbr % base > 9)
-			s[l] = (char)(nbr % base) + 55;
+		if ((*st->fmt == 'x' || *st->fmt == 'p') && nbr % base > 9)
+			st->hold_str[l] = (char)(nbr % base) + 87;
+		else if (*st->fmt == 'X' && nbr % base > 9)
+			st->hold_str[l] = (char)(nbr % base) + 55;
 		else
-			s[l] = (char)(nbr % base) + 48;
+			st->hold_str[l] = (char)(nbr % base) + 48;
 		nbr /= base;
 	}
-	return (s);
 }
 
 void	hex_print(t_var *st)
 {
-	if (st->hash_flag == ON)
+	if (st->hash_flag == ON && *st->hold_str != '0')
 	{
 		st->char_count += 2;
 		if (*st->fmt == 'x')
@@ -61,9 +58,6 @@ void	hex_print(t_var *st)
 			write(1, "0X", 2);
 		st->hash_flag = OFF;
 	}
-	st->hold_str = pf_itoa_base(va_arg(st->ap, unsigned int), 16, st->fmt);
-	if (!st->hold_str)
-		exit(1);
 	exec_flags_and_length(st);
 	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	if (st->minus_flag == ON)

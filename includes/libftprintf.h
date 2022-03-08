@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 18:14:34 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 19:52:37 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void	check_precision(t_var *st);
 void	exec_precision(t_var *st);
 void	check_signed_length(t_var *st);
 void	check_unsigned_length(t_var *st);
+void	check_hex_length(t_var *st);
 
 /*
 ** Other functions
@@ -138,7 +139,7 @@ void	check_unsigned_length(t_var *st);
 int		ft_printf(const char *fmt, ...);				//*restrict?
 void	parser_loop(t_var *st);
 void	check_parser(t_var *st);
-char	*pf_itoa_base(long nbr, unsigned int base, const char *ptr);
+void	pf_itoa_base(long long  nbr, unsigned int base, t_var *st);
 void	pf_putint(t_var *st);
 size_t	get_it(t_var *st);
 void	exec_flags_and_length(t_var *st);
@@ -170,11 +171,12 @@ static const t_fptr_flag_op flag_disp_tbl[5] = {
 	null_flag,
 };
 
-static const t_fptr_check_op check_disp_tbl[4] = {
+static const t_fptr_check_op check_disp_tbl[5] = {
 	check_width,
 	check_precision,
 	check_signed_length,
 	check_unsigned_length,
+	check_hex_length,
 };
 
 #endif

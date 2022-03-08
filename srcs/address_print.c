@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 18:31:57 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/07 14:45:43 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/08 19:31:25 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 void	address_print(t_var *st)				//only minus and width flags for pointers
 {
-	int		i;
 	char	*str;
 	
-	i = 0;
-	str = pf_itoa_base(va_arg(st->ap, long), 16, st->fmt);
-	if (!str)
-		exit (1);
+	pf_itoa_base(va_arg(st->ap, long), 16, st);
 	write(1, "0x", 2);
 	st->char_count += 2;
-	while (str[i] && ++st->char_count)
-		ft_putchar(str[i++]);
+	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	ft_strdel(&str);
 	return ;
 }
