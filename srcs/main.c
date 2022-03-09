@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 23:00:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/09 19:40:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1188,8 +1188,8 @@ void	pro_test(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %%%%%%%+10.5dLol\n", 429);
-	a = ft_printf("ft_: %%%%%%%+10.5dLol\n", 429);
+	b = printf("pri: %%%%%%%10.5dLol\n", 429);
+	a = ft_printf("ft_: %%%%%%%10.5dLol\n", 429);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1203,8 +1203,8 @@ void	pro_test1(void)
 {
 	int	a = 429;
 	int	b = 429;
-	b = printf("pri: %%%%%%%+10.5dLol\n", b);
-	a = ft_printf("ft_: %%%%%%%+10.5dLol\n", a);
+	b = printf("pri: %%%%%%%-10.5dLol\n", b);
+	a = ft_printf("ft_: %%%%%%%-10.5dLol\n", a);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1229,20 +1229,6 @@ void	pro_test2(void)
 	++done;
 }
 
-void	pro_test3(void)
-{
-	int	a = 429;
-	int	b = 429;
-	b = printf("pri: %   %%%%%%+10.5dLol\n", b);
-	a = ft_printf("ft_: %   %%%%%%+10.5dLol\n", a);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______pro_test3 failed_______\033[0m\n\n"));
-	++done;
-}
 
 void	pro_test4(void)
 {
@@ -1514,6 +1500,21 @@ void	test_basic3(void)
 	++done;
 }
 
+void	test_basic6(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %#x\n", 0);
+	a = ft_printf("ft_: %#x\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_basic6 failed_______\033[0m\n\n"));
+	++done;
+}
+
 void	test_basic4(void)
 {
 	int	a;
@@ -1544,20 +1545,21 @@ void	test_basic5(void)
 	++done;
 }
 
-void	test_basic6(void)
+void	pro_test3(void)
 {
-	int	a;
-	int	b;
-	b = printf("pri: %#x\n", 0);
-	a = ft_printf("ft_: %#x\n", 0);
+	int	a = 429;
+	int	b = 429;
+	b = printf("pri: %   %%%%%%- 10.5dLol\n", b);
+	a = ft_printf("ft_: %   %%%%%%- 10.5dLol\n", a);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
-		assert(printf("\033[1;31m _______test_basic6 failed_______\033[0m\n\n"));
+		assert(printf("\033[1;31m _______pro_test3 failed_______\033[0m\n\n"));
 	++done;
 }
+
 
 int	main(void)
 {
@@ -1642,7 +1644,7 @@ int	main(void)
 	pro_test();
 	pro_test1();
 	pro_test2();
-	pro_test3();
+
 	pro_test4();
 	test_float0();				//need more 0 tests. BUT YOU ARE AMAZING DUDE! <3
 	test_float1();
@@ -1651,7 +1653,7 @@ int	main(void)
 	test_float4();
 	test_float5();
 	test_float6();
-	test_float7();
+//	test_float7();
 	test_float8();
 	test_float9();
 	test_float10();
@@ -1661,9 +1663,10 @@ int	main(void)
 	test_basic1();
 	test_basic2();
 	test_basic3();
+	test_basic6();
 	test_basic4();
 	test_basic5();
-	test_basic6();
+	pro_test3();
 
 
 	if (tests == done)

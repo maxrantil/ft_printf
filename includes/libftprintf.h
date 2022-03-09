@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 19:52:37 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/09 18:42:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h> 						// remove before eval
 
 # define SPECIF "cspdiouxXf*b%"
-# define FLAGS "+-#0"
+# define FLAGS "+-#0 "
 # define LENGTH "hhllL"
 # define ON 1
 # define OFF 0
@@ -163,11 +163,12 @@ static const t_fptr_print_op print_disp_tbl[14] = {
 	null_print,
 };
 
-static const t_fptr_flag_op flag_disp_tbl[5] = {
+static const t_fptr_flag_op flag_disp_tbl[6] = {
 	flag_plus,
 	flag_minus,
 	hash_flag,
 	get_flag_zero,
+	exec_flag_space,
 	null_flag,
 };
 
