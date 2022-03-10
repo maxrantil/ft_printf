@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/10 16:04:43 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 20:10:51 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	initialize_st(const char *format, t_var *st, int flag)
 	st->hold_str = NULL;					//can memset the whole struct to 0, try that later, also i dont need ptr and can use fmt directly
 	st->le_F = OFF;
 	st->prec_noll = 0;
+	st->for_plus = OFF;
 }
 
 int	ft_printf(const char *format, ...)

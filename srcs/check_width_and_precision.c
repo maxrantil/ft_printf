@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/10 19:32:40 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 20:16:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	exec_width(t_var *st)
 	} */
 	if (st->precision)// && !st->space_count)
 	{
-		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count);// || st->minus_flag);
+		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count);// || st->for_plus);// || st->minus_flag);
 		sub += st->width - st->precision;
 		sub *= (sub > 0);
 		while ((size_t)sub--)
@@ -93,6 +93,8 @@ void	exec_width(t_var *st)
 	}
 	else
 	{
+		if (st->for_plus && --st->char_count)
+			--sub;
 		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count);// || st->minus_flag);
 		sub += st->width;
 		sub *= (sub > 0);

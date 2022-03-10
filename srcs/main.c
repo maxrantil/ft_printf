@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/10 19:37:14 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 20:50:45 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1553,8 +1553,8 @@ void	test_basic5(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %5.2x\n", 5427);
-	a = ft_printf("ft_: %5.2x\n", 5427);
+	b = printf("pri: %5.2d\n", 5427);
+	a = ft_printf("ft_: %5.2d\n", 5427);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1568,8 +1568,8 @@ void	pro_test3(void)
 {
 	int	a = 429;
 	int	b = 429;
-	b = printf("pri: %   %%%%%%- 10.5dLol\n", b);
-	a = ft_printf("ft_: %   %%%%%%- 10.5dLol\n", a);
+	b = printf("pri: %   %%%%%%- 5.15dLol\n", b);
+	a = ft_printf("ft_: %   %%%%%%- 5.15dLol\n", a);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1582,8 +1582,8 @@ void	pro_test_leo(void)
 {
 	int	a = 429;
 	int	b = 429;
-	b = printf("pri: %+-7d %d\n", 123, 567);
-	a = ft_printf("ft_: %+-7d %d\n\n", 123, 567);
+	b = printf("pri: %+-5d show\n", 567);
+	a = ft_printf("ft_: %+-5d show\n\n", 567);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1607,6 +1607,22 @@ void	basic_simple_proc(void)
 		assert(printf("\033[1;31m _______basic_simple_proc failed_______\033[0m\n\n"));
 	++done;
 }
+
+void	basic_plus_uint(void)
+{
+	int	a = 429;
+	int	b = 429;
+	b = printf("pri: %.29lu\n", 4294967295);
+	a = ft_printf("ft_: %.29lu\n", 4294967295);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_plus_uint failed_______\033[0m\n\n"));
+	++done;
+}
+
 
 
 int	main(void)
@@ -1718,6 +1734,8 @@ int	main(void)
 	pro_test3();
 	pro_test_leo();
 	basic_simple_proc();
+	basic_plus_uint();
+
 
 
 	if (tests == done)

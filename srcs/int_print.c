@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/10 19:31:34 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 20:09:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	pf_putint(t_var *st)
 	else if (st->plus_flag == ON)
 	{
 		write(1, "+", 1);
+		st->for_plus = ON;
 		st->plus_flag = OFF;
 		exec_precision(st);
 	}
@@ -89,6 +90,8 @@ void	exec_flags_and_length(t_var *st)
 
 void	int_print(t_var *st)
 {
+/* 	if (st->space_count > 1)
+		st->char_count += write(1, " ", 1); */
 	exec_flags_and_length(st);
 	pf_putint(st);
 	if (*--st->hold_str == '-')				 //this is not good practice, try fix
