@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hex_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 22:53:00 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 18:47:40 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ void	hex_print(t_var *st)
 		st->hash_flag = OFF;
 	}
 	exec_flags_and_length(st);
-	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	if (st->minus_flag == ON)
-		exec_width(st);
+	pf_putint(st);
 	ft_strdel(&st->hold_str);
 	return ;
 }

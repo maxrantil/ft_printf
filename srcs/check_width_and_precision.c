@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_width_and_precision.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/10 15:51:39 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 19:32:40 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	exec_precision(t_var *st)
 
 	sum = st->precision;
 	st->len_va_arg -= (st->va_ret < 0);
-	if (st->len_va_arg && st->precision && st->plus_flag == OFF)
+	if (st->precision && st->plus_flag == OFF)
 	{
 			if (st->zero_flag == ON)
 			{
@@ -72,17 +72,30 @@ void	exec_width(t_var *st)
 	long sub;
 
 	sub = 0;
-	if (st->precision)// && !st->minus_flag && !st->plus_flag)// || (!st->precision && st->minus_flag == OFF))
+/* 	if (st->precision && st->width)// && st->minus_flag)
 	{
-		sub -= (st->va_ret < 0 || st->plus_flag == ON);
-		sub += (ft_imax(st->width, st->precision) - ft_imin(st->width, st->precision));
-		sub *= (st->width > st->precision && sub > 0);
+		if (st->width > st->precision)
+			sub = st->width;
+		//sub -= (st->va_ret < 0 || st->plus_flag == ON);
+		//sub -= st->width - st->precision;
+		//sub -= st->len_va_arg;
+		sub *= (sub > 0);
+		while ((size_t)sub--)
+			st->char_count += write(1, " ", 1);
+	} */
+	if (st->precision)// && !st->space_count)
+	{
+		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count);// || st->minus_flag);
+		sub += st->width - st->precision;
+		sub *= (sub > 0);
 		while ((size_t)sub--)
 			st->char_count += write(1, " ", 1);
 	}
 	else
 	{
-		sub = st->width;
+		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count);// || st->minus_flag);
+		sub += st->width;
+		sub *= (sub > 0);
 		while ((size_t)sub-- > st->len_va_arg)
 			st->char_count += write(1, " ", 1);
 	}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/10 15:59:06 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 19:37:14 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -420,21 +420,6 @@ void test_mindfuck(void)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______test_mindfuck failed_______\033[0m\n\n"));
-	++done;
-}
-
-void test_mindfuck_minus(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %-10.5dLol\n", 42);
-	a = ft_printf("ft_: %-10.5dLol\n", 42);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_mindfuck_minus failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1184,50 +1169,6 @@ void test_flag_space(void)
 	++done;
 }
 
-void	pro_test(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %%%%%%%10.5dLol\n", 429);
-	a = ft_printf("ft_: %%%%%%%10.5dLol\n", 429);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______pro_test failed_______\033[0m\n\n"));
-	++done;
-}
-
-void	pro_test1(void)
-{
-	int	a = 429;
-	int	b = 429;
-	b = printf("pri: %%%%%%%-10.5dLol\n", b);
-	a = ft_printf("ft_: %%%%%%%-10.5dLol\n", a);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______pro_test1 failed_______\033[0m\n\n"));
-	++done;
-}
-
-void	pro_test2(void)
-{
-	int	a = 429;
-	int	b = 429;
-	b = printf("pri: % %  %   %    %     %      %+10.5dLol\n", b);
-	a = ft_printf("ft_: % %  %   %    %     %      %+10.5dLol\n", a);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______pro_test2 failed_______\033[0m\n\n"));
-	++done;
-}
 
 
 void	pro_test4(void)
@@ -1530,6 +1471,84 @@ void	test_basic4(void)
 	++done;
 }
 
+void	pro_test(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %%%%%%%10.5d     Lol\n", 429);
+	a = ft_printf("ft_: %%%%%%%10.5d     Lol\n", 429);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______pro_test failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	pro_test1(void)
+{
+	int	a = 429;
+	int	b = 429;
+	b = printf("pri: %%%%%%%-10.5dLol\n", b);
+	a = ft_printf("ft_: %%%%%%%-10.5dLol\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______pro_test1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	pro_test2(void)
+{
+	int	a = 429;
+	int	b = 429;
+	b = printf("pri: % %  %   %    %     %      %+10.5dLol\n", b);
+	a = ft_printf("ft_: % %  %   %    %     %      %+10.5dLol\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______pro_test2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+
+
+
+void	pro_test33(void)
+{
+	int	a = 429;
+	int	b = 429;
+	b = printf("pri: %   %%%%%%- 5.10dLol\n", b);
+	a = ft_printf("ft_: %   %%%%%%- 5.10dLol\n", a);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______pro_test3 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void test_mindfuck_minus(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-10.5dLol\n", 42);
+	a = ft_printf("ft_: %-10.5dLol\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_mindfuck_minus failed_______\033[0m\n\n"));
+	++done;
+}
+
 void	test_basic5(void)
 {
 	int	a;
@@ -1559,13 +1578,12 @@ void	pro_test3(void)
 		assert(printf("\033[1;31m _______pro_test3 failed_______\033[0m\n\n"));
 	++done;
 }
-
 void	pro_test_leo(void)
 {
 	int	a = 429;
 	int	b = 429;
-	b = printf("pri: %+-7d   %d\n", 123, 567);
-	a = ft_printf("ft_: %+-7d   %d\n\n", 123, 567);
+	b = printf("pri: %+-7d %d\n", 123, 567);
+	a = ft_printf("ft_: %+-7d %d\n\n", 123, 567);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1574,6 +1592,22 @@ void	pro_test_leo(void)
 		assert(printf("\033[1;31m _______pro_test_leo failed_______\033[0m\n\n"));
 	++done;
 }
+
+void	basic_simple_proc(void)
+{
+	int	a = 429;
+	int	b = 429;
+	b = printf("pri: % d\n",9999);
+	a = ft_printf("ft_: % d\n",9999);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_simple_proc failed_______\033[0m\n\n"));
+	++done;
+}
+
 
 int	main(void)
 {
@@ -1603,7 +1637,7 @@ int	main(void)
  	test_precision();
  	test_precision_1();
 	test_mindfuck();
-	test_mindfuck_minus();
+
 	test_mindfuck_minusminus();
 	test_mindfuck_simpleminus();
  	test_mindfuck_minusminint();
@@ -1655,10 +1689,6 @@ int	main(void)
 	test_procentage();
 	test_flag_space_minus();
 	test_flag_space();
-	pro_test();
-	pro_test1();
-	pro_test2();
-
 	pro_test4();
 	test_float0();				//need more 0 tests. BUT YOU ARE AMAZING DUDE! <3
 	test_float1();
@@ -1679,9 +1709,15 @@ int	main(void)
 	test_basic3();
 	test_basic6();
 	test_basic4();
+	pro_test();
+	pro_test1();
+	pro_test2();
+	pro_test33();
+	test_mindfuck_minus();
 	test_basic5();
 	pro_test3();
 	pro_test_leo();
+	basic_simple_proc();
 
 
 	if (tests == done)
