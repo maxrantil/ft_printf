@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/09 19:40:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 15:59:06 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1560,6 +1560,20 @@ void	pro_test3(void)
 	++done;
 }
 
+void	pro_test_leo(void)
+{
+	int	a = 429;
+	int	b = 429;
+	b = printf("pri: %+-7d   %d\n", 123, 567);
+	a = ft_printf("ft_: %+-7d   %d\n\n", 123, 567);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______pro_test_leo failed_______\033[0m\n\n"));
+	++done;
+}
 
 int	main(void)
 {
@@ -1667,6 +1681,7 @@ int	main(void)
 	test_basic4();
 	test_basic5();
 	pro_test3();
+	pro_test_leo();
 
 
 	if (tests == done)

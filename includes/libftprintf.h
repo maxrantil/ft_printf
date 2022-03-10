@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/09 18:42:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 16:04:54 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ size_t	get_it(t_var *st);
 void	exec_flags_and_length(t_var *st);
 char	*conv_to_str(long long nbr, t_var *st);
 char	*conv_uint_to_str(unsigned long long nbr, t_var *st);
+void	initialize_st(const char *format, t_var *st, int flag);
 
 static const t_fptr_print_op print_disp_tbl[14] = {
 	char_print,

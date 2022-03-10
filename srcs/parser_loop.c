@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser_loop.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/09 19:18:49 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 16:05:07 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ void	parser_loop(t_var *st)
 		if (ft_isalpha(*st->fmt))
 			st->fmt++;
 		st->space_count = 0;
+		initialize_st(st->fmt, st, 1);
 	}
 }
 

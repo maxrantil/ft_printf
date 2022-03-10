@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_width_and_precision.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/09 19:40:42 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 15:51:39 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	exec_width(t_var *st)
 	long sub;
 
 	sub = 0;
-	if (st->precision)
+	if (st->precision)// && !st->minus_flag && !st->plus_flag)// || (!st->precision && st->minus_flag == OFF))
 	{
 		sub -= (st->va_ret < 0 || st->plus_flag == ON);
 		sub += (ft_imax(st->width, st->precision) - ft_imin(st->width, st->precision));

@@ -3,20 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 16:37:50 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/10 16:04:43 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static void	initialize_st(const char *format, t_var *st)
+void	initialize_st(const char *format, t_var *st, int flag)
 {
 	st->fmt = format;
 	st->space_count = 0;
-	st->char_count = 0;
+	if (!flag)
+		st->char_count = 0;
 	st->astx_ret = 0;
 	st->len_va_arg = 0;
 	st->width = 0;
@@ -39,7 +40,7 @@ int	ft_printf(const char *format, ...)
 	t_var		st;
 
 	va_start(st.ap, format);
-	initialize_st(format, &st);
+	initialize_st(format, &st, 0);
 	parser_loop(&st);
 	va_end(st.ap);
 	return ((int)st.char_count); //will it return -1 on fail? then the cast wont work...

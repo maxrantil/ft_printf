@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/03/08 23:08:03 by mrantil          ###   ########.fr        #
+#    Updated: 2022/03/10 16:26:05 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,9 +67,9 @@ $(NAME): $(OBJ)
 	@ranlib $@
 	@echo "$@ indexed"
 #after this line is just for testing, erase later
-	@gcc main.c $@ $(HFILE) -I$(LDIR) -g -O3
-	@echo "Compiling main.c..."
-	@echo '\n'a.out ready to \(run\)fire!
+#	@gcc main.c $@ $(HFILE) -I$(LDIR) -g -O3
+#	@echo "Compiling main.c..."
+#	@echo '\n'a.out ready to \(run\)fire!
 
 clean:
 	@echo "Cleaning object files..."
