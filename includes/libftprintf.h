@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/10 20:10:23 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/11 11:15:18 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ typedef struct s_var
 	int					le_F;
 	int					prec_noll;
 	int					for_plus;
+	int					even_procent;
 }						t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);

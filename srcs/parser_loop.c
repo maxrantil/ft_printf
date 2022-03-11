@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/10 20:20:23 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/11 10:49:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	parser_loop(t_var *st)
 			st->char_count += write(1, st->fmt++, 1);
 			continue ;
 		}
-		if (*++st->fmt == '%' || *st->fmt == ' ')
+		++st->fmt;
+		/* if (*++st->fmt == '%' || *st->fmt == ' ')
 		{
 			st->space_count = 0;
 			while (*st->fmt == ' ' && ++st->space_count)
@@ -50,7 +51,8 @@ void	parser_loop(t_var *st)
 				st->char_count += write(1, st->fmt++, 1);
 			if (!ft_isalpha(*st->fmt))
 				continue ;
-		}
+		} */
+		
 		check_parser(st);
 		if (ft_isalpha(*st->fmt))
 			st->fmt++;
