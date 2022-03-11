@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 10:38:21 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/11 17:52:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	check_precision(t_var *st)
 	if (*st->fmt == '.')
 	{
 		st->fmt++;
+		st->precision_zero = 1;
 		st->precision = get_it(st);
 	}
 }

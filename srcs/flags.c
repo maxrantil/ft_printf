@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 15:04:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/11 17:42:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,22 +25,24 @@ void	exec_flag_zero(t_var *st)
 	sub -= (st->va_ret < 0);
 	if (st->precision && st->zero_flag == ON)
 		sub = st->precision - st->len_va_arg + st->len_va_arg;
+	sub -= (st->hash_flag > 0) * 2;
 	sub *= (sub > 0);
 	while ((size_t)sub-- > st->len_va_arg)
 		st->char_count += write(1, "0", 1);
-	st->zero_flag = OFF;
+	st->zero_flag = OFF;	
 }
 
 void	get_flag_zero(t_var *st)
 {
 	if (*st->fmt == '0')
 	{
-		st->zero_flag = ON;
 		while (*st->fmt == '0')
 			st->fmt++;
-		/* if (st->va_ret < 0)         			//why is this here? i dont need it, but will it make it faster?
-			return ; */
-		st->zero = get_it(st);
+		if (!st->minus_flag)
+		{
+			st->zero_flag = ON;
+			st->zero = get_it(st);
+		}	
 	}
 }
 
@@ -88,37 +90,6 @@ void	hash_flag(t_var *st)
 			st->space_count = 0;
 		}
 	}
-
-	/* while (*st->fmt == ' ' && ++st->space_count)
-	{
-		st->fmt++;
-		continue ;
-		if (*st->fmt != '%')
-		{
-			if (st->space_count > 1)
-				st->char_count += write(1, " ", 1);
-		}
-		if (*st->fmt == 'd' && st->space_count > 1)
-		{
-			st->char_count += write(1, " ", 1);
-			st->space_count = 0;
-		} */
-		/* else if (st->space_count > 1 && !st->plus_flag)
-		{
-			st->fmt++;
-			++st->space_count;
-		} */
-
-/* if (*++st->fmt == '%' || *st->fmt == ' ')
-		{
-			st->space_count = 0;
-			while (*st->fmt == ' ' && ++st->space_count)
-				st->fmt++;
-			if (*st->fmt == '%')
-				st->char_count += write(1, st->fmt++, 1);
-			if (!ft_isalpha(*st->fmt))
-				continue ;
-		} */
 
 void	flag_plus(t_var *st)
 {
