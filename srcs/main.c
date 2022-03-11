@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 11:02:03 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/11 15:05:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1186,6 +1186,9 @@ void	pro_test4(void)
 	++done;
 }
 
+/* pri: % %%      +00429   Lol
+ft_: %%%     +00429     Lol */
+
 void	test_float0(void)
 {
 	int	a;
@@ -1505,8 +1508,8 @@ void	pro_test2(void)
 {
 	int	a = 429;
 	int	b = 429;
-	b = printf("pri: % %  %   %    %     %      %+10.5dLol\n", b);
-	a = ft_printf("ft_: % %  %   %    %     %      %+10.5dLol\n", a);
+	b = printf("pri: %%  %%    %%      %+10.5dLol\n", b);
+	a = ft_printf("ft_: %%  %%    %%      %+10.5dLol\n", a);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1515,10 +1518,6 @@ void	pro_test2(void)
 		assert(printf("\033[1;31m _______pro_test2 failed_______\033[0m\n\n"));
 	++done;
 }
-
-/* pri: %  %    %          +00429Lol
-ft_: %     +10.5dLol */
-
 
 void	pro_test33(void)
 {
@@ -1579,6 +1578,7 @@ void	pro_test3(void)
 		assert(printf("\033[1;31m _______pro_test3 failed_______\033[0m\n\n"));
 	++done;
 }
+
 void	pro_test_leo(void)
 {
 	int	a = 429;
@@ -1621,6 +1621,21 @@ void	basic_plus_uint(void)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______basic_plus_uint failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_valt(void)
+{
+	int	a = 429;
+	int	b = 429;
+	b = printf("pri: %.10% %%\n");
+	a = ft_printf("ft_: %.10% %%\n");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_valtfailed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1736,6 +1751,7 @@ int	main(void)
 	pro_test_leo();
 	basic_simple_proc();
 	basic_plus_uint();
+	basic_valt();
 
 
 

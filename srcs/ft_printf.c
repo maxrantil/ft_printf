@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 11:15:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/11 14:44:06 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 void	initialize_st(const char *format, t_var *st, int flag)
 {
 	st->fmt = format;
-	st->space_count = 0;
 	if (!flag)
 	{
 		st->char_count = 0;
 		st->even_procent = 0;
+		st->space_count = 0; // this is wrong
 	}
 	st->astx_ret = 0;
 	st->len_va_arg = 0;

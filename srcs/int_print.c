@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 10:26:00 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/11 13:16:30 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	exec_flags_and_length(t_var *st)
 {
 	st->len_va_arg = ft_strlen(st->hold_str);
 	asterix_print(st);
+	//exec_flag_space(st);
 	if (st->minus_flag == OFF && st->width)
 	{
 		exec_width(st);

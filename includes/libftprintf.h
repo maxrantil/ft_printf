@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 11:15:18 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/11 13:11:35 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	null_print(t_var *st);
 void	flag_plus(t_var *st);
 void	flag_minus(t_var *st);
 void	procentage_print(t_var *st);
-//void	get_flag_space(t_var *st);
+void	get_flag_space(t_var *st);
 void	exec_flag_proc(t_var *st);
 void	exec_flag_space(t_var *st);
 void	hash_flag(t_var *st);
@@ -171,7 +171,7 @@ static const t_fptr_flag_op flag_disp_tbl[6] = {
 	flag_minus,
 	hash_flag,
 	get_flag_zero,
-	exec_flag_space,
+	get_flag_space,
 	null_flag,
 };
 
