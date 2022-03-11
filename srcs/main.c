@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 17:56:09 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/11 17:58:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1715,8 +1715,8 @@ void	basic_hash5(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %5.0x-\n", 0);
-	a = ft_printf("ft_: %5.0x-\n", 0);
+	b = printf("pri: %5.x %5.0x-\n", 0, 0);
+	a = ft_printf("ft_: %5.x %5.0x-\n", 0, 0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1842,7 +1842,7 @@ int	main(void)
 	test_basic6();
 	basic_hash3();
 /* 	basic_hash4(); */ //zero-flag is ignored with minus-flag
-/* 	basic_hash5(); */ //do in school
+	basic_hash5(); //do in school
 
 							//work with string at home to make it work
 /* # 0052 (char *)
