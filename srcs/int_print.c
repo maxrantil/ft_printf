@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 16:09:28 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/13 10:39:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	pf_putint(t_var *st)
 	}
 	else if (st->plus_flag == ON)
 	{
-		write(1, "+", 1);
+		ft_putchar('+');
 		st->for_plus = ON;
 		st->plus_flag = OFF;
 		exec_precision(st);
@@ -35,7 +35,7 @@ void	pf_putint(t_var *st)
 		exec_width(st);
 }
 
-static int	pf_nbrlen(long long nbr)
+static size_t	pf_nbrlen(long long nbr)
 {
 	int	c;
 

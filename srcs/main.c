@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 17:58:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/13 13:01:07 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1726,6 +1726,188 @@ void	basic_hash5(void)
 	++done;
 }
 
+void	basic_strings(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %10s is a string\n", "this");
+	a = ft_printf("ft_: %10s is a string\n", "this");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_strings1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.2s is a string\n", "this");
+	a = ft_printf("ft_: %.2s is a string\n", "this");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_strings2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-10s is a string\n", "this");
+	a = ft_printf("ft_: %-10s is a string\n", "this");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_strings3(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %5.2s is a string\n", "");
+	a = ft_printf("ft_: %5.2s is a string\n", "");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings3 failed_______\033[0m\n\n"));
+	++done;
+}
+/*
+pri:       is a string
+ft_:    00p is a string */
+
+void	basic_strings4(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %5.2s is a string\n", "this");
+	a = ft_printf("ft_: %5.2s is a string\n", "this");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings4 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_strings5(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-.2s is a string\n", "this");
+	a = ft_printf("ft_: %-.2s is a string\n", "this");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings5 failed_______\033[0m\n\n"));
+	++done;
+}
+
+/* 	pri: th is a string
+	ft_: this is a string */
+
+void	basic_strings6(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-10s is a string\n", "");
+	a = ft_printf("ft_: %-10s is a string\n", "");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings6 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_strings7(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-5.2s is a string\n", "");
+	a = ft_printf("ft_: %-5.2s is a string\n", "");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings7 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_strings8(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %s is a string\n", "NULL");
+	a = ft_printf("ft_: %s is a string\n", "NULL");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings8 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_strings9(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %s is %s a string\n", "", "string");
+	a = ft_printf("ft_: %s is %s a string\n", "", "string");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings9 failed_______\033[0m\n\n"));
+	++done;
+}
+
+
+/* # 0073 (char)
+  ft_printf("%5c", 42);
+  1. (    1) -->*<--
+  2. (    5) -->    *<--
+
+# 0074 (char)
+  ft_printf("%-5c", 42);
+  1. (    1) -->*<--
+  2. (    5) -->*    <--
+
+# 0076 (char)
+  ft_printf("%2c", 0);
+  1. (    1) -->^@<--
+  2. (    2) --> ^@<--
+
+# 0083 (int)
+  ft_printf("%#6o", 2500);
+  1. (    7) -->0  4704<--
+  2. (    6) --> 04704<--
+
+# 0084 (int)
+  ft_printf("%-#6o", 2500);
+  1. (    7) -->04704  <--
+  2. (    6) -->04704 <--  */
+
 
 int	main(void)
 {
@@ -1806,7 +1988,7 @@ int	main(void)
 	test_procentage();
 	test_flag_space_minus();
 	test_flag_space();
-	test_float0();	
+	test_float0();
 	test_float1();
 	test_float2();
 	test_float3();
@@ -1819,8 +2001,8 @@ int	main(void)
 	test_float10();
 	test_float11();
 	test_float12();
-	test_basic0();
-	test_basic1();
+/* 	test_basic0();
+	test_basic1(); */
 	test_basic2();
 	test_basic3();
 	test_basic4();
@@ -1842,96 +2024,17 @@ int	main(void)
 	test_basic6();
 	basic_hash3();
 /* 	basic_hash4(); */ //zero-flag is ignored with minus-flag
-	basic_hash5(); //do in school
-
-							//work with string at home to make it work
-/* # 0052 (char *)
-  ft_printf("%10s is a string", "this");
-  1. (   16) -->this is a string<--
-  2. (   22) -->      this is a string<--
-
-# 0053 (char *)
-  ft_printf("%.2s is a string", "this");
-  1. (   16) -->this is a string<--
-  2. (   14) -->th is a string<--
-
-# 0054 (char *)
-  ft_printf("%5.2s is a string", "this");
-  1. (   16) -->this is a string<--
-  2. (   17) -->   th is a string<--
-
-# 0055 (char *)
-  ft_printf("%10s is a string", "");
-  1. (   12) --> is a string<--
-  2. (   22) -->           is a string<--
-
-# 0057 (char *)
-  ft_printf("%5.2s is a string", "");
-  1. (   12) --> is a string<--
-  2. (   17) -->      is a string<--
-
-# 0058 (char *)
-  ft_printf("%-10s is a string", "this");
-  1. (   16) -->this is a string<--
-  2. (   22) -->this       is a string<--
-
-# 0059 (char *)
-  ft_printf("%-.2s is a string", "this");
-  1. (   16) -->this is a string<--
-  2. (   14) -->th is a string<--
-
-# 0060 (char *)
-  ft_printf("%-5.2s is a string", "this");
-  1. (   16) -->this is a string<--
-  2. (   17) -->th    is a string<--
-
-# 0061 (char *)
-  ft_printf("%-10s is a string", "");
-  1. (   12) --> is a string<--
-  2. (   22) -->           is a string<--
-
-# 0063 (char *)
-  ft_printf("%-5.2s is a string", "");
-  1. (   12) --> is a string<--
-  2. (   17) -->      is a string<--
-
-# 0069 (NULL)
-  ft_printf("@moulitest: %s", NULL);
-includes/projects/ft_printf/ft_printf_main.sh: line 206: printf: @moulitest: includes/projects/ft_printf/ft_printf_main.sh: line 159: 96666 Segmentation fault: 11  ./tmp/ft_printf_s sN "@moulitest: %s" ""$: invalid number
-  1. (    0) -->@moulitest: includes/projects/ft_printf/ft_printf_main.sh: line 159: 96666 Segmentation fault: 11  ./tmp/ft_printf_s sN "@moulitest: %s" "NULL"$<--
-  2. (   18) -->@moulitest: (null)<--
-
-# 0071 (NULL)
-  ft_printf("%s %s", NULL, string);
-includes/projects/ft_printf/ft_printf_main.sh: line 206: printf: includes/projects/ft_printf/ft_printf_main.sh: line 159: 96752 Segmentation fault: 11  ./tmp/ft_printf_s sN "%s %s" "" "string"$: invalid number
-  1. (    0) -->includes/projects/ft_printf/ft_printf_main.sh: line 159: 96752 Segmentation fault: 11  ./tmp/ft_printf_s sN "%s %s" "NULL" "string"$<--
-  2. (   13) -->(null) string<--
-
-# 0073 (char)
-  ft_printf("%5c", 42);
-  1. (    1) -->*<--
-  2. (    5) -->    *<--
-
-# 0074 (char)
-  ft_printf("%-5c", 42);
-  1. (    1) -->*<--
-  2. (    5) -->*    <--
-
-# 0076 (char)
-  ft_printf("%2c", 0);
-  1. (    1) -->^@<--
-  2. (    2) --> ^@<--
-
-# 0083 (int)
-  ft_printf("%#6o", 2500);
-  1. (    7) -->0  4704<--
-  2. (    6) --> 04704<--
-
-# 0084 (int)
-  ft_printf("%-#6o", 2500);
-  1. (    7) -->04704  <--
-  2. (    6) -->04704 <-- */
-
+	/* basic_hash5(); */ //do in school
+	basic_strings();
+	basic_strings1();
+	basic_strings2();
+	basic_strings3();
+	basic_strings4();
+	basic_strings5();
+	basic_strings6();
+	basic_strings7();
+	basic_strings8();
+	basic_strings9();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
