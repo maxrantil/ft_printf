@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/14 17:56:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/14 19:10:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1812,8 +1812,8 @@ void	basic_strings7(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %-5.2s is a string\n", "");
-	a = ft_printf("ft_: %-5.2s is a string\n", "");
+	b = printf("pri: %-15.2s is a string\n", "");
+	a = ft_printf("ft_: %-15.2s is a string\n", "");
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1913,30 +1913,201 @@ void	basic_hexs11(void)
 	++done;
 }
 
-/* # 0073 (char)
-  ft_printf("%5c", 42);
-  1. (    1) -->*<--
-  2. (    5) -->    *<--
+void	basic_strings10(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri:%s %s\n", NULL, "string");
+	a = ft_printf("ft_:%s %s\n", NULL, "string");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings10 failed_______\033[0m\n\n"));
+	++done;
+}
 
-# 0074 (char)
-  ft_printf("%-5c", 42);
-  1. (    1) -->*<--
-  2. (    5) -->*    <--
+void	basic_strings11(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.4s is a string\n", "");
+	a = ft_printf("ft_: %.4s is a string\n", "");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings11 failed_______\033[0m\n\n"));
+	++done;
+}
 
-# 0076 (char)
-  ft_printf("%2c", 0);
-  1. (    1) -->^@<--
-  2. (    2) --> ^@<--
+void	basic_strings12(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-.2s is a string\n", "");
+	a = ft_printf("ft_: %-.2s is a string\n", "");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings12 failed_______\033[0m\n\n"));
+	++done;
+}
 
-# 0083 (int)
-  ft_printf("%#6o", 2500);
-  1. (    7) -->0  4704<--
-  2. (    6) --> 04704<--
+void	basic_strings13(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri:@moulitest: %s\n", NULL);
+	a = ft_printf("ft_:@moulitest: %s\n", NULL);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_strings13 failed_______\033[0m\n\n"));
+	++done;
+}
 
-# 0084 (int)
-  ft_printf("%-#6o", 2500);
-  1. (    7) -->04704  <--
-  2. (    6) -->04704 <--  */
+void	basic_char1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %5c-\n", 42);
+	a = ft_printf("ft_: %5c-\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_char1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_char2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-5c-\n", 42);
+	a = ft_printf("ft_: %-5c-\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_char2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_char3(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %2c-\n", 0);
+	a = ft_printf("ft_: %2c-\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_char3 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_o_spec(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %#6o-\n", 2500);
+	a = ft_printf("ft_: %#6o-\n", 2500);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_o_spec failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_o_spec1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-#6o-\n", 2500);
+	a = ft_printf("ft_: %-#6o-\n", 2500);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_o_spec1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_o_spec2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: @moulitest: %.o %.0o-\n", 0, 0);
+	a = ft_printf("ft_: @moulitest: %.o %.0o-\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_o_spec2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_o_spec3(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: @moulitest: %5.o %5.0o-\n", 0, 0);
+	a = ft_printf("ft_: @moulitest: %5.o %5.0o-\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_o_spec3 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_o_spec4(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: @moulitest: %#.o %#.0o-\n", 0, 0);
+	a = ft_printf("ft_: @moulitest: %#.o %#.0o-\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_o_spec4 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: % +d\n", 42);
+	a = ft_printf("ft_: % +d\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec failed_______\033[0m\n\n"));
+	++done;
+}
+
 
 
 int	main(void)
@@ -2068,6 +2239,19 @@ int	main(void)
 	basic_hash5(); //do in school
 	basic_hexs10();
 	basic_hexs11();
+	basic_strings10();
+	basic_strings11();
+	basic_strings12();
+	basic_strings13();
+	basic_char1();
+	basic_char2();
+	basic_char3();
+	basic_o_spec();
+	basic_o_spec1();
+	basic_o_spec2();
+	basic_o_spec3();
+	basic_o_spec4();
+	basic_d_spec();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

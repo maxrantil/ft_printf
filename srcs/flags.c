@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 17:42:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/14 19:20:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,9 @@ void	hash_flag(t_var *st)
 
  void	exec_flag_space(t_var *st)
 {
-		if (ft_isalpha(*st->fmt) && st->space_count)
+		/* if (st->plus_flag && st->space_count)
+			st->char_count++; */
+		if (ft_isalpha(*st->fmt) && st->space_count && !st->plus_flag)
 		{
 			st->char_count += write(1, " ", 1);
 			st->space_count = 0;
@@ -95,6 +97,8 @@ void	flag_plus(t_var *st)
 {
 	if (*st->fmt == '+')
 	{
+		if (st->plus_flag == ON)
+			st->char_count++;
 		st->plus_flag = ON;
 		st->fmt++;
 		st->char_count++;
