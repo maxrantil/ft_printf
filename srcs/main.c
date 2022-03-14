@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/13 13:01:07 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/14 17:56:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1696,35 +1696,6 @@ void	basic_hash3(void)
 	++done;
 }
 
-/* void	basic_hash4(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %#-08x\n", 42);
-	a = ft_printf("ft_: %#-08x\n", 42);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______basic_hash4 failed_______\033[0m\n\n"));
-	++done;
-} */
-
-void	basic_hash5(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %5.x %5.0x-\n", 0, 0);
-	a = ft_printf("ft_: %5.x %5.0x-\n", 0, 0);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______basic_hash5 failed_______\033[0m\n\n"));
-	++done;
-}
 
 void	basic_strings(void)
 {
@@ -1882,6 +1853,65 @@ void	basic_strings9(void)
 	++done;
 }
 
+void	basic_hash4(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %#-08x\n", 144);
+	a = ft_printf("ft_: %#-08x\n", 144);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_hash4 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_hash5(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %5.x %5.0x-\n", 0, 0);
+	a = ft_printf("ft_: %5.x %5.0x-\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_hash5 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_hexs10(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: @moulitest: %.x %.0x-\n", 0, 0);
+	a = ft_printf("ft_: @moulitest: %.x %.0x-\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_hexs10 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_hexs11(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: @moulitest: %#8x-\n", 42);
+	a = ft_printf("ft_: @moulitest: %#8x-\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_hexs11 failed_______\033[0m\n\n"));
+	++done;
+}
 
 /* # 0073 (char)
   ft_printf("%5c", 42);
@@ -2023,8 +2053,7 @@ int	main(void)
 	basic_hash2();
 	test_basic6();
 	basic_hash3();
-/* 	basic_hash4(); */ //zero-flag is ignored with minus-flag
-	/* basic_hash5(); */ //do in school
+
 	basic_strings();
 	basic_strings1();
 	basic_strings2();
@@ -2035,6 +2064,10 @@ int	main(void)
 	basic_strings7();
 	basic_strings8();
 	basic_strings9();
+	basic_hash4(); //zero-flag is ignored with minus-flag
+	basic_hash5(); //do in school
+	basic_hexs10();
+	basic_hexs11();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
