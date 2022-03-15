@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/10 20:49:04 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/15 14:29:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
 
 void	uint_print(t_var *st)
 {
+	st->uint_check = ON;
 	exec_flags_and_length(st);				//need to impllements the fags here.
 	pf_put_uint(st);
 }

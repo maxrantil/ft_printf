@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/14 19:10:01 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/15 19:14:47 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2108,6 +2108,170 @@ void	basic_d_spec(void)
 	++done;
 }
 
+void	basic_d_spec1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: % ++d\n", 42);
+	a = ft_printf("ft_: % ++d\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %0+5d\n", 42);
+	a = ft_printf("ft_: %0+5d\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec3(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %5d\n", -42);
+	a = ft_printf("ft_: %5d\n", -42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec3 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec4(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-+10.5d-\n", 4242);
+	a = ft_printf("ft_: %-+10.5d-\n", 4242);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec4 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec5(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-5d-\n", -42);
+	a = ft_printf("ft_: %-5d-\n", -42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec5 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec6(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri:%-05d-\n", -42);
+	a = ft_printf("ft_:%-05d-\n", -42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec6 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec7(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %0+5d-\n", -42);
+	a = ft_printf("ft_: %0+5d-\n", -42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec7 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec8(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %013.2d-\n", 0);
+	a = ft_printf("ft_: %013.2d-\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec8 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec9(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.d %.0d\n", 0, 0);
+	a = ft_printf("ft_: %.d %.0d\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec9 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec10(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %lld\n", 9223372036854775808);
+	a = ft_printf("ft_: %lld\n", 9223372036854775808);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec10 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: aa%%bb\n");
+	a = ft_printf("ft_: aa%%bb\n");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test failed_______\033[0m\n\n"));
+	++done;
+}
 
 
 int	main(void)
@@ -2252,6 +2416,17 @@ int	main(void)
 	basic_o_spec3();
 	basic_o_spec4();
 	basic_d_spec();
+	basic_d_spec1();
+	basic_d_spec2();
+	basic_d_spec3();
+	basic_d_spec4();
+	basic_d_spec5();
+	basic_d_spec6();
+	basic_d_spec7();
+	basic_d_spec8();
+	basic_d_spec9();
+	basic_d_spec10();
+	mouli_test();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

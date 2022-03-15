@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   int_print.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/13 10:39:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/15 19:11:36 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	pf_putint(t_var *st)
 	{
 		if (st->plus_flag == ON && st->minus_flag == OFF && --st->char_count)
 			st->plus_flag = OFF;
-		//exec_flag_space(st);
 		exec_precision(st);
 		exec_flag_zero(st);
 		st->hold_str++;
@@ -30,7 +29,12 @@ void	pf_putint(t_var *st)
 		st->plus_flag = OFF;
 		exec_precision(st);
 	}
-	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+	if (st->for_plus == ON)
+		exec_flag_zero(st);
+	if (*st->hold_str == '0' && st->precision_zero && !st->precision)// && st->hash_flag)
+		return ;
+	else
+		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	if (st->minus_flag == ON)
 		exec_width(st);
 }
@@ -67,6 +71,8 @@ static size_t	pf_nbrlen(long long nbr)
 	}
 	if (st->va_ret < 0)
 		str[0] = '-';
+	if (!ft_strcmp(str, "-'..--).0-*(+,))+(0("))
+		return (ft_strdup("-9223372036854775808"));
 	return (str);
 }
 
@@ -74,16 +80,17 @@ void	exec_flags_and_length(t_var *st)
 {
 	st->len_va_arg = ft_strlen(st->hold_str);
 	asterix_print(st);
-	//exec_flag_space(st);
-	if (st->minus_flag == OFF && st->width)
+	if (st->minus_flag == OFF && st->width && !st->zero_flag)
 	{
 		exec_width(st);
 	}
 	if (st->va_ret >= 0)
 	{
-		exec_flag_space(st);
+		if (!st->uint_check)
+			exec_flag_space(st);
 		exec_precision(st);
-		exec_flag_zero(st);
+		if (!st->plus_flag)
+			exec_flag_zero(st);
 	}
 	if (*st->hold_str == '-')					 //plug_flag == ON put "+"?
 		st->char_count += write(1, "-", 1);
