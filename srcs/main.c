@@ -6,12 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/15 19:14:47 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/16 14:18:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 #include <assert.h>
+#include <limits.h>
 
 static unsigned int tests;
 static unsigned int done;
@@ -2273,6 +2274,231 @@ void	mouli_test(void)
 	++done;
 }
 
+void	mouli_test1(void)
+{
+	long	a;
+	long	b;
+	b = printf("pri: %lo, %lo\n", 0ul, 4294967295);
+	a = ft_printf("ft_: %lo, %lo\n", 0ul, 4294967295);
+	printf("\nret: %d \n", (int)b);
+	printf("ret: %d \n", (int)a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test2(void)
+{
+	long long	a;
+	long long	b;
+	b = printf("pri: %llo, %llo\n", 0ul, 9223372036854775807);
+	a = ft_printf("ft_: %llo, %llo\n", 0ul, 9223372036854775807);
+	printf("\nret: %d \n", (int)b);
+	printf("ret: %d \n", (int)a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test3(void)
+{
+	unsigned short	a;
+	unsigned short	b;
+	b = printf("pri: %ho, %ho\n", 0, 65535);
+	a = ft_printf("ft_: %ho, %ho\n", 0, 65535);
+	printf("\nret: %d \n", (int)b);
+	printf("ret: %d \n", (int)a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test3 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test4(void)
+{
+	unsigned char	a;
+	unsigned char	b;
+	b = printf("pri: %hho, %hho\n", 0, 255);
+	a = ft_printf("ft_: %hho, %hho\n", 0, 255);
+	printf("\nret: %d \n", (int)b);
+	printf("ret: %d \n", (int)a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test4 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test5(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: {%5p}\n", 0);
+	a = ft_printf("ft_: {%5p}\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test5 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test6(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %#o\n", 0);
+	a = ft_printf("ft_: %#o\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test6 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test7(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: {% 03d}\n", 0);
+	a = ft_printf("ft_: {% 03d}\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test7 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test8(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %15.4d\n", -424242);
+	a = ft_printf("ft_: %15.4d\n", -424242);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test8 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test9(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.4s\n", "42");
+	a = ft_printf("ft_: %.4s\n", "42");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test9 failed_______\033[0m\n\n"));
+	++done;
+}
+
+/* void	mouli_test10(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.0p, %.p\n", 0, 0);
+	a = ft_printf("ft_: %.0p, %.p\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test10 failed_______\033[0m\n\n"));
+	++done;
+} */
+
+void	mouli_test11(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.p, %.0p\n", 0, 0);
+	a = ft_printf("ft_: %.p, %.0p\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test11 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test12(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %o, %ho\n", -42, -42, -42);
+	a = ft_printf("ft_: %o, %ho\n", -42, -42, -42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test12 failed_______\033[0m\n\n"));
+	++done;
+}
+
+/* void	mouli_test13(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: {%f}{%lf}{%Lf}\n", 1.42, 1.42, 1.42l);
+	a = ft_printf("ft_: {%f}{%lf}{%Lf}\n", 1.42, 1.42, 1.42l);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test13 failed_______\033[0m\n\n"));
+	++done;
+} */
+
+void	mouli_test14(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %*.*d\n", 0, 3, 0);
+	a = ft_printf("ft_: %*.*d\n", 0, 3, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test14 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test15(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: {%*3d}\n", 5, 0);
+	a = ft_printf("ft_: {%*3d}\n", 5, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test15 failed_______\033[0m\n\n"));
+	++done;
+}
+
 
 int	main(void)
 {
@@ -2427,6 +2653,21 @@ int	main(void)
 	basic_d_spec9();
 	basic_d_spec10();
 	mouli_test();
+	mouli_test1();
+	mouli_test2();
+	mouli_test3();
+	mouli_test4();
+	mouli_test5();
+	mouli_test6();
+	mouli_test7();
+	mouli_test8();
+	mouli_test9();
+/* 	mouli_test10(); */
+	mouli_test11();
+	mouli_test12();
+/* 	mouli_test13(); */
+	mouli_test14();
+	mouli_test15();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

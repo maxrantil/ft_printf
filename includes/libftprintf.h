@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/15 14:29:53 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/16 13:43:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	exec_precision(t_var *st);
 void	check_signed_length(t_var *st);
 void	check_unsigned_length(t_var *st);
 void	check_hex_length(t_var *st);
+void	check_oct_length(t_var *st)	;
 
 /*
 ** Other functions
@@ -178,12 +179,13 @@ static const t_fptr_flag_op flag_disp_tbl[6] = {
 	null_flag,
 };
 
-static const t_fptr_check_op check_disp_tbl[5] = {
+static const t_fptr_check_op check_disp_tbl[6] = {
 	check_width,
 	check_precision,
 	check_signed_length,
 	check_unsigned_length,
 	check_hex_length,
+	check_oct_length,
 };
 
 #endif

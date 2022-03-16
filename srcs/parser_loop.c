@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 09:08:16 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/11 17:38:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/16 13:38:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	parser_loop(t_var *st)
 		}
 		++st->fmt;
 		check_parser(st);
-		if (ft_isalpha(*st->fmt))
+		if (ft_isalpha(*st->fmt))// && !st->even_procent)
 			st->fmt++;
 		initialize_st(st->fmt, st, 1);
 	}

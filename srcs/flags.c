@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/15 18:38:08 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/16 13:38:31 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	hash_flag(t_var *st)
 	size_t i;
 
 	i = 0;
+	//st->even_procent++;
 	if (*st->fmt == '%' && st->minus_flag == OFF)
 	{
 		while (++i < st->width)

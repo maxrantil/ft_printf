@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/14 17:57:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/16 14:30:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,6 @@ static void	pf_put_hex(t_var *st)
 			pf_print_hex_hash(st);
 	if (*st->hold_str == '0' && st->precision_zero && !st->precision)// && st->hash_flag)
 		return ;
-	/* else if (*st->hold_str == '0' && st->precision_zero && !st->precision)
-		st->char_count += write(1, " ", 1); */
 	else
 		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	if (st->minus_flag == ON)
