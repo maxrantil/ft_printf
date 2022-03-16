@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/14 18:35:53 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/16 15:00:22 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static void	pf_putstr(t_var *st)
 	size_t len;
 
 	len = st->len_va_arg;
-	if (st->precision)
-		st->len_va_arg = st->precision;
+	if (st->precision && st->precision < st->len_va_arg)// < st->len_va_arg)
+		st->len_va_arg = st->precision;				//somthing is wrong here for moulitest9
 	if (st->minus_flag == OFF && st->width)
 		exec_width(st);
 	if (!len && st->width)
