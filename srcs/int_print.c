@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/15 19:11:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:41:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	pf_putint(t_var *st)
 	}
 	if (st->for_plus == ON)
 		exec_flag_zero(st);
-	if (*st->hold_str == '0' && st->precision_zero && !st->precision)// && st->hash_flag)
+	if (*st->hold_str == '0' && st->precision_zero && !st->precision)
 		return ;
 	else
 		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
@@ -51,14 +51,14 @@ static size_t	pf_nbrlen(long long nbr)
 	return (++c);
 }
 
- char	*conv_to_str(long long nbr, t_var *st) //can you use pointer instead of index? //shall you send in st to take the return directly in here insted of sending it out?
+char	*conv_to_str(long long nbr, t_var *st)
 {
 	char		*str;
 	size_t		l;
 
 	st->va_ret = nbr;
 	l = pf_nbrlen(nbr);
-	str = (char *)malloc(sizeof(char) * l + 1); //need to be freed
+	str = (char *)malloc(sizeof(char) * l + 1);
 	if (!str)
 		exit(1);
 	str[l] = '\0';
@@ -92,7 +92,7 @@ void	exec_flags_and_length(t_var *st)
 		if (!st->plus_flag)
 			exec_flag_zero(st);
 	}
-	if (*st->hold_str == '-')					 //plug_flag == ON put "+"?
+	if (*st->hold_str == '-')
 		st->char_count += write(1, "-", 1);
 }
 
@@ -100,12 +100,12 @@ void	int_print(t_var *st)
 {
 	exec_flags_and_length(st);
 	pf_putint(st);
-	if (*--st->hold_str == '-')				 //this is not good practice, try fix
+	if (*--st->hold_str == '-')
 		ft_strdel(&st->hold_str);
 	else
 	{
 		++st->hold_str;
 		ft_strdel(&st->hold_str);
 	}
-
+	st->fmt++;
 }

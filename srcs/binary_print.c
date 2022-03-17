@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   binary_print.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/10 17:12:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 22:44:11 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:06:02 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 
 void	binary_print(t_var *st)
 {
-	int	i;
-	unsigned char octet;
+	int				i;
+	unsigned char	octet;
 
 	i = 256;
 	octet = (unsigned char)va_arg(st->ap, int);
@@ -43,5 +43,5 @@ void	binary_print(t_var *st)
 		else
 			st->char_count += write(1, "0", 1);
 	}
+	st->fmt++;
 }
-

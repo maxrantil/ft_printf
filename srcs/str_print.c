@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/16 15:00:22 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:45:15 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 static void	pf_putstr(t_var *st)
 {
-	size_t len;
+	size_t	len;
 
 	len = st->len_va_arg;
-	if (st->precision && st->precision < st->len_va_arg)// < st->len_va_arg)
-		st->len_va_arg = st->precision;				//somthing is wrong here for moulitest9
+	if (st->precision && st->precision < st->len_va_arg)
+		st->len_va_arg = st->precision;
 	if (st->minus_flag == OFF && st->width)
 		exec_width(st);
 	if (!len && st->width)
@@ -37,11 +37,10 @@ static void	pf_putstr(t_var *st)
 		exec_width(st);
 }
 
-
 void	str_print(t_var *st)
 {
 	st->hold_str = va_arg(st->ap, char *);
-	if (st->hold_str == NULL)
+	if (st->hold_str == NULL && st->fmt++)
 	{
 		st->char_count += write(1, "(null)", 6);
 		return ;
@@ -49,4 +48,5 @@ void	str_print(t_var *st)
 	st->len_va_arg = ft_strlen(st->hold_str);
 	asterix_print(st);
 	pf_putstr(st);
+	st->fmt++;
 }

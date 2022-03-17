@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/16 13:43:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:44:31 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,40 +24,6 @@
 # define ON 1
 # define OFF 0
 # define NUM_CHECK_DISP sizeof(check_disp_tbl) / sizeof(check_disp_tbl[0])
-
-//- %[flags][width][.precision][length]specifier
-
-
-/* typedef enum e_flags
-{
-	PLUS = 1,
-	MINUS = 2,
-	PROCENT = 4,
-	SPACE = 8,
-	HASH = 16,
-	ERROR = 0
-}	t_enum_flags; */
-
-/* typedef enum e_length
-{
-	PLUS = 1,
-	MINUS = 2,
-	PROCENT = 4,
-	SPACE = 8,
-	HASH = 16,
-	ERROR = 0
-}	t_enum_length; */
-
-//print order:
-    /*
-        width (if flagcombo != dash)
-        PLUS FLAG (plus/minus) / - om negativt
-        HASHflag (0/0x/0X)
-        0 / precision // 0 flag ignored when precision > 0.
-        (precision == absolute number of 0 + digits - HASH_num.
-        width (if flagcombo == dash)
-
-    */
 
 typedef struct s_var
 {
@@ -150,7 +116,7 @@ void	pf_putint(t_var *st);
 size_t	get_it(t_var *st);
 void	exec_flags_and_length(t_var *st);
 char	*conv_to_str(long long nbr, t_var *st);
-char	*conv_uint_to_str(unsigned long long nbr, t_var *st);
+char	*uint_str(unsigned long long nbr, t_var *st);
 void	initialize_st(const char *format, t_var *st, int flag);
 
 static const t_fptr_print_op print_disp_tbl[14] = {

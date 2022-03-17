@@ -1,34 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asterix_print.c                                    :+:      :+:    :+:   */
+/*   flags_plus_minus_hash_null.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/12 20:56:07 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 14:01:19 by mrantil          ###   ########.fr       */
+/*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
+/*   Updated: 2022/03/17 14:25:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	asterix_print(t_var *st)
+void	null_flag(t_var *st)
 {
-	size_t	sub;
+	st->unnessesary = 1;
+}
 
-	if (*st->fmt == '*')
+void	hash_flag(t_var *st)
+{
+	if (*st->fmt == '#')
 	{
-		st->astx_ret = va_arg(st->ap, int);
+		st->hash_flag = ON;
 		st->fmt++;
-		check_parser(st);
 	}
-	else if (st->astx_ret)
+}
+
+void	flag_minus(t_var *st)
+{
+	if (*st->fmt == '-')
 	{
-		sub = st->astx_ret;
-		if (st->plus_flag == ON)
-			--sub;
-		while (sub-- > st->len_va_arg)
-			st->char_count += write(1, " ", 1);
+		st->minus_flag = ON;
+		st->fmt++;
 	}
-	return ;
+}
+
+void	flag_plus(t_var *st)
+{
+	if (*st->fmt == '+')
+	{
+		if (st->plus_flag == ON)
+			st->char_count--;
+		st->plus_flag = ON;
+		st->fmt++;
+		st->char_count++;
+	}
 }

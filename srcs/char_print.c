@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:31:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/14 18:50:40 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 13:15:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ void	char_print(t_var *st)
 	++st->char_count;
 	if (st->minus_flag == ON)
 		exec_width(st);
-	return ;
+	st->fmt++;
 }

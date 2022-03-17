@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/15 18:47:09 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 13:56:50 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	exec_precision(t_var *st)
 				sub *= (st->va_ret >= 0 && st->precision < st->zero);
 				while (sub--)
 					st->char_count += write(1, " ", 1);
-				sum *= (st->zero < st->precision && st->va_ret > 0 && st->precision < st->zero);
+				sum *= (st->zero < st->precision && st->va_ret >= 0 && st->precision < st->zero);
 			}
 			while ((size_t)sum-- > st->len_va_arg)
 				st->char_count += write(1, "0", 1);
@@ -74,15 +74,17 @@ void	exec_width(t_var *st)
 	long sub;
 
 	sub = 0;
-	
+	if (st->astx_ret)
+		sub = st->astx_ret;
 	if (st->precision)
 	{
-		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count); //|| st->minus_flag);
 		if (st->precision < st->len_va_arg)
+		{
 			st->precision = st->len_va_arg;
+			st->precision -= (st->va_ret < 0);
+		}
 		sub += st->width - st->precision;
-		if (st->minus_flag && st->for_plus)
-			--sub;
+		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count || (st->minus_flag  && st->for_plus)); //|| st->minus_flag);
 		sub *= (sub > 0);
 		while ((size_t)sub--)
 			st->char_count += write(1, " ", 1);

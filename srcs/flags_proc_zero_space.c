@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags.c                                            :+:      :+:    :+:   */
+/*   flags2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/16 13:38:31 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:25:32 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	null_flag(t_var *st)
+void	exec_flag_space(t_var *st)
 {
-	st->unnessesary = 1;
+	if (ft_isalpha(*st->fmt) && st->space_count && !st->plus_flag)
+		st->char_count += write(1, " ", 1);
+}
+
+void	get_flag_space(t_var *st)
+{
+	while (*st->fmt == ' ' && ++st->space_count)
+		st->fmt++;
 }
 
 void	exec_flag_zero(t_var *st)
 {
-	long sub;
+	long	sub;
 
 	sub = st->zero;
 	sub -= (st->va_ret < 0);
@@ -31,7 +38,7 @@ void	exec_flag_zero(t_var *st)
 		sub -= (st->va_ret < 0);
 	}
 	sub -= (st->hash_flag > 0) * 2;
-	sub -= (st->for_plus > 0);
+	sub -= (st->for_plus > 0 || st->space_count > 0);
 	sub *= (sub > 0);
 	while ((size_t)sub-- > st->len_va_arg)
 		st->char_count += write(1, "0", 1);
@@ -52,21 +59,11 @@ void	get_flag_zero(t_var *st)
 	}
 }
 
-void	hash_flag(t_var *st)
+void	exec_flag_proc(t_var *st)
 {
-	if (*st->fmt == '#')
-	{
-		st->hash_flag = ON;
-		st->fmt++;
-	}
-}
-
- void	exec_flag_proc(t_var *st)
- {
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	//st->even_procent++;
 	if (*st->fmt == '%' && st->minus_flag == OFF)
 	{
 		while (++i < st->width)
@@ -80,43 +77,4 @@ void	hash_flag(t_var *st)
 			st->char_count += write(1, " ", 1);
 	}
 	st->fmt++;
- }
-		
-
- void	get_flag_space(t_var *st)
-{
-		while (*st->fmt == ' ' && ++st->space_count)
-			st->fmt++;
-}
-
- void	exec_flag_space(t_var *st)
-{
-		/* if (st->plus_flag && st->space_count)
-			st->char_count++; */
-		if (ft_isalpha(*st->fmt) && st->space_count && !st->plus_flag)
-		{
-			st->char_count += write(1, " ", 1);
-			st->space_count = 0;
-		}
-	}
-
-void	flag_plus(t_var *st)
-{
-	if (*st->fmt == '+')
-	{
-		if (st->plus_flag == ON)
-			st->char_count--;
-		st->plus_flag = ON;
-		st->fmt++;
-		st->char_count++;
-	}
-}
-
-void	flag_minus(t_var *st)
-{
-	if (*st->fmt == '-')
-	{
-		st->minus_flag = ON;
-		st->fmt++;
-	}
 }

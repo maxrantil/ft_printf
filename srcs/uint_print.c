@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/15 14:29:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:37:52 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ int	uint_nbrlen(unsigned long long nbr)
 	return (++c);
 }
 
-char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
+char	*uint_str(unsigned long long nbr, t_var *st)
 {
-	char	*str; //can you use pointer instead of index? shall you send in st to take the return directly in here insted of sending it out?
+	char	*str;
 	int		l;
 
-	st->va_u_ret = nbr; //change a to va_u_ret that is involved in unit
+	st->va_u_ret = nbr;
 	l = uint_nbrlen(nbr);
 	str = (char *)malloc(sizeof(char) * l + 1);
 	if (!str)
@@ -54,6 +54,7 @@ char	*conv_uint_to_str(unsigned long long nbr, t_var *st)
 void	uint_print(t_var *st)
 {
 	st->uint_check = ON;
-	exec_flags_and_length(st);				//need to impllements the fags here.
+	exec_flags_and_length(st);
 	pf_put_uint(st);
+	st->fmt++;
 }

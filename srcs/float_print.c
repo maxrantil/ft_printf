@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   float_print.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/08 23:15:21 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:38:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-
-
 void	conv_float_str(long double nbr, int flag, t_var *st)
 {
-	size_t	l;
-	int		i;
+	size_t		l;
+	int			i;
 	long long	n;
 	char		y;
 
@@ -84,5 +82,6 @@ void	float_print(t_var *st)
 		conv_float_str(va_arg(st->ap, double), flag, st);
 	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	ft_strdel(&st->hold_str);
+	st->fmt++;
 }
 

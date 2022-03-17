@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:54:02 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/16 13:54:01 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:37:23 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	check_signed_length(t_var *st)
 {
-	int i;
+	int	i;
 
 	i = 1;
 	if (*st->fmt == 'd' || *st->fmt == 'i')
@@ -34,13 +34,15 @@ void	check_signed_length(t_var *st)
 		st->hold_str = conv_to_str((long)va_arg(st->ap, long long), st);
 		return ;
 	}
-	else if (*st->fmt == 'h' && st->fmt[i] == 'h' && (st->fmt[i + 1] == 'd' || st->fmt[i + 1] == 'i'))
+	else if (*st->fmt == 'h' && st->fmt[i] == 'h' \
+		&& (st->fmt[i + 1] == 'd' || st->fmt[i + 1] == 'i'))
 	{
 		st->fmt += 2;
 		st->hold_str = conv_to_str((char)va_arg(st->ap, long long), st);
 		return ;
 	}
-	else if (*st->fmt == 'l' && st->fmt[i] == 'l' &&(st->fmt[i + 1] == 'd' || st->fmt[i + 1] == 'i'))
+	else if (*st->fmt == 'l' && st->fmt[i] == 'l' \
+		&& (st->fmt[i + 1] == 'd' || st->fmt[i + 1] == 'i'))
 	{
 		st->fmt += 2;
 		st->hold_str = conv_to_str(va_arg(st->ap, long long), st);
@@ -55,31 +57,35 @@ void	check_unsigned_length(t_var *st)
 	i = 1;
 	if (*st->fmt == 'u')
 	{
-		st->hold_str = conv_uint_to_str((unsigned int)va_arg(st->ap, unsigned long long), st);
+		st->hold_str = \
+			uint_str((unsigned int)va_arg(st->ap, unsigned long long), st);
 		return ;
 	}
 	else if (*st->fmt == 'h' && st->fmt[i] == 'u')
 	{
 		++st->fmt;
-		st->hold_str = conv_uint_to_str((unsigned short)va_arg(st->ap, unsigned long long), st);
+		st->hold_str = \
+			uint_str((unsigned short)va_arg(st->ap, unsigned long long), st);
 		return ;
 	}
 	else if (*st->fmt == 'l' && st->fmt[i] == 'u')
 	{
 		++st->fmt;
-		st->hold_str = conv_uint_to_str((unsigned long)va_arg(st->ap, unsigned long long), st);
+		st->hold_str = \
+			uint_str((unsigned long)va_arg(st->ap, unsigned long long), st);
 		return ;
 	}
-	else if (*st->fmt == 'h' &&  st->fmt[i] == 'h' && st->fmt[i + 1] == 'u')
+	else if (*st->fmt == 'h' && st->fmt[i] == 'h' && st->fmt[i + 1] == 'u')
 	{
 		st->fmt += 2;
-		st->hold_str = conv_uint_to_str((unsigned char)va_arg(st->ap, unsigned long long), st);
+		st->hold_str = \
+			uint_str((unsigned char)va_arg(st->ap, unsigned long long), st);
 		return ;
 	}
 	else if (*st->fmt == 'l' && st->fmt[i] == 'l' && st->fmt[i + 1] == 'u')
 	{
 		st->fmt += 2;
-		st->hold_str = conv_uint_to_str((unsigned long long)va_arg(st->ap, unsigned long long), st);
+		st->hold_str = uint_str(va_arg(st->ap, unsigned long long), st);
 		return ;
 	}
 	else if (*st->fmt == 'L')
@@ -89,7 +95,7 @@ void	check_unsigned_length(t_var *st)
 	}
 }
 
-void	check_hex_length(t_var *st)							//is long long okey here???
+void	check_hex_length(t_var *st)
 {
 	int	i;
 
@@ -111,13 +117,15 @@ void	check_hex_length(t_var *st)							//is long long okey here???
 		pf_itoa_base(va_arg(st->ap, unsigned long), 16, st);
 		return ;
 	}
-	else if (*st->fmt == 'h' &&  st->fmt[i] == 'h' && (st->fmt[i + 1] == 'x' || st->fmt[i + 1] == 'X'))
+	else if (*st->fmt == 'h' && st->fmt[i] == 'h' \
+		&& (st->fmt[i + 1] == 'x' || st->fmt[i + 1] == 'X'))
 	{
 		st->fmt += 2;
 		pf_itoa_base((unsigned char)va_arg(st->ap, long long), 16, st);
 		return ;
 	}
-	else if (*st->fmt == 'l' && st->fmt[i] == 'l' && (st->fmt[i + 1] == 'x' || st->fmt[i + 1] == 'X'))
+	else if (*st->fmt == 'l' && st->fmt[i] == 'l' \
+		&& (st->fmt[i + 1] == 'x' || st->fmt[i + 1] == 'X'))
 	{
 		st->fmt += 2;
 		pf_itoa_base(va_arg(st->ap, long long), 16, st);
@@ -125,7 +133,7 @@ void	check_hex_length(t_var *st)							//is long long okey here???
 	}
 }
 
-void	check_oct_length(t_var *st)							//is long long okey here???
+void	check_oct_length(t_var *st)
 {
 	int	i;
 
@@ -147,7 +155,7 @@ void	check_oct_length(t_var *st)							//is long long okey here???
 		pf_itoa_base((long)va_arg(st->ap, long long), 8, st);
 		return ;
 	}
-	else if (*st->fmt == 'h' &&  st->fmt[i] == 'h' && st->fmt[i + 1] == 'o')
+	else if (*st->fmt == 'h' && st->fmt[i] == 'h' && st->fmt[i + 1] == 'o')
 	{
 		st->fmt += 2;
 		pf_itoa_base((unsigned char)va_arg(st->ap, long long), 8, st);

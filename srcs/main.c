@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/16 14:18:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 14:50:40 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -436,21 +436,6 @@ void test_mindfuck_minusminus(void)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______test_mindfuck_minusminus failed_______\033[0m\n\n"));
-	++done;
-}
-
-void test_mindfuck_simpleminus(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %10.5dLol\n", -42);
-	a = ft_printf("ft_: %10.5dLol\n", -42);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_mindfuck_simpleminus failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -1903,8 +1888,8 @@ void	basic_hexs11(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: @moulitest: %#8x-\n", 42);
-	a = ft_printf("ft_: @moulitest: %#8x-\n", 42);
+	b = printf("pri: @moulitest: %#8xtjo-\n", 42);
+	a = ft_printf("ft_: @moulitest: %#8xtjo-\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2263,8 +2248,8 @@ void	mouli_test(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: aa%%bb\n");
-	a = ft_printf("ft_: aa%%bb\n");
+	b = printf("pri: aa%%db\n");
+	a = ft_printf("ft_: aa%%db\n");
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2379,6 +2364,21 @@ void	mouli_test7(void)
 	++done;
 }
 
+void test_mindfuck_simpleminus(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %10.5dLol\n", -42);
+	a = ft_printf("ft_: %10.5dLol\n", -42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_mindfuck_simpleminus failed_______\033[0m\n\n"));
+	++done;
+}
+
 void	mouli_test8(void)
 {
 	int	a;
@@ -2488,8 +2488,8 @@ void	mouli_test15(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: {%*3d}\n", 5, 0);
-	a = ft_printf("ft_: {%*3d}\n", 5, 0);
+	b = printf("pri: {%*3d}\n", 10, 0);
+	a = ft_printf("ft_: {%*3d}\n", 10, 0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2499,6 +2499,50 @@ void	mouli_test15(void)
 	++done;
 }
 
+void	random_proc(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %\n", 10);
+	a = ft_printf("ft_: %\n", 10);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______random_proc failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	random_leo(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: -%#08.5x-\n", 42);
+	a = ft_printf("ft_: -%#08.5x-\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______random_leo failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	random_leo2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: -%-10.5o-\n", 2500);
+	a = ft_printf("ft_: -%-10.5o-\n", 2500);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______random_leo2 failed_______\033[0m\n\n"));
+	++done;
+}
 
 int	main(void)
 {
@@ -2529,7 +2573,6 @@ int	main(void)
  	test_precision_1();
 	test_mindfuck();
 	test_mindfuck_minusminus();
-	test_mindfuck_simpleminus();
  	test_mindfuck_minusminint();
 	test_mindfuck_minusminint2();
 	test_mindfuck_plus_craz();
@@ -2660,6 +2703,7 @@ int	main(void)
 	mouli_test5();
 	mouli_test6();
 	mouli_test7();
+	test_mindfuck_simpleminus();
 	mouli_test8();
 	mouli_test9();
 /* 	mouli_test10(); */
@@ -2667,7 +2711,10 @@ int	main(void)
 	mouli_test12();
 /* 	mouli_test13(); */
 	mouli_test14();
-	mouli_test15();
+	mouli_test15();						//look more into floats and binary
+	random_proc();
+	random_leo();
+	random_leo2();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
