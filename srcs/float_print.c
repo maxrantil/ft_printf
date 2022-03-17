@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 14:38:28 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 17:51:18 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	conv_float_str(long double nbr, int flag, t_var *st)
 			--st->hold_str[i];
 		else
 		{
-			if (st->hold_str[i] == '9')
+			/* if (st->hold_str[i] == '9')
 			{
 				while (st->hold_str[i] == '9')
 				{
@@ -64,7 +64,7 @@ void	conv_float_str(long double nbr, int flag, t_var *st)
 					++st->hold_str[i];
 				}
 			}
-			else
+			else */
 				++st->hold_str[i];
 		}
 	}

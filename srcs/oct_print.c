@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 14:42:14 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 16:51:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 void	oct_print(t_var *st)
 {
-	if (st->hash_flag == ON && !st->width && *st->hold_str != '0')
+	/* if (st->hash_flag == ON && !st->width && *st->hold_str != '0')
 	{
 		st->char_count += write(1, "0", 1);
 		st->hash_flag = OFF;
-	}
+	} */
 	st->width -= (st->hash_flag && st->width);
+/* 	if (st->precision && st->zero_flag)
+		st->precision += 1; */
 	exec_flags_and_length(st);
 	if (st->hash_flag == ON && st->width)
 		st->char_count += write(1, "0", 1);

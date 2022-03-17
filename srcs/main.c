@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 14:50:40 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 19:57:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1732,8 +1732,8 @@ void	basic_strings3(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %5.2s is a string\n", "");
-	a = ft_printf("ft_: %5.2s is a string\n", "");
+	b = printf("pri: %5.2s is a string\n", "wazzup");
+	a = ft_printf("ft_: %5.2s is a string\n", "wazzup");
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1798,8 +1798,8 @@ void	basic_strings7(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %-15.2s is a string\n", "");
-	a = ft_printf("ft_: %-15.2s is a string\n", "");
+	b = printf("pri: %-15.2s is a string\n", "asdasdasdasdasdsdasdasdsadassd");
+	a = ft_printf("ft_: %-15.2s is a string\n", "asdasdasdasdasdsdasdasdsadassd");
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2278,8 +2278,8 @@ void	mouli_test2(void)
 {
 	long long	a;
 	long long	b;
-	b = printf("pri: %llo, %llo\n", 0ul, 9223372036854775807);
-	a = ft_printf("ft_: %llo, %llo\n", 0ul, 9223372036854775807);
+	b = printf("pri: %llo, %llo\n", 0ul, 9223372036854775808);
+	a = ft_printf("ft_: %llo, %llo\n", 0ul, 9223372036854775808);
 	printf("\nret: %d \n", (int)b);
 	printf("ret: %d \n", (int)a);
 	if (a == b)
@@ -2319,7 +2319,7 @@ void	mouli_test4(void)
 	++done;
 }
 
-void	mouli_test5(void)
+/* void	mouli_test5(void)
 {
 	int	a;
 	int	b;
@@ -2332,7 +2332,7 @@ void	mouli_test5(void)
 	else
 		assert(printf("\033[1;31m _______mouli_test5 failed_______\033[0m\n\n"));
 	++done;
-}
+} */
 
 void	mouli_test6(void)
 {
@@ -2518,14 +2518,29 @@ void	random_leo(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: -%#08.5x-\n", 42);
-	a = ft_printf("ft_: -%#08.5x-\n", 42);
+	b = printf("pri: %#08.5o-\n", 42);
+	a = ft_printf("ft_: %#08.5o-\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______random_leo failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	random_leo1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %#08.15x-\n", 42);
+	a = ft_printf("ft_: %#08.15x-\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______random_leo1 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -2543,6 +2558,127 @@ void	random_leo2(void)
 		assert(printf("\033[1;31m _______random_leo2 failed_______\033[0m\n\n"));
 	++done;
 }
+
+/* void	random_leo3(void)				//undefined behaviour
+{
+	int	a;
+	int	b;
+	b = printf("pri: %#018.5d-\n", 42);
+	a = ft_printf("ft_: %#018.5d-\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______random_leo3 failed_______\033[0m\n\n"));
+	++done;
+} */
+
+void	random_leo4(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %#08.15x-\n", 42);
+	a = ft_printf("ft_: %#08.15x-\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______random_leo4 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	random_jeff(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.1f\n", 2.25);
+	a = ft_printf("ft_: %.1f\n", 2.25);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______random_jeff failed_______\033[0m\n\n"));
+	++done;
+}
+
+/* void	more_mouli(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: {%0-3d}\n", 0);
+	a = ft_printf("ft_: {%0-3d}\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_mouli failed_______\033[0m\n\n"));
+	++done;
+} */
+
+void	more_mouli1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.u, %.0u\n", 0, 0);
+	a = ft_printf("ft_: %.u, %.0u\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_mouli1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	more_mouli2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %5.4s?\n", "");
+	a = ft_printf("ft_: %5.4s?\n", "");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_mouli2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+
+void	more_mouli4(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: {%#.5x}\n", 1);
+	a = ft_printf("ft_: {%#.5x}\n", 1);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_mouli4 failed_______\033[0m\n\n"));
+	++done;
+}
+
+/* void	more_mouli5(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: {%f}{%lf}{%Lf}\n", 1.42, 1.42, 1.42l);
+	a = ft_printf("ft_: {%f}{%lf}{%Lf}\n", 1.42, 1.42, 1.42l);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_mouli5 failed_______\033[0m\n\n"));
+	++done;
+} */
 
 int	main(void)
 {
@@ -2635,8 +2771,8 @@ int	main(void)
 	test_float10();
 	test_float11();
 	test_float12();
-/* 	test_basic0();
-	test_basic1(); */
+	test_basic0();
+	test_basic1();
 	test_basic2();
 	test_basic3();
 	test_basic4();
@@ -2700,7 +2836,7 @@ int	main(void)
 	mouli_test2();
 	mouli_test3();
 	mouli_test4();
-	mouli_test5();
+//	mouli_test5();  //no precision with %p
 	mouli_test6();
 	mouli_test7();
 	test_mindfuck_simpleminus();
@@ -2710,11 +2846,18 @@ int	main(void)
 	mouli_test11();
 	mouli_test12();
 /* 	mouli_test13(); */
-	mouli_test14();
-	mouli_test15();						//look more into floats and binary
+	/* mouli_test14();
+	mouli_test15();	 */					//look more into floats and binary
 	random_proc();
 	random_leo();
+	random_leo1();
 	random_leo2();
+	random_leo4();
+	random_jeff();
+	more_mouli1();
+	more_mouli2();
+	more_mouli4();
+/* 	more_mouli5(); */
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

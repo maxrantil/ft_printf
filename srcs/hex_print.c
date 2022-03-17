@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 14:40:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 19:07:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static void	pf_print_hex_hash(t_var *st)
+void	pf_print_hex_hash(t_var *st)
 {
 	if (*st->fmt == 'x')
 		st->char_count += write(1, "0x", 2);
@@ -78,7 +78,7 @@ void	pf_itoa_base(long long nbr, unsigned int base, t_var *st)
 			st->hold_str[l] = (char)(nbr % base) + 55;
 		else
 			st->hold_str[l] = (char)(nbr % base) + 48;
-		nbr /= base;
+		nbr /= base;		//if (!ft_strcmp(str, "-'..--).0-*(+,))+(0(")) return (ft_strdup("-9223372036854775808")); max long long fix
 	}
 }
 
@@ -86,8 +86,10 @@ void	hex_print(t_var *st)
 {
 	if (st->hash_flag && st->width)
 		st->width -= 2;
-	if (st->hash_flag == ON && *st->hold_str != '0' && !st->width)
-		pf_print_hex_hash(st);
+	if (st->precision && st->zero_flag)
+		st->precision += 2;
+	/* if (st->hash_flag == ON && *st->hold_str != '0' && !st->width)
+		pf_print_hex_hash(st); */
 	exec_flags_and_length(st);
 	pf_put_hex(st);
 	ft_strdel(&st->hold_str);

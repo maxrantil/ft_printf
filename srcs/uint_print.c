@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 14:37:52 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 17:59:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void	pf_put_uint(t_var *st)
 {
 	if (st->plus_flag == ON)
 		st->char_count--;
-	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+	if (*st->hold_str == '0' && st->precision_zero && !st->precision)
+		return ;
+	else
+		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	if (st->minus_flag == ON)
 		exec_width(st);
 	ft_strdel(&st->hold_str);

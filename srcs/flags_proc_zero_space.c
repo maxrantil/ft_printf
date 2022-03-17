@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   flags2.c                                           :+:      :+:    :+:   */
+/*   flags_proc_zero_space.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 14:25:32 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 16:52:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,21 @@ void	exec_flag_zero(t_var *st)
 	sub = st->zero;
 	sub -= (st->va_ret < 0);
 	if (st->precision && st->zero_flag == ON)
-		sub = st->precision - st->len_va_arg + st->len_va_arg;
+		sub = st->precision;// - st->len_va_arg + st->len_va_arg; // do i need two here? take away both?
 	if (st->width && st->zero_flag == ON)
 	{
 		sub = st->width - st->len_va_arg + st->len_va_arg;
 		sub -= (st->va_ret < 0);
 	}
-	sub -= (st->hash_flag > 0) * 2;
+	if (*st->fmt == 'x' || *st->fmt == 'x')
+		sub -= (st->hash_flag > 0) * 2;
+	if (*st->fmt == 'o')
+		sub -= (st->hash_flag > 0) * 1;
 	sub -= (st->for_plus > 0 || st->space_count > 0);
 	sub *= (sub > 0);
 	while ((size_t)sub-- > st->len_va_arg)
 		st->char_count += write(1, "0", 1);
-	st->zero_flag = OFF;	
+	//st->zero_flag = OFF;	
 }
 
 void	get_flag_zero(t_var *st)

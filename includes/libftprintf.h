@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 14:44:31 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/17 16:37:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ void	exec_flags_and_length(t_var *st);
 char	*conv_to_str(long long nbr, t_var *st);
 char	*uint_str(unsigned long long nbr, t_var *st);
 void	initialize_st(const char *format, t_var *st, int flag);
+void	pf_print_hex_hash(t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[14] = {
 	char_print,
