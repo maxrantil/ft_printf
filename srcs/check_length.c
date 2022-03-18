@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:54:02 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 18:09:52 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/18 13:21:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	check_unsigned_length(t_var *st)
 		st->hold_str = uint_str(va_arg(st->ap, unsigned long long), st);
 		return ;
 	}
-	else if (*st->fmt == 'L')
+	else if (*st->fmt == 'L' || (*st->fmt == 'l' && st->fmt[i] == 'f')) // is this correct?
 	{
 		++st->fmt;
 		st->le_F = ON;

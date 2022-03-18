@@ -6,20 +6,46 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 17:51:18 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/18 13:41:09 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
+void	rounding(int i, long long n, long double nbr, t_var *st)
+{
+	char		y;
+		
+	y = 0;
+	n = nbr * 10;
+	y = n % 10 + 48;
+	if (st->hold_str[i - 1] == '9')
+	{
+		while (st->hold_str[i - 1] == '9')
+		{
+			st->hold_str[i - 1] = '0';
+			if (st->hold_str[i - 1] == '9')
+				st->hold_str[i - 2] = 0;
+			--i;
+			if (st->hold_str[i - 2] == '.')
+				break ;
+		}
+	}
+	if (y >= 5 && y > st->hold_str[--i] && st->precision < 17)
+	{
+		//printf("kolla har: %d\n", st->hold_str[i] - 48);
+		if (st->hold_str[0] % 2 != 0 && st->hold_str[i - 1] != 0)
+		{
+			++st->hold_str[i];
+		}
+	}
+}
 void	conv_float_str(long double nbr, int flag, t_var *st)
 {
 	size_t		l;
 	int			i;
 	long long	n;
-	char		y;
 
-	y = 0;
 	if (nbr < 0)
 	{
 		nbr *= -1;
@@ -48,26 +74,7 @@ void	conv_float_str(long double nbr, int flag, t_var *st)
 		st->hold_str[i++] = n % 10 + 48;
 		nbr *= 10;
 	}
-	n = nbr * 10;
-	y = n % 10 + 48;
-	if (y >= 5 && y > st->hold_str[--i] && st->precision < 17)			///17 is hardcoded because that the maximum i can print correct ATM
-	{
-		if (st->hold_str[0] % 2 == 0 && st->hold_str[i - 1] != 0)	//changed here to i - 1 instead of --i, All this i fucked, clean it!
-			--st->hold_str[i];
-		else
-		{
-			/* if (st->hold_str[i] == '9')
-			{
-				while (st->hold_str[i] == '9')
-				{
-					st->hold_str[i--] = '0';
-					++st->hold_str[i];
-				}
-			}
-			else */
-				++st->hold_str[i];
-		}
-	}
+	rounding(i, n, nbr, st);
 }
 
 void	float_print(t_var *st)
@@ -84,4 +91,3 @@ void	float_print(t_var *st)
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }
-
