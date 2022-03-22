@@ -6,37 +6,38 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/18 13:41:09 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/22 18:00:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	rounding(int i, long long n, long double nbr, t_var *st)
+void	bankers_rounding(int i, int hold, long double nbr, t_var *st)
 {
 	char		y;
+	long long	n;
 		
+	hold = 0;
 	y = 0;
 	n = nbr * 10;
 	y = n % 10 + 48;
+	if (y > st->hold_str[--i] && st->precision < 17)
+	{
+		if (st->hold_str[0] % 2 != 0 && st->hold_str[i - 1] != 0)
+		{
+			++st->hold_str[i];
+		}
+	}
 	if (st->hold_str[i - 1] == '9')
 	{
 		while (st->hold_str[i - 1] == '9')
 		{
 			st->hold_str[i - 1] = '0';
 			if (st->hold_str[i - 1] == '9')
-				st->hold_str[i - 2] = 0;
+				st->hold_str[i - 1] = 0;
 			--i;
-			if (st->hold_str[i - 2] == '.')
+			if (st->hold_str[i - 1] == '.')
 				break ;
-		}
-	}
-	if (y >= 5 && y > st->hold_str[--i] && st->precision < 17)
-	{
-		//printf("kolla har: %d\n", st->hold_str[i] - 48);
-		if (st->hold_str[0] % 2 != 0 && st->hold_str[i - 1] != 0)
-		{
-			++st->hold_str[i];
 		}
 	}
 }
@@ -45,6 +46,7 @@ void	conv_float_str(long double nbr, int flag, t_var *st)
 	size_t		l;
 	int			i;
 	long long	n;
+	int			hold;
 
 	if (nbr < 0)
 	{
@@ -66,15 +68,17 @@ void	conv_float_str(long double nbr, int flag, t_var *st)
 		n /= 10;
 	}
 	if (flag)
+	{
+		hold = i;
 		st->hold_str[i++] = '.';
-	n = nbr;
+	}
 	while (flag--)
 	{
 		n = nbr * 10;
 		st->hold_str[i++] = n % 10 + 48;
 		nbr *= 10;
 	}
-	rounding(i, n, nbr, st);
+	bankers_rounding(i, hold, nbr, st);
 }
 
 void	float_print(t_var *st)
@@ -83,7 +87,7 @@ void	float_print(t_var *st)
 
 	if (st->prec_noll)
 		flag = st->precision;
-	if (st->le_F == ON)
+	if (st->le_f == ON)
 		conv_float_str(va_arg(st->ap, long double), flag, st);
 	else
 		conv_float_str(va_arg(st->ap, double), flag, st);

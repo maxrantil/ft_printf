@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/18 13:22:14 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/21 13:57:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1204,8 +1204,8 @@ void	test_float3(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.15f	Lol\n", 5.43211234567890123456789098765);
-	a = ft_printf("ft_: %.15f	Lol\n", 5.43211234567890123456789098765);
+	b = printf("pri: %.15f	Lol\n", 666.66666666666);
+	a = ft_printf("ft_: %.15f	Lol\n", 666.66666666666);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1219,8 +1219,8 @@ void	test_float4(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.17f	Lol\n", 5.43211234567890123456789098765);
-	a = ft_printf("ft_: %.17f	Lol\n", 5.43211234567890123456789098765);
+	b = printf("pri: %.15f	Lol\n", 5555.5555555555555);
+	a = ft_printf("ft_: %.15f	Lol\n", 5555.5555555555555);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2680,6 +2680,67 @@ void	more_mouli4(void)
 	++done;
 } */
 
+void	more_random_floats(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %.3f\n", 0.0005);
+	a = ft_printf("ft_: %.3f\n", 0.0005);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_random_floats failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	more_random_floats1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %f\n", 1.9999999999999);
+	a = ft_printf("ft_: %f\n", 1.9999999999999);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_random_floats1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	more_random_floats2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %1.0f\n", 1.5);
+	a = ft_printf("ft_: %1.0f\n", 1.5);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_random_floats2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	more_random_floats3(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri:%1.0f\n", 2.5);
+	a = ft_printf("ft_:%1.0f\n", 2.5);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_random_floats3 failed_______\033[0m\n\n"));
+	++done;
+}
+
+
 int	main(void)
 {
 /* 	mix_ezz();
@@ -2858,6 +2919,10 @@ int	main(void)
 	more_mouli2();
 	more_mouli4(); */
 /* 	more_mouli5(); */
+	more_random_floats();
+	more_random_floats1();
+	more_random_floats2();
+	more_random_floats3();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

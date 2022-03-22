@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 16:52:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/21 13:35:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ void	exec_flag_proc(t_var *st)
 	size_t	i;
 
 	i = 0;
+	if (st->plus_flag)				//correct?
+		--st->char_count;
 	if (*st->fmt == '%' && st->minus_flag == OFF)
 	{
 		while (++i < st->width)
