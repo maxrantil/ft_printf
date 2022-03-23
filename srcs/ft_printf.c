@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/22 18:00:47 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/23 14:07:43 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	initialize_st(const char *format, t_var *st, int flag)
 	st->precision_zero = 0;
 	st->char_width = 0;
 	st->uint_check = OFF;
+	st->sign = 1;
 }
 
 int	ft_printf(const char *format, ...)

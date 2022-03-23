@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 19:07:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/23 14:46:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	pf_itoa_base(long long nbr, unsigned int base, t_var *st)
 	int		l;
 
 	l = pf_intlen(nbr, base);
-	st->hold_str = (char *)ft_strnew(sizeof(char) * l);
+	st->hold_str = (char *)ft_strnew(sizeof(char) * l);	///do i need sizeof?
 	if (!st->hold_str)
 		exit(1);
 	while (l--)

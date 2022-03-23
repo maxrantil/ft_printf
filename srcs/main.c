@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/21 13:57:41 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/23 16:25:18 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2743,7 +2743,7 @@ void	more_random_floats3(void)
 
 int	main(void)
 {
-/* 	mix_ezz();
+	mix_ezz();
 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
@@ -2818,7 +2818,7 @@ int	main(void)
 	leo_test();
 	test_procentage();
 	test_flag_space_minus();
-	test_flag_space(); */
+	test_flag_space();
 	test_float0();
 	test_float1();
 	test_float2();
@@ -2832,12 +2832,12 @@ int	main(void)
 	test_float10();
 	test_float11();
 	test_float12();
-/* 	test_basic0();
+	test_basic0();
 	test_basic1();
 	test_basic2();
 	test_basic3();
-	test_basic4(); */
-/* 	pro_test();
+	test_basic4();
+	pro_test();
 	pro_test1();
 	pro_test2();
 	pro_test33();
@@ -2902,23 +2902,23 @@ int	main(void)
 	mouli_test7();
 	test_mindfuck_simpleminus();
 	mouli_test8();
-	mouli_test9(); */
-/* 	mouli_test10(); */
-/* 	mouli_test11();
-	mouli_test12(); */
-/* 	mouli_test13(); */
-	/* mouli_test14();
-	mouli_test15();	 */					//look more into floats and binary
-/* 	random_proc();
+	mouli_test9();
+//	mouli_test10();
+	mouli_test11();
+	mouli_test12();
+//	mouli_test13();
+	mouli_test14();
+	mouli_test15();						//look more into floats and binary
+	random_proc();
 	random_leo();
 	random_leo1();
 	random_leo2();
-	random_leo4(); */
+	random_leo4();
 	random_jeff();
-/* 	more_mouli1();
+	more_mouli1();
 	more_mouli2();
-	more_mouli4(); */
-/* 	more_mouli5(); */
+	more_mouli4();
+//	more_mouli5();
 	more_random_floats();
 	more_random_floats1();
 	more_random_floats2();

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/22 18:01:15 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/23 14:06:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_var
 	int					precision_zero;
 	int					char_width;
 	int					uint_check;
+	int					sign;
 }						t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);

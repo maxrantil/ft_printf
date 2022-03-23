@@ -6,85 +6,123 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/22 18:00:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/23 16:19:34 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	bankers_rounding(int i, int hold, long double nbr, t_var *st)
+static void	nine_rouning(char *mantissa, int i, t_var *st)
 {
-	char		y;
-	long long	n;
-		
-	hold = 0;
-	y = 0;
-	n = nbr * 10;
-	y = n % 10 + 48;
-	if (y > st->hold_str[--i] && st->precision < 17)
+	long long	new_unit;
+
+	mantissa[--i] = '0';
+	while (i-- && mantissa[i] == '9')
+		mantissa[i] = '0';
+	if (i >= 0)
+		mantissa[i] += 1;
+	else
 	{
-		if (st->hold_str[0] % 2 != 0 && st->hold_str[i - 1] != 0)
-		{
-			++st->hold_str[i];
-		}
-	}
-	if (st->hold_str[i - 1] == '9')
-	{
-		while (st->hold_str[i - 1] == '9')
-		{
-			st->hold_str[i - 1] = '0';
-			if (st->hold_str[i - 1] == '9')
-				st->hold_str[i - 1] = 0;
-			--i;
-			if (st->hold_str[i - 1] == '.')
-				break ;
-		}
+		new_unit = ft_atoi(st->hold_str);
+		ft_strdel(&st->hold_str);
+		pf_itoa_base(new_unit + st->sign, 10, st);
 	}
 }
-void	conv_float_str(long double nbr, int flag, t_var *st)
-{
-	size_t		l;
-	int			i;
-	long long	n;
-	int			hold;
 
+static int	bankers_rounding(long double nbr, char last_digit, t_var *st)
+{
+	int	res;
+
+	res = 0;
+	nbr = (nbr - (long long)nbr);
+	if (nbr > 0.5)
+		res++;
+	else if (nbr == 0.5)
+		res = ((last_digit + 1 * st->sign) % 2 == 0);
+	return (res);
+}
+
+static char	*join_unit_mant(char *mantissa,  int x, t_var *st)
+{
+	char	*combo;
+	int		i;
+	int		j;
+	
+	j = 0;
+	i = 0;
+	combo = ft_strnew(ft_strlen(st->hold_str) + ft_strlen(mantissa) + 1 + (st->sign == -1 && *st->hold_str == '0'));
+	if (!combo)
+		exit(1);
+	while (st->hold_str[i])
+		combo[j++] = st->hold_str[i++];
+	if (st->precision || x == 6)
+		combo[j++] = '.';
+	i = 0;
+	while (mantissa[i])
+		combo[j++] = mantissa[i++];
+	ft_strdel(&st->hold_str);
+	ft_strdel(&mantissa);
+	return (combo);
+}
+
+static char	*mant_to_a(long double nbr, int flag, t_var *st)
+{
+	char		*mantissa;
+	int			i;
+	int			x;
+	long long	round_up;
+	
+	i = 0;
+	mantissa = ft_strnew(flag);
+	x = 0;
+	while (flag > x)
+	{
+		nbr *= 10;
+		mantissa[i++] = ((long long)nbr % 10) + 48;
+		nbr -= (long long)nbr;
+		x++;
+	}
+	round_up = bankers_rounding(nbr, mantissa[i - 1], st);
+	if (round_up == 1 && mantissa[i - 1] == '9')
+		nine_rouning(mantissa, i, st);
+	else
+		mantissa[i - 1] += round_up;
+	return (join_unit_mant(mantissa,  x, st));
+}
+
+static void	conv_float_str(long double nbr, int flag, t_var *st)
+{
+	char	*float_str;
+	long long	round_up;
+	long long	last_digit;
+	
 	if (nbr < 0)
 	{
+		st->sign = -1;
 		nbr *= -1;
 		st->char_count += write(1, "-", 1);
 	}
 	if (1 / nbr < 0)
 		st->char_count += write(1, "-", 1);
-	n = nbr;
-	i = 0;
-	st->va_ret = nbr;
-	l = ft_intlen(n);
-	st->hold_str = (char *)ft_strnew(l + flag + 1);
-	if (!st->hold_str)
-		exit(1);
-	while (l--)
+	if (!st->precision && st->prec_noll)
 	{
-		st->hold_str[i++] = n % 10 + 48;					//use write to write out the number before one by one. (probably before this function.)
-		n /= 10;
+		last_digit = (long long)nbr % 10;
+		round_up = bankers_rounding(nbr, last_digit + 48, st) * st->sign;
+		pf_itoa_base((long long)nbr + round_up, 10, st);
 	}
-	if (flag)
+	else
 	{
-		hold = i;
-		st->hold_str[i++] = '.';
+		pf_itoa_base((long long)nbr, 10, st);
+		float_str = mant_to_a(nbr, flag, st);
+		st->hold_str = ft_strdup(float_str);
+		ft_strdel(&float_str);
 	}
-	while (flag--)
-	{
-		n = nbr * 10;
-		st->hold_str[i++] = n % 10 + 48;
-		nbr *= 10;
-	}
-	bankers_rounding(i, hold, nbr, st);
 }
 
 void	float_print(t_var *st)
 {
-	int flag = 6;
-
+	int		flag = 6;
+	
 	if (st->prec_noll)
 		flag = st->precision;
 	if (st->le_f == ON)
