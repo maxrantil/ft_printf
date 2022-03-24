@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/23 14:46:44 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 18:17:13 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,49 +47,12 @@ static void	pf_put_hex(t_var *st)
 		exec_width(st);
 }
 
-static int	pf_intlen(long nbr, unsigned int base)
-{
-	int	count;
-
-	count = 0;
-	if (!nbr)
-		return (1);
-	while (nbr)
-	{
-		nbr /= base;
-		count++;
-	}
-	return (count);
-}
-
-void	pf_itoa_base(long long nbr, unsigned int base, t_var *st)
-{
-	int		l;
-
-	l = pf_intlen(nbr, base);
-	st->hold_str = (char *)ft_strnew(sizeof(char) * l);	///do i need sizeof?
-	if (!st->hold_str)
-		exit(1);
-	while (l--)
-	{
-		if ((*st->fmt == 'x' || *st->fmt == 'p') && nbr % base > 9)
-			st->hold_str[l] = (char)(nbr % base) + 87;
-		else if (*st->fmt == 'X' && nbr % base > 9)
-			st->hold_str[l] = (char)(nbr % base) + 55;
-		else
-			st->hold_str[l] = (char)(nbr % base) + 48;
-		nbr /= base;		//if (!ft_strcmp(str, "-'..--).0-*(+,))+(0(")) return (ft_strdup("-9223372036854775808")); max long long fix
-	}
-}
-
 void	hex_print(t_var *st)
 {
 	if (st->hash_flag && st->width)
 		st->width -= 2;
 	if (st->precision && st->zero_flag)
 		st->precision += 2;
-	/* if (st->hash_flag == ON && *st->hold_str != '0' && !st->width)
-		pf_print_hex_hash(st); */
 	exec_flags_and_length(st);
 	pf_put_hex(st);
 	ft_strdel(&st->hold_str);

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/23 14:06:44 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 18:29:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ typedef struct s_var
 	int					le_f;
 	int					prec_noll;
 	int					for_plus;
-	int					even_procent;
 	int					precision_zero;
 	int					char_width;
 	int					uint_check;
@@ -103,7 +102,7 @@ void	exec_precision(t_var *st);
 void	check_signed_length(t_var *st);
 void	check_unsigned_length(t_var *st);
 void	check_hex_length(t_var *st);
-void	check_oct_length(t_var *st)	;
+void	check_oct_length(t_var *st);
 
 /*
 ** Other functions
@@ -112,7 +111,7 @@ void	check_oct_length(t_var *st)	;
 int		ft_printf(const char *fmt, ...);				//*restrict?
 void	parser_loop(t_var *st);
 void	check_parser(t_var *st);
-void	pf_itoa_base(long long  nbr, unsigned int base, t_var *st);
+void	pf_itoa_base(unsigned long long  nbr, unsigned int base, t_var *st);
 void	pf_putint(t_var *st);
 size_t	get_it(t_var *st);
 void	exec_flags_and_length(t_var *st);
@@ -120,6 +119,8 @@ char	*conv_to_str(long long nbr, t_var *st);
 char	*uint_str(unsigned long long nbr, t_var *st);
 void	initialize_st(const char *format, t_var *st, int flag);
 void	pf_print_hex_hash(t_var *st);
+void	pf_write_o(t_var *st);
+void	pf_write(t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[14] = {
 	char_print,

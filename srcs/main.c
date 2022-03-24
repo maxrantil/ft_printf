@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/23 16:25:18 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 18:40:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1776,9 +1776,6 @@ void	basic_strings5(void)
 	++done;
 }
 
-/* 	pri: th is a string
-	ft_: this is a string */
-
 void	basic_strings6(void)
 {
 	int	a;
@@ -1858,8 +1855,8 @@ void	basic_hash5(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %5.x %5.0x-\n", 0, 0);
-	a = ft_printf("ft_: %5.x %5.0x-\n", 0, 0);
+	b = printf("pri: [%5.x %5.0x]\n", 0, 0);
+	a = ft_printf("ft_: [%5.x %5.0x]\n", 0, 0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1873,8 +1870,8 @@ void	basic_hexs10(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: @moulitest: %.x %.0x-\n", 0, 0);
-	a = ft_printf("ft_: @moulitest: %.x %.0x-\n", 0, 0);
+	b = printf("pri: @moulitest: %.x %.0x]\n", 0, 0);
+	a = ft_printf("ft_: @moulitest: %.x %.0x]\n", 0, 0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1888,8 +1885,8 @@ void	basic_hexs11(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: @moulitest: %#8xtjo-\n", 42);
-	a = ft_printf("ft_: @moulitest: %#8xtjo-\n", 42);
+	b = printf("pri: @moulitest: [%#8xtjo]\n", 42);
+	a = ft_printf("ft_: @moulitest: [%#8xtjo]\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1948,8 +1945,8 @@ void	basic_strings13(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri:@moulitest: %s\n", NULL);
-	a = ft_printf("ft_:@moulitest: %s\n", NULL);
+	b = printf("pri:@moulitest1: %s\n", NULL);
+	a = ft_printf("ft_:@moulitest1: %s\n", NULL);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1963,8 +1960,8 @@ void	basic_char1(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %5c-\n", 42);
-	a = ft_printf("ft_: %5c-\n", 42);
+	b = printf("pri: [%5c]\n", 42);
+	a = ft_printf("ft_: [%5c]\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1978,8 +1975,8 @@ void	basic_char2(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %-5c-\n", 42);
-	a = ft_printf("ft_: %-5c-\n", 42);
+	b = printf("pri: [%-5c]\n", 42);
+	a = ft_printf("ft_: [%-5c]\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1993,8 +1990,8 @@ void	basic_char3(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %2c-\n", 0);
-	a = ft_printf("ft_: %2c-\n", 0);
+	b = printf("pri: [%2c]\n", 0);
+	a = ft_printf("ft_: [%2c]\n", 0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2008,8 +2005,8 @@ void	basic_o_spec(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %#6o-\n", 2500);
-	a = ft_printf("ft_: %#6o-\n", 2500);
+	b = printf("pri: [%#6o]\n", 2500);
+	a = ft_printf("ft_: [%#6o]\n", 2500);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2023,8 +2020,8 @@ void	basic_o_spec1(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %-#6o-\n", 2500);
-	a = ft_printf("ft_: %-#6o-\n", 2500);
+	b = printf("pri: [%-#6o]\n", 2500);
+	a = ft_printf("ft_: [%-#6o]\n", 2500);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2038,8 +2035,8 @@ void	basic_o_spec2(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: @moulitest: %.o %.0o-\n", 0, 0);
-	a = ft_printf("ft_: @moulitest: %.o %.0o-\n", 0, 0);
+	b = printf("pri: @moulitest2: [%.o %.0o]\n", 0, 0);
+	a = ft_printf("ft_: @moulitest2: [%.o %.0o]\n", 0, 0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2053,8 +2050,8 @@ void	basic_o_spec3(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: @moulitest: %5.o %5.0o-\n", 0, 0);
-	a = ft_printf("ft_: @moulitest: %5.o %5.0o-\n", 0, 0);
+	b = printf("pri: @moulitest3: [%5.o %5.0o]\n", 0, 0);
+	a = ft_printf("ft_: @moulitest3: [%5.o %5.0o]\n", 0, 0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2068,8 +2065,8 @@ void	basic_o_spec4(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: @moulitest: %#.o %#.0o-\n", 0, 0);
-	a = ft_printf("ft_: @moulitest: %#.o %#.0o-\n", 0, 0);
+	b = printf("pri: @moulitest: [%#.o %#.0o]\n", 0, 0);
+	a = ft_printf("ft_: @moulitest: [%#.o %#.0o]\n", 0, 0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2143,8 +2140,8 @@ void	basic_d_spec4(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %-+10.5d-\n", 4242);
-	a = ft_printf("ft_: %-+10.5d-\n", 4242);
+	b = printf("pri: [%-+10.5d]\n", 4242);
+	a = ft_printf("ft_: [%-+10.5d]\n", 4242);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2158,8 +2155,8 @@ void	basic_d_spec5(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %-5d-\n", -42);
-	a = ft_printf("ft_: %-5d-\n", -42);
+	b = printf("pri: [%-5d]\n", -42);
+	a = ft_printf("ft_: [%-5d]\n", -42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2173,8 +2170,8 @@ void	basic_d_spec6(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri:%-05d-\n", -42);
-	a = ft_printf("ft_:%-05d-\n", -42);
+	b = printf("pri: [%-05d]\n", -42);
+	a = ft_printf("ft_: [%-05d]\n", -42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2188,8 +2185,8 @@ void	basic_d_spec7(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %0+5d-\n", -42);
-	a = ft_printf("ft_: %0+5d-\n", -42);
+	b = printf("pri: [%0+5d]\n", -42);
+	a = ft_printf("ft_: [%0+5d]\n", -42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2203,8 +2200,8 @@ void	basic_d_spec8(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %013.2d-\n", 0);
-	a = ft_printf("ft_: %013.2d-\n", 0);
+	b = printf("pri: [%013.2d]\n", 0);
+	a = ft_printf("ft_: [%013.2d]\n", 0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2409,21 +2406,6 @@ void	mouli_test9(void)
 	++done;
 }
 
-/* void	mouli_test10(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %.0p, %.p\n", 0, 0);
-	a = ft_printf("ft_: %.0p, %.p\n", 0, 0);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______mouli_test10 failed_______\033[0m\n\n"));
-	++done;
-} */
-
 void	mouli_test11(void)
 {
 	int	a;
@@ -2453,21 +2435,6 @@ void	mouli_test12(void)
 		assert(printf("\033[1;31m _______mouli_test12 failed_______\033[0m\n\n"));
 	++done;
 }
-
-/* void	mouli_test13(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: {%f}{%lf}{%Lf}\n", 1.42, 1.42, 1.42l);
-	a = ft_printf("ft_: {%f}{%lf}{%Lf}\n", 1.42, 1.42, 1.42l);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______mouli_test13 failed_______\033[0m\n\n"));
-	++done;
-} */
 
 void	mouli_test14(void)
 {
@@ -2518,8 +2485,8 @@ void	random_leo(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %#08.5o-\n", 42);
-	a = ft_printf("ft_: %#08.5o-\n", 42);
+	b = printf("pri: [%#08.5o]\n", 42);
+	a = ft_printf("ft_: [%#08.5o]\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2548,8 +2515,8 @@ void	random_leo2(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: -%-10.5o-\n", 2500);
-	a = ft_printf("ft_: -%-10.5o-\n", 2500);
+	b = printf("pri: [%-10.5o]\n", 2500);
+	a = ft_printf("ft_: [%-10.5o]\n", 2500);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2559,27 +2526,12 @@ void	random_leo2(void)
 	++done;
 }
 
-/* void	random_leo3(void)				//undefined behaviour
-{
-	int	a;
-	int	b;
-	b = printf("pri: %#018.5d-\n", 42);
-	a = ft_printf("ft_: %#018.5d-\n", 42);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______random_leo3 failed_______\033[0m\n\n"));
-	++done;
-} */
-
 void	random_leo4(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %#08.15x-\n", 42);
-	a = ft_printf("ft_: %#08.15x-\n", 42);
+	b = printf("pri: [%#08.15x]\n", 42);
+	a = ft_printf("ft_: [%#08.15x]\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2603,21 +2555,6 @@ void	random_jeff(void)
 		assert(printf("\033[1;31m _______random_jeff failed_______\033[0m\n\n"));
 	++done;
 }
-
-/* void	more_mouli(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: {%0-3d}\n", 0);
-	a = ft_printf("ft_: {%0-3d}\n", 0);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______more_mouli failed_______\033[0m\n\n"));
-	++done;
-} */
 
 void	more_mouli1(void)
 {
@@ -2649,7 +2586,6 @@ void	more_mouli2(void)
 	++done;
 }
 
-
 void	more_mouli4(void)
 {
 	int	a;
@@ -2664,21 +2600,6 @@ void	more_mouli4(void)
 		assert(printf("\033[1;31m _______more_mouli4 failed_______\033[0m\n\n"));
 	++done;
 }
-
-/* void	more_mouli5(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: {%f}{%lf}{%Lf}\n", 1.42, 1.42, 1.42l);
-	a = ft_printf("ft_: {%f}{%lf}{%Lf}\n", 1.42, 1.42, 1.42l);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______more_mouli5 failed_______\033[0m\n\n"));
-	++done;
-} */
 
 void	more_random_floats(void)
 {
@@ -2740,6 +2661,35 @@ void	more_random_floats3(void)
 	++done;
 }
 
+void	more_random_leo8(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%#08.5x]\n", 42);
+	a = ft_printf("ft_: [%#08.5x]\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_random_leo8 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	more_random_binary(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%b]\n", 42);
+	a = ft_printf("ft_: [%b]\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_random_binary failed_______\033[0m\n\n"));
+	++done;
+}
 
 int	main(void)
 {
@@ -2854,7 +2804,6 @@ int	main(void)
 	basic_hash2();
 	test_basic6();
 	basic_hash3();
-
 	basic_strings();
 	basic_strings1();
 	basic_strings2();
@@ -2866,7 +2815,7 @@ int	main(void)
 	basic_strings8();
 	basic_strings9();
 	basic_hash4(); //zero-flag is ignored with minus-flag
-	basic_hash5(); //do in school
+	basic_hash5(); 
 	basic_hexs10();
 	basic_hexs11();
 	basic_strings10();
@@ -2897,18 +2846,13 @@ int	main(void)
 	mouli_test2();
 	mouli_test3();
 	mouli_test4();
-//	mouli_test5();  //no precision with %p
 	mouli_test6();
 	mouli_test7();
 	test_mindfuck_simpleminus();
 	mouli_test8();
 	mouli_test9();
-//	mouli_test10();
 	mouli_test11();
 	mouli_test12();
-//	mouli_test13();
-	mouli_test14();
-	mouli_test15();						//look more into floats and binary
 	random_proc();
 	random_leo();
 	random_leo1();
@@ -2918,11 +2862,11 @@ int	main(void)
 	more_mouli1();
 	more_mouli2();
 	more_mouli4();
-//	more_mouli5();
 	more_random_floats();
 	more_random_floats1();
 	more_random_floats2();
 	more_random_floats3();
+	more_random_leo8();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
@@ -2930,16 +2874,3 @@ int	main(void)
 		printf("\n\033[1;31m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
 	return (0);
 }
-
-	//- %[flags][width][.precision][length]specifier
-
-	//print order:
-    /*
-        width (if flagcombo != dash)
-        PLUS FLAG (plus/minus) / - om negativt
-        HASHflag (0/0x/0X)
-        0 / precision // 0 flag ignored when precision > 0.
-        (precision == absolute number of 0 + digits - HASH_num.
-        width (if flagcombo == dash)
-
-    */

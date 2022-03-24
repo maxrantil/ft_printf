@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/08 17:54:02 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/22 18:01:03 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 18:20:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	check_unsigned_length(t_var *st)
 		st->hold_str = uint_str(va_arg(st->ap, unsigned long long), st);
 		return ;
 	}
-	else if (*st->fmt == 'L' || (*st->fmt == 'l' && st->fmt[i] == 'f')) // is this correct?
+	else if (*st->fmt == 'L' || (*st->fmt == 'l' && st->fmt[i] == 'f'))
 	{
 		++st->fmt;
 		st->le_f = ON;
@@ -129,42 +129,6 @@ void	check_hex_length(t_var *st)
 	{
 		st->fmt += 2;
 		pf_itoa_base(va_arg(st->ap, long long), 16, st);
-		return ;
-	}
-}
-
-void	check_oct_length(t_var *st)
-{
-	int	i;
-
-	i = 1;
-	if (*st->fmt == 'o')
-	{
-		pf_itoa_base((unsigned int)va_arg(st->ap, long long), 8, st);
-		return ;
-	}
-	else if (*st->fmt == 'h' && st->fmt[i] == 'o')
-	{
-		++st->fmt;
-		pf_itoa_base((unsigned short)va_arg(st->ap, long long), 8, st);
-		return ;
-	}
-	else if (*st->fmt == 'l' && st->fmt[i] == 'o')
-	{
-		++st->fmt;
-		pf_itoa_base((long)va_arg(st->ap, long long), 8, st);
-		return ;
-	}
-	else if (*st->fmt == 'h' && st->fmt[i] == 'h' && st->fmt[i + 1] == 'o')
-	{
-		st->fmt += 2;
-		pf_itoa_base((unsigned char)va_arg(st->ap, long long), 8, st);
-		return ;
-	}
-	else if (*st->fmt == 'l' && st->fmt[i] == 'l' && st->fmt[i + 1] == 'o')
-	{
-		st->fmt += 2;
-		pf_itoa_base(va_arg(st->ap, long long), 8, st);
 		return ;
 	}
 }

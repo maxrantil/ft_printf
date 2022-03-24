@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/21 13:35:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/23 17:23:43 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	exec_flag_zero(t_var *st)
 	sub = st->zero;
 	sub -= (st->va_ret < 0);
 	if (st->precision && st->zero_flag == ON)
-		sub = st->precision;// - st->len_va_arg + st->len_va_arg; // do i need two here? take away both?
+		sub = st->precision;
 	if (st->width && st->zero_flag == ON)
 	{
 		sub = st->width - st->len_va_arg + st->len_va_arg;
@@ -45,7 +45,6 @@ void	exec_flag_zero(t_var *st)
 	sub *= (sub > 0);
 	while ((size_t)sub-- > st->len_va_arg)
 		st->char_count += write(1, "0", 1);
-	//st->zero_flag = OFF;	
 }
 
 void	get_flag_zero(t_var *st)
@@ -67,7 +66,7 @@ void	exec_flag_proc(t_var *st)
 	size_t	i;
 
 	i = 0;
-	if (st->plus_flag)				//correct?
+	if (st->plus_flag)
 		--st->char_count;
 	if (*st->fmt == '%' && st->minus_flag == OFF)
 	{

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/23 16:19:34 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 17:13:17 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static char	*join_unit_mant(char *mantissa,  int x, t_var *st)
 	
 	j = 0;
 	i = 0;
-	combo = ft_strnew(ft_strlen(st->hold_str) + ft_strlen(mantissa) + 1 + (st->sign == -1 && *st->hold_str == '0'));
+	combo = ft_strnew(ft_strlen(st->hold_str) + ft_strlen(mantissa) + 1); // this might be taken away
 	if (!combo)
 		exit(1);
 	while (st->hold_str[i])

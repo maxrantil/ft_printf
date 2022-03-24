@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/23 14:07:43 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 17:56:39 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,7 @@ void	initialize_st(const char *format, t_var *st, int flag)
 {
 	st->fmt = format;
 	if (!flag)
-	{
 		st->char_count = 0;
-		st->even_procent = 0;
-	}
 	st->space_count = 0;
 	st->astx_ret = 0;
 	st->len_va_arg = 0;
@@ -27,7 +24,7 @@ void	initialize_st(const char *format, t_var *st, int flag)
 	st->precision = 0;
 	st->plus_flag = OFF;
 	st->minus_flag = OFF;
-	st->va_ret = 0; 						//change this later to not only int and cast it to anything?
+	st->va_ret = 0;
 	st->unnessesary = 0;
 	st->hash_flag = OFF;
 	st->zero = 0;
