@@ -6,11 +6,49 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 17:59:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 19:41:35 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+
+void	check_unsigned_length(t_var *st)
+{
+	int	i;
+
+	i = 1;
+	if (*st->fmt == 'u')
+		st->hold_str = \
+			uint_str((unsigned int)va_arg(st->ap, unsigned long long), st);
+	else if (*st->fmt == 'h' && st->fmt[i] == 'u')
+	{
+		++st->fmt;
+		st->hold_str = \
+			uint_str((unsigned short)va_arg(st->ap, unsigned long long), st);
+	}
+	else if (*st->fmt == 'l' && st->fmt[i] == 'u')
+	{
+		++st->fmt;
+		st->hold_str = \
+			uint_str((unsigned long)va_arg(st->ap, unsigned long long), st);
+	}
+	else if (*st->fmt == 'h' && st->fmt[i] == 'h' && st->fmt[i + 1] == 'u')
+	{
+		st->fmt += 2;
+		st->hold_str = \
+			uint_str((unsigned char)va_arg(st->ap, unsigned long long), st);
+	}
+	else if (*st->fmt == 'l' && st->fmt[i] == 'l' && st->fmt[i + 1] == 'u')
+	{
+		st->fmt += 2;
+		st->hold_str = uint_str(va_arg(st->ap, unsigned long long), st);
+	}
+	else if (*st->fmt == 'L' || (*st->fmt == 'l' && st->fmt[i] == 'f'))
+	{
+		++st->fmt;
+		st->le_f = ON;
+	}
+}
 
 void	pf_put_uint(t_var *st)
 {

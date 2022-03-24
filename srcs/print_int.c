@@ -6,11 +6,42 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 17:54:52 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 19:39:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+
+void	check_signed_length(t_var *st)
+{
+	int	i;
+
+	i = 1;
+	if (*st->fmt == 'd' || *st->fmt == 'i')
+		st->hold_str = conv_to_str((int)va_arg(st->ap, long long), st);
+	else if (*st->fmt == 'h' && (st->fmt[i] == 'd' || st->fmt[i] == 'i'))
+	{
+		++st->fmt;
+		st->hold_str = conv_to_str((short)va_arg(st->ap, long long), st);
+	}
+	else if (*st->fmt == 'l' && (st->fmt[i] == 'd' || st->fmt[i] == 'i'))
+	{
+		++st->fmt;
+		st->hold_str = conv_to_str((long)va_arg(st->ap, long long), st);
+	}
+	else if (*st->fmt == 'h' && st->fmt[i] == 'h' \
+		&& (st->fmt[i + 1] == 'd' || st->fmt[i + 1] == 'i'))
+	{
+		st->fmt += 2;
+		st->hold_str = conv_to_str((char)va_arg(st->ap, long long), st);
+	}
+	else if (*st->fmt == 'l' && st->fmt[i] == 'l' \
+		&& (st->fmt[i + 1] == 'd' || st->fmt[i + 1] == 'i'))
+	{
+		st->fmt += 2;
+		st->hold_str = conv_to_str(va_arg(st->ap, long long), st);
+	}
+}
 
 void	pf_putint(t_var *st)
 {
@@ -74,31 +105,6 @@ char	*conv_to_str(long long nbr, t_var *st)
 	if (!ft_strcmp(str, "-'..--).0-*(+,))+(0("))
 		return (ft_strdup("-9223372036854775808"));
 	return (str);
-}
-
-void	exec_flags_and_length(t_var *st)
-{
-	st->len_va_arg = ft_strlen(st->hold_str);
-	asterix_print(st);
-	if (st->minus_flag == OFF && st->width && !st->zero_flag)
-		exec_width(st);
-	if (st->va_ret >= 0)
-	{
-		if (!st->uint_check)
-			exec_flag_space(st);
-		if (st->zero_flag)
-			exec_precision(st);
-		if (st->hash_flag == ON && *st->hold_str != '0' && !st->width && (*st->fmt == 'x' || *st->fmt == 'X'))
-			pf_print_hex_hash(st);
-		if (st->hash_flag == ON && *st->hold_str != '0' && !st->width && *st->fmt == 'o')
-			st->char_count += write(1, "0", 1);
-		if (!st->zero_flag)
-			exec_precision(st);
-		if (!st->plus_flag)
-			exec_flag_zero(st);
-	}
-	if (*st->hold_str == '-')
-		st->char_count += write(1, "-", 1);
 }
 
 void	int_print(t_var *st)

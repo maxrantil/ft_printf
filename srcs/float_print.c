@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 17:13:17 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 19:47:54 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static char	*mant_to_a(long double nbr, int flag, t_var *st)
 	return (join_unit_mant(mantissa,  x, st));
 }
 
-static void	conv_float_str(long double nbr, int flag, t_var *st)
+void	conv_float_str(long double nbr, int flag, t_var *st)
 {
 	char	*float_str;
 	long long	round_up;
@@ -117,19 +117,4 @@ static void	conv_float_str(long double nbr, int flag, t_var *st)
 		st->hold_str = ft_strdup(float_str);
 		ft_strdel(&float_str);
 	}
-}
-
-void	float_print(t_var *st)
-{
-	int		flag = 6;
-	
-	if (st->prec_noll)
-		flag = st->precision;
-	if (st->le_f == ON)
-		conv_float_str(va_arg(st->ap, long double), flag, st);
-	else
-		conv_float_str(va_arg(st->ap, double), flag, st);
-	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	ft_strdel(&st->hold_str);
-	st->fmt++;
 }

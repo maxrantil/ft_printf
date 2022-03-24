@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/03/24 18:19:20 by mrantil          ###   ########.fr        #
+#    Updated: 2022/03/24 19:50:49 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,22 +28,15 @@ _DEPS = libftprintf.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 FUNCTIONS = ft_printf \
-			parser_loop \
-			int_print \
-			char_print \
-			str_print \
-			uint_print \
-			oct_print \
-			hex_print \
-			address_print \
+			print_int \
+			print_bi_add_c_str \
+			print_uint \
+			print_null_float_oct \
+			print_hex_astrix \
 			float_print \
-			asterix_print \
-			binary_print \
-			null_print \
 			flags_plus_minus_hash_null \
 			flags_proc_zero_space \
-			check_width_and_precision \
-			check_length \
+			width_and_precision \
 			tools
 
 _OBJ = $(foreach function, $(FUNCTIONS), $(function).o)

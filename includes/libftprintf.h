@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 18:29:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 19:48:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,6 +121,7 @@ void	initialize_st(const char *format, t_var *st, int flag);
 void	pf_print_hex_hash(t_var *st);
 void	pf_write_o(t_var *st);
 void	pf_write(t_var *st);
+void	conv_float_str(long double nbr, int flag, t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[14] = {
 	char_print,

@@ -1,18 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   str_print.c                                        :+:      :+:    :+:   */
+/*   print_add_c_str.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 19:40:31 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 19:38:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-static void	pf_putstr(t_var *st)
+void	binary_print(t_var *st)
+{
+	int	i;
+	unsigned char octet;
+	
+	i = 128;
+	octet = (unsigned char)va_arg(st->ap, int);
+	while (octet >= 0 && i)
+	{
+		if ((octet / i) == 1)
+			st->char_count += write(1, "1", 1);
+		else
+			st->char_count += write(1, "0", 1);
+		if ((octet / i) == 1)
+			octet -= i;
+		i /= 2;
+	}
+	st->fmt++;
+}
+
+void	address_print(t_var *st)
+{
+	pf_itoa_base(va_arg(st->ap, long), 16, st);
+	st->len_va_arg = ft_strlen(st->hold_str);
+	if (st->width)
+		st->width -= 2;
+	if (st->minus_flag == OFF && st->width)
+		exec_width(st);
+	st->char_count += write(1, "0x", 2);
+	if (*st->hold_str == '0' && st->precision_zero && !st->precision)
+	{
+		st->fmt++;
+		return ;
+	}
+	else
+		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+	if (st->minus_flag == ON)
+		exec_width(st);
+	ft_strdel(&st->hold_str);
+	st->fmt++;
+}
+
+static void	pf_write_str(t_var *st)
 {
 	size_t	len;
 
@@ -47,6 +89,18 @@ void	str_print(t_var *st)
 	}
 	st->len_va_arg = ft_strlen(st->hold_str);
 	asterix_print(st);
-	pf_putstr(st);
+	pf_write_str(st);
+	st->fmt++;
+}
+
+void	char_print(t_var *st)
+{
+	st->char_width = 1;
+	if (st->minus_flag == OFF && st->width)
+		exec_width(st);
+	ft_putchar((char)va_arg(st->ap, int));
+	++st->char_count;
+	if (st->minus_flag == ON)
+		exec_width(st);
 	st->fmt++;
 }

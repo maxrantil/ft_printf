@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 18:40:55 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/24 19:30:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2691,6 +2691,21 @@ void	more_random_binary(void)
 	++done;
 }
 
+void	more_random_jeff2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%c]\n", 0);
+	a = ft_printf("ft_: [%c]\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_random_jeff2 failed_______\033[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
 	mix_ezz();
@@ -2867,6 +2882,7 @@ int	main(void)
 	more_random_floats2();
 	more_random_floats3();
 	more_random_leo8();
+	more_random_jeff2();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
