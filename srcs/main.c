@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 19:30:28 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/25 16:05:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1840,8 +1840,8 @@ void	basic_hash4(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %#-08x\n", 144);
-	a = ft_printf("ft_: %#-08x\n", 144);
+	b = printf("pri: %#-8x\n", 144);
+	a = ft_printf("ft_: %#-8x\n", 144);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2080,8 +2080,8 @@ void	basic_d_spec(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: % +d\n", 42);
-	a = ft_printf("ft_: % +d\n", 42);
+	b = printf("pri: %+d\n", 42);
+	a = ft_printf("ft_: %+d\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2095,8 +2095,8 @@ void	basic_d_spec1(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: % ++d\n", 42);
-	a = ft_printf("ft_: % ++d\n", 42);
+	b = printf("pri: %++d\n", 42);
+	a = ft_printf("ft_: %++d\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2170,8 +2170,8 @@ void	basic_d_spec6(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%-05d]\n", -42);
-	a = ft_printf("ft_: [%-05d]\n", -42);
+	b = printf("pri: [%-5d]\n", -42);
+	a = ft_printf("ft_: [%-5d]\n", -42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2230,8 +2230,8 @@ void	basic_d_spec10(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %lld\n", 9223372036854775808);
-	a = ft_printf("ft_: %lld\n", 9223372036854775808);
+	b = printf("pri: %ld\n", 36854775807);
+	a = ft_printf("ft_: %ld\n", 36854775807);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2275,8 +2275,8 @@ void	mouli_test2(void)
 {
 	long long	a;
 	long long	b;
-	b = printf("pri: %llo, %llo\n", 0ul, 9223372036854775808);
-	a = ft_printf("ft_: %llo, %llo\n", 0ul, 9223372036854775808);
+	b = printf("pri: %lo, %lo\n", 0ul, 9223372036854775807);
+	a = ft_printf("ft_: %lo, %lo\n", 0ul, 9223372036854775807);
 	printf("\nret: %d \n", (int)b);
 	printf("ret: %d \n", (int)a);
 	if (a == b)
@@ -2290,8 +2290,8 @@ void	mouli_test3(void)
 {
 	unsigned short	a;
 	unsigned short	b;
-	b = printf("pri: %ho, %ho\n", 0, 65535);
-	a = ft_printf("ft_: %ho, %ho\n", 0, 65535);
+	b = printf("pri: %o, %o\n", 0, 65535);
+	a = ft_printf("ft_: %o, %o\n", 0, 65535);
 	printf("\nret: %d \n", (int)b);
 	printf("ret: %d \n", (int)a);
 	if (a == b)
@@ -2303,10 +2303,10 @@ void	mouli_test3(void)
 
 void	mouli_test4(void)
 {
-	unsigned char	a;
-	unsigned char	b;
-	b = printf("pri: %hho, %hho\n", 0, 255);
-	a = ft_printf("ft_: %hho, %hho\n", 0, 255);
+	int	a;
+	int	b;
+	b = printf("pri: %o, %o\n", 0, 255);
+	a = ft_printf("ft_: %o, %o\n", 0, 255);
 	printf("\nret: %d \n", (int)b);
 	printf("ret: %d \n", (int)a);
 	if (a == b)
@@ -2315,21 +2315,6 @@ void	mouli_test4(void)
 		assert(printf("\033[1;31m _______mouli_test4 failed_______\033[0m\n\n"));
 	++done;
 }
-
-/* void	mouli_test5(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: {%5p}\n", 0);
-	a = ft_printf("ft_: {%5p}\n", 0);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______mouli_test5 failed_______\033[0m\n\n"));
-	++done;
-} */
 
 void	mouli_test6(void)
 {
@@ -2410,8 +2395,10 @@ void	mouli_test11(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.p, %.0p\n", 0, 0);
-	a = ft_printf("ft_: %.p, %.0p\n", 0, 0);
+	int c = 10;
+	int d = 11;
+	b = printf("pri: %p, %p\n", &c, &d);
+	a = ft_printf("ft_: %p, %p\n", &c, &d);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2425,8 +2412,8 @@ void	mouli_test12(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %o, %ho\n", -42, -42, -42);
-	a = ft_printf("ft_: %o, %ho\n", -42, -42, -42);
+	b = printf("pri: %o, %o\n", -42, 42);
+	a = ft_printf("ft_: %o, %o\n", -42, 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2455,8 +2442,8 @@ void	mouli_test15(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: {%*3d}\n", 10, 0);
-	a = ft_printf("ft_: {%*3d}\n", 10, 0);
+	b = printf("pri: {%3d}\n", 10);
+	a = ft_printf("ft_: {%3d}\n", 10);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2470,8 +2457,8 @@ void	random_proc(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %\n", 10);
-	a = ft_printf("ft_: %\n", 10);
+	b = printf("pri: %8%\n");
+	a = ft_printf("ft_: %8%\n");
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2680,8 +2667,8 @@ void	more_random_binary(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%b]\n", 42);
-	a = ft_printf("ft_: [%b]\n", 42);
+	b = printf("pri: [%+-d]\n", 42);
+	a = ft_printf("ft_: [%+-d]\n", 42);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2703,6 +2690,36 @@ void	more_random_jeff2(void)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______more_random_jeff2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	ptf0(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%0-8.5d]\n", 34); //0 flag is ignored when -, put that fix in
+	a = ft_printf("ft_: [%0-8.5d]\n", 34);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______pft0 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	ptf(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%.s]\n", "hello");
+	a = ft_printf("ft_: [%.s]\n", "hello");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______pft failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -2883,6 +2900,8 @@ int	main(void)
 	more_random_floats3();
 	more_random_leo8();
 	more_random_jeff2();
+	ptf0();
+	ptf();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
@@ -2890,3 +2909,327 @@ int	main(void)
 		printf("\n\033[1;31m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
 	return (0);
 }
+
+
+/* Test  44 (s_string_prec_default) : FAILED.
+    First line of code: {return test("%.s", "hello");}
+      expected output : ""
+      your output     : "hello"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "hello"
+
+Test  45 (s_string_prec_zero) : FAILED.
+    First line of code: {return test("%.0s", "hello");}
+      expected output : ""
+      your output     : "hello"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "hello"
+
+Test  50 (s_string_prec_width_notrunc) : FAILED.
+    First line of code: {return test("%7.5s", "yolo");}
+      expected output : "   yolo"
+      your output     : "  yolo"
+      expected (nonprintable as hex) : "   yolo"
+      actual   (nonprintable as hex) : "  yolo"
+
+Test  52 (s_string_prec_width_notrunc_lj) : FAILED.
+    First line of code: {return test("%-7.5s", "yolo");}
+      expected output : "yolo   "
+      your output     : "yolo  "
+      expected (nonprintable as hex) : "yolo   "
+      actual   (nonprintable as hex) : "yolo  "
+
+Test  54 (s_two_s_prec_width_2fit_0trunc) : FAILED.
+    First line of code: {return test("%7.7s%7.7s", "hello", "world");}
+      expected output : "  hello  world"
+      your output     : "helloworld"
+      expected (nonprintable as hex) : "  hello  world"
+      actual   (nonprintable as hex) : "helloworld"
+
+Test  55 (s_two_s_prec_width_1fit_a_0trunc) : FAILED.
+    First line of code: {return test("%3.7s%7.7s", "hello", "world");}
+      expected output : "hello  world"
+      your output     : "helloworld"
+      expected (nonprintable as hex) : "hello  world"
+      actual   (nonprintable as hex) : "helloworld"
+
+Test  56 (s_two_s_prec_width_1fit_b_0trunc) : FAILED.
+    First line of code: {return test("%7.7s%3.7s", "hello", "world");}
+      expected output : "  helloworld"
+      your output     : "helloworld"
+      expected (nonprintable as hex) : "  helloworld"
+      actual   (nonprintable as hex) : "helloworld"
+
+Test  58 (s_two_s_prec_width_2fit_1trunc_a) : FAILED.
+    First line of code: {return test("%7.3s%7.7s", "hello", "world");}
+      expected output : "    hel  world"
+      your output     : "    helworld"
+      expected (nonprintable as hex) : "    hel  world"
+      actual   (nonprintable as hex) : "    helworld"
+
+Test  59 (s_two_s_prec_width_1fit_a_1trunc_a) : FAILED.
+    First line of code: {return test("%3.3s%7.7s", "hello", "world");}
+      expected output : "hel  world"
+      your output     : "helworld"
+      expected (nonprintable as hex) : "hel  world"
+      actual   (nonprintable as hex) : "helworld"
+
+Test  62 (s_two_s_prec_width_2fit_1trunc_b) : FAILED.
+    First line of code: {return test("%7.7s%7.3s", "hello", "world");}
+      expected output : "  hello    wor"
+      your output     : "hello    wor"
+      expected (nonprintable as hex) : "  hello    wor"
+      actual   (nonprintable as hex) : "hello    wor"
+
+Test  64 (s_two_s_prec_width_1fit_b_1trunc_b) : FAILED.
+    First line of code: {return test("%7.7s%3.3s", "hello", "world");}
+      expected output : "  hellowor"
+      your output     : "hellowor"
+      expected (nonprintable as hex) : "  hellowor"
+      actual   (nonprintable as hex) : "hellowor"
+
+Test  75 (s_null_space_padded_field_width) : FAILED.
+    First line of code: {return test("%32s", NULL);}
+      expected output : "                          (null)"
+      your output     : "(null)"
+      expected (nonprintable as hex) : "                          (null)"
+      actual   (nonprintable as hex) : "(null)"
+
+Test  77 (s_null_space_padded_field_width_lj) : FAILED.
+    First line of code: {return test("%-32s", NULL);}
+      expected output : "(null)                          "
+      your output     : "(null)"
+      expected (nonprintable as hex) : "(null)                          "
+      actual   (nonprintable as hex) : "(null)"
+
+Test  78 (s_null_space_padded_field_width2_lj) : FAILED.
+    First line of code: {return test("%-16s", NULL);}
+      expected output : "(null)          "
+      your output     : "(null)"
+      expected (nonprintable as hex) : "(null)          "
+      actual   (nonprintable as hex) : "(null)"
+
+Test  82 (s_null_string_prec_default) : FAILED.
+    First line of code: {return test("%.s", "NULL");}
+      expected output : ""
+      your output     : "NULL"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "NULL"
+
+Test  83 (s_null_string_prec_zero) : FAILED.
+    First line of code: {return test("%.0s", "NULL");}
+      expected output : ""
+      your output     : "NULL"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "NULL"
+
+Test  87 (s_prec_no_width_s_hidden) : FAILED.
+    First line of code: {return test("%.s", s_hidden);}
+      expected output : ""
+      your output     : "hi low"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "hi low"
+
+Test  91 (s_prec_03_no_width_s_null) : FAILED.
+    First line of code: {return test("%.03s", NULL);}
+      expected output : "(nu"
+      your output     : "(null)"
+      expected (nonprintable as hex) : "(nu"
+      actual   (nonprintable as hex) : "(null)"
+
+Test  97 (s_prec_0_width_3_s_hidden) : FAILED.
+    First line of code: {return test("%3.s", s_hidden);}
+      expected output : "   "
+      your output     : "hi low"
+      expected (nonprintable as hex) : "   "
+      actual   (nonprintable as hex) : "hi low"
+
+Test  98 (s_prec_0_width_10_s_hidden) : FAILED.
+    First line of code: {return test("%10.s", s_hidden);}
+      expected output : "          "
+      your output     : "     hi low"
+      expected (nonprintable as hex) : "          "
+      actual   (nonprintable as hex) : "     hi low"
+
+Test  99 (s_prec_0_width_3_s_null) : FAILED.
+    First line of code: {return test("%3.s", NULL);}
+      expected output : "   "
+      your output     : "(null)"
+      expected (nonprintable as hex) : "   "
+      actual   (nonprintable as hex) : "(null)"
+
+Test 100 (s_prec_0_width_10_s_null) : FAILED.
+    First line of code: {return test("%10.s", NULL);}
+      expected output : "          "
+      your output     : "(null)"
+      expected (nonprintable as hex) : "          "
+      actual   (nonprintable as hex) : "(null)"
+
+Test 101 (s_prec_0_width_1_s_nullchar) : FAILED.
+    First line of code: {return test("%1.s", "
+      expected output : " "
+      your output     : "  "
+      expected (nonprintable as hex) : " "
+      actual   (nonprintable as hex) : "  "
+
+Test 102 (s_prec_0_width_2_s_nullchar) : FAILED.
+    First line of code: {return test("%2.s", "
+      expected output : "  "
+      your output     : "   "
+      expected (nonprintable as hex) : "  "
+      actual   (nonprintable as hex) : "   "
+
+Test 103 (s_prec_0_width_9_s_nullchar) : FAILED.
+    First line of code: {return test("%9.s", "
+      expected output : "         "
+      your output     : "          "
+      expected (nonprintable as hex) : "         "
+      actual   (nonprintable as hex) : "          "
+
+Test 104 (s_prec_0_lj_width_3_s_hidden) : FAILED.
+    First line of code: {return test("%-3.s", s_hidden);}
+      expected output : "   "
+      your output     : "hi low"
+      expected (nonprintable as hex) : "   "
+      actual   (nonprintable as hex) : "hi low"
+
+Test 105 (s_prec_0_lj_width_8_s_hidden) : FAILED.
+    First line of code: {return test("%-8.s", s_hidden);}
+      expected output : "        "
+      your output     : "hi low   "
+      expected (nonprintable as hex) : "        "
+      actual   (nonprintable as hex) : "hi low   "
+
+Test 106 (s_prec_0_lj_width_3_s_null) : FAILED.
+    First line of code: {return test("%-3.s", NULL);}
+      expected output : "   "
+      your output     : "(null)"
+      expected (nonprintable as hex) : "   "
+      actual   (nonprintable as hex) : "(null)"
+
+Test 107 (s_prec_0_lj_width_8_s_null) : FAILED.
+    First line of code: {return test("%-8.s", NULL);}
+      expected output : "        "
+      your output     : "(null)"
+      expected (nonprintable as hex) : "        "
+      actual   (nonprintable as hex) : "(null)"
+
+Test 108 (s_prec_0_lj_width_1_s_nullchar) : FAILED.
+    First line of code: {return test("%-1.s", "
+      expected output : " "
+      your output     : "  "
+      expected (nonprintable as hex) : " "
+      actual   (nonprintable as hex) : "  "
+
+Test 109 (s_prec_0_lj_width_2_s_nullchar) : FAILED.
+    First line of code: {return test("%-2.s", "
+      expected output : "  "
+      your output     : "   "
+      expected (nonprintable as hex) : "  "
+      actual   (nonprintable as hex) : "   "
+
+Test 110 (s_prec_0_lj_width_6_s_nullchar) : FAILED.
+    First line of code: {return test("%-6.s", "
+      expected output : "      "
+      your output     : "       "
+      expected (nonprintable as hex) : "      "
+      actual   (nonprintable as hex) : "       "
+
+Test 113 (s_prec_1_width_3_s_null) : FAILED.
+    First line of code: {return test("%3.1s", NULL);}
+      expected output : "  ("
+      your output     : "(null)"
+      expected (nonprintable as hex) : "  ("
+      actual   (nonprintable as hex) : "(null)"
+
+Test 114 (s_prec_1_width_9_s_null) : FAILED.
+    First line of code: {return test("%9.1s", NULL);}
+      expected output : "        ("
+      your output     : "(null)"
+      expected (nonprintable as hex) : "        ("
+      actual   (nonprintable as hex) : "(null)"
+
+Test 117 (s_prec_1_lj_width_3_s_null) : FAILED.
+    First line of code: {return test("%-3.1s", NULL);}
+      expected output : "(  "
+      your output     : "(null)"
+      expected (nonprintable as hex) : "(  "
+      actual   (nonprintable as hex) : "(null)"
+
+Test 118 (s_prec_1_lj_width_9_s_null) : FAILED.
+    First line of code: {return test("%-9.1s", NULL);}
+      expected output : "(        "
+      your output     : "(null)"
+      expected (nonprintable as hex) : "(        "
+      actual   (nonprintable as hex) : "(null)"
+
+Test 124 (s_prec_perfect_width_20_s_null) : FAILED.
+    First line of code: {return test("%20.6s", NULL);}
+      expected output : "              (null)"
+      your output     : "(null)"
+      expected (nonprintable as hex) : "              (null)"
+      actual   (nonprintable as hex) : "(null)"
+
+Test 125 (s_prec_perfect_width_3_s_nullchar) : FAILED.
+    First line of code: {return test("%3.6s", "
+      expected output : "   "
+      your output     : "      "
+      expected (nonprintable as hex) : "   "
+      actual   (nonprintable as hex) : "      "
+
+Test 130 (s_prec_8_lj_width_10_s_hidden) : FAILED.
+    First line of code: {return test("%-10.8s", s_hidden);}
+      expected output : "hi low    "
+      your output     : "hi low  "
+      expected (nonprintable as hex) : "hi low    "
+      actual   (nonprintable as hex) : "hi low  "
+
+Test 132 (s_prec_8_lj_width_10_s_null) : FAILED.
+    First line of code: {return test("%-10.8s", NULL);}
+      expected output : "(null)    "
+      your output     : "(null)"
+      expected (nonprintable as hex) : "(null)    "
+      actual   (nonprintable as hex) : "(null)"
+
+Test 133 (s_prec_00_lj_s_hidden_trunc) : FAILED.
+    First line of code: {return test("%-.00s", s_hidden);}
+      expected output : ""
+      your output     : "hi low"
+      expected (nonprintable as hex) : ""
+      actual   (nonprintable as hex) : "hi low"
+
+Test 238 (d_prec_width_nofit_fit_neg_lj) : FAILED.
+    First line of code: {return test("%-8.3d", -8473);}
+      expected output : "-8473   "
+      your output     : "-8473    "
+      expected (nonprintable as hex) : "-8473   "
+      actual   (nonprintable as hex) : "-8473    "
+
+Test 244 (d_prec_width_ff_neg_zp) : FAILED.
+    First line of code: {return test("%010.5d", -216);}
+      expected output : "    -00216"
+      your output     : "-00216"
+      expected (nonprintable as hex) : "    -00216"
+      actual   (nonprintable as hex) : "-00216"
+
+Test 246 (d_prec_width_nf_pos_zp) : FAILED.
+    First line of code: {return test("%08.3d", 8375);}
+      expected output : "    8375"
+      your output     : "     8375"
+      expected (nonprintable as hex) : "    8375"
+      actual   (nonprintable as hex) : "     8375"
+
+Test 247 (d_prec_width_nf_neg_zp) : FAILED.
+    First line of code: {return test("%08.3d", -8473);}
+      expected output : "   -8473"
+      your output     : "-8473"
+      expected (nonprintable as hex) : "   -8473"
+      actual   (nonprintable as hex) : "-8473"
+
+Test 252 (d_prec_width_ff_pos_lj_zp_ignoreflag) : FAILED.
+    First line of code: {return test("%0-8.5d", 34);}
+      expected output : "00034   "
+      your output     : "00000034   "
+      expected (nonprintable as hex) : "00034   "
+      actual   (nonprintable as hex) : "00000034   "
+ */

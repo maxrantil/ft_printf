@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_width_and_precision.c                        :+:      :+:    :+:   */
+/*   width_and_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 19:05:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/25 14:46:40 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	exec_precision(t_var *st)
 		}
 		while ((size_t)sub-- > st->len_va_arg)
 			st->char_count += write(1, "0", 1);
-}
+	}
 }
 
 void	exec_width(t_var *st)
