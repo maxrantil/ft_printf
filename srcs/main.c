@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/26 18:14:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/26 20:08:31 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2816,8 +2816,8 @@ void	basic_strings18(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %7.7s %7.3s\n", "hello" "world");
-	a = ft_printf("ft_: %7.7s %7.3s\n", "hello" "world");
+	b = printf("pri: %7.7s %.3s\n", "hello", "NULL");
+	a = ft_printf("ft_: %7.7s %.3s\n", "hello", "NULL");
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2831,8 +2831,8 @@ void	basic_strings19(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %3.7s %7.7s\n", "hello" "world");
-	a = ft_printf("ft_: %3.7s %7.7s\n", "hello" "world");
+	b = printf("pri: %3.7s %7.7s\n", "hello", "world");
+	a = ft_printf("ft_: %3.7s %7.7s\n", "hello", "world");
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2846,8 +2846,8 @@ void	basic_strings20(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %3.3s %3.7s\n", "hello" "world");
-	a = ft_printf("ft_: %3.3s %3.7s\n", "hello" "world");
+	b = printf("pri: %1.s %8.s]\n", "hello", "hej");
+	a = ft_printf("ft_: %1.s %8.s]\n", "hello", "hej");
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2861,8 +2861,8 @@ void	basic_strings21(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %7.7s %7.3s\n", "hello" "world");
-	a = ft_printf("ft_: %7.7s %7.3s\n", "hello" "world");
+	b = printf("pri: %-16s\n", NULL);
+	a = ft_printf("ft_: %-16s\n", NULL);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2872,242 +2872,7 @@ void	basic_strings21(void)
 	++done;
 }
 
-int	main(void)
-{
-/* 	mix_ezz();
-	mix_ez1();
-	mix_ez2();
-	mix_ez3();
-	mix_ez4();
-	test_oct_zero();
-	test_oct();
-	test_int();
-	test_hex();
-	test_hex_zero();
-	test_dec();
-	test_hex_random();
-	test_int_zero();
-	test_int_minus();
-	test_int_plus_flag();
-	test_int_plus_flag2();
-	test_int_minusminus_flag();
-	test_address();
-	test_asterix_with_int();
-	test_asterix_with_str();
-	test_width_single();
-	test_width_multi();
-	test_width_multi2();
- 	test_precision();
- 	test_precision_1();
-	test_mindfuck();
-	test_mindfuck_minusminus();
- 	test_mindfuck_minusminint();
-	test_mindfuck_minusminint2();
-	test_mindfuck_plus_craz();
-	test_mindfuck_plus_craz2();
-	test_mindfuck_plus_craz3();
-	test_mindfuck_plus_craz4();
-	test_length_h();
-	test_length_h2();
-	test_length_hh();
-	test_length_hh2();
-	test_length_hh_unsigned_int();
-	test_length_hh_unsigned_int2();
-	test_length_h_unsigned_int();
-	test_length_h_unsigned_int2();
-	test_intmin();
-	test_42hex();
-	test_asterix_with_int_plus();
-	test_hashoct();
-	test_hashoct_intmin();
-	test_hashhex_intmin();
-	test_hashhex_intmax();
-	test_binary();
-	test_flag_zero();
-	test_flag_zero1();
-	test_flag_zero2();
-	test_flag_zero_with_pre();
-	test_flag_zero_with_pre2();
-	test_flag_zero_with_pre3();
-	test_flag_zero_with_pre4();
-	test_flag_zero_with_pre5();
-	test_flag_zero_with_pre6();
-	test_dubbleint();
-	test_simple_string();
-	test_length_l();
-	test_length_l_minus();
-	test_length_ll();
-	test_length_ll_minus();
-	test_length_ll_test();
-	test_length_ll_str();
-	test_length_ll_test_uint();
-	test_multi_flags0();
-	test_multi_flags1();
-	test_multi_flags2();
-	test_multi_flags3();
-	test_multi_flags4();
-	leo_test();
-	test_procentage();
-	test_flag_space_minus();
-	test_flag_space();
-	test_float0();
-	test_float1();
-	test_float2();
-	test_float3();
-	test_float4();
-	test_float5();
-	test_float6();
-	test_float7();
-	test_float8();
-	test_float9();
-	test_float10();
-	test_float11();
-	test_float12();
-	test_basic0();
-	test_basic1();
-	test_basic2();
-	test_basic3();
-	test_basic4();
-	pro_test();
-	pro_test1();
-	pro_test2();
-	pro_test33();
-	test_mindfuck_minus();
-	test_basic5();
-	pro_test3();
-	pro_test_leo();
-	basic_simple_proc();
-	basic_plus_uint();
-	basic_valt();
-	pro_test4();
-	basic_hash();
-	basic_hash1();
-	basic_hash2();
-	test_basic6();
-	basic_hash3(); */
-/* 	basic_hash4(); //zero-flag is ignored with minus-flag
-	basic_hash5();
-	basic_hexs10();
-	basic_hexs11();
-	basic_char1();
-	basic_char2();
-	basic_char3();
-	basic_o_spec();
-	basic_o_spec1();
-	basic_o_spec2();
-	basic_o_spec3();
-	basic_o_spec4();
-	basic_d_spec();
-	basic_d_spec1();
-	basic_d_spec2();
-	basic_d_spec3();
-	basic_d_spec4();
-	basic_d_spec5();
-	basic_d_spec6();
-	basic_d_spec7();
-	basic_d_spec8();
-	basic_d_spec9();
-	basic_d_spec10();
-	mouli_test();
-	mouli_test1();
-	mouli_test2();
-	mouli_test3();
-	mouli_test4();
-	mouli_test6();
-	mouli_test7();
-	test_mindfuck_simpleminus();
-	mouli_test8();
-	mouli_test9();
-	mouli_test11();
-	mouli_test12();
-	random_proc();
-	random_leo();
-	random_leo1();
-	random_leo2();
-	random_leo4();
-	random_jeff();
-	more_mouli1();
-	more_mouli2();
-	more_mouli4();
-	more_random_floats();
-	more_random_floats1();
-	more_random_floats2();
-	more_random_floats3();
-	more_random_leo8();
-	more_random_jeff2(); */
-//	ptf0();
-	ptf();
-	ptf1();
-	ptf2();
-	basic_strings();
-	basic_strings1();
-	basic_strings2();
-	basic_strings3();
-	basic_strings4();
-	basic_strings5();
-	basic_strings6();
-	basic_strings7();
-	basic_strings8();
-	basic_strings9();
-	basic_strings10();
-	basic_strings11();
-	basic_strings12();
-	basic_strings13();
-	basic_strings14();
-	basic_strings15();
-	basic_strings16();
-	basic_strings17();
-	basic_strings18();
-	basic_strings19();
-	basic_strings20();
-	basic_strings21();
-
-	if (tests == done)
-		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
-	else
-		printf("\n\033[1;31m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
-	return (0);
-}
-
-
 /*
-
-
-Test  78 (s_null_space_padded_field_width2_lj) : FAILED.
-    First line of code: {return test("%-16s", NULL);}
-      expected output : "(null)          "
-      your output     : "(null)"
-      expected (nonprintable as hex) : "(null)          "
-      actual   (nonprintable as hex) : "(null)"
-
-Test  82 (s_null_string_prec_default) : FAILED.
-    First line of code: {return test("%.s", "NULL");}
-      expected output : ""
-      your output     : "NULL"
-      expected (nonprintable as hex) : ""
-      actual   (nonprintable as hex) : "NULL"
-
-Test  83 (s_null_string_prec_zero) : FAILED.
-    First line of code: {return test("%.0s", "NULL");}
-      expected output : ""
-      your output     : "NULL"
-      expected (nonprintable as hex) : ""
-      actual   (nonprintable as hex) : "NULL"
-
-Test  87 (s_prec_no_width_s_hidden) : FAILED.
-    First line of code: {return test("%.s", s_hidden);}
-      expected output : ""
-      your output     : "hi low"
-      expected (nonprintable as hex) : ""
-      actual   (nonprintable as hex) : "hi low"
-
-Test  91 (s_prec_03_no_width_s_null) : FAILED.
-    First line of code: {return test("%.03s", NULL);}
-      expected output : "(nu"
-      your output     : "(null)"
-      expected (nonprintable as hex) : "(nu"
-      actual   (nonprintable as hex) : "(null)"
-
 Test  97 (s_prec_0_width_3_s_hidden) : FAILED.
     First line of code: {return test("%3.s", s_hidden);}
       expected output : "   "
@@ -3302,5 +3067,201 @@ Test 252 (d_prec_width_ff_pos_lj_zp_ignoreflag) : FAILED.
       expected output : "00034   "
       your output     : "00000034   "
       expected (nonprintable as hex) : "00034   "
-      actual   (nonprintable as hex) : "00000034   "
- */
+      actual   (nonprintable as hex) : "00000034   " */
+
+int	main(void)
+{
+/* 	mix_ezz();
+	mix_ez1();
+	mix_ez2();
+	mix_ez3();
+	mix_ez4();
+	test_oct_zero();
+	test_oct();
+	test_int();
+	test_hex();
+	test_hex_zero();
+	test_dec();
+	test_hex_random();
+	test_int_zero();
+	test_int_minus();
+	test_int_plus_flag();
+	test_int_plus_flag2();
+	test_int_minusminus_flag();
+	test_address();
+	test_asterix_with_int();
+	test_asterix_with_str();
+	test_width_single();
+	test_width_multi();
+	test_width_multi2();
+ 	test_precision();
+ 	test_precision_1();
+	test_mindfuck();
+	test_mindfuck_minusminus();
+ 	test_mindfuck_minusminint();
+	test_mindfuck_minusminint2();
+	test_mindfuck_plus_craz();
+	test_mindfuck_plus_craz2();
+	test_mindfuck_plus_craz3();
+	test_mindfuck_plus_craz4();
+	test_length_h();
+	test_length_h2();
+	test_length_hh();
+	test_length_hh2();
+	test_length_hh_unsigned_int();
+	test_length_hh_unsigned_int2();
+	test_length_h_unsigned_int();
+	test_length_h_unsigned_int2();
+	test_intmin();
+	test_42hex();
+	test_asterix_with_int_plus();
+	test_hashoct();
+	test_hashoct_intmin();
+	test_hashhex_intmin();
+	test_hashhex_intmax();
+	test_binary();
+	test_flag_zero();
+	test_flag_zero1();
+	test_flag_zero2();
+	test_flag_zero_with_pre();
+	test_flag_zero_with_pre2();
+	test_flag_zero_with_pre3();
+	test_flag_zero_with_pre4();
+	test_flag_zero_with_pre5();
+	test_flag_zero_with_pre6();
+	test_dubbleint();
+	test_simple_string();
+	test_length_l();
+	test_length_l_minus();
+	test_length_ll();
+	test_length_ll_minus();
+	test_length_ll_test();
+	test_length_ll_str();
+	test_length_ll_test_uint();
+	test_multi_flags0();
+	test_multi_flags1();
+	test_multi_flags2();
+	test_multi_flags3();
+	test_multi_flags4();
+	leo_test();
+	test_procentage();
+	test_flag_space_minus();
+	test_flag_space();
+	test_float0();
+	test_float1();
+	test_float2();
+	test_float3();
+	test_float4();
+	test_float5();
+	test_float6();
+	test_float7();
+	test_float8();
+	test_float9();
+	test_float10();
+	test_float11();
+	test_float12();
+	test_basic0();
+	test_basic1();
+	test_basic2();
+	test_basic3();
+	test_basic4();
+	pro_test();
+	pro_test1();
+	pro_test2();
+	pro_test33();
+	test_mindfuck_minus();
+	test_basic5();
+	pro_test3();
+	pro_test_leo();
+	basic_simple_proc();
+	basic_plus_uint();
+	basic_valt();
+	pro_test4();
+	basic_hash();
+	basic_hash1();
+	basic_hash2();
+	test_basic6();
+	basic_hash3(); */
+/* 	basic_hash4(); //zero-flag is ignored with minus-flag
+	basic_hash5();
+	basic_hexs10();
+	basic_hexs11();
+	basic_char1();
+	basic_char2();
+	basic_char3();
+	basic_o_spec();
+	basic_o_spec1();
+	basic_o_spec2();
+	basic_o_spec3();
+	basic_o_spec4();
+	basic_d_spec();
+	basic_d_spec1();
+	basic_d_spec2();
+	basic_d_spec3();
+	basic_d_spec4();
+	basic_d_spec5();
+	basic_d_spec6();
+	basic_d_spec7();
+	basic_d_spec8();
+	basic_d_spec9();
+	basic_d_spec10();
+	mouli_test();
+	mouli_test1();
+	mouli_test2();
+	mouli_test3();
+	mouli_test4();
+	mouli_test6();
+	mouli_test7();
+	test_mindfuck_simpleminus();
+	mouli_test8();
+	mouli_test9();
+	mouli_test11();
+	mouli_test12();
+	random_proc();
+	random_leo();
+	random_leo1();
+	random_leo2();
+	random_leo4();
+	random_jeff();
+	more_mouli1();
+	more_mouli2();
+	more_mouli4();
+	more_random_floats();
+	more_random_floats1();
+	more_random_floats2();
+	more_random_floats3();
+	more_random_leo8();
+	more_random_jeff2(); */
+//	ptf0();
+	ptf();
+	ptf1();
+	ptf2();
+	basic_strings();
+	basic_strings1();
+	basic_strings2();
+	basic_strings3();
+	basic_strings4();
+	basic_strings5();
+	basic_strings6();
+	basic_strings7();
+	basic_strings8();
+	basic_strings9();
+	basic_strings10();
+	basic_strings11();
+	basic_strings12();
+	basic_strings13();
+	basic_strings14();
+	basic_strings15();
+	basic_strings16();
+	basic_strings17();
+	basic_strings18();
+	basic_strings19();
+	basic_strings20();
+	basic_strings21(); //how not to print "(null)" if not full fit?
+
+	if (tests == done)
+		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
+	else
+		printf("\n\033[1;31m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
+	return (0);
+}

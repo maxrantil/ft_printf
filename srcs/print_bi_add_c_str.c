@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/26 18:28:25 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/26 20:06:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	exec_precision_str(t_var *st)
 	}
 }
 
-void	exec_width_str(t_var *st)
+void	str_precision_width(t_var *st)
 {
 	long sub;
 
@@ -81,9 +81,8 @@ void	exec_width_str(t_var *st)
 		while (sub--)
 			st->char_count += write(1, " ", 1);
 	}
-	else
+	else if (st->width)
 	{
-		sub += (st->precision_zero && !st->precision);
 		sub += st->width;
 		sub *= (sub > 0);
 		while ((size_t)sub-- > st->len_va_arg)
@@ -95,23 +94,14 @@ static void	pf_write_str(t_var *st)
 {
 	if (st->precision && st->precision < st->len_va_arg)
 		st->len_va_arg = st->precision;
-	if (!st->minus_flag && st->width)
-		exec_width_str(st);
+	if (!st->minus_flag)
+		str_precision_width(st);
 	if (!st->precision && st->precision_zero)
 		st->char_count += write(1, "", 0);
 	else
 		st->char_count += write(1, st->hold_str, st->len_va_arg);
 	if (st->minus_flag)
-		exec_width_str(st);
-
-/*
-	if (st->len_va_arg  >= 0)
-	{
-		if (st->zero_flag)
-			exec_precision(st);
-		if (!st->zero_flag)
-			exec_precision(st);
-	} */
+		str_precision_width(st);
 }
 
 void	str_print(t_var *st)
@@ -120,6 +110,16 @@ void	str_print(t_var *st)
 	if (st->hold_str == NULL)
 		st->hold_str = "(null)";
 	st->len_va_arg = ft_strlen(st->hold_str);
+	if ((!st->precision && st->precision_zero) && st->width)
+	{
+		while (st->width)
+		{
+			st->char_count += write(1, " ", 1);
+			st->width--;
+		}
+		st->fmt++;
+		return ;
+	}
 	//asterix_print(st);
 	pf_write_str(st);
 	st->fmt++;
