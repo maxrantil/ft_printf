@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_bi_add_c_str.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/25 16:00:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/26 18:28:25 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	binary_print(t_var *st)
 {
 	int	i;
 	unsigned char octet;
-	
+
 	i = 128;
 	octet = (unsigned char)va_arg(st->ap, int);
-	while (octet >= 0 && i)
+	while (i)
 	{
 		if ((octet / i) == 1)
 			st->char_count += write(1, "1", 1);
@@ -72,19 +72,17 @@ void	exec_width_str(t_var *st)
 
 	sub = 0;
 	sub *= (st->astx_ret);
-	sub -= (st->space_count);
-	if (st->precision)
+	if (st->precision && !st->width)
 	{
 		if (st->precision < st->len_va_arg)
 			st->precision = st->len_va_arg;
 		sub += st->width - st->precision;
 		sub *= (sub > 0);
-		while ((size_t)sub--)
+		while (sub--)
 			st->char_count += write(1, " ", 1);
 	}
 	else
 	{
-		sub -= (st->minus_flag);
 		sub += (st->precision_zero && !st->precision);
 		sub += st->width;
 		sub *= (sub > 0);
@@ -95,31 +93,18 @@ void	exec_width_str(t_var *st)
 
 static void	pf_write_str(t_var *st)
 {
-	size_t	len;
-
-	len = st->len_va_arg;
 	if (st->precision && st->precision < st->len_va_arg)
 		st->len_va_arg = st->precision;
-	if (st->minus_flag == OFF && st->width)
-		exec_width(st);
-	/* if (!st->plus_flag)
-		exec_flag_zero(st); */
-	if (!len && st->width)
-	{
-		while (len++ < st->precision)
-			st->char_count += write(1, " ", 1);
-	}
+	if (!st->minus_flag && st->width)
+		exec_width_str(st);
+	if (!st->precision && st->precision_zero)
+		st->char_count += write(1, "", 0);
 	else
-	{
-		if (!len)
-			st->char_count += write(1, st->hold_str, len);
-		else
-			st->char_count += write(1, st->hold_str, st->len_va_arg);
-	}
-	if (st->minus_flag == ON)
-		exec_width(st);
-		
-/* 
+		st->char_count += write(1, st->hold_str, st->len_va_arg);
+	if (st->minus_flag)
+		exec_width_str(st);
+
+/*
 	if (st->len_va_arg  >= 0)
 	{
 		if (st->zero_flag)
@@ -132,13 +117,10 @@ static void	pf_write_str(t_var *st)
 void	str_print(t_var *st)
 {
 	st->hold_str = va_arg(st->ap, char *);
-	if (st->hold_str == NULL && st->fmt++)
-	{
-		st->char_count += write(1, "(null)", 6);
-		return ;
-	}
+	if (st->hold_str == NULL)
+		st->hold_str = "(null)";
 	st->len_va_arg = ft_strlen(st->hold_str);
-	asterix_print(st);
+	//asterix_print(st);
 	pf_write_str(st);
 	st->fmt++;
 }
