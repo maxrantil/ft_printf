@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 16:56:30 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 23:29:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,7 @@ static void	pf_put_hex(t_var *st)
 
 void	hex_print(t_var *st)
 {
-	/* if (st->hash_flag && st->width)
-		st->width -= 2; */
-	//st->precision -= (st->hash_flag);
-	/* if (st->precision && st->zero_flag)
-		st->precision += 2; */
+	st->width -= 2 * (st->hash_flag && st->width && (*st->fmt == 'x' || *st->fmt == 'X'));
 	exec_flags_and_length(st);
 	pf_put_hex(st);
 	ft_strdel(&st->hold_str);

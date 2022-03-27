@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 20:58:54 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 23:32:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1656,8 +1656,8 @@ void	test_basic6(void)
 {
 	int	a = 429;
 	int	b = 429;
-	b = printf("pri: %#08x Lol\n", b);
-	a = ft_printf("ft_: %#08x Lol\n", a);
+	b = printf("pri: %#08x Lol\n", 21);
+	a = ft_printf("ft_: %#08x Lol\n", 21);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1746,8 +1746,8 @@ void	basic_o_spec1(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%-#6o]\n", 2500);
-	a = ft_printf("ft_: [%-#6o]\n", 2500);
+	b = printf("pri: [%-#9o]\n", 2500);
+	a = ft_printf("ft_: [%-#9o]\n", 2500);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2891,8 +2891,8 @@ void	ptf_d(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %-8.3d\n", -8369);
-	a = ft_printf("ft_: %-8.3d\n", -8369);
+	b = printf("pri: [%-8.3d]\n", -8369);
+	a = ft_printf("ft_: [%-8.3d]\n", -8369);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)

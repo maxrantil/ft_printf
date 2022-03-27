@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_proc_zero_space.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/25 13:58:53 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 23:29:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,18 @@ void	exec_flag_zero(t_var *st)
 	long	sub;
 
 	sub = st->zero;
+	sub += (st->width && st->zero_flag) * st->width;
 	sub -= (st->va_ret < 0);
-	if (st->precision && st->zero_flag == ON)
-		sub = st->precision;
-	if (st->width && st->zero_flag == ON)
-	{
-		sub = st->width - st->len_va_arg + st->len_va_arg;
+	/* if (st->precision && st->zero_flag)
+		sub = st->precision; */
+	/* {
+		sub = st->width;// - st->len_va_arg + st->len_va_arg;
 		sub -= (st->va_ret < 0);
-	}
-	if (*st->fmt == 'x' || *st->fmt == 'x')
+	} */
+	if (*st->fmt == 'x' || *st->fmt == 'X')
 		sub -= (st->hash_flag > 0) * 2;
-	if (*st->fmt == 'o')
-		sub -= (st->hash_flag > 0) * 1;
+	/* if (*st->fmt == 'o')
+		sub -= (st->hash_flag > 0) * 1; */
 	sub -= (st->for_plus > 0 || st->space_count > 0);
 	sub *= (sub > 0);
 	while ((size_t)sub-- > st->len_va_arg)
@@ -57,7 +57,7 @@ void	get_flag_zero(t_var *st)
 		{
 			st->zero_flag = ON;
 			st->zero = get_it(st);
-		}	
+		}
 	}
 }
 

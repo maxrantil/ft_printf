@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 20:59:48 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 23:30:17 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st)
 void	exec_flags_and_length(t_var *st)
 {
 	st->len_va_arg = ft_strlen(st->hold_str);
-	st->width -= (st->hash_flag && *st->fmt == 'o'); // maybe wrong
-	st->width -= 2 * (st->hash_flag && (*st->fmt == 'x' || *st->fmt == 'X')); // maybe wrong
+	st->len_va_arg += (st->hash_flag && *st->fmt == 'o');
+	//st->len_va_arg += 2 * (st->hash_flag && (*st->fmt == 'x' || *st->fmt == 'X'));
 	asterix_print(st);
 	if (!st->minus_flag && st->width && !st->zero_flag)
 		exec_width(st);
@@ -63,7 +63,7 @@ void	exec_flags_and_length(t_var *st)
 			exec_precision(st); */
 		if (st->hash_flag && *st->hold_str != '0' && (*st->fmt == 'x' || *st->fmt == 'X'))
 			pf_print_hex_hash(st);
-		if (st->hash_flag && *st->hold_str != '0' && *st->fmt == 'o')
+		if (st->hash_flag && *st->hold_str != '0' && *st->fmt == 'o')// && st->len_va_arg++)
 			st->char_count += write(1, "0", 1);
 		if (st->precision_flag)//!st->zero_flag)
 			exec_precision(st);

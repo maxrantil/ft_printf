@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 16:56:23 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 23:20:16 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,8 @@ void	check_oct_length(t_var *st)
 
 void	oct_print(t_var *st)
 {
-	//st->width -= (st->hash_flag && st->width);
-
-	//s -= (st->hash_flag);
+	//st->len_va_arg += (st->hash_flag && *st->fmt == 'o');
 	exec_flags_and_length(st);
-	/* if (st->hash_flag && st->width)
-		st->char_count += write(1, "0", 1); */
 	if (*st->hold_str == '0' && st->precision_flag && !st->precision \
 		&& !st->hash_flag && st->fmt++)
 		return ;
