@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 19:48:44 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 14:30:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ typedef struct s_var
 	int					le_f;
 	int					prec_noll;
 	int					for_plus;
-	int					precision_zero;
+	int					precision_flag;
 	int					char_width;
 	int					uint_check;
 	int					sign;

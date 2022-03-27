@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/26 20:06:33 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 14:32:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	address_print(t_var *st)
 	if (st->minus_flag == OFF && st->width)
 		exec_width(st);
 	st->char_count += write(1, "0x", 2);
-	if (*st->hold_str == '0' && st->precision_zero && !st->precision)
+	if (*st->hold_str == '0' && st->precision_flag && !st->precision)
 	{
 		st->fmt++;
 		return ;
@@ -96,7 +96,7 @@ static void	pf_write_str(t_var *st)
 		st->len_va_arg = st->precision;
 	if (!st->minus_flag)
 		str_precision_width(st);
-	if (!st->precision && st->precision_zero)
+	if (!st->precision && st->precision_flag)
 		st->char_count += write(1, "", 0);
 	else
 		st->char_count += write(1, st->hold_str, st->len_va_arg);
@@ -110,7 +110,7 @@ void	str_print(t_var *st)
 	if (st->hold_str == NULL)
 		st->hold_str = "(null)";
 	st->len_va_arg = ft_strlen(st->hold_str);
-	if ((!st->precision && st->precision_zero) && st->width)
+	if ((!st->precision && st->precision_flag) && st->width)
 	{
 		while (st->width)
 		{
@@ -120,7 +120,7 @@ void	str_print(t_var *st)
 		st->fmt++;
 		return ;
 	}
-	//asterix_print(st);
+	asterix_print(st);
 	pf_write_str(st);
 	st->fmt++;
 }

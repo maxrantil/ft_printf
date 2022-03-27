@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   int_print.c                                        :+:      :+:    :+:   */
+/*   print_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 19:39:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 14:31:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,26 @@ void	pf_putint(t_var *st)
 {
 	if (*st->hold_str == '-')
 	{
-		if (st->plus_flag == ON && st->minus_flag == OFF && --st->char_count)
+		if (st->plus_flag && !st->minus_flag && --st->char_count)
 			st->plus_flag = OFF;
 		exec_precision(st);
 		exec_flag_zero(st);
 		st->hold_str++;
 	}
-	else if (st->plus_flag == ON)
+	else if (st->plus_flag)
 	{
 		ft_putchar('+');
 		st->for_plus = ON;
 		st->plus_flag = OFF;
 		exec_precision(st);
 	}
-	if (st->for_plus == ON)
+	if (st->for_plus)
 		exec_flag_zero(st);
-	if (*st->hold_str == '0' && st->precision_zero && !st->precision)
+	if (*st->hold_str == '0' && st->precision_flag && !st->precision)
 		return ;
 	else
 		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	if (st->minus_flag == ON)
+	if (st->minus_flag)
 		exec_width(st);
 }
 

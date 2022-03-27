@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   uint_print.c                                       :+:      :+:    :+:   */
+/*   print_uint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 19:41:35 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 14:32:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	pf_put_uint(t_var *st)
 {
 	if (st->plus_flag == ON)
 		st->char_count--;
-	if (*st->hold_str == '0' && st->precision_zero && !st->precision)
+	if (*st->hold_str == '0' && st->precision_flag && !st->precision)
 		return ;
 	else
 		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));

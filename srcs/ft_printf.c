@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 19:45:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 15:04:32 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	initialize_st(const char *format, t_var *st, int flag)
 {
 	st->fmt = format;
+	st->hold_str = NULL;
 	if (!flag)
 		st->char_count = 0;
 	st->space_count = 0;
@@ -22,21 +23,20 @@ void	initialize_st(const char *format, t_var *st, int flag)
 	st->len_va_arg = 0;
 	st->width = 0;
 	st->precision = 0;
-	st->plus_flag = OFF;
-	st->minus_flag = OFF;
+	st->plus_flag = 0;
+	st->minus_flag = 0;
 	st->va_ret = 0;
 	st->unnessesary = 0;
-	st->hash_flag = OFF;
+	st->hash_flag = 0;
 	st->zero = 0;
 	st->zero_count = 0;
-	st->zero_flag = OFF;
-	st->hold_str = NULL;
-	st->le_f = OFF;
+	st->zero_flag = 0;
+	st->le_f = 0;
 	st->prec_noll = 0;
-	st->for_plus = OFF;
-	st->precision_zero = 0;
+	st->for_plus = 0;
+	st->precision_flag = 0;
 	st->char_width = 0;
-	st->uint_check = OFF;
+	st->uint_check = 0;
 	st->sign = 1;
 }
 
@@ -50,7 +50,7 @@ void	check_parser(t_var *st)
 		while (FLAGS[i] && FLAGS[i] != *st->fmt)
 			i++;
 		flag_disp_tbl[i](st);
-		if (st->unnessesary == 1)
+		if (st->unnessesary)
 			break ;
 		i = 0;
 	}

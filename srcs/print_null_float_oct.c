@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_null_float_oct.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 19:47:52 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 16:56:23 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	null_print(t_var *st)
 void	float_print(t_var *st)
 {
 	int		flag = 6;
-	
+
 	if (st->prec_noll)
 		flag = st->precision;
 	if (st->le_f == ON)
@@ -64,11 +64,13 @@ void	check_oct_length(t_var *st)
 
 void	oct_print(t_var *st)
 {
-	st->width -= (st->hash_flag && st->width);
+	//st->width -= (st->hash_flag && st->width);
+
+	//s -= (st->hash_flag);
 	exec_flags_and_length(st);
-	if (st->hash_flag == ON && st->width)
-		st->char_count += write(1, "0", 1);
-	if (*st->hold_str == '0' && st->precision_zero && !st->precision \
+	/* if (st->hash_flag && st->width)
+		st->char_count += write(1, "0", 1); */
+	if (*st->hold_str == '0' && st->precision_flag && !st->precision \
 		&& !st->hash_flag && st->fmt++)
 		return ;
 	else

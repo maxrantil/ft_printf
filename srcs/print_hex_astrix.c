@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex_astrix.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 19:49:55 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 16:56:30 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,35 +55,36 @@ static void	pf_put_hex(t_var *st)
 {
 	if (*st->hold_str == '-')
 	{
-		if (st->plus_flag == ON && st->minus_flag == OFF && --st->char_count)
+		if (st->plus_flag && !st->minus_flag && --st->char_count)
 			st->plus_flag = OFF;
 		exec_precision(st);
 		exec_flag_zero(st);
 		st->hold_str++;
 	}
-	else if (st->plus_flag == ON)
+	else if (st->plus_flag)
 	{
 		ft_putchar('+');
 		st->for_plus = ON;
 		st->plus_flag = OFF;
 		exec_precision(st);
 	}
-	if (st->hash_flag == ON && *st->hold_str != '0' && st->width)
-		pf_print_hex_hash(st);
-	if (*st->hold_str == '0' && st->precision_zero && !st->precision)
+/* 	if (st->hash_flag && *st->hold_str != '0' && !st->width) //!widht is that correct?
+		pf_print_hex_hash(st); */
+	if (*st->hold_str == '0' && st->precision_flag && !st->precision)
 		return ;
 	else
 		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	if (st->minus_flag == ON)
+	if (st->minus_flag)
 		exec_width(st);
 }
 
 void	hex_print(t_var *st)
 {
-	if (st->hash_flag && st->width)
-		st->width -= 2;
-	if (st->precision && st->zero_flag)
-		st->precision += 2;
+	/* if (st->hash_flag && st->width)
+		st->width -= 2; */
+	//st->precision -= (st->hash_flag);
+	/* if (st->precision && st->zero_flag)
+		st->precision += 2; */
 	exec_flags_and_length(st);
 	pf_put_hex(st);
 	ft_strdel(&st->hold_str);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/25 14:52:21 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 20:59:48 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	pf_intlen(long long nbr, unsigned int base)
 void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st)
 {
 	int	l;
-	
+
 	l = pf_intlen(nbr, base);
 	st->hold_str = (char *)ft_strnew(l);
 	if (!st->hold_str)
@@ -50,22 +50,24 @@ void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st)
 void	exec_flags_and_length(t_var *st)
 {
 	st->len_va_arg = ft_strlen(st->hold_str);
+	st->width -= (st->hash_flag && *st->fmt == 'o'); // maybe wrong
+	st->width -= 2 * (st->hash_flag && (*st->fmt == 'x' || *st->fmt == 'X')); // maybe wrong
 	asterix_print(st);
-	if (st->minus_flag == OFF && st->width && !st->zero_flag)
+	if (!st->minus_flag && st->width && !st->zero_flag)
 		exec_width(st);
 	if (st->va_ret >= 0)
 	{
-		if (!st->uint_check)
+		if (!st->uint_check && ft_isalpha(*st->fmt) && st->space_count && !st->plus_flag) //not correct check?
 			exec_flag_space(st);
-		if (st->zero_flag)
-			exec_precision(st);
-		if (st->hash_flag == ON && *st->hold_str != '0' && !st->width && (*st->fmt == 'x' || *st->fmt == 'X'))
+		/* if (st->zero_flag &&)
+			exec_precision(st); */
+		if (st->hash_flag && *st->hold_str != '0' && (*st->fmt == 'x' || *st->fmt == 'X'))
 			pf_print_hex_hash(st);
-		if (st->hash_flag == ON && *st->hold_str != '0' && !st->width && *st->fmt == 'o')
+		if (st->hash_flag && *st->hold_str != '0' && *st->fmt == 'o')
 			st->char_count += write(1, "0", 1);
-		if (!st->zero_flag)
+		if (st->precision_flag)//!st->zero_flag)
 			exec_precision(st);
-		if (!st->plus_flag)
+		if (!st->plus_flag && st->zero_flag && !st->precision_flag)
 			exec_flag_zero(st);
 	}
 	if (*st->hold_str == '-')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_plus_minus_hash_null.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/17 14:25:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/27 14:39:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	flag_minus(t_var *st)
 {
 	if (*st->fmt == '-')
 	{
+		if (st->zero_flag)
+			st->zero_flag = 0;
 		st->minus_flag = ON;
 		st->fmt++;
 	}
