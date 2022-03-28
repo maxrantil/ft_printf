@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 14:30:41 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:42:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct s_var
 	int					char_width;
 	int					uint_check;
 	int					sign;
+	//size_t				float_prec;
 }						t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);
@@ -121,7 +122,7 @@ void	initialize_st(const char *format, t_var *st, int flag);
 void	pf_print_hex_hash(t_var *st);
 void	pf_write_o(t_var *st);
 void	pf_write(t_var *st);
-void	conv_float_str(long double nbr, int flag, t_var *st);
+void	conv_float_str(long double nbr, t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[14] = {
 	char_print,

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 09:36:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:45:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st)
 {
 	int	l;
 
-	l = pf_intlen(nbr, base);
+	l = pf_intlen((nbr, base);
 	st->hold_str = (char *)ft_strnew(l);
 	if (!st->hold_str)
 		exit(1);
@@ -65,14 +65,11 @@ void	exec_flags_and_length(t_var *st)
 			pf_print_hex_hash(st);
 		if (st->hash_flag && *st->hold_str != '0' && *st->fmt == 'o')// && st->len_va_arg++)
 			st->char_count += write(1, "0", 1);
-		if (st->precision_flag)//!st->zero_flag)
+		if (st->precision_flag)
 			exec_precision(st);
 		if (!st->plus_flag && st->zero_flag && !st->precision_flag)
 			exec_flag_zero(st);
 	}
 	if (*st->hold_str == '-')
-	{
 		st->char_count += write(1, "-", 1);
-		//st->len_va_arg++;
-	}
 }

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 09:51:48 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:30:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1159,8 +1159,8 @@ void	test_float0(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.9f	Lol\n", 5.43211234567890);
-	a = ft_printf("ft_: %.9f	Lol\n", 5.43211234567890);
+	b = printf("pri: [%25.9f] Lol\n", 5.43211234567890);
+	a = ft_printf("ft_: [%25.9f] Lol\n", 5.43211234567890);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1174,8 +1174,8 @@ void	test_float1(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.13f	Lol\n", -5.43211234567890);
-	a = ft_printf("ft_: %.13f	Lol\n", -5.43211234567890);
+	b = printf("pri: [%25.9f] Lol\n", -5.43211234567890);
+	a = ft_printf("ft_: [%25.9f] Lol\n", -5.43211234567890);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1189,8 +1189,8 @@ void	test_float2(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.3f	Lol\n", 5.43211234567890);
-	a = ft_printf("ft_: %.3f	Lol\n", 5.43211234567890);
+	b = printf("pri: [%4.33f] Lol\n", 5.43211234567890);
+	a = ft_printf("ft_: [%4.33f] Lol\n", 5.43211234567890);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1204,8 +1204,8 @@ void	test_float3(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.15f	Lol\n", 666.66666666666);
-	a = ft_printf("ft_: %.15f	Lol\n", 666.66666666666);
+	b = printf("pri: [%23.15f] Lol\n", 666.66666666666);
+	a = ft_printf("ft_: [%23.15f] Lol\n", 666.66666666666);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1219,8 +1219,8 @@ void	test_float4(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.15f	Lol\n", 5555.5555555555555);
-	a = ft_printf("ft_: %.15f	Lol\n", 5555.5555555555555);
+	b = printf("pri: [%15.23f] Lol\n", 5555.5555555555555);
+	a = ft_printf("ft_: [%15.23f] Lol\n", 5555.5555555555555);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1234,8 +1234,8 @@ void	test_float5(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.17f	Lol\n", 5.432112345678911111);
-	a = ft_printf("ft_: %.17f	Lol\n", 5.432112345678911111);
+	b = printf("pri: [%#23.17f] Lol\n", 5.432112345678911111);
+	a = ft_printf("ft_: [%#23.17f] Lol\n", 5.432112345678911111);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1249,8 +1249,8 @@ void	test_float6(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.17Lf	Lol\n", 5.43211234567890123456789098765L);
-	a = ft_printf("ft_: %.17Lf	Lol\n", 5.43211234567890123456789098765L);
+	b = printf("pri: [%#17.23Lf] Lol\n", 5.43211234567890123456789098765L);
+	a = ft_printf("ft_: [%#17.23Lf] Lol\n", 5.43211234567890123456789098765L);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1264,8 +1264,8 @@ void	test_float7(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %f\n", 999999999.9999996);
-	a = ft_printf("ft_: %f\n", 999999999.9999996);
+	b = printf("pri: [%#19.f]\n", 999999999.9999996);
+	a = ft_printf("ft_: [%#19.f]\n", 999999999.9999996);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1279,8 +1279,8 @@ void	test_float8(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %Lf\n", -0.0L);
-	a = ft_printf("ft_: %Lf\n", -0.0L);
+	b = printf("pri: [%#Lf]\n", -0.0L);
+	a = ft_printf("ft_: [%#Lf]\n", -0.0L);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1294,8 +1294,8 @@ void	test_float9(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %f\n", 0.0);
-	a = ft_printf("ft_: %f\n", 0.0);
+	b = printf("pri: [%.f]\n", 0.0);
+	a = ft_printf("ft_: [%.f]\n", 0.0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1309,8 +1309,8 @@ void	test_float10(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.0f\n", 0.5);
-	a = ft_printf("ft_: %.0f\n", 0.5);
+	b = printf("pri: [%-10.0f]\n", 0.5);
+	a = ft_printf("ft_: [%-10.0f]\n", 0.5);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1324,8 +1324,8 @@ void	test_float11(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.0f\n", 1.5);
-	a = ft_printf("ft_: %.0f\n", 1.5);
+	b = printf("pri: [%+.0f]\n", 1.5);
+	a = ft_printf("ft_: [%+.0f]\n", 1.5);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -1339,8 +1339,8 @@ void	test_float12(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %.3f\n", 1.899999);
-	a = ft_printf("ft_: %.3f\n", 1.899999);
+	b = printf("pri: [%-.3f]\n", -1.899999);
+	a = ft_printf("ft_: [%-.3f]\n", -1.899999);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2318,8 +2318,8 @@ void	more_random_floats(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%33.3f]\n", 0.0005);
-	a = ft_printf("ft_: [%33.3f]\n", 0.0005);
+	b = printf("pri: [%#33.3f]\n", 0.0005);
+	a = ft_printf("ft_: [%#33.3f]\n", 0.0005);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2333,8 +2333,8 @@ void	more_random_floats1(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%-10.22f]\n", 1.9999999999999);
-	a = ft_printf("ft_: [%-10.22f]\n", 1.9999999999999);
+	b = printf("pri: [%#-10.22f]\n", 1.9999999999999);
+	a = ft_printf("ft_: [%#-10.22f]\n", 1.9999999999999);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2348,8 +2348,8 @@ void	more_random_floats2(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%11.0f]\n", 1.5);
-	a = ft_printf("ft_: [%11.0f]\n", 1.5);
+	b = printf("pri: [%#11.0f]\n", 1.5);
+	a = ft_printf("ft_: [%#11.0f]\n", 1.5);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2363,8 +2363,8 @@ void	more_random_floats3(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%+1.10f]\n", 2.5);
-	a = ft_printf("ft_: [%+1.10f]\n", 2.5);
+	b = printf("pri: [%#+1.10f]\n", 2.5);
+	a = ft_printf("ft_: [%#+1.10f]\n", 2.5);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 15:04:32 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:42:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	initialize_st(const char *format, t_var *st, int flag)
 	st->char_width = 0;
 	st->uint_check = 0;
 	st->sign = 1;
+//	st->float_prec = 6;
 }
 
 void	check_parser(t_var *st)

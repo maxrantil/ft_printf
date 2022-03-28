@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   float_print.c                                      :+:      :+:    :+:   */
+/*   print_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/24 19:47:54 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:39:05 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ static int	bankers_rounding(long double nbr, char last_digit, t_var *st)
 	return (res);
 }
 
-static char	*join_unit_mant(char *mantissa,  int x, t_var *st)
+static char	*join_unit_mant(char *mantissa, size_t x, t_var *st)
 {
 	char	*combo;
 	int		i;
 	int		j;
-	
+
 	j = 0;
 	i = 0;
 	combo = ft_strnew(ft_strlen(st->hold_str) + ft_strlen(mantissa) + 1); // this might be taken away
@@ -65,17 +65,17 @@ static char	*join_unit_mant(char *mantissa,  int x, t_var *st)
 	return (combo);
 }
 
-static char	*mant_to_a(long double nbr, int flag, t_var *st)
+static char	*mant_to_a(long double nbr, t_var *st)
 {
 	char		*mantissa;
 	int			i;
-	int			x;
-	long long	round_up;
-	
+	size_t		x;
+	long long	round_up; // change to int? or smaller?
+
 	i = 0;
-	mantissa = ft_strnew(flag);
+	mantissa = ft_strnew(st->precision);
 	x = 0;
-	while (flag > x)
+	while (st->precision > x)
 	{
 		nbr *= 10;
 		mantissa[i++] = ((long long)nbr % 10) + 48;
@@ -90,17 +90,19 @@ static char	*mant_to_a(long double nbr, int flag, t_var *st)
 	return (join_unit_mant(mantissa,  x, st));
 }
 
-void	conv_float_str(long double nbr, int flag, t_var *st)
+void	conv_float_str(long double nbr, t_var *st)
 {
-	char	*float_str;
+	char		*float_str;
 	long long	round_up;
 	long long	last_digit;
-	
+
 	if (nbr < 0)
 	{
 		st->sign = -1;
 		nbr *= -1;
 		st->char_count += write(1, "-", 1);
+		if (st->width)  //this puts minus in wrong place if -flag
+			st->width--;
 	}
 	if (1 / nbr < 0)
 		st->char_count += write(1, "-", 1);
@@ -113,7 +115,7 @@ void	conv_float_str(long double nbr, int flag, t_var *st)
 	else
 	{
 		pf_itoa_base((long long)nbr, 10, st);
-		float_str = mant_to_a(nbr, flag, st);
+		float_str = mant_to_a(nbr, st);
 		st->hold_str = ft_strdup(float_str);
 		ft_strdel(&float_str);
 	}

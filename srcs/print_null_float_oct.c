@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 09:54:56 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 12:44:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,44 @@ void	null_print(t_var *st)
 	return ;
 }
 
+void	pf_putfloat(t_var *st)
+{
+	if (*st->hold_str == '-')
+	{
+		if (st->plus_flag && !st->minus_flag && --st->char_count)
+			st->plus_flag = OFF;
+		exec_precision(st);
+		exec_flag_zero(st);
+		st->hold_str++;
+	}
+	else if (st->plus_flag)
+	{
+		ft_putchar('+');
+		st->for_plus = ON;
+		st->plus_flag = OFF;
+		exec_precision(st);
+	}
+	if (st->for_plus)
+		exec_flag_zero(st);
+	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+	if (st->minus_flag)
+		exec_width(st);
+}
+
 void	float_print(t_var *st)
 {
-	int		flag = 6;
 
-	if (st->prec_noll)
-		flag = st->precision;
+	//add len_va_arg ++ if hash_flag and implement the write '.'
+	/* if (st->prec_noll)  /what is prec_noll???????
+		st->float_prec = st->precision; */
+	if (!st->precision_flag)
+		st->precision = 6;
 	if (st->le_f)
-		conv_float_str(va_arg(st->ap, long double), flag, st);
+		conv_float_str(va_arg(st->ap, long double), st);
 	else
-		conv_float_str(va_arg(st->ap, double), flag, st);
-	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+		conv_float_str(va_arg(st->ap, double), st);
+	exec_flags_and_length(st);
+	pf_putfloat(st);
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }
