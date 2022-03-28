@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 13:55:21 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:43:25 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2816,8 +2816,8 @@ void	basic_strings18(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %7.7s %.3s\n", "hello", "NULL");
-	a = ft_printf("ft_: %7.7s %.3s\n", "hello", "NULL");
+	b = printf("pri: [%7.7s %.5s]\n", "hello", NULL);
+	a = ft_printf("ft_: [%7.7s %.5s]\n", "hello", NULL);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2964,7 +2964,7 @@ void	ptf_d4(void)
 
 int	main(void)
 {
-/*  	mix_ezz();
+ 	mix_ezz();
 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
@@ -3039,7 +3039,7 @@ int	main(void)
 	leo_test();
 //	test_procentage();
 	test_flag_space_minus();
-	test_flag_space(); */
+	test_flag_space();
 	test_float0();
 	test_float1();
 	test_float2();
@@ -3055,7 +3055,7 @@ int	main(void)
 	test_float12();
 //	test_basic0();
 //	test_basic1();
-/* 	test_basic2();
+	test_basic2();
 	test_basic3();
 	test_basic4();
 	pro_test();
@@ -3118,18 +3118,18 @@ int	main(void)
 	random_jeff();
 	more_mouli1();
 	more_mouli2();
-	more_mouli4();*/
+	more_mouli4();
 	more_random_floats();
 	more_random_floats1();
 	more_random_floats2();
 	more_random_floats3();
 	more_random_leo8();
 	more_random_jeff2();
-/*	ptf0();
+	ptf0();
 	ptf();
 	ptf1();
-	ptf2(); */
-/* 	basic_strings();
+	ptf2();
+	basic_strings();
 	basic_strings1();
 	basic_strings2();
 	basic_strings3();
@@ -3151,12 +3151,12 @@ int	main(void)
 	basic_strings19();
 	basic_strings20();
 	basic_strings21(); //how not to print "(null)" if not full fit?
-	basic_strings22(); */
-/* 	ptf_d();
+	basic_strings22();
+	ptf_d();
 	ptf_d1();
 	ptf_d2();
 	ptf_d3();
-	ptf_d4(); */
+	ptf_d4();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

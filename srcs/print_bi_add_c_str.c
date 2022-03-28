@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 14:32:11 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:42:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ static void	pf_write_str(t_var *st)
 		str_precision_width(st);
 	if (!st->precision && st->precision_flag)
 		st->char_count += write(1, "", 0);
-	else
+	else if (ft_strcmp("(null)", st->hold_str) || (!ft_strcmp("(null)", st->hold_str) && (st->precision > 5 || !st->precision)))
 		st->char_count += write(1, st->hold_str, st->len_va_arg);
 	if (st->minus_flag)
 		str_precision_width(st);
