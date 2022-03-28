@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 16:42:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 21:30:05 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,8 @@
 
 void	binary_print(t_var *st)
 {
-	int	i;
-	unsigned char octet;
-
-	i = 128;
-	octet = (unsigned char)va_arg(st->ap, int);
-	while (i)
-	{
-		if ((octet / i) == 1)
-			st->char_count += write(1, "1", 1);
-		else
-			st->char_count += write(1, "0", 1);
-		if ((octet / i) == 1)
-			octet -= i;
-		i /= 2;
-	}
+	pf_itoa_base(va_arg(st->ap, long long), 2, st);
+	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	st->fmt++;
 }
 
@@ -112,27 +99,28 @@ void	str_print(t_var *st)
 	st->len_va_arg = ft_strlen(st->hold_str);
 	if ((!st->precision && st->precision_flag) && st->width)
 	{
-		while (st->width)
-		{
+		while (st->width--)
 			st->char_count += write(1, " ", 1);
-			st->width--;
-		}
 		st->fmt++;
 		return ;
 	}
-	asterix_print(st);
+	if (st->astx_ret && !st->minus_flag)
+		asterix_print(st);
 	pf_write_str(st);
+	if (st->astx_ret)
+		asterix_print(st);
+
 	st->fmt++;
 }
 
 void	char_print(t_var *st)
 {
 	st->char_width = 1;
-	if (st->minus_flag == OFF && st->width)
+	if (!st->minus_flag && st->width)
 		exec_width(st);
 	ft_putchar((char)va_arg(st->ap, int));
 	++st->char_count;
-	if (st->minus_flag == ON)
+	if (st->minus_flag)
 		exec_width(st);
 	st->fmt++;
 }

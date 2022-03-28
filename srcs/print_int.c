@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 14:31:44 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 21:38:05 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,7 @@ void	check_signed_length(t_var *st)
 
 void	pf_putint(t_var *st)
 {
-	if (*st->hold_str == '-')
-	{
-		if (st->plus_flag && !st->minus_flag && --st->char_count)
-			st->plus_flag = OFF;
-		exec_precision(st);
-		exec_flag_zero(st);
-		st->hold_str++;
-	}
-	else if (st->plus_flag)
-	{
-		ft_putchar('+');
-		st->for_plus = ON;
-		st->plus_flag = OFF;
-		exec_precision(st);
-	}
+	pf_exec_before_flags(st);
 	if (st->for_plus)
 		exec_flag_zero(st);
 	if (*st->hold_str == '0' && st->precision_flag && !st->precision)
@@ -111,7 +97,9 @@ void	int_print(t_var *st)
 {
 	exec_flags_and_length(st);
 	pf_putint(st);
-	if (*--st->hold_str == '-')
+	if (st->astx_ret)
+		asterix_print(st);
+	if (*--st->hold_str == '-')		//check this out to make cleaner
 		ft_strdel(&st->hold_str);
 	else
 	{

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 13:23:53 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 18:13:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ void	initialize_st(const char *format, t_var *st, int flag)
 	st->plus_flag = 0;
 	st->minus_flag = 0;
 	st->va_ret = 0;
-	st->unnessesary = 0;
 	st->hash_flag = 0;
 	st->zero = 0;
-	st->zero_count = 0;
 	st->zero_flag = 0;
 	st->le_f = 0;
 	st->for_plus = 0;
@@ -47,10 +45,10 @@ void	check_parser(t_var *st)
 	i = 0;
 	while (FLAGS[i])
 	{
-		while (FLAGS[i] && FLAGS[i] != *st->fmt)
+		while (FLAGS[i] != *st->fmt)
 			i++;
 		flag_disp_tbl[i](st);
-		if (st->unnessesary)
+		if (!st->sign)
 			break ;
 		i = 0;
 	}

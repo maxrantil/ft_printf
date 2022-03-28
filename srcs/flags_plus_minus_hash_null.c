@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 14:39:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 18:07:25 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	null_flag(t_var *st)
 {
-	st->unnessesary = 1;
+	st->sign = 0;
 }
 
 void	hash_flag(t_var *st)

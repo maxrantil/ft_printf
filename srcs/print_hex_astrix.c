@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 10:56:09 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 21:54:20 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,7 @@ void	pf_print_hex_hash(t_var *st)
 
 static void	pf_put_hex(t_var *st)
 {
-	if (*st->hold_str == '-')
-	{
-		if (st->plus_flag && !st->minus_flag && --st->char_count)
-			st->plus_flag = OFF;
-		exec_precision(st);
-		exec_flag_zero(st);
-		st->hold_str++;
-	}
-	else if (st->plus_flag)
-	{
-		ft_putchar('+');
-		st->for_plus = ON;
-		st->plus_flag = OFF;
-		exec_precision(st);
-	}
+	pf_exec_before_flags(st);
 /* 	if (st->hash_flag && *st->hold_str != '0' && !st->width) //!widht is that correct?
 		pf_print_hex_hash(st); */
 	if (*st->hold_str == '0' && st->precision_flag && !st->precision)
@@ -90,20 +76,20 @@ void	hex_print(t_var *st)
 void	asterix_print(t_var *st)
 {
 	size_t	sub;
-
 	if (*st->fmt == '*')
 	{
 		st->astx_ret = va_arg(st->ap, int);
 		st->fmt++;
 		check_parser(st);
 	}
-	else if (st->astx_ret)
+	else
 	{
 		sub = st->astx_ret;
-		if (st->plus_flag == ON)
-			--sub;
+		if (st->for_plus || st->minus_flag)
+		{
+			sub--;
+		}
 		while (sub-- > st->len_va_arg)
 			st->char_count += write(1, " ", 1);
 	}
-	return ;
 }

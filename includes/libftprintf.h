@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 15:08:44 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 21:19:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ typedef struct s_var
 	size_t				precision;
 	long long			va_ret;
 	unsigned long long	va_u_ret;
-	int					unnessesary;
 	int					hash_flag;
 	size_t				zero;
-	size_t				zero_count;
 	int					zero_flag;
 	char				*hold_str;
 	int					le_f;
@@ -122,6 +120,7 @@ void	pf_print_hex_hash(t_var *st);
 void	pf_write_o(t_var *st);
 void	pf_write(t_var *st);
 void	conv_float_str(long double nbr, t_var *st);
+void	pf_exec_before_flags(t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[14] = {
 	char_print,

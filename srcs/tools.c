@@ -6,11 +6,30 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 15:08:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 21:39:07 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
+
+void	pf_exec_before_flags(t_var *st)
+{
+	if (*st->hold_str == '-')
+	{
+		if (st->plus_flag && !st->minus_flag && --st->char_count)
+			st->plus_flag = 0;
+		exec_precision(st);
+		exec_flag_zero(st);
+		st->hold_str++;
+	}
+	else if (st->plus_flag)
+	{
+		ft_putchar('+');
+		st->for_plus = 1;
+		st->plus_flag = 0;
+		exec_precision(st);
+	}
+}
 
 static int	pf_intlen(long long nbr, unsigned int base)
 {
@@ -53,16 +72,17 @@ void	exec_flags_and_length(t_var *st)
 	st->len_va_arg += (st->hash_flag && *st->fmt == 'o');
 	st->len_va_arg += (st->hash_flag && !st->precision && st->precision_flag && *st->fmt == 'f');
 	//st->len_va_arg += 2 * (st->hash_flag && (*st->fmt == 'x' || *st->fmt == 'X'));
-	asterix_print(st);
+	if (st->astx_ret && !st->minus_flag)
+		asterix_print(st);
 	if (!st->minus_flag && st->width && !st->zero_flag)
 		exec_width(st);
 	if (st->va_ret >= 0)
 	{
-		if (!st->uint_check && ft_isalpha(*st->fmt) && st->space_count && !st->plus_flag) //not correct check?
+		if (!st->uint_check && ft_isalpha(*st->fmt) && st->space_count && !st->plus_flag)
 			exec_flag_space(st);
 		if (st->hash_flag && *st->hold_str != '0' && (*st->fmt == 'x' || *st->fmt == 'X'))
 			pf_print_hex_hash(st);
-		if (st->hash_flag && *st->hold_str != '0' && *st->fmt == 'o')// && st->len_va_arg++)
+		if (st->hash_flag && *st->hold_str != '0' && *st->fmt == 'o')
 			st->char_count += write(1, "0", 1);
 		if (st->precision_flag)
 			exec_precision(st);

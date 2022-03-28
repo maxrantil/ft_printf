@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 14:59:35 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 21:20:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,12 @@
 
 void	null_print(t_var *st)
 {
-	st->unnessesary = 1;
-	return ;
+	st->sign = 0;
 }
 
 void	pf_putfloat(t_var *st)
 {
-	if (*st->hold_str == '-')
-	{
-		if (st->plus_flag && !st->minus_flag && --st->char_count)
-			st->plus_flag = OFF;
-		exec_precision(st);
-		exec_flag_zero(st);
-		st->hold_str++;
-	}
-	else if (st->plus_flag)
-	{
-		ft_putchar('+');
-		st->for_plus = ON;
-		st->plus_flag = OFF;
-		exec_precision(st);
-	}
+	pf_exec_before_flags(st);
 	if (st->for_plus)
 		exec_flag_zero(st);
 	if (st->sign < 0)
@@ -92,14 +77,13 @@ void	check_oct_length(t_var *st)
 
 void	oct_print(t_var *st)
 {
-	//st->len_va_arg += (st->hash_flag && *st->fmt == 'o');
 	exec_flags_and_length(st);
 	if (*st->hold_str == '0' && st->precision_flag && !st->precision \
 		&& !st->hash_flag && st->fmt++)
 		return ;
 	else
 		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	if (st->minus_flag == ON)
+	if (st->minus_flag)
 		exec_width(st);
 	ft_strdel(&st->hold_str);
 	st->fmt++;

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 15:09:08 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 19:05:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,9 @@ void	conv_float_str(long double nbr, t_var *st)
 	long long	round_up;
 	long long	last_digit;
 
+	st->sign = 1 - 2 * (nbr < 0 || (1 / nbr < 0 && nbr == 0));
 	if (nbr < 0 || (1 / nbr < 0 && nbr == 0))
 	{
-		st->sign = -1;
 		nbr *= -1;
 		st->width -= (st->width > 0);
 	}
@@ -114,6 +114,6 @@ void	conv_float_str(long double nbr, t_var *st)
 		pf_itoa_base((long long)nbr, 10, st);
 		float_str = mant_to_a(nbr, st);
 		st->hold_str = ft_strdup(float_str);
-		ft_strdel(&float_str);
+		ft_strdel(&float_str);		//can i make the chaning of strings clear?
 	}
 }

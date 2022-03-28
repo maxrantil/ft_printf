@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 16:43:25 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 21:28:03 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,8 +293,8 @@ void	test_asterix_with_int(void)
 {
 	int	a;
 	int	b;
-	b = printf("printf: %*d\n", 20, 21);
-	a = ft_printf("ft_pri: %*d\n", 20, 21);
+	b = printf("printf: [%-+*d]\n", 7, -2142);
+	a = ft_printf("ft_pri: [%-+*d]\n", 7, -2142);
 	printf("ret: %d \n", b);
 	printf("\nret: %d \n", a);
 	if (a == b)
@@ -308,8 +308,8 @@ void	test_asterix_with_str(void)
 {
 	int	a;
 	int	b;
-	b = printf("printf: %*s\n", 76, "this is a string");
-	a = ft_printf("ft_pri: %*s\n", 76, "this is a string");
+	b = printf("printf: [%-+*d]\n", 16, 1645);
+	a = ft_printf("ft_pri: [%-+*d]\n", 16, 1645);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -323,8 +323,8 @@ void	test_asterix_with_int_plus(void)
 {
 	int	a;
 	int	b;
-	b = printf("printf: %+*d\n", 20, 21);
-	a = ft_printf("ft_pri: %+*d\n", 20, 21);
+	b = printf("printf: %+12*d\n", 20, 21);
+	a = ft_printf("ft_pri: %+*12d\n", 20, 21);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2816,8 +2816,8 @@ void	basic_strings18(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%7.7s %.5s]\n", "hello", NULL);
-	a = ft_printf("ft_: [%7.7s %.5s]\n", "hello", NULL);
+	b = printf("pri: [%7.7s %.s]\n", "hello", NULL);
+	a = ft_printf("ft_: [%7.7s %.s]\n", "hello", NULL);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2831,8 +2831,8 @@ void	basic_strings19(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %3.7s %7.7s\n", "hello", "world");
-	a = ft_printf("ft_: %3.7s %7.7s\n", "hello", "world");
+	b = printf("pri: %3.7s %7.s\n", "hello", "world");
+	a = ft_printf("ft_: %3.7s %7.s\n", "hello", "world");
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2891,8 +2891,8 @@ void	ptf_d(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%-8.3d]\n", -8369);
-	a = ft_printf("ft_: [%-8.3d]\n", -8369);
+	b = printf("pri: [%#18.3o]\n", -8369);
+	a = ft_printf("ft_: [%#18.3o]\n", -8369);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2906,8 +2906,8 @@ void	ptf_d1(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %010.5d\n", -216);
-	a = ft_printf("ft_: %010.5d\n", -216);
+	b = printf("pri: [%-010.15o]\n", -216);
+	a = ft_printf("ft_: [%-010.15o]\n", -216);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2921,8 +2921,8 @@ void	ptf_d2(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %08.3d\n", 8377);
-	a = ft_printf("ft_: %08.3d\n", 8377);
+	b = printf("pri: [%28.3d]\n", 8377);
+	a = ft_printf("ft_: [%28.3d]\n", 8377);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2936,8 +2936,8 @@ void	ptf_d3(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %-08.3d\n", 8375);
-	a = ft_printf("ft_: %-08.3d\n", 8375);
+	b = printf("pri: [%#08.23x]\n", 8375);
+	a = ft_printf("ft_: [%#08.23x]\n", 8375);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -2951,14 +2951,44 @@ void	ptf_d4(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: %0-8.3d\n", 75);
-	a = ft_printf("ft_: %0-8.3d\n", 75);
+	b = printf("pri: [%#0-18.3X]\n", 75);
+	a = ft_printf("ft_: [%#0-18.3X]\n", 75);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______ptf_d4 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	binary_bonus(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: 1000001\n");
+	a = ft_printf("ft_: %b\n", 65);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______binary_bonus failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	binary_bonus1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: 1000011\n");
+	a = ft_printf("ft_: %b\n", 67);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______binary_bonus1 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -2982,9 +3012,9 @@ int	main(void)
 	test_int_plus_flag2();
 	test_int_minusminus_flag();
 	test_address();
-	test_asterix_with_int();
 	test_asterix_with_str();
-	test_width_single();
+	test_asterix_with_int();
+	/* test_width_single();
 	test_width_multi();
 	test_width_multi2();
  	test_precision();
@@ -3157,6 +3187,8 @@ int	main(void)
 	ptf_d2();
 	ptf_d3();
 	ptf_d4();
+	binary_bonus();
+	binary_bonus1(); */
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

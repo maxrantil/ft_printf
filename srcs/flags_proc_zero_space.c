@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 23:29:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 19:04:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,8 @@ void	exec_flag_zero(t_var *st)
 	sub = st->zero;
 	sub += (st->width && st->zero_flag) * st->width;
 	sub -= (st->va_ret < 0);
-	/* if (st->precision && st->zero_flag)
-		sub = st->precision; */
-	/* {
-		sub = st->width;// - st->len_va_arg + st->len_va_arg;
-		sub -= (st->va_ret < 0);
-	} */
-	if (*st->fmt == 'x' || *st->fmt == 'X')
+	if (*st->fmt == 'x' || *st->fmt == 'X')  //can i make this ousedie like 'o'???
 		sub -= (st->hash_flag > 0) * 2;
-	/* if (*st->fmt == 'o')
-		sub -= (st->hash_flag > 0) * 1; */
 	sub -= (st->for_plus > 0 || st->space_count > 0);
 	sub *= (sub > 0);
 	while ((size_t)sub-- > st->len_va_arg)
@@ -55,7 +47,7 @@ void	get_flag_zero(t_var *st)
 			st->fmt++;
 		if (!st->minus_flag)
 		{
-			st->zero_flag = ON;
+			st->zero_flag = 1;
 			st->zero = get_it(st);
 		}
 	}
@@ -68,13 +60,13 @@ void	exec_flag_proc(t_var *st)
 	i = 0;
 	if (st->plus_flag)
 		--st->char_count;
-	if (*st->fmt == '%' && st->minus_flag == OFF)
+	if (*st->fmt == '%' && !st->minus_flag)
 	{
 		while (++i < st->width)
 			st->char_count += write(1, " ", 1);
 		st->char_count += write(1, st->fmt, 1);
 	}
-	else if (*st->fmt == '%' && st->minus_flag == ON)
+	else if (*st->fmt == '%' && st->minus_flag)
 	{
 		st->char_count += write(1, st->fmt, 1);
 		while (++i < st->width)
