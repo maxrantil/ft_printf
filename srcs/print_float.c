@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 12:39:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:09:08 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ static char	*join_unit_mant(char *mantissa, size_t x, t_var *st)
 
 	j = 0;
 	i = 0;
+
 	combo = ft_strnew(ft_strlen(st->hold_str) + ft_strlen(mantissa) + 1); // this might be taken away
 	if (!combo)
 		exit(1);
@@ -70,7 +71,7 @@ static char	*mant_to_a(long double nbr, t_var *st)
 	char		*mantissa;
 	int			i;
 	size_t		x;
-	long long	round_up; // change to int? or smaller?
+	int			round_up;
 
 	i = 0;
 	mantissa = ft_strnew(st->precision);
@@ -96,17 +97,13 @@ void	conv_float_str(long double nbr, t_var *st)
 	long long	round_up;
 	long long	last_digit;
 
-	if (nbr < 0)
+	if (nbr < 0 || (1 / nbr < 0 && nbr == 0))
 	{
 		st->sign = -1;
 		nbr *= -1;
-		st->char_count += write(1, "-", 1);
-		if (st->width)  //this puts minus in wrong place if -flag
-			st->width--;
+		st->width -= (st->width > 0);
 	}
-	if (1 / nbr < 0)
-		st->char_count += write(1, "-", 1);
-	if (!st->precision && st->prec_noll)
+	if (!st->precision && st->precision_flag)
 	{
 		last_digit = (long long)nbr % 10;
 		round_up = bankers_rounding(nbr, last_digit + 48, st) * st->sign;

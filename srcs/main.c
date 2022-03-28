@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 12:30:21 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 13:55:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1294,8 +1294,8 @@ void	test_float9(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%.f]\n", 0.0);
-	a = ft_printf("ft_: [%.f]\n", 0.0);
+	b = printf("pri: [%12.3f]\n", -0.0);
+	a = ft_printf("ft_: [%12.3f]\n", -0.0);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)

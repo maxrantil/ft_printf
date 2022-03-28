@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 12:42:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 13:23:53 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	initialize_st(const char *format, t_var *st, int flag)
 	st->astx_ret = 0;
 	st->len_va_arg = 0;
 	st->width = 0;
+	st->width_check = 0;
 	st->precision = 0;
 	st->plus_flag = 0;
 	st->minus_flag = 0;
@@ -32,13 +33,11 @@ void	initialize_st(const char *format, t_var *st, int flag)
 	st->zero_count = 0;
 	st->zero_flag = 0;
 	st->le_f = 0;
-	st->prec_noll = 0;
 	st->for_plus = 0;
 	st->precision_flag = 0;
 	st->char_width = 0;
 	st->uint_check = 0;
 	st->sign = 1;
-//	st->float_prec = 6;
 }
 
 void	check_parser(t_var *st)

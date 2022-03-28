@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 12:44:33 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 14:59:35 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ void	pf_putfloat(t_var *st)
 	}
 	if (st->for_plus)
 		exec_flag_zero(st);
+	if (st->sign < 0)
+		st->char_count += write(1, "-", 1);
 	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+	if (st->hash_flag && !st->precision && st->precision_flag)
+		st->char_count += write(1, ".", 1);
 	if (st->minus_flag)
 		exec_width(st);
 }
@@ -45,9 +49,6 @@ void	pf_putfloat(t_var *st)
 void	float_print(t_var *st)
 {
 
-	//add len_va_arg ++ if hash_flag and implement the write '.'
-	/* if (st->prec_noll)  /what is prec_noll???????
-		st->float_prec = st->precision; */
 	if (!st->precision_flag)
 		st->precision = 6;
 	if (st->le_f)

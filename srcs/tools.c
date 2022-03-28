@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 12:45:44 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:08:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st)
 {
 	int	l;
 
-	l = pf_intlen((nbr, base);
+	l = pf_intlen(nbr, base);
 	st->hold_str = (char *)ft_strnew(l);
 	if (!st->hold_str)
 		exit(1);
@@ -51,6 +51,7 @@ void	exec_flags_and_length(t_var *st)
 {
 	st->len_va_arg = ft_strlen(st->hold_str);
 	st->len_va_arg += (st->hash_flag && *st->fmt == 'o');
+	st->len_va_arg += (st->hash_flag && !st->precision && st->precision_flag && *st->fmt == 'f');
 	//st->len_va_arg += 2 * (st->hash_flag && (*st->fmt == 'x' || *st->fmt == 'X'));
 	asterix_print(st);
 	if (!st->minus_flag && st->width && !st->zero_flag)
@@ -59,8 +60,6 @@ void	exec_flags_and_length(t_var *st)
 	{
 		if (!st->uint_check && ft_isalpha(*st->fmt) && st->space_count && !st->plus_flag) //not correct check?
 			exec_flag_space(st);
-		/* if (st->zero_flag &&)
-			exec_precision(st); */
 		if (st->hash_flag && *st->hold_str != '0' && (*st->fmt == 'x' || *st->fmt == 'X'))
 			pf_print_hex_hash(st);
 		if (st->hash_flag && *st->hold_str != '0' && *st->fmt == 'o')// && st->len_va_arg++)

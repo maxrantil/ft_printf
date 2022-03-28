@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 12:35:23 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 13:23:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	get_it(t_var *st)
 
 	c_single = 0;
 	ret = 0;
-	++st->prec_noll;
+	st->width_check = 1;
 	while (ft_isdigit(*st->fmt) && ++c_single)
 	{
 		if (c_single == 1 && ++c_single)
@@ -49,7 +49,7 @@ void	check_precision(t_var *st)
 
 void	check_width(t_var *st)
 {
-	if (ft_isdigit(*st->fmt ) && (st->zero_flag == OFF || st->prec_noll == ON))
+	if (ft_isdigit(*st->fmt ) && (!st->zero_flag || st->width_check))
 		st->width = get_it(st);
 }
 

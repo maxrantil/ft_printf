@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 12:42:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 15:08:44 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct s_var
 	int					plus_flag;
 	int					minus_flag;
 	size_t				width;
+	size_t				width_check;
 	size_t				precision;
 	long long			va_ret;
 	unsigned long long	va_u_ret;
@@ -46,13 +47,11 @@ typedef struct s_var
 	int					zero_flag;
 	char				*hold_str;
 	int					le_f;
-	int					prec_noll;
 	int					for_plus;
 	int					precision_flag;
 	int					char_width;
 	int					uint_check;
 	int					sign;
-	//size_t				float_prec;
 }						t_var;
 
 typedef void	(*t_fptr_print_op)(t_var *st);
