@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 23:20:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 09:54:56 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	float_print(t_var *st)
 
 	if (st->prec_noll)
 		flag = st->precision;
-	if (st->le_f == ON)
+	if (st->le_f)
 		conv_float_str(va_arg(st->ap, long double), flag, st);
 	else
 		conv_float_str(va_arg(st->ap, double), flag, st);

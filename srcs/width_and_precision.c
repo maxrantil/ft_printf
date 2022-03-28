@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 23:54:28 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 09:44:09 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,11 @@ void	exec_width(t_var *st)
 	if (st->precision)
 	{
 		if (st->precision < st->len_va_arg)
-		{
 			st->precision = st->len_va_arg;
-			st->precision -= (st->va_ret < 0);
-		}
 		sub += st->width - st->precision;
-		//sub -= (st->va_ret < 0 && !st->plus_flag);// || (st->va_ret < 0 && st->minus_flag)); //somthing wrong here
 		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count || (st->minus_flag  && st->for_plus)); //|| st->minus_flag);
 		sub *= (sub > 0);
-		while ((size_t)sub--)
+		while (sub--)
 			st->char_count += write(1, " ", 1);
 	}
 	else

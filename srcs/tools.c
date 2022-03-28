@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/27 23:30:17 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/28 09:36:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,8 @@ void	exec_flags_and_length(t_var *st)
 			exec_flag_zero(st);
 	}
 	if (*st->hold_str == '-')
+	{
 		st->char_count += write(1, "-", 1);
+		//st->len_va_arg++;
+	}
 }
