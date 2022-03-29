@@ -1,49 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_bi_add_c_str.c                               :+:      :+:    :+:   */
+/*   print_c_str.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 21:30:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 21:39:56 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	binary_print(t_var *st)
-{
-	pf_itoa_base(va_arg(st->ap, long long), 2, st);
-	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	st->fmt++;
-}
-
-void	address_print(t_var *st)
-{
-	pf_itoa_base(va_arg(st->ap, long), 16, st);
-	st->len_va_arg = ft_strlen(st->hold_str);
-	if (st->width)
-		st->width -= 2;
-	if (st->minus_flag == OFF && st->width)
-		exec_width(st);
-	st->char_count += write(1, "0x", 2);
-	if (*st->hold_str == '0' && st->precision_flag && !st->precision)
-	{
-		st->fmt++;
-		return ;
-	}
-	else
-		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	if (st->minus_flag == ON)
-		exec_width(st);
-	ft_strdel(&st->hold_str);
-	st->fmt++;
-}
-
 void	exec_precision_str(t_var *st)
 {
-	long sub;
+	long	sub;
 
 	sub = st->precision;
 	if (st->precision)
@@ -55,7 +26,7 @@ void	exec_precision_str(t_var *st)
 
 void	str_precision_width(t_var *st)
 {
-	long sub;
+	long	sub;
 
 	sub = 0;
 	sub *= (st->astx_ret);
@@ -85,7 +56,7 @@ static void	pf_write_str(t_var *st)
 		str_precision_width(st);
 	if (!st->precision && st->precision_flag)
 		st->char_count += write(1, "", 0);
-	else if (ft_strcmp("(null)", st->hold_str) || (!ft_strcmp("(null)", st->hold_str) && (st->precision > 5 || !st->precision)))
+	else
 		st->char_count += write(1, st->hold_str, st->len_va_arg);
 	if (st->minus_flag)
 		str_precision_width(st);
@@ -109,7 +80,6 @@ void	str_print(t_var *st)
 	pf_write_str(st);
 	if (st->astx_ret)
 		asterix_print(st);
-
 	st->fmt++;
 }
 

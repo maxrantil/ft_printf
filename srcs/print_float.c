@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 19:05:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 21:24:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,7 @@ static char	*join_unit_mant(char *mantissa, size_t x, t_var *st)
 
 	j = 0;
 	i = 0;
-
-	combo = ft_strnew(ft_strlen(st->hold_str) + ft_strlen(mantissa) + 1); // this might be taken away
+	combo = ft_strnew(ft_strlen(st->hold_str) + ft_strlen(mantissa) + 1);
 	if (!combo)
 		exit(1);
 	while (st->hold_str[i])
@@ -88,7 +87,7 @@ static char	*mant_to_a(long double nbr, t_var *st)
 		nine_rouning(mantissa, i, st);
 	else
 		mantissa[i - 1] += round_up;
-	return (join_unit_mant(mantissa,  x, st));
+	return (join_unit_mant(mantissa, x, st));
 }
 
 void	conv_float_str(long double nbr, t_var *st)

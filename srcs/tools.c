@@ -3,32 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 21:39:07 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 21:02:41 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	pf_exec_before_flags(t_var *st)
+void	pf_write(t_var *st)
 {
-	if (*st->hold_str == '-')
-	{
-		if (st->plus_flag && !st->minus_flag && --st->char_count)
-			st->plus_flag = 0;
-		exec_precision(st);
+	pf_exec_before_flags(st);
+	if (*st->fmt == 'd' && st->for_plus)
 		exec_flag_zero(st);
-		st->hold_str++;
-	}
-	else if (st->plus_flag)
-	{
-		ft_putchar('+');
-		st->for_plus = 1;
-		st->plus_flag = 0;
-		exec_precision(st);
-	}
+	st->char_count -=  (*st->fmt == 'u') && (st->plus_flag > 0);
+	if (*st->fmt == 'o' && *st->hold_str == '0' && st->precision_flag \
+		&& !st->precision && !st->hash_flag)
+		return ;
+	else if (*st->fmt != 'o' && *st->hold_str == '0' && st->precision_flag && !st->precision)
+		return ;
+	else
+		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 }
 
 static int	pf_intlen(long long nbr, unsigned int base)
@@ -66,6 +62,25 @@ void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st)
 	}
 }
 
+void	pf_exec_before_flags(t_var *st)
+{
+	if (*st->hold_str == '-')
+	{
+		if (st->plus_flag && !st->minus_flag && --st->char_count)
+			st->plus_flag = 0;
+		exec_precision(st);
+		exec_flag_zero(st);
+		st->hold_str++;
+	}
+	else if (st->plus_flag)
+	{
+		ft_putchar('+');
+		st->for_plus = 1;
+		st->plus_flag = 0;
+		exec_precision(st);
+	}
+}
+
 void	exec_flags_and_length(t_var *st)
 {
 	st->len_va_arg = ft_strlen(st->hold_str);
@@ -74,7 +89,7 @@ void	exec_flags_and_length(t_var *st)
 	//st->len_va_arg += 2 * (st->hash_flag && (*st->fmt == 'x' || *st->fmt == 'X'));
 	if (st->astx_ret && !st->minus_flag)
 		asterix_print(st);
-	if (!st->minus_flag && st->width && !st->zero_flag)
+	else if (!st->minus_flag && st->width && !st->zero_flag)
 		exec_width(st);
 	if (st->va_ret >= 0)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 21:19:19 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 21:23:14 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	check_oct_length(t_var *st);
 int		ft_printf(const char *fmt, ...);				//*restrict?
 void	parser_loop(t_var *st);
 void	check_parser(t_var *st);
-void	pf_itoa_base(unsigned long long  nbr, unsigned int base, t_var *st);
+void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st);
 void	pf_putint(t_var *st);
 size_t	get_it(t_var *st);
 void	exec_flags_and_length(t_var *st);
@@ -121,6 +121,7 @@ void	pf_write_o(t_var *st);
 void	pf_write(t_var *st);
 void	conv_float_str(long double nbr, t_var *st);
 void	pf_exec_before_flags(t_var *st);
+void	pf_write(t_var *st);
 
 static const t_fptr_print_op print_disp_tbl[14] = {
 	char_print,

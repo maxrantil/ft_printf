@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 21:28:03 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 20:23:20 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,27 +289,12 @@ void	test_address(void)
 	++done;
 }
 
-void	test_asterix_with_int(void)
-{
-	int	a;
-	int	b;
-	b = printf("printf: [%-+*d]\n", 7, -2142);
-	a = ft_printf("ft_pri: [%-+*d]\n", 7, -2142);
-	printf("ret: %d \n", b);
-	printf("\nret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_asterix_with_int failed_______\033[0m\n\n"));
-	++done;
-}
-
 void	test_asterix_with_str(void)
 {
 	int	a;
 	int	b;
-	b = printf("printf: [%-+*d]\n", 16, 1645);
-	a = ft_printf("ft_pri: [%-+*d]\n", 16, 1645);
+	b = printf("printf: [%+*d]\n", 16, 16465);
+	a = ft_printf("ft_pri: [%+*d]\n", 16, 16465);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -319,18 +304,33 @@ void	test_asterix_with_str(void)
 	++done;
 }
 
-void	test_asterix_with_int_plus(void)
+void	test_asterix_with_int(void)
 {
 	int	a;
 	int	b;
-	b = printf("printf: %+12*d\n", 20, 21);
-	a = ft_printf("ft_pri: %+*12d\n", 20, 21);
+	b = printf("printf: [%+*d]\n", 7, -2142);
+	a = ft_printf("ft_pri: [%+*d]\n", 7, -2142);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______test_asterix_with_int failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_asterix_with_int_plus(void)
+{
+	int	a;
+	int	b;
+	b = printf("printf: %+12*d\n", 4, 21);
+	a = ft_printf("ft_pri: %+*12d\n", 4, 21);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_asterix_with_int_plus failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -458,8 +458,8 @@ void test_mindfuck_minusminint2(void)
 {
 	long	a = -2147483648;
 	long	b = -2147483648;
-	b = printf("pri: %13.13dLol\n", (int)b);
-	a = ft_printf("ft_: %13.13dLol\n",(int)a);
+	b = printf("pri: %33.13dLol\n", (int)b);
+	a = ft_printf("ft_: %33.13dLol\n",(int)a);
 	printf("\nret: %ld \n", b);
 	printf("ret: %ld \n", a);
 	if (a == b)
@@ -473,8 +473,8 @@ void test_mindfuck_plus_craz(void)
 {
 	long	a = -214;
 	long	b = -214;
-	b = printf("pri: %+13.13dLol\n", (int)b);
-	a = ft_printf("ft_: %+13.13dLol\n",(int)a);
+	b = printf("pri: %+33.13dLol\n", (int)b);
+	a = ft_printf("ft_: %+33.13dLol\n",(int)a);
 	printf("\nret: %ld \n", b);
 	printf("ret: %ld \n", a);
 	if (a == b)
@@ -488,8 +488,8 @@ void test_mindfuck_plus_craz2(void)
 {
 	long	a = 2147483647;
 	long	b = 2147483647;
-	b = printf("pri: %+13.13dLol\n", (int)b);
-	a = ft_printf("ft_: %+13.13dLol\n",(int)a);
+	b = printf("pri: %+33.13dLol\n", (int)b);
+	a = ft_printf("ft_: %+33.13dLol\n",(int)a);
 	printf("\nret: %ld \n", b);
 	printf("ret: %ld \n", a);
 	if (a == b)
@@ -2072,21 +2072,6 @@ void	mouli_test7(void)
 	++done;
 }
 
-void test_mindfuck_simpleminus(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %10.5dLol\n", -42);
-	a = ft_printf("ft_: %10.5dLol\n", -42);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_mindfuck_simpleminus failed_______\033[0m\n\n"));
-	++done;
-}
-
 void	mouli_test8(void)
 {
 	int	a;
@@ -2992,6 +2977,52 @@ void	binary_bonus1(void)
 	++done;
 }
 
+void test_mindfuck_simpleminus(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %10.5dLol\n", -42);
+	a = ft_printf("ft_: %10.5dLol\n", -42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_mindfuck_simpleminus failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test_final(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %15.4i\n", -424242);
+	a = ft_printf("ft_: %15.4i\n", -424242);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test_final failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test_final1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%.6d]\n", -3);
+	a = ft_printf("ft_: [%.6d]\n", -3);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test_final1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+
 int	main(void)
 {
  	mix_ezz();
@@ -3014,7 +3045,7 @@ int	main(void)
 	test_address();
 	test_asterix_with_str();
 	test_asterix_with_int();
-	/* test_width_single();
+	test_width_single();
 	test_width_multi();
 	test_width_multi2();
  	test_precision();
@@ -3067,7 +3098,7 @@ int	main(void)
 	test_multi_flags3();
 	test_multi_flags4();
 	leo_test();
-//	test_procentage();
+	test_procentage();
 	test_flag_space_minus();
 	test_flag_space();
 	test_float0();
@@ -3083,8 +3114,8 @@ int	main(void)
 	test_float10();
 	test_float11();
 	test_float12();
-//	test_basic0();
-//	test_basic1();
+	test_basic0();
+	test_basic1();
 	test_basic2();
 	test_basic3();
 	test_basic4();
@@ -3096,7 +3127,7 @@ int	main(void)
 	test_basic5();
 	pro_test3();
 	pro_test_leo();
-//	basic_simple_proc();
+	basic_simple_proc();
 	basic_plus_uint();
 	basic_valt();
 	pro_test4();
@@ -3135,12 +3166,11 @@ int	main(void)
 	mouli_test4();
 	mouli_test6();
 	mouli_test7();
-	test_mindfuck_simpleminus();
 	mouli_test8();
 	mouli_test9();
 	mouli_test11();
 	mouli_test12();
-//	random_proc();
+	random_proc();
 	random_leo();
 	random_leo1();
 	random_leo2();
@@ -3188,7 +3218,10 @@ int	main(void)
 	ptf_d3();
 	ptf_d4();
 	binary_bonus();
-	binary_bonus1(); */
+	binary_bonus1();
+	test_mindfuck_simpleminus();
+	mouli_test_final();
+	mouli_test_final1();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

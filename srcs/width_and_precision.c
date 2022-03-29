@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_and_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 13:23:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 21:34:47 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	check_precision(t_var *st)
 {
 	if (*st->fmt == '.')
 	{
-		if (st->zero_flag) //new test (zero flag ignored with precision on %d)
+		if (st->zero_flag)
 		{
 			st->zero_flag = 0;
 			st->width = st->zero;
@@ -49,28 +49,18 @@ void	check_precision(t_var *st)
 
 void	check_width(t_var *st)
 {
-	if (ft_isdigit(*st->fmt ) && (!st->zero_flag || st->width_check))
+	if (ft_isdigit(*st->fmt) && (!st->zero_flag || st->width_check))
 		st->width = get_it(st);
 }
 
 void	exec_precision(t_var *st)
 {
-	long sub;
+	long	sub;
 
 	sub = st->precision;
-	st->len_va_arg -= (st->va_ret < 0);
-	//st->precision -= (st->hash_flag && *st->fmt == 'o');
-	//st->precision -= 2 * (st->hash_flag && (*st->fmt == 'x' || *st->fmt == 'X'));
 	if (st->precision && !st->plus_flag)
 	{
-		/* if (st->zero_flag) // wrong, zero glaf ignores when precision
-		{
-			sub =  st->zero - st->precision;
-			sub *= (st->va_ret >= 0 && st->precision < st->zero);
-			while (sub--)
-				st->char_count += write(1, " ", 1);
-			sub *= (st->zero < st->precision && st->va_ret >= 0 && st->precision < st->zero);
-		} */
+		sub += (st->va_ret < 0);
 		while ((size_t)sub-- > st->len_va_arg)
 			st->char_count += write(1, "0", 1);
 	}
@@ -78,23 +68,27 @@ void	exec_precision(t_var *st)
 
 void	exec_width(t_var *st)
 {
-	long sub;
+	long	sub;
 
 	sub = 0;
-	sub *= (st->astx_ret);
 	if (st->precision)
 	{
 		if (st->precision < st->len_va_arg)
-			st->precision = st->len_va_arg;
-		sub += st->width - st->precision;
-		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count || (st->minus_flag  && st->for_plus)); //|| st->minus_flag);
+		{
+			sub += st->width - st->len_va_arg;
+			sub += (st->va_ret < 0);
+		}
+		else
+			sub += st->width - st->precision;
+		sub -= (st->va_ret < 0 || st->plus_flag || st->space_count \
+			|| (st->minus_flag && st->for_plus));
 		sub *= (sub > 0);
 		while (sub--)
 			st->char_count += write(1, " ", 1);
 	}
 	else
 	{
-		sub -= ((st->for_plus && --st->char_count) || (st->minus_flag && st->va_ret < 0));//last party right?
+		sub -= (st->for_plus && --st->char_count);
 		sub += (st->precision_flag && !st->precision);
 		sub -= (st->plus_flag || st->space_count || st->char_width);
 		sub += st->width;

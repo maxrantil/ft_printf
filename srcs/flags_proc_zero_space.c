@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_proc_zero_space.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 19:04:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 20:17:45 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void	exec_flag_zero(t_var *st)
 
 	sub = st->zero;
 	sub += (st->width && st->zero_flag) * st->width;
-	sub -= (st->va_ret < 0);
-	if (*st->fmt == 'x' || *st->fmt == 'X')  //can i make this ousedie like 'o'???
+	//sub -= (st->va_ret < 0);
+	if (*st->fmt == 'x' || *st->fmt == 'X')  //can i make this outside like 'o'???
 		sub -= (st->hash_flag > 0) * 2;
 	sub -= (st->for_plus > 0 || st->space_count > 0);
 	sub *= (sub > 0);

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_int.c                                        :+:      :+:    :+:   */
+/*   print_int_address.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/28 21:38:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 21:40:02 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,46 +14,26 @@
 
 void	check_signed_length(t_var *st)
 {
-	int	i;
-
-	i = 1;
 	if (*st->fmt == 'd' || *st->fmt == 'i')
 		st->hold_str = conv_to_str((int)va_arg(st->ap, long long), st);
-	else if (*st->fmt == 'h' && (st->fmt[i] == 'd' || st->fmt[i] == 'i'))
-	{
-		++st->fmt;
+	else if (*st->fmt == 'h' && (st->fmt[1] == 'd' || st->fmt[1] == 'i') \
+		&& ++st->fmt)
 		st->hold_str = conv_to_str((short)va_arg(st->ap, long long), st);
-	}
-	else if (*st->fmt == 'l' && (st->fmt[i] == 'd' || st->fmt[i] == 'i'))
-	{
-		++st->fmt;
+	else if (*st->fmt == 'l' && (st->fmt[1] == 'd' || st->fmt[1] == 'i') \
+		&& ++st->fmt)
 		st->hold_str = conv_to_str((long)va_arg(st->ap, long long), st);
-	}
-	else if (*st->fmt == 'h' && st->fmt[i] == 'h' \
-		&& (st->fmt[i + 1] == 'd' || st->fmt[i + 1] == 'i'))
+	else if (*st->fmt == 'h' && st->fmt[1] == 'h' \
+		&& (st->fmt[2] == 'd' || st->fmt[2] == 'i'))
 	{
 		st->fmt += 2;
 		st->hold_str = conv_to_str((char)va_arg(st->ap, long long), st);
 	}
-	else if (*st->fmt == 'l' && st->fmt[i] == 'l' \
-		&& (st->fmt[i + 1] == 'd' || st->fmt[i + 1] == 'i'))
+	else if (*st->fmt == 'l' && st->fmt[1] == 'l' \
+		&& (st->fmt[2] == 'd' || st->fmt[2] == 'i'))
 	{
 		st->fmt += 2;
 		st->hold_str = conv_to_str(va_arg(st->ap, long long), st);
 	}
-}
-
-void	pf_putint(t_var *st)
-{
-	pf_exec_before_flags(st);
-	if (st->for_plus)
-		exec_flag_zero(st);
-	if (*st->hold_str == '0' && st->precision_flag && !st->precision)
-		return ;
-	else
-		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	if (st->minus_flag)
-		exec_width(st);
 }
 
 static size_t	pf_nbrlen(long long nbr)
@@ -96,7 +76,9 @@ char	*conv_to_str(long long nbr, t_var *st)
 void	int_print(t_var *st)
 {
 	exec_flags_and_length(st);
-	pf_putint(st);
+	pf_write(st);
+	if (st->minus_flag)
+		exec_width(st);
 	if (st->astx_ret)
 		asterix_print(st);
 	if (*--st->hold_str == '-')		//check this out to make cleaner
@@ -106,5 +88,25 @@ void	int_print(t_var *st)
 		++st->hold_str;
 		ft_strdel(&st->hold_str);
 	}
+	st->fmt++;
+}
+
+void	address_print(t_var *st)
+{
+	pf_itoa_base(va_arg(st->ap, long), 16, st);
+	st->len_va_arg = ft_strlen(st->hold_str);
+	if (st->width)
+		st->width -= 2;
+	if (!st->minus_flag && st->width)
+		exec_width(st);
+	st->char_count += write(1, "0x", 2);
+	if (*st->hold_str == '0' && st->precision_flag && !st->precision \
+		&& st->fmt++)
+		return ;
+	else
+		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+	if (st->minus_flag)
+		exec_width(st);
+	ft_strdel(&st->hold_str);
 	st->fmt++;
 }
