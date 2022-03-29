@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 21:24:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 22:12:48 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,7 @@ static char	*mant_to_a(long double nbr, t_var *st)
 
 void	conv_float_str(long double nbr, t_var *st)
 {
-	char		*float_str;
-	long long	round_up;
+	int			round_up;
 	long long	last_digit;
 
 	st->sign = 1 - 2 * (nbr < 0 || (1 / nbr < 0 && nbr == 0));
@@ -111,8 +110,6 @@ void	conv_float_str(long double nbr, t_var *st)
 	else
 	{
 		pf_itoa_base((long long)nbr, 10, st);
-		float_str = mant_to_a(nbr, st);
-		st->hold_str = ft_strdup(float_str);
-		ft_strdel(&float_str);		//can i make the chaning of strings clear?
+		st->hold_str = mant_to_a(nbr, st);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 21:40:02 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 22:16:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	int_print(t_var *st)
 		exec_width(st);
 	if (st->astx_ret)
 		asterix_print(st);
-	if (*--st->hold_str == '-')		//check this out to make cleaner
+	if (*--st->hold_str == '-')
 		ft_strdel(&st->hold_str);
 	else
 	{

@@ -1,9 +1,0 @@
-ft_pri dec: %printf dec: %
-
-ret: 14 
-ret: 13 
-
-[1m _______test_procentage failed_______[0m
-
-
-0/1 completed

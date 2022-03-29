@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 17:25:28 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/29 22:14:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,5 @@ int	ft_printf(const char *format, ...)
 	initialize_st(format, &st, 0);
 	parser_loop(&st);
 	va_end(st.ap);
-	return ((int)st.char_count); //will it return -1 on fail? then the cast wont work...
+	return ((int)st.char_count);
 }
