@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 21:53:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/30 20:45:36 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	pf_write(t_var *st)
 {
-	pf_exec_before_flags(st);
+	if (*st->fmt != 'u')
+		pf_exec_before_flags(st);
 	if (*st->fmt == 'd' && st->for_plus)
 		exec_flag_zero(st);
 	st->char_count -= ((*st->fmt == 'u') && (st->plus_flag > 0));

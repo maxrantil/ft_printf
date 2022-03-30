@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 22:14:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/30 20:53:14 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libftprintf.h"
 
-void	initialize_st(const char *format, t_var *st, int flag)
+static void	initialize_st(const char *format, t_var *st, int flag)
 {
 	st->fmt = format;
 	st->hold_str = NULL;
@@ -47,21 +47,21 @@ void	check_parser(t_var *st)
 	{
 		while (FLAGS[i] && FLAGS[i] != *st->fmt)
 			i++;
-		flag_disp_tbl[i](st);
+		g_flag_disp_tbl[i](st);
 		if (!st->sign)
 			break ;
 		i = 0;
 	}
 	i = 0;
-	while (i < NUM_CHECK_DISP)
-		check_disp_tbl[i++](st);
+	while (i < 6)
+		g_check_disp_tbl[i++](st);
 	i = 0;
 	while (SPECIF[i] && SPECIF[i] != *st->fmt)
 		i++;
-	print_disp_tbl[i](st);
+	g_print_disp_tbl[i](st);
 }
 
-void	parser_loop(t_var *st)
+static void	parser_loop(t_var *st)
 {
 	while (*st->fmt)
 	{

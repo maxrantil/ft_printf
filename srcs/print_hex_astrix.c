@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 22:16:45 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/30 20:23:46 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,21 @@ void	asterix_print(t_var *st)
 				st->char_count--;
 			sub--;
 		}
-		while (sub-- > st->len_va_arg)
-			st->char_count += write(1, " ", 1);
-		st->astx_ret = 0;
+		if (st->precision_flag)
+		{
+			st->precision = sub;
+			return ;
+		}
+		else if (st->width_check)
+		{
+			st->width = sub;
+			return ;
+		}
+		else
+		{
+			while (sub-- > st->len_va_arg)
+				st->char_count += write(1, " ", 1);
+			st->astx_ret = 0;
+		}
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 21:23:14 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/30 20:56:42 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@
 # define SPECIF "cspdiouxXf*b%"
 # define FLAGS "+-#0 "
 # define LENGTH "hhllL"
-# define ON 1
-# define OFF 0
-# define NUM_CHECK_DISP sizeof(check_disp_tbl) / sizeof(check_disp_tbl[0])
+/* # define ON 1
+# define OFF 0 */
 
 typedef struct s_var
 {
@@ -52,10 +51,6 @@ typedef struct s_var
 	int					sign;
 }						t_var;
 
-typedef void	(*t_fptr_print_op)(t_var *st);
-typedef void	(*t_fptr_flag_op)(t_var *st);
-typedef void	(*t_fptr_check_op)(t_var *st);
-
 /*
 ** Functions for print dispatch table
 */
@@ -71,8 +66,6 @@ void	float_print(t_var *st);
 void	asterix_print(t_var *st);
 void	binary_print(t_var *st);
 void	null_print(t_var *st);
-
-//int	binary_print(t_var *st);
 
 /*
 ** Functions for flags dispatch table
@@ -107,7 +100,6 @@ void	check_oct_length(t_var *st);
 */
 
 int		ft_printf(const char *fmt, ...);				//*restrict?
-void	parser_loop(t_var *st);
 void	check_parser(t_var *st);
 void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st);
 void	pf_putint(t_var *st);
@@ -115,7 +107,6 @@ size_t	get_it(t_var *st);
 void	exec_flags_and_length(t_var *st);
 char	*conv_to_str(long long nbr, t_var *st);
 char	*uint_str(unsigned long long nbr, t_var *st);
-void	initialize_st(const char *format, t_var *st, int flag);
 void	pf_print_hex_hash(t_var *st);
 void	pf_write_o(t_var *st);
 void	pf_write(t_var *st);
@@ -123,7 +114,11 @@ void	conv_float_str(long double nbr, t_var *st);
 void	pf_exec_before_flags(t_var *st);
 void	pf_write(t_var *st);
 
-static const t_fptr_print_op print_disp_tbl[14] = {
+typedef void					(*t_fptr_print_op)(t_var *st);
+typedef void					(*t_fptr_flag_op)(t_var *st);
+typedef void					(*t_fptr_check_op)(t_var *st);
+
+static const t_fptr_print_op	g_print_disp_tbl[14] = {
 	char_print,
 	str_print,
 	address_print,
@@ -140,7 +135,7 @@ static const t_fptr_print_op print_disp_tbl[14] = {
 	null_print,
 };
 
-static const t_fptr_flag_op flag_disp_tbl[6] = {
+static const t_fptr_flag_op		g_flag_disp_tbl[6] = {
 	flag_plus,
 	flag_minus,
 	hash_flag,
@@ -149,7 +144,7 @@ static const t_fptr_flag_op flag_disp_tbl[6] = {
 	null_flag,
 };
 
-static const t_fptr_check_op check_disp_tbl[6] = {
+static const t_fptr_check_op	g_check_disp_tbl[6] = {
 	check_width,
 	check_precision,
 	check_signed_length,
