@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 22:17:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/30 21:05:52 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,6 @@ void	binary_print(t_var *st)
 {
 	pf_itoa_base(va_arg(st->ap, long long), 2, st);
 	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+	ft_strdel(&st->hold_str);
 	st->fmt++;
 }

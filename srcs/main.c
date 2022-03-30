@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/30 21:00:09 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/30 21:06:26 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3025,7 +3025,7 @@ void	mouli_test_final1(void)
 
 int	main(void)
 {
-/*  	mix_ezz();
+  	mix_ezz();
 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
@@ -3100,7 +3100,7 @@ int	main(void)
 	leo_test();
 	test_procentage();
 	test_flag_space_minus();
-	test_flag_space(); */
+	test_flag_space();
 	test_float0();
 	test_float1();
 	test_float2();
@@ -3114,7 +3114,7 @@ int	main(void)
 	test_float10();
 	test_float11();
 	test_float12();
-/* 	test_basic0();
+	test_basic0();
 	test_basic1();
 	test_basic2();
 	test_basic3();
@@ -3178,12 +3178,12 @@ int	main(void)
 	random_jeff();
 	more_mouli1();
 	more_mouli2();
-	more_mouli4(); */
+	more_mouli4();
 	more_random_floats();
 	more_random_floats1();
 	more_random_floats2();
 	more_random_floats3();
-	/* more_random_leo8();
+	more_random_leo8();
 	more_random_jeff2();
 	ptf0();
 	ptf();
@@ -3221,7 +3221,7 @@ int	main(void)
 	binary_bonus1();
 	test_mindfuck_simpleminus();
 	mouli_test_final();
-	mouli_test_final1(); */
+	mouli_test_final1();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
