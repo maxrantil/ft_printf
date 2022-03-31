@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 12:25:28 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 15:15:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,15 +20,11 @@ void	null_print(t_var *st)
 void	pf_putfloat(t_var *st)
 {
 	pf_exec_before_flags(st);
-	if (st->for_plus)
-		exec_flag_zero(st);
 	if (st->sign < 0)
 		st->char_count += write(1, "-", 1);
 	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 	if (st->hash_flag && !st->precision && st->precision_flag)
 		st->char_count += write(1, ".", 1);
-	if (st->minus_flag)
-		exec_width(st);
 }
 
 void	float_print(t_var *st)
@@ -41,6 +37,10 @@ void	float_print(t_var *st)
 		conv_float_str(va_arg(st->ap, double), st);
 	exec_flags_and_length(st);
 	pf_putfloat(st);
+	if (st->minus_flag)
+		exec_width(st);
+	if (st->astx_ret)
+		asterix_print(st);
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }
@@ -77,6 +77,8 @@ void	oct_print(t_var *st)
 	pf_write(st);
 	if (st->minus_flag)
 		exec_width(st);
+	if (st->astx_ret)
+		asterix_print(st);
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }

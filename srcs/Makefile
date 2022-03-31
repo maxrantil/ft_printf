@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/03/29 21:40:16 by mrantil          ###   ########.fr        #
+#    Updated: 2022/03/31 13:51:57 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ FUNCTIONS = ft_printf \
 			print_uint_binary \
 			print_null_float_oct \
 			print_hex_astrix \
-			print_float \
+			float_work \
 			flags_plus_minus_hash_null \
 			flags_proc_zero_space \
 			width_and_precision \

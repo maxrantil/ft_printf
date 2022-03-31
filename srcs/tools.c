@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 12:32:05 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 16:59:00 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void	pf_write(t_var *st)
 {
 	if (*st->fmt != 'u')
 		pf_exec_before_flags(st);
-	if (*st->fmt == 'd' && st->for_plus)
-		exec_flag_zero(st);
 	st->char_count -= ((*st->fmt == 'u') && (st->plus_flag > 0));
 	if (*st->fmt == 'o' && *st->hold_str == '0' && st->precision_flag \
 		&& !st->precision && !st->hash_flag)
@@ -49,7 +47,7 @@ static int	pf_intlen(unsigned long long nbr, unsigned int base)
 
 void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st)
 {
-	long long	l;
+	int	l;
 
 	l = pf_intlen(nbr, base);
 	st->hold_str = (char *)ft_strnew(l);
@@ -80,9 +78,11 @@ void	pf_exec_before_flags(t_var *st)
 	else if (st->plus_flag)
 	{
 		ft_putchar('+');
+		//st->char_count++;
 		st->for_plus = 1;
 		st->plus_flag = 0;
 		exec_precision(st);
+		exec_flag_zero(st);
 	}
 }
 

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_float.c                                      :+:      :+:    :+:   */
+/*   float_work.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 22:12:48 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 16:36:50 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	nine_rouning(char *mantissa, int i, t_var *st)
 	{
 		new_unit = ft_atoi(st->hold_str);
 		ft_strdel(&st->hold_str);
-		pf_itoa_base(new_unit + st->sign, 10, st);
+		pf_itoa_base(new_unit + 1, 10, st);
 	}
 }
 

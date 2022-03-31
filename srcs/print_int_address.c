@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_int_address.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 12:53:07 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 16:37:22 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	int_print(t_var *st)
 		exec_width(st);
 	if (st->astx_ret)
 		asterix_print(st);
-	if (*--st->hold_str == '-')		//fix this//obj folder missing//rouding negative number wrong way for floats//plusflaggan och 0:an pa floats med 0 precision//flag for procent
+	if (*--st->hold_str == '-')		//fix this//obj folder missing//flag for procent//return wrong with extra plusflag(andre noticed)
 		ft_strdel(&st->hold_str);
 	else
 	{
