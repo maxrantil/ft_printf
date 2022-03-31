@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_and_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 16:08:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 20:18:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	check_precision(t_var *st)
 {
 	if (*st->fmt == '.')
 	{
-		if (st->zero_flag)
+		if (st->zero_flag)		//whit is the place where it goes wrong somehow
 		{
 			st->zero_flag = 0;
 			st->width = st->zero;
@@ -75,7 +75,7 @@ void	exec_width(t_var *st)
 		pf_exec_precision_with_width(st);
 	else
 	{
-		sub -= (st->for_plus > 0 && --st->char_count);
+		sub -= (st->for_plus > 0);// && --st->char_count);
 		sub += (st->precision_flag && !st->precision);
 		sub -= (st->plus_flag || st->space_count || st->char_width);
 		sub += st->width;

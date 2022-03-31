@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 11:42:55 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 19:27:51 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	check_unsigned_length(t_var *st)
 	}
 }
 
-int	uint_nbrlen(unsigned long long nbr)
+static int	uint_nbrlen(unsigned long long nbr)
 {
 	int	c;
 
@@ -81,7 +81,12 @@ void	uint_print(t_var *st)
 void	binary_print(t_var *st)
 {
 	pf_itoa_base(va_arg(st->ap, long long), 2, st);
-	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+	exec_flags_and_length(st);
+	pf_write(st);
+	if (st->minus_flag)
+		exec_width(st);
+	if (st->astx_ret)
+		asterix_print(st);
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }

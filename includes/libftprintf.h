@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/30 20:56:42 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 19:33:56 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 # define SPECIF "cspdiouxXf*b%"
 # define FLAGS "+-#0 "
 # define LENGTH "hhllL"
-/* # define ON 1
-# define OFF 0 */
 
 typedef struct s_var
 {
