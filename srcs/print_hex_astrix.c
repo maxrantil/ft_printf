@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex_astrix.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/30 20:23:46 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:42:48 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ void	hex_print(t_var *st)
 	pf_write(st);
 	if (st->minus_flag)
 		exec_width(st);
+	if (st->astx_ret)
+		asterix_print(st);
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }

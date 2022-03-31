@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_int_address.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 22:16:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/30 21:10:08 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	int_print(t_var *st)
 		exec_width(st);
 	if (st->astx_ret)
 		asterix_print(st);
-	if (*--st->hold_str == '-')
+	if (*--st->hold_str == '-')		//fix this
 		ft_strdel(&st->hold_str);
 	else
 	{
