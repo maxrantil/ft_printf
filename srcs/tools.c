@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/30 20:45:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:32:05 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@ void	pf_write(t_var *st)
 	if (*st->fmt == 'o' && *st->hold_str == '0' && st->precision_flag \
 		&& !st->precision && !st->hash_flag)
 		return ;
+	else if (*st->fmt == 'p' && *st->hold_str == '0' && st->precision_flag \
+		&& !st->precision && st->fmt++)
+		return ;
 	else if (*st->fmt != 'o' && *st->hold_str == '0' \
 		&& st->precision_flag && !st->precision)
 		return ;
@@ -29,9 +32,9 @@ void	pf_write(t_var *st)
 		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 }
 
-static int	pf_intlen(long long nbr, unsigned int base)
+static int	pf_intlen(unsigned long long nbr, unsigned int base)
 {
-	int	count;
+	long long	count;
 
 	count = 0;
 	if (!nbr)
@@ -46,7 +49,7 @@ static int	pf_intlen(long long nbr, unsigned int base)
 
 void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st)
 {
-	int	l;
+	long long	l;
 
 	l = pf_intlen(nbr, base);
 	st->hold_str = (char *)ft_strnew(l);

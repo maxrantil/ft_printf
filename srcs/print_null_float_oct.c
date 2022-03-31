@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/29 21:21:49 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:25:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,24 +48,27 @@ void	float_print(t_var *st)
 void	check_oct_length(t_var *st)
 {
 	if (*st->fmt == 'o')
-		pf_itoa_base((unsigned int)va_arg(st->ap, long long), 8, st);
+		pf_itoa_base((unsigned int)va_arg(st->ap, unsigned long long), 8, st);
 	else if (*st->fmt == 'h' && st->fmt[1] == 'o' && ++st->fmt)
-		pf_itoa_base((unsigned short)va_arg(st->ap, long long), 8, st);
+		pf_itoa_base((unsigned short)va_arg(st->ap, unsigned long long), 8, st);
 	else if (*st->fmt == 'l' && st->fmt[1] == 'o' && ++st->fmt)
-		pf_itoa_base((long)va_arg(st->ap, long long), 8, st);
+		pf_itoa_base((unsigned long)va_arg(st->ap, unsigned long long), 8, st);
 	else if (*st->fmt == 'h' && st->fmt[1] == 'h' && st->fmt[2] == 'o')
 	{
 		st->fmt += 2;
-		pf_itoa_base((unsigned char)va_arg(st->ap, long long), 8, st);
+		pf_itoa_base((unsigned char)va_arg(st->ap, unsigned long long), 8, st);
 	}
 	else if (*st->fmt == 'l' && st->fmt[1] == 'l' && st->fmt[2] == 'o')
 	{
 		st->fmt += 2;
-		pf_itoa_base(va_arg(st->ap, long long), 8, st);
+		pf_itoa_base(va_arg(st->ap, unsigned long long), 8, st);
 	}
-	else if ((*st->fmt == 'L' || (*st->fmt == 'l' && st->fmt[1] == 'f')) \
-		&& ++st->fmt)
-		st->le_f = 1;
+	else if ((*st->fmt == 'L' || (*st->fmt == 'l' && st->fmt[1] == 'f')))
+	{
+		if (*st->fmt == 'L')
+			st->le_f = 1;
+		++st->fmt;
+	}
 }
 
 void	oct_print(t_var *st)

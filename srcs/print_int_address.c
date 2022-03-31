@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_int_address.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/30 21:10:08 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 11:50:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,7 @@ void	address_print(t_var *st)
 	if (!st->minus_flag && st->width)
 		exec_width(st);
 	st->char_count += write(1, "0x", 2);
-	if (*st->hold_str == '0' && st->precision_flag && !st->precision \
-		&& st->fmt++)
-		return ;
-	else
-		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
+	pf_write(st);
 	if (st->minus_flag)
 		exec_width(st);
 	ft_strdel(&st->hold_str);

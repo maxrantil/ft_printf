@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex_astrix.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 11:42:48 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:00:13 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 void	check_hex_length(t_var *st)
 {
 	if (*st->fmt == 'x' || *st->fmt == 'X')
-		pf_itoa_base((unsigned int)va_arg(st->ap, long long), 16, st);
+		pf_itoa_base((unsigned int)va_arg(st->ap, unsigned long long), 16, st);
 	else if (*st->fmt == 'h' && (st->fmt[1] == 'x' || st->fmt[1] == 'X') \
 		&& ++st->fmt)
-		pf_itoa_base((unsigned short)va_arg(st->ap, long long), 16, st);
+		pf_itoa_base((unsigned short)va_arg(st->ap, unsigned long long), 16, st);
 	else if (*st->fmt == 'l' && (st->fmt[1] == 'x' || st->fmt[1] == 'X') \
 		&& ++st->fmt)
 		pf_itoa_base(va_arg(st->ap, unsigned long), 16, st);
@@ -26,13 +26,13 @@ void	check_hex_length(t_var *st)
 		&& (st->fmt[2] == 'x' || st->fmt[2] == 'X'))
 	{
 		st->fmt += 2;
-		pf_itoa_base((unsigned char)va_arg(st->ap, long long), 16, st);
+		pf_itoa_base((unsigned char)va_arg(st->ap, unsigned long long), 16, st);
 	}
 	else if (*st->fmt == 'l' && st->fmt[1] == 'l' \
 		&& (st->fmt[2] == 'x' || st->fmt[2] == 'X'))
 	{
 		st->fmt += 2;
-		pf_itoa_base(va_arg(st->ap, long long), 16, st);
+		pf_itoa_base(va_arg(st->ap, unsigned long long), 16, st);
 	}
 }
 

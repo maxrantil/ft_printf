@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/30 21:06:26 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/03/31 12:19:20 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3022,6 +3022,36 @@ void	mouli_test_final1(void)
 	++done;
 }
 
+void	mouli_test_final2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%lf]\n", 1.42);
+	a = ft_printf("ft_: [%lf]\n", 1.42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test_final2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	mouli_test_final3(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%llo, %llo]\n", 0llu, 18446744073709551615);
+	a = ft_printf("ft_: [%llo, %llo]\n", 0llu, 18446744073709551615);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______mouli_test_final3 failed_______\033[0m\n\n"));
+	++done;
+}
+
 
 int	main(void)
 {
@@ -3222,6 +3252,8 @@ int	main(void)
 	test_mindfuck_simpleminus();
 	mouli_test_final();
 	mouli_test_final1();
+	mouli_test_final2();
+	mouli_test_final3();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
