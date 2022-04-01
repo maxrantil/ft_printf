@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_null_float_oct.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 10:09:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 17:10:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ void	float_print(t_var *st)
 	pf_putfloat(st);
 	if (st->minus_flag)
 		exec_width(st);
-	if (st->astx_ret)
-		asterix_print(st);
+	/* if (st->astx_ret)
+		asterix_print(st); */
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }
@@ -86,8 +86,8 @@ void	oct_print(t_var *st)
 	pf_write(st);
 	if (st->minus_flag)
 		exec_width(st);
-	if (st->astx_ret)
-		asterix_print(st);
+	/* if (st->astx_ret)
+		asterix_print(st); */
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }

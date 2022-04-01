@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 13:45:41 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 17:08:52 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ void	exec_flags_and_length(t_var *st)
 	st->len_va_arg += (st->hash_flag && *st->fmt == 'o');
 	st->len_va_arg += (st->hash_flag && !st->precision \
 		&& st->precision_flag && *st->fmt == 'f');
-	if (st->astx_ret && !st->minus_flag)
-		asterix_print(st);
-	else if (!st->minus_flag && st->width && !st->zero_flag)
+	/* if (st->astx_ret && !st->minus_flag)
+		asterix_print(st); */
+	if (!st->minus_flag && st->width && !st->zero_flag)
 		exec_width(st);
 	if (st->va_ret >= 0)
 	{

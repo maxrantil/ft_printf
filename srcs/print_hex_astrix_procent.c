@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 15:20:27 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 17:11:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,8 @@ void	hex_print(t_var *st)
 	pf_write(st);
 	if (st->minus_flag)
 		exec_width(st);
-	if (st->astx_ret)
-		asterix_print(st);
+	/* if (st->astx_ret)
+		asterix_print(st); */
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }
@@ -115,9 +115,9 @@ void	print_procent(t_var *st)
 	if (st->plus_flag && --st->char_count)
 		st->plus_flag = 0;
 	st->len_va_arg = 1;
-	if (st->astx_ret && !st->minus_flag)
-		asterix_print(st);
-	else if (!st->minus_flag && st->width && !st->zero_flag)
+	/* if (st->astx_ret && !st->minus_flag)
+		asterix_print(st); */
+	if (!st->minus_flag && st->width && !st->zero_flag)
 		exec_width(st);
 	if (ft_isalpha(*st->fmt) \
 		&& st->space_count && !st->plus_flag)
@@ -129,7 +129,7 @@ void	print_procent(t_var *st)
 	st->char_count += write(1, st->fmt, 1);
 	if (st->minus_flag)
 		exec_width(st);
-	if (st->astx_ret)
-		asterix_print(st);
+	/* if (st->astx_ret)
+		asterix_print(st); */
 	st->fmt++;
 }

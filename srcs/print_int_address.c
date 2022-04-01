@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 13:26:34 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 17:08:32 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	int_print(t_var *st)
 	pf_write(st);
 	if (st->minus_flag)
 		exec_width(st);
-	if (st->astx_ret)
-		asterix_print(st);
+	/* if (st->astx_ret)
+		asterix_print(st); */
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }

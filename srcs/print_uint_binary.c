@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_uint_binary.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 10:13:06 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 17:10:37 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	uint_print(t_var *st)
 	pf_write(st);
 	if (st->minus_flag)
 		exec_width(st);
-	if (st->astx_ret)
-		asterix_print(st);
+	/* if (st->astx_ret)
+		asterix_print(st); */
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }
@@ -87,8 +87,8 @@ void	binary_print(t_var *st)
 	pf_write(st);
 	if (st->minus_flag)
 		exec_width(st);
-	if (st->astx_ret)
-		asterix_print(st);
+	/* if (st->astx_ret)
+		asterix_print(st); */
 	ft_strdel(&st->hold_str);
 	st->fmt++;
 }

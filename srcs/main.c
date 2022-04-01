@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 15:51:42 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 17:25:19 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3126,18 +3126,34 @@ void	test_wildcard0(void)
 		assert(printf("\033[1;31m _______test_wildcard0 failed_______\033[0m\n\n"));
 	++done;
 }
+
 void	test_wildcard1(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%*.*d]\n", 7, -3, 4242);
-	a = ft_printf("ft_: [%*.*d]\n", 7, -3, 4242);
+	b = printf("pri: [%*.*d]\n", 7, -13, 4242);
+	a = ft_printf("ft_: [%*.*d]\n", 7, -13, 4242);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______test_wildcard1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	crazy_big_float(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%.2147483647f]\n", 13.13131313131313313);
+	/* a = ft_printf("ft_: [%.2147483647f]\n", 13.13131313131313313); */
+	printf("\nret: %d \n", b);
+	/* printf("ret: %d \n", a); */
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______crazy_big_float failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -3156,56 +3172,62 @@ void	test_wildcard1(void)
 	++done;
 } */
 
-/* Test   9 (pct_5wzp) : FAILED.
+void	test_wildcard_i(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%.*i]\n", -6, -3);
+	a = ft_printf("ft_: [%.*i]\n", -6, -3);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_wildcard_i failed_______\033[0m\n\n"));
+	++done;
+}
 
-
-
-
-Test 489 (new2019_negstar_1) : FAILED.
-    First line of code: {return test("%*s", -32, "abc");}
-    Timed out
-
-Test 490 (new2019_negstar_2) : FAILED.
-    First line of code: {return test("%-*s", -32, "abc");}
-    Timed out
-
-Test 491 (new2019_negstar_3) : FAILED.
-    First line of code: {return test("%*s", -3, "hello");}
-    Timed out
-
-Test 492 (new2019_negstar_4) : FAILED.
+/* Test 492 (new2019_negstar_4) : FAILED.
     First line of code: {return test("%.*s", -3, "hello");}
       expected output : "hello"
-      your output     : "   hello"
+      your output     : "hel"
       expected (nonprintable as hex) : "hello"
-      actual   (nonprintable as hex) : "   hello"
+      actual   (nonprintable as hex) : "hel"
 
 Test 493 (new2019_negstar_5) : FAILED.
     First line of code: {return test("%-*.*s", -7, -3, "yolo");}
       expected output : "yolo   "
-      your output     : ""
+      your output     : "yol    "
       expected (nonprintable as hex) : "yolo   "
-      actual   (nonprintable as hex) : ""
-
-Test 494 (new2019_negstar_6) : FAILED.
-    First line of code: {return test("%*i", -4, 94827);}
-    Timed out
-
-Test 495 (new2019_negstar_7) : FAILED.
-    First line of code: {return test("%*i", -14, 94827);}
-    Timed out
+      actual   (nonprintable as hex) : "yol    "
 
 Test 496 (new2019_negstar_8) : FAILED.
     First line of code: {return test("%.*i", -6, -3);}
-    Timed out
+      expected output : "-3"
+      your output     : "-000003"
+      expected (nonprintable as hex) : "-3"
+      actual   (nonprintable as hex) : "-000003"
 
 Test 497 (new2019_negstar_9) : FAILED.
     First line of code: {return test("%0*i", -7, -54);}
       expected output : "-54    "
-      your output     : "-54"
+      your output     : "-000054    "
       expected (nonprintable as hex) : "-54    "
-      actual   (nonprintable as hex) : "-54"
- */
+      actual   (nonprintable as hex) : "-000054    "
+
+Test 4201 (s_neg_prec_star_01) : FAILED.
+    First line of code: {return test("%.*s", -3, 0);}
+      expected output : "(null)"
+      your output     : "(nu"
+      expected (nonprintable as hex) : "(null)"
+      actual   (nonprintable as hex) : "(nu"
+
+Test 4202 (s_neg_prec_star_02) : FAILED.
+    First line of code: {return test("%.*s", -1, 0);}
+      expected output : "(null)"
+      your output     : "("
+      expected (nonprintable as hex) : "(null)"
+      actual   (nonprintable as hex) : "(" */
 
 int	main(void)
 {
@@ -3414,6 +3436,8 @@ int	main(void)
 	test_basic0();
 	test_wildcard0();
 	test_wildcard1();
+//	crazy_big_float();
+	test_wildcard_i();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 15:52:55 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 17:22:09 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_precision(t_var *st)
 			if (hold < 0)
 			{
 				hold  *= -1;
-				//st->minus_flag = 1;
+				st->astx_ret = 1;
 				st->precision = hold;
 			}
 			else
@@ -104,7 +104,7 @@ void	exec_width(t_var *st)
 	else
 	{
 		sub -= (st->for_plus > 0);
-		sub += (st->precision_flag && !st->precision);
+		sub += (st->precision_flag && !st->precision && st->astx_ret != 1);
 		sub -= ((st->plus_flag > 0 && st->va_ret > 0) || st->space_count > 0 || st->char_width > 0);
 		sub += st->width;
 		if (*st->fmt == 'f' && st->precision_flag && !st->precision)
