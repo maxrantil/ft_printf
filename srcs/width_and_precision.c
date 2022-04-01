@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 13:57:55 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 15:52:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,51 @@
 
 void	check_precision(t_var *st)
 {
+	int hold;
+
+	hold = 0;
 	if (*st->fmt == '.')
 	{
-		st->fmt++;
 		st->precision_flag = 1;
-		st->precision = get_it(st);
+		st->fmt++;
+		if (*st->fmt == '*')
+		{
+			hold = va_arg(st->ap, int);
+			if (hold < 0)
+			{
+				hold  *= -1;
+				//st->minus_flag = 1;
+				st->precision = hold;
+			}
+			else
+				st->precision = hold;	
+			st->fmt++;
+		}	
+		else
+			st->precision = get_it(st);
 	}
 }
 
 void	check_width(t_var *st)
 {
-	if (ft_isdigit(*st->fmt) && (!st->zero_flag || st->width_check))
+	int hold;
+
+	hold = 0;
+	if (*st->fmt == '*')
+	{
+		hold = va_arg(st->ap, int);
+		if (hold < 0)
+		{
+			st->width_check = 1;
+			hold  *= -1;
+			st->minus_flag = 1;
+			st->width = hold;
+		}
+		else
+			st->width = hold;	
+		st->fmt++;
+	}
+	else if (ft_isdigit(*st->fmt) && (!st->zero_flag || st->width_check))
 		st->width = get_it(st);
 }
 
@@ -71,7 +105,7 @@ void	exec_width(t_var *st)
 	{
 		sub -= (st->for_plus > 0);
 		sub += (st->precision_flag && !st->precision);
-		sub -= (st->plus_flag || st->space_count || st->char_width);
+		sub -= ((st->plus_flag > 0 && st->va_ret > 0) || st->space_count > 0 || st->char_width > 0);
 		sub += st->width;
 		if (*st->fmt == 'f' && st->precision_flag && !st->precision)
 			sub--;

@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/04/01 13:39:44 by mrantil          ###   ########.fr        #
+#    Updated: 2022/04/01 15:14:16 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,8 @@ FUNCTIONS = ft_printf \
 			flags_plus_minus_hash_null \
 			flags_proc_zero_space \
 			width_and_precision \
-			tools
+			tools \
+			tools_getit
 
 _OBJ = $(foreach function, $(FUNCTIONS), $(function).o)
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))

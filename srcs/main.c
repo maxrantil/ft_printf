@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 14:18:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 15:51:42 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3130,8 +3130,8 @@ void	test_wildcard1(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%*.*s]\n", 7, 3, "yolo");
-	a = ft_printf("ft_: [%*.*s]\n", 7, 3, "yolo");
+	b = printf("pri: [%*.*d]\n", 7, -3, 4242);
+	a = ft_printf("ft_: [%*.*d]\n", 7, -3, 4242);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)

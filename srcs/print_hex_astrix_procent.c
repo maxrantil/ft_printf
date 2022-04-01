@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 14:17:07 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 15:20:27 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	hex_print(t_var *st)
 
 void	asterix_print(t_var *st)
 {
-	size_t	sub;
+	/* size_t	sub;
 
 	if (*st->fmt == '*')
 	{
@@ -82,6 +82,11 @@ void	asterix_print(t_var *st)
 				st->char_count--;
 			sub--;
 		}
+		if (st->zero_flag)
+		{
+			st->zero = sub;
+			return ;
+		}
 		if (st->precision_flag)
 		{
 			st->precision = sub;
@@ -98,7 +103,9 @@ void	asterix_print(t_var *st)
 				st->char_count += write(1, " ", 1);
 			st->astx_ret = 0;
 		}
-	}
+	} */
+	st->sign = 0;
+	return ;
 }
 
 void	print_procent(t_var *st)
