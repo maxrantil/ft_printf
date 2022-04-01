@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_proc_zero_space.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 20:08:16 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 13:38:40 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,32 +50,4 @@ void	get_flag_zero(t_var *st)
 			st->zero = get_it(st);
 		}
 	}
-}
-
-void	exec_flag_proc(t_var *st)
-{
-	/* size_t	i;
-
-	i = 0; */
-	if (st->plus_flag)
-		--st->char_count;
-	//pf_exec_before_flags(st);
-	//exec_flags_and_length(st);
-	/* if (*st->fmt == '%' && !st->minus_flag)
-	{
-		while (++i < st->width)
-			st->char_count += write(1, " ", 1); */
-		st->char_count += write(1, st->fmt, 1);
-	/* }
-	else if (*st->fmt == '%' && st->minus_flag)
-	{
-		st->char_count += write(1, st->fmt, 1);
-		while (++i < st->width)
-			st->char_count += write(1, " ", 1);
-	} */
-	if (st->minus_flag)
-		exec_width(st);
-	if (st->astx_ret)
-		asterix_print(st);
-	st->fmt++;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_and_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 10:08:50 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 13:57:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,6 @@ void	check_precision(t_var *st)
 {
 	if (*st->fmt == '.')
 	{
-		/* if (st->zero_flag)		//whit is the place where it goes wrong somehow
-		{
-			st->zero_flag = 0;
-			st->width = st->zero;
-			st->zero = 0;
-		} */
 		st->fmt++;
 		st->precision_flag = 1;
 		st->precision = get_it(st);
@@ -39,7 +33,7 @@ void	exec_precision(t_var *st)
 	long	sub;
 
 	sub = st->precision;
-	if (st->precision && !st->plus_flag)
+	if (st->precision && !st->plus_flag && *st->fmt != '%')
 	{
 		sub += (st->va_ret < 0);
 		while ((size_t)sub-- > st->len_va_arg)
@@ -75,7 +69,7 @@ void	exec_width(t_var *st)
 		pf_exec_precision_with_width(st);
 	else
 	{
-		sub -= (st->for_plus > 0);// && --st->char_count);
+		sub -= (st->for_plus > 0);
 		sub += (st->precision_flag && !st->precision);
 		sub -= (st->plus_flag || st->space_count || st->char_width);
 		sub += st->width;

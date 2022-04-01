@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 10:14:04 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 14:18:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1350,36 +1350,6 @@ void	test_float12(void)
 	++done;
 }
 
-void	test_basic0(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %5%\n");
-	a = ft_printf("ft_: %5%\n");
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_basic0 failed_______\033[0m\n\n"));
-	++done;
-}
-
-void	test_basic1(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %-5%\n");
-	a = ft_printf("ft_: %-5%\n");
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_basic1 failed_______\033[0m\n\n"));
-	++done;
-}
-
 void	test_basic2(void)
 {
 	int	a;
@@ -2116,21 +2086,6 @@ void	mouli_test15(void)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______mouli_test15 failed_______\033[0m\n\n"));
-	++done;
-}
-
-void	random_proc(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %8%\n");
-	a = ft_printf("ft_: %8%\n");
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______random_proc failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -3112,19 +3067,99 @@ void	basic_d_spec2(void)
 	++done;
 }
 
-/* Test   9 (pct_5wzp) : FAILED.
-    First line of code: {return test("%05%");}
-      expected output : "0000%"
-      your output     : "%"
-      expected (nonprintable as hex) : "0000%"
-      actual   (nonprintable as hex) : "%"
+void	random_proc(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %+8%\n");
+	a = ft_printf("ft_: %+8%\n");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______random_proc failed_______\033[0m\n\n"));
+	++done;
+}
 
-Test 484 (new2019_star_6) : FAILED.
-    First line of code: {return test("%-*.*s", 7, 3, "yolo");}
-      expected output : "yol    "
-      your output     : ""
-      expected (nonprintable as hex) : "yol    "
-      actual   (nonprintable as hex) : ""
+void	test_basic1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %-5%\n");
+	a = ft_printf("ft_: %-5%\n");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_basic1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_basic0(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %05%\n");
+	a = ft_printf("ft_: %05%\n");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_basic0 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_wildcard0(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%-*.*s]\n", -7, 3, "yolo");
+	a = ft_printf("ft_: [%-*.*s]\n", -7, 3, "yolo");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_wildcard0 failed_______\033[0m\n\n"));
+	++done;
+}
+void	test_wildcard1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%*.*s]\n", 7, 3, "yolo");
+	a = ft_printf("ft_: [%*.*s]\n", 7, 3, "yolo");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_wildcard1 failed_______\033[0m\n\n"));
+	++done;
+}
+
+/* void	test_wildcard0(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%-*.*s]\n", "yolo");
+	a = ft_printf("ft_: [%-*.*s]\n", "yolo");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_wildcard0 failed_______\033[0m\n\n"));
+	++done;
+} */
+
+/* Test   9 (pct_5wzp) : FAILED.
+
+
+
 
 Test 489 (new2019_negstar_1) : FAILED.
     First line of code: {return test("%*s", -32, "abc");}
@@ -3174,7 +3209,7 @@ Test 497 (new2019_negstar_9) : FAILED.
 
 int	main(void)
 {
-  	mix_ezz();
+   mix_ezz();
 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
@@ -3263,8 +3298,6 @@ int	main(void)
 	test_float10();
 	test_float11();
 	test_float12();
-	test_basic0();
-	test_basic1();
 	test_basic2();
 	test_basic3();
 	test_basic4();
@@ -3316,7 +3349,6 @@ int	main(void)
 	mouli_test9();
 	mouli_test11();
 	mouli_test12();
-	random_proc();
 	random_leo1();
 	random_leo2();
 	random_leo4();
@@ -3377,6 +3409,11 @@ int	main(void)
 	mouli_test_final5();
 	basic_d_spec8();
 	basic_d_spec2();
+	random_proc();
+	test_basic1();
+	test_basic0();
+	test_wildcard0();
+	test_wildcard1();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

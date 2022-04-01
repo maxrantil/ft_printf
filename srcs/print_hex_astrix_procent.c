@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_hex_astrix.c                                 :+:      :+:    :+:   */
+/*   print_hex_astrix_procent.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 10:10:25 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 14:17:07 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,4 +99,30 @@ void	asterix_print(t_var *st)
 			st->astx_ret = 0;
 		}
 	}
+}
+
+void	print_procent(t_var *st)
+{
+	if (st->zero_flag && st->precision_flag)
+		ignore_zero_flag(st);
+	if (st->plus_flag && --st->char_count)
+		st->plus_flag = 0;
+	st->len_va_arg = 1;
+	if (st->astx_ret && !st->minus_flag)
+		asterix_print(st);
+	else if (!st->minus_flag && st->width && !st->zero_flag)
+		exec_width(st);
+	if (ft_isalpha(*st->fmt) \
+		&& st->space_count && !st->plus_flag)
+		exec_flag_space(st);
+	if (st->precision_flag)
+		exec_precision(st);
+	if (!st->plus_flag && st->zero_flag && !st->precision_flag)
+		exec_flag_zero(st);
+	st->char_count += write(1, st->fmt, 1);
+	if (st->minus_flag)
+		exec_width(st);
+	if (st->astx_ret)
+		asterix_print(st);
+	st->fmt++;
 }

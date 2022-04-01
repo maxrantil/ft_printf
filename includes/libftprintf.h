@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 09:56:21 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 13:44:22 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	address_print(t_var *st);
 void	float_print(t_var *st);
 void	asterix_print(t_var *st);
 void	binary_print(t_var *st);
+void	print_procent(t_var *st);
 void	null_print(t_var *st);
 
 /*
@@ -73,7 +74,6 @@ void	flag_plus(t_var *st);
 void	flag_minus(t_var *st);
 void	procentage_print(t_var *st);
 void	get_flag_space(t_var *st);
-void	exec_flag_proc(t_var *st);
 void	exec_flag_space(t_var *st);
 void	hash_flag(t_var *st);
 void	get_flag_zero(t_var *st);
@@ -99,19 +99,24 @@ void	check_oct_length(t_var *st);
 
 int		ft_printf(const char *fmt, ...);				//*restrict?
 void	check_parser(t_var *st);
-void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st);
 void	pf_putint(t_var *st);
 size_t	get_it(t_var *st);
-void	exec_flags_and_length(t_var *st);
 char	*conv_to_str(long long nbr, t_var *st);
 char	*uint_str(unsigned long long nbr, t_var *st);
 void	pf_print_hex_hash(t_var *st);
 void	pf_write_o(t_var *st);
-void	pf_write(t_var *st);
 void	conv_float_str(long double nbr, t_var *st);
-void	pf_exec_before_flags(t_var *st);
-void	pf_write(t_var *st);
 void	ignore_zero_flag(t_var *st);
+
+/*
+** Tools
+*/
+
+void	pf_write(t_var *st);
+void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st);
+void	pf_exec_before_flags(t_var *st);
+void	exec_flags_and_length(t_var *st);
+
 
 typedef void					(*t_fptr_print_op)(t_var *st);
 typedef void					(*t_fptr_flag_op)(t_var *st);
@@ -130,7 +135,7 @@ static const t_fptr_print_op	g_print_disp_tbl[14] = {
 	float_print,
 	asterix_print,
 	binary_print,
-	exec_flag_proc,
+	print_procent,
 	null_print,
 };
 
