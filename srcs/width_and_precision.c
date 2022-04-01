@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 20:18:33 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:08:50 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@ void	check_precision(t_var *st)
 {
 	if (*st->fmt == '.')
 	{
-		if (st->zero_flag)		//whit is the place where it goes wrong somehow
+		/* if (st->zero_flag)		//whit is the place where it goes wrong somehow
 		{
 			st->zero_flag = 0;
 			st->width = st->zero;
 			st->zero = 0;
-		}
+		} */
 		st->fmt++;
 		st->precision_flag = 1;
 		st->precision = get_it(st);

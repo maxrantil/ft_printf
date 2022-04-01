@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 19:33:56 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 09:56:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ void	pf_write(t_var *st);
 void	conv_float_str(long double nbr, t_var *st);
 void	pf_exec_before_flags(t_var *st);
 void	pf_write(t_var *st);
+void	ignore_zero_flag(t_var *st);
 
 typedef void					(*t_fptr_print_op)(t_var *st);
 typedef void					(*t_fptr_flag_op)(t_var *st);

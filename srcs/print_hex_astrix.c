@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex_astrix.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 12:00:13 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:10:25 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	pf_print_hex_hash(t_var *st)
 
 void	hex_print(t_var *st)
 {
+	if (st->zero_flag && st->precision_flag)
+		ignore_zero_flag(st);
 	st->width -= 2 * (st->hash_flag && st->width \
 		&& (*st->fmt == 'x' || *st->fmt == 'X'));
 	exec_flags_and_length(st);

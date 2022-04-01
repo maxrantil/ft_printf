@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_null_float_oct.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 15:15:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:09:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,17 @@ void	check_oct_length(t_var *st)
 	}
 }
 
+void	ignore_zero_flag(t_var *st)
+{
+	st->zero_flag = 0;
+	st->width = st->zero;
+	st->zero = 0;
+}
+
 void	oct_print(t_var *st)
 {
+	if (st->zero_flag && st->precision_flag)
+		ignore_zero_flag(st);
 	exec_flags_and_length(st);
 	pf_write(st);
 	if (st->minus_flag)

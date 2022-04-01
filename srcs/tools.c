@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 16:59:00 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:24:55 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ void	pf_write(t_var *st)
 	else if (*st->fmt != 'o' && *st->hold_str == '0' \
 		&& st->precision_flag && !st->precision)
 		return ;
+	else if (*st->hold_str == '-' && (*st->fmt == 'd' || *st->fmt == 'i'))
+		st->char_count += write(1, st->hold_str + 1, ft_strlen(st->hold_str) - 1);
 	else
 		st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
 }
@@ -73,12 +75,11 @@ void	pf_exec_before_flags(t_var *st)
 			st->plus_flag = 0;
 		exec_precision(st);
 		exec_flag_zero(st);
-		st->hold_str++;
+		//st->hold_str++;
 	}
 	else if (st->plus_flag)
 	{
 		ft_putchar('+');
-		//st->char_count++;
 		st->for_plus = 1;
 		st->plus_flag = 0;
 		exec_precision(st);

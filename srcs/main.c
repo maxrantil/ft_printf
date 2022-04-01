@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 20:05:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:14:04 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -1892,21 +1892,6 @@ void	basic_d_spec7(void)
 	++done;
 }
 
-void	basic_d_spec8(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: [%013.2d]\n", 0);
-	a = ft_printf("ft_: [%013.2d]\n", 0);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______basic_d_spec8 failed_______\033[0m\n\n"));
-	++done;
-}
-
 void	basic_d_spec9(void)
 {
 	int	a;
@@ -2149,21 +2134,6 @@ void	random_proc(void)
 	++done;
 }
 
-void	random_leo(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: [%#08.5o]]\n", 444);
-	a = ft_printf("ft_: [%#08.5o]]\n", 444);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______random_leo failed_______\033[0m\n\n"));
-	++done;
-}
-
 void	random_leo1(void)
 {
 	int	a;
@@ -2326,21 +2296,6 @@ void	more_random_floats3(void)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______more_random_floats3 failed_______\033[0m\n\n"));
-	++done;
-}
-
-void	more_random_leo8(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: [%#08.5x]\n", 42);
-	a = ft_printf("ft_: [%#08.5x]\n", 42);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______more_random_leo8 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -3037,21 +2992,6 @@ void	mouli_test_final3(void)
 	++done;
 }
 
-void	basic_d_spec2(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: %0+5d\n", 42);
-	a = ft_printf("ft_: %0+5d\n", 42);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______basic_d_spec2 failed_______\033[0m\n\n"));
-	++done;
-}
-
 void	mouli_test_final6(void)
 {
 	int	a;
@@ -3079,6 +3019,36 @@ void	pro_test_leo(void)
 		printf("%d tests complete.\n\n", ++tests);
 	else
 		assert(printf("\033[1;31m _______pro_test_leo failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	random_leo(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%#08.5o]]\n", 444);
+	a = ft_printf("ft_: [%#08.5o]]\n", 444);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______random_leo failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	more_random_leo8(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%#08.5x]\n", 42);
+	a = ft_printf("ft_: [%#08.5x]\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______more_random_leo8 failed_______\033[0m\n\n"));
 	++done;
 }
 
@@ -3112,6 +3082,35 @@ void	mouli_test_final5(void)
 	++done;
 }
 
+void	basic_d_spec8(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%013.2d]\n", 0);
+	a = ft_printf("ft_: [%013.2d]\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec8 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_d_spec2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: %05d\n", 42);
+	a = ft_printf("ft_: %05d\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_d_spec2 failed_______\033[0m\n\n"));
+	++done;
+}
 
 /* Test   9 (pct_5wzp) : FAILED.
     First line of code: {return test("%05%");}
@@ -3304,7 +3303,6 @@ int	main(void)
 	basic_d_spec5();
 	basic_d_spec6();
 	basic_d_spec7();
-	basic_d_spec8();
 	basic_d_spec9();
 	basic_d_spec10();
 	mouli_test();
@@ -3319,7 +3317,6 @@ int	main(void)
 	mouli_test11();
 	mouli_test12();
 	random_proc();
-	random_leo();
 	random_leo1();
 	random_leo2();
 	random_leo4();
@@ -3331,7 +3328,6 @@ int	main(void)
 	more_random_floats1();
 	more_random_floats2();
 	more_random_floats3();
-	more_random_leo8();
 	more_random_jeff2();
 	ptf0();
 	ptf();
@@ -3373,11 +3369,14 @@ int	main(void)
 	mouli_test_final1();
 	mouli_test_final2();
 	mouli_test_final3();
-	basic_d_spec2();
 	mouli_test_final6();
 	pro_test_leo();
+	random_leo();
+	more_random_leo8();
 	mouli_test_final4();
 	mouli_test_final5();
+	basic_d_spec8();
+	basic_d_spec2();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);

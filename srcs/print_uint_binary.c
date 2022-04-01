@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 19:27:51 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:13:06 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ char	*uint_str(unsigned long long nbr, t_var *st)
 void	uint_print(t_var *st)
 {
 	st->uint_check = 1;
+	if (st->zero_flag && st->precision_flag)
+		ignore_zero_flag(st);
 	exec_flags_and_length(st);
 	pf_write(st);
 	if (st->minus_flag)

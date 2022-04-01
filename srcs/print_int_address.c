@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_int_address.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/03/31 16:37:22 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/01 10:26:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,19 +75,15 @@ char	*conv_to_str(long long nbr, t_var *st)
 
 void	int_print(t_var *st)
 {
+	if (st->zero_flag && st->precision_flag)
+		ignore_zero_flag(st);
 	exec_flags_and_length(st);
 	pf_write(st);
 	if (st->minus_flag)
 		exec_width(st);
 	if (st->astx_ret)
 		asterix_print(st);
-	if (*--st->hold_str == '-')		//fix this//obj folder missing//flag for procent//return wrong with extra plusflag(andre noticed)
-		ft_strdel(&st->hold_str);
-	else
-	{
-		++st->hold_str;
-		ft_strdel(&st->hold_str);
-	}
+	ft_strdel(&st->hold_str);
 	st->fmt++;
 }
 
