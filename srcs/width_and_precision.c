@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 17:22:09 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/02 16:11:49 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	check_precision(t_var *st)
 			hold = va_arg(st->ap, int);
 			if (hold < 0)
 			{
-				hold  *= -1;
+				hold  *= 0;
 				st->astx_ret = 1;
 				st->precision = hold;
 			}
@@ -49,16 +49,17 @@ void	check_width(t_var *st)
 		hold = va_arg(st->ap, int);
 		if (hold < 0)
 		{
+			st->astx_ret = 1;
 			st->width_check = 1;
 			hold  *= -1;
 			st->minus_flag = 1;
 			st->width = hold;
 		}
 		else
-			st->width = hold;	
+			st->width = hold;
 		st->fmt++;
 	}
-	else if (ft_isdigit(*st->fmt) && (!st->zero_flag || st->width_check))
+	if (ft_isdigit(*st->fmt) && (!st->zero_flag || st->width_check))
 		st->width = get_it(st);
 }
 

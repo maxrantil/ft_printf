@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 17:08:52 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/02 15:53:09 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	pf_write(t_var *st)
 		pf_exec_before_flags(st);
 	st->char_count -= ((*st->fmt == 'u') && (st->plus_flag > 0));
 	if (*st->fmt == 'o' && *st->hold_str == '0' && st->precision_flag \
-		&& !st->precision && !st->hash_flag)
+		&& !st->precision && !st->hash_flag && !st->astx_ret)
 		return ;
 	else if (*st->fmt == 'p' && *st->hold_str == '0' && st->precision_flag \
-		&& !st->precision && st->fmt++)
+		&& !st->precision && !st->astx_ret)
 		return ;
 	else if (*st->fmt != 'o' && *st->hold_str == '0' \
-		&& st->precision_flag && !st->precision)
+		&& st->precision_flag && !st->precision && !st->astx_ret)
 		return ;
 	else if (*st->hold_str == '-' && (*st->fmt == 'd' || *st->fmt == 'i'))
 		st->char_count += write(1, st->hold_str + 1, ft_strlen(st->hold_str) - 1);
@@ -92,8 +92,6 @@ void	exec_flags_and_length(t_var *st)
 	st->len_va_arg += (st->hash_flag && *st->fmt == 'o');
 	st->len_va_arg += (st->hash_flag && !st->precision \
 		&& st->precision_flag && *st->fmt == 'f');
-	/* if (st->astx_ret && !st->minus_flag)
-		asterix_print(st); */
 	if (!st->minus_flag && st->width && !st->zero_flag)
 		exec_width(st);
 	if (st->va_ret >= 0)

@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 17:10:00 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/02 15:26:20 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static void	pf_write_str(t_var *st)
 		st->len_va_arg = st->precision;
 	if (!st->minus_flag)
 		str_precision_width(st);
-	if (!st->precision && st->precision_flag)
+	if (!st->precision && st->precision_flag && !st->astx_ret)
 		st->char_count += write(1, "", 0);
 	else
 		st->char_count += write(1, st->hold_str, st->len_va_arg);
@@ -68,18 +68,16 @@ void	str_print(t_var *st)
 	if (st->hold_str == NULL)
 		st->hold_str = "(null)";
 	st->len_va_arg = ft_strlen(st->hold_str);
-	if ((!st->precision && st->precision_flag) && st->width)
+	if ((!st->precision && st->precision_flag) && st->width && !st->astx_ret)
 	{
 		while (st->width--)
 			st->char_count += write(1, " ", 1);
 		st->fmt++;
 		return ;
 	}
-	if (st->astx_ret && !st->minus_flag)
-		asterix_print(st);
-	pf_write_str(st);
-	/* if (st->astx_ret)
+/* 	if (st->astx_ret && !st->minus_flag)
 		asterix_print(st); */
+	pf_write_str(st);
 	st->fmt++;
 }
 

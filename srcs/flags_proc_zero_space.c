@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 13:38:40 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/02 15:10:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	exec_flag_zero(t_var *st)
 
 	sub = st->zero;
 	sub += (st->width > 0 && st->zero_flag > 0) * st->width;
+	sub *= (!st->astx_ret);
 	if (*st->fmt == 'x' || *st->fmt == 'X')
 		sub -= (st->hash_flag > 0) * 2;
 	sub -= (st->for_plus > 0 || st->space_count > 0);
