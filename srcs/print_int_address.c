@@ -6,11 +6,11 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 15:03:33 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/02 16:21:54 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/ft_printf.h"
 
 void	check_signed_length(t_var *st)
 {

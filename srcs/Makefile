@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/04/01 15:14:16 by mrantil          ###   ########.fr        #
+#    Updated: 2022/04/02 16:22:40 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LDIR = ../libft
 
 LIBS = libft.a
 
-_DEPS = libftprintf.h
+_DEPS = ft_printf.h
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
 FUNCTIONS = ft_printf \
@@ -63,9 +63,9 @@ $(NAME): $(OBJ)
 	@ranlib $@
 	@echo "$@ indexed"
 #after this line is just for testing, erase later
-	@gcc main.c $@ $(HFILE) -I$(LDIR) -g -O3
-	@echo "Compiling main.c..."
-	@echo '\n'a.out ready to \(run\)fire!
+#	@gcc main.c $@ $(HFILE) -I$(LDIR) -g -O3
+#	@echo "Compiling main.c..."
+#	@echo '\n'a.out ready to \(run\)fire!
 
 clean:
 	@echo "Cleaning object files..."

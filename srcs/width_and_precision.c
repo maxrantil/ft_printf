@@ -6,11 +6,11 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:11:49 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/02 16:22:18 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/ft_printf.h"
 
 void	check_precision(t_var *st)
 {

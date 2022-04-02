@@ -1,0 +1,53 @@
+---------------------------
+Basic tests for %s
+---------------------------
+print without arguments
+ret is 24
+ret is 0
+print percentage: '%'
+ret is 22
+print percentage: '%         ' and '0000%'
+ret is 43
+testing string 'tester123456789' %
+ret is 35
+harder tests for %.5s: 'adfgh' %s: 'asdfghjklö'
+#saldka384972384edslnaclsalkc
+asdfg
+ret is 85
+testing string 'teste' %
+ret is 25
+testing empty string ''
+ret is 24
+testing empty string '          '
+ret is 34
+testing unterm string 'test'
+ret is 29
+testing unterm string ''
+ret is 25
+testing unterm string ' test'
+ret is 30
+testing unterm string '     '
+ret is 30
+testing unterm string 'test'
+ret is 29
+testing unterm string ''
+ret is 25
+testing string 'asfdkoapvifmepcruinuiosnruoawesrxuesxs'
+ret is 56
+testing string '                                                                                          asfdkoapvi'
+ret is 118
+testing string 'asfdkoapvi                                                                                          '
+ret is 118
+testing string 'asfdkoapvifmepcruinuiosnruoawesrxuesxs                                                              '
+ret is 118
+testing string '                                                                                                    '
+ret is 118
+testing string 'asfdkoapvifmepcruinuiosnruoawesrxuesxs                                                              '
+ret is 118
+testing multiple strings '%' 'asfdkoapvifmepcruinuiosnruoawesrxuesxs' 'ASDFGÖRESDVX                                                                                       ' '     sfja ' ''
+ret is 189
+percentage string %ret is 19
+usr:     f f f f:       >>>this is a multi  string. gg!<<<
+ret is 59
+usr:     f f f f:       >>>thisisamulti  string. gg!<<<
+ret is 56

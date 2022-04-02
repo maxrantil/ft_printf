@@ -6,11 +6,11 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:14:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 15:18:11 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/02 16:22:08 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libftprintf.h"
+#include "../includes/ft_printf.h"
 
 size_t	get_it(t_var *st)
 {
