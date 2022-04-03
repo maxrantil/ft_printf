@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 14:28:33 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 14:32:24 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3324,6 +3324,22 @@ void	test_satu_test1(void)
 	++done;
 }
 
+void	test_satu_test2(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%5.0d]\n", 42);
+	a = ft_printf("ft_: [%5.0d]\n", 42);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_satu_test2 failed_______\033[0m\n\n"));
+	++done;
+}
+
+
 int	main(void)
 {
     mix_ezz();
@@ -3542,6 +3558,7 @@ int	main(void)
 	test_wildcard_ran4();
 	test_satu_test0();
 	test_satu_test1();
+	test_satu_test2();
 
 
 

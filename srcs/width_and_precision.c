@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_and_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:22:18 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 14:47:29 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	check_precision(t_var *st)
 				st->precision = hold;
 			}
 			else
-				st->precision = hold;	
+				st->precision = hold;
 			st->fmt++;
-		}	
+		}
 		else
 			st->precision = get_it(st);
 	}
@@ -105,11 +105,10 @@ void	exec_width(t_var *st)
 	else
 	{
 		sub -= (st->for_plus > 0);
-		sub += (st->precision_flag && !st->precision && st->astx_ret != 1);
+		sub += (*st->fmt != 'd' && st->precision_flag && !st->precision && !st->astx_ret);		//chan you make this shorter
 		sub -= ((st->plus_flag > 0 && st->va_ret > 0) || st->space_count > 0 || st->char_width > 0);
 		sub += st->width;
-		if (*st->fmt == 'f' && st->precision_flag && !st->precision)
-			sub--;
+		sub -= (*st->fmt == 'f' && st->precision_flag && !st->precision);							//combined with this?
 		sub *= (sub > 0);
 		while ((size_t)sub-- > st->len_va_arg)
 			st->char_count += write(1, " ", 1);
