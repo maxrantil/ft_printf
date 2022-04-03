@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.max                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:21:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 14:28:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3294,10 +3294,39 @@ void	test_wildcard_ran4(void)
 	++done;
 }
 
+void	test_satu_test0(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%-+31.5d]\n", -392082);
+	a = ft_printf("ft_: [%-+31.5d]\n", -392082);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_satu_test0 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_satu_test1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%#010Lf]\n", 003.141593l);
+	a = ft_printf("ft_: [%#010Lf]\n", 003.141593l);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_satu_test1 failed_______\033[0m\n\n"));
+	++done;
+}
 
 int	main(void)
 {
-   mix_ezz();
+    mix_ezz();
 	mix_ez1();
 	mix_ez2();
 	mix_ez3();
@@ -3385,7 +3414,7 @@ int	main(void)
 	test_float10();
  	test_float11();
 	test_float12();
-	test_basic2();
+ 	test_basic2();
 	test_basic3();
 	test_basic4();
 	pro_test();
@@ -3511,7 +3540,9 @@ int	main(void)
 	test_wildcard_ran2();
 	test_wildcard_ran3();
 	test_wildcard_ran4();
-	
+	test_satu_test0();
+	test_satu_test1();
+
 
 
 	if (tests == done)

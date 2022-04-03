@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:22:13 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 14:24:14 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	pf_write(t_var *st)
 
 static int	pf_intlen(unsigned long long nbr, unsigned int base)
 {
-	long long	count;
+	int	count;
 
 	count = 0;
 	if (!nbr)
@@ -110,5 +110,9 @@ void	exec_flags_and_length(t_var *st)
 			exec_flag_zero(st);
 	}
 	if (*st->hold_str == '-')
+	{
 		st->char_count += write(1, "-", 1);
+		if (st->plus_flag && st->minus_flag && st->va_ret < 0)
+			st->char_count--;
+	}
 }

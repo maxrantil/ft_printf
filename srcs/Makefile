@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/04/02 16:22:40 by mrantil          ###   ########.fr        #
+#    Updated: 2022/04/03 11:15:05 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,9 +63,9 @@ $(NAME): $(OBJ)
 	@ranlib $@
 	@echo "$@ indexed"
 #after this line is just for testing, erase later
-#	@gcc main.c $@ $(HFILE) -I$(LDIR) -g -O3
-#	@echo "Compiling main.c..."
-#	@echo '\n'a.out ready to \(run\)fire!
+	@gcc main.c $@ $(HFILE) -I$(LDIR) -g -O3
+	@echo "Compiling main.c..."
+	@echo '\n'a.out ready to \(run\)fire!
 
 clean:
 	@echo "Cleaning object files..."
@@ -78,24 +78,9 @@ fclean: clean
 	@echo "Cleaning .a files..."
 	@make -C $(LDIR) fclean
 	@rm -f $(NAME)
-	@echo "libft.a & ibftprintf.a gone."
+	@echo "libft.a & libftprintf.a gone."
 
 re: fclean all
 
 .PHONY: all clean fclean re
-
-
-
-
-#	@ar rc $(NAME) $(O_FILES)
-#	@echo "$(NAME) created"
-#	@ranlib $(NAME)
-#	@echo "$(NAME) indexed"
-#after this line is just for testing, erase later
-#	@gcc main.c libftprintf.a libft/libft.a -g
-#	@echo "Compiling main.c..."
-#	@echo '\n'a.out ready to \(run\)fire!
-
-
-
 

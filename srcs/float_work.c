@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_work.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:21:23 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 11:54:03 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	nine_rouning(char *mantissa, int i, t_var *st)
 {
-	long long	new_unit;
+	long long	new_unit;		//long only??
 
 	mantissa[--i] = '0';
 	while (i-- && mantissa[i] == '9')
@@ -34,7 +34,7 @@ static int	bankers_rounding(long double nbr, char last_digit, t_var *st)
 	int	res;
 
 	res = 0;
-	nbr = (nbr - (long long)nbr);
+	nbr -= (long long)nbr;
 	if (nbr > 0.5)
 		res++;
 	else if (nbr == 0.5)
@@ -83,7 +83,7 @@ static char	*mant_to_a(long double nbr, t_var *st)
 		x++;
 	}
 	round_up = bankers_rounding(nbr, mantissa[i - 1], st);
-	if (round_up == 1 && mantissa[i - 1] == '9')
+	if (round_up && mantissa[i - 1] == '9')
 		nine_rouning(mantissa, i, st);
 	else
 		mantissa[i - 1] += round_up;

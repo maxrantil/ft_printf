@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/01 13:44:22 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 13:43:40 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # define SPECIF "cspdiouxXf*b%"
 # define FLAGS "+-#0 "
 # define LENGTH "hhllL"
+# define NOR  "\x1B[0;0m"
+# define RED  "\x1B[0;31m"
+# define GRE  "\x1B[0;32m"
+# define YEL  "\x1B[0;33m"
+# define BLU  "\x1B[0;34m"
+# define MAG  "\x1B[0;35m"
+# define CYA  "\x1B[0;36m"
+# define WHI  "\x1B[0;37m"
 
 typedef struct s_var
 {

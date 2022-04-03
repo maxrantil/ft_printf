@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:21:30 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 11:15:48 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,4 @@ int	ft_printf(const char *format, ...)
 	return ((int)st.char_count);
 }
 
-//obj folder missing//flag for procent//change st-> to ->data
+//obj folder missing//change st-> to ->data
