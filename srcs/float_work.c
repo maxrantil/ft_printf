@@ -6,13 +6,13 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 11:54:03 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:48:43 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	nine_rouning(char *mantissa, int i, t_var *st)
+static void	nine_rouning(char *mantissa, int i, t_ftprintf *data)
 {
 	long long	new_unit;		//long only??
 
@@ -23,13 +23,13 @@ static void	nine_rouning(char *mantissa, int i, t_var *st)
 		mantissa[i] += 1;
 	else
 	{
-		new_unit = ft_atoi(st->hold_str);
-		ft_strdel(&st->hold_str);
-		pf_itoa_base(new_unit + 1, 10, st);
+		new_unit = ft_atoi(data->hold_str);
+		ft_strdel(&data->hold_str);
+		pf_itoa_base(new_unit + 1, 10, data);
 	}
 }
 
-static int	bankers_rounding(long double nbr, char last_digit, t_var *st)
+static int	bankers_rounding(long double nbr, char last_digit, t_ftprintf *data)
 {
 	int	res;
 
@@ -38,11 +38,11 @@ static int	bankers_rounding(long double nbr, char last_digit, t_var *st)
 	if (nbr > 0.5)
 		res++;
 	else if (nbr == 0.5)
-		res = ((last_digit + 1 * st->sign) % 2 == 0);
+		res = ((last_digit + 1 * data->sign) % 2 == 0);
 	return (res);
 }
 
-static char	*join_unit_mant(char *mantissa, size_t x, t_var *st)
+static char	*join_unit_mant(char *mantissa, size_t x, t_ftprintf *data)
 {
 	char	*combo;
 	int		i;
@@ -50,22 +50,22 @@ static char	*join_unit_mant(char *mantissa, size_t x, t_var *st)
 
 	j = 0;
 	i = 0;
-	combo = ft_strnew(ft_strlen(st->hold_str) + ft_strlen(mantissa) + 1);
+	combo = ft_strnew(ft_strlen(data->hold_str) + ft_strlen(mantissa) + 1);
 	if (!combo)
 		exit(1);
-	while (st->hold_str[i])
-		combo[j++] = st->hold_str[i++];
-	if (st->precision || x == 6)
+	while (data->hold_str[i])
+		combo[j++] = data->hold_str[i++];
+	if (data->precision || x == 6)
 		combo[j++] = '.';
 	i = 0;
 	while (mantissa[i])
 		combo[j++] = mantissa[i++];
-	ft_strdel(&st->hold_str);
+	ft_strdel(&data->hold_str);
 	ft_strdel(&mantissa);
 	return (combo);
 }
 
-static char	*mant_to_a(long double nbr, t_var *st)
+static char	*mant_to_a(long double nbr, t_ftprintf *data)
 {
 	char		*mantissa;
 	int			i;
@@ -73,43 +73,43 @@ static char	*mant_to_a(long double nbr, t_var *st)
 	int			round_up;
 
 	i = 0;
-	mantissa = ft_strnew(st->precision);
+	mantissa = ft_strnew(data->precision);
 	x = 0;
-	while (st->precision > x)
+	while (data->precision > x)
 	{
 		nbr *= 10;
 		mantissa[i++] = ((long long)nbr % 10) + 48;
 		nbr -= (long long)nbr;
 		x++;
 	}
-	round_up = bankers_rounding(nbr, mantissa[i - 1], st);
+	round_up = bankers_rounding(nbr, mantissa[i - 1], data);
 	if (round_up && mantissa[i - 1] == '9')
-		nine_rouning(mantissa, i, st);
+		nine_rouning(mantissa, i, data);
 	else
 		mantissa[i - 1] += round_up;
-	return (join_unit_mant(mantissa, x, st));
+	return (join_unit_mant(mantissa, x, data));
 }
 
-void	conv_float_str(long double nbr, t_var *st)
+void	conv_float_str(long double nbr, t_ftprintf *data)
 {
 	int			round_up;
 	long long	last_digit;
 
-	st->sign = 1 - 2 * (nbr < 0 || (1 / nbr < 0 && nbr == 0));
+	data->sign = 1 - 2 * (nbr < 0 || (1 / nbr < 0 && nbr == 0));
 	if (nbr < 0 || (1 / nbr < 0 && nbr == 0))
 	{
 		nbr *= -1;
-		st->width -= (st->width > 0);
+		data->width -= (data->width > 0);
 	}
-	if (!st->precision && st->precision_flag)
+	if (!data->precision && data->precision_flag)
 	{
 		last_digit = (long long)nbr % 10;
-		round_up = bankers_rounding(nbr, last_digit + 48, st) * st->sign;
-		pf_itoa_base((long long)nbr + round_up, 10, st);
+		round_up = bankers_rounding(nbr, last_digit + 48, data) * data->sign;
+		pf_itoa_base((long long)nbr + round_up, 10, data);
 	}
 	else
 	{
-		pf_itoa_base((long long)nbr, 10, st);
-		st->hold_str = mant_to_a(nbr, st);
+		pf_itoa_base((long long)nbr, 10, data);
+		data->hold_str = mant_to_a(nbr, data);
 	}
 }

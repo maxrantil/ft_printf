@@ -3,42 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   print_int_address.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:21:54 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:38:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	check_signed_length(t_var *st)
+void	check_signed_length(t_ftprintf *data)
 {
-	if (*st->fmt == 'd' || *st->fmt == 'i')
-		st->hold_str = conv_to_str((int)va_arg(st->ap, long long), st);
-	else if (*st->fmt == 'h' && (st->fmt[1] == 'd' || st->fmt[1] == 'i') \
-		&& ++st->fmt)
-		st->hold_str = conv_to_str((short)va_arg(st->ap, long long), st);
-	else if (*st->fmt == 'l' && (st->fmt[1] == 'd' || st->fmt[1] == 'i') \
-		&& ++st->fmt)
-		st->hold_str = conv_to_str((long)va_arg(st->ap, long long), st);
-	else if (*st->fmt == 'h' && st->fmt[1] == 'h' \
-		&& (st->fmt[2] == 'd' || st->fmt[2] == 'i'))
+	if (*data->fmt == 'd' || *data->fmt == 'i')
+		data->hold_str = conv_to_str((int)va_arg(data->ap, long long), data);
+	else if (*data->fmt == 'h' && (data->fmt[1] == 'd' || data->fmt[1] == 'i') \
+		&& ++data->fmt)
+		data->hold_str = conv_to_str((short)va_arg(data->ap, long long), data);
+	else if (*data->fmt == 'l' && (data->fmt[1] == 'd' || data->fmt[1] == 'i') \
+		&& ++data->fmt)
+		data->hold_str = conv_to_str((long)va_arg(data->ap, long long), data);
+	else if (*data->fmt == 'h' && data->fmt[1] == 'h' \
+		&& (data->fmt[2] == 'd' || data->fmt[2] == 'i'))
 	{
-		st->fmt += 2;
-		st->hold_str = conv_to_str((char)va_arg(st->ap, long long), st);
+		data->fmt += 2;
+		data->hold_str = conv_to_str((char)va_arg(data->ap, long long), data);
 	}
-	else if (*st->fmt == 'l' && st->fmt[1] == 'l' \
-		&& (st->fmt[2] == 'd' || st->fmt[2] == 'i'))
+	else if (*data->fmt == 'l' && data->fmt[1] == 'l' \
+		&& (data->fmt[2] == 'd' || data->fmt[2] == 'i'))
 	{
-		st->fmt += 2;
-		st->hold_str = conv_to_str(va_arg(st->ap, long long), st);
+		data->fmt += 2;
+		data->hold_str = conv_to_str(va_arg(data->ap, long long), data);
 	}
 }
 
 static size_t	pf_nbrlen(long long nbr)
 {
-	int	c;
+	size_t	c;
 
 	c = 0;
 	if (nbr < 0 && ++c)
@@ -48,12 +48,12 @@ static size_t	pf_nbrlen(long long nbr)
 	return (++c);
 }
 
-char	*conv_to_str(long long nbr, t_var *st)
+char	*conv_to_str(long long nbr, t_ftprintf *data)
 {
 	char		*str;
 	size_t		l;
 
-	st->va_ret = nbr;
+	data->va_ret = nbr;
 	l = pf_nbrlen(nbr);
 	str = (char *)malloc(sizeof(char) * l + 1);
 	if (!str)
@@ -66,39 +66,37 @@ char	*conv_to_str(long long nbr, t_var *st)
 		str[l] = nbr % 10 + 48;
 		nbr /= 10;
 	}
-	if (st->va_ret < 0)
+	if (data->va_ret < 0)
 		str[0] = '-';
 	if (!ft_strcmp(str, "-'..--).0-*(+,))+(0("))
 		return (ft_strdup("-9223372036854775808"));
 	return (str);
 }
 
-void	int_print(t_var *st)
+void	int_print(t_ftprintf *data)
 {
-	if (st->zero_flag && st->precision_flag)
-		ignore_zero_flag(st);
-	exec_flags_and_length(st);
-	pf_write(st);
-	if (st->minus_flag)
-		exec_width(st);
-	ft_strdel(&st->hold_str);
-	st->fmt++;
+	if (data->zero_flag && data->precision_flag)
+		ignore_zero_flag(data);
+	exec_flags_and_length(data);
+	pf_write(data);
+	if (data->minus_flag)
+		exec_width(data);
+	ft_strdel(&data->hold_str);
+	data->fmt++;
 }
 
-void	address_print(t_var *st)
+void	address_print(t_ftprintf *data)
 {
-	pf_itoa_base(va_arg(st->ap, long), 16, st);
-	st->len_va_arg = ft_strlen(st->hold_str);
-	if (st->width)
-		st->width -= 2;
-	if (!st->minus_flag && st->width)
-		exec_width(st);
-	st->char_count += write(1, "0x", 2);
-	pf_write(st);
-	if (st->minus_flag)
-		exec_width(st);
-	if (st->astx_ret)
-		asterix_print(st);
-	ft_strdel(&st->hold_str);
-	st->fmt++;
+	pf_itoa_base(va_arg(data->ap, long long unsigned), 16, data);
+	data->len_va_arg = ft_strlen(data->hold_str);
+	if (data->width)
+		data->width -= 2;
+	if (!data->minus_flag && data->width)
+		exec_width(data);
+	data->char_count += write(1, "0x", 2);
+	pf_write(data);
+	if (data->minus_flag)
+		exec_width(data);
+	ft_strdel(&data->hold_str);
+	data->fmt++;
 }

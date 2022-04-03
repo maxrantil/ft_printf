@@ -3,36 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   print_uint_binary.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:22:03 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:42:50 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	check_unsigned_length(t_var *st)
+void	check_unsigned_length(t_ftprintf *data)
 {
-	if (*st->fmt == 'u')
-		st->hold_str = \
-			uint_str((unsigned int)va_arg(st->ap, unsigned long long), st);
-	else if (*st->fmt == 'h' && st->fmt[1] == 'u' && ++st->fmt)
-		st->hold_str = \
-			uint_str((unsigned short)va_arg(st->ap, unsigned long long), st);
-	else if (*st->fmt == 'l' && st->fmt[1] == 'u' && ++st->fmt)
-		st->hold_str = \
-			uint_str((unsigned long)va_arg(st->ap, unsigned long long), st);
-	else if (*st->fmt == 'h' && st->fmt[1] == 'h' && st->fmt[2] == 'u')
+	if (*data->fmt == 'u')
+		data->hold_str = \
+			uint_str((unsigned int)va_arg(data->ap, unsigned long long), data);
+	else if (*data->fmt == 'h' && data->fmt[1] == 'u' && ++data->fmt)
+		data->hold_str = \
+			uint_str((unsigned short)va_arg(data->ap, unsigned long long), data);
+	else if (*data->fmt == 'l' && data->fmt[1] == 'u' && ++data->fmt)
+		data->hold_str = \
+			uint_str((unsigned long)va_arg(data->ap, unsigned long long), data);
+	else if (*data->fmt == 'h' && data->fmt[1] == 'h' && data->fmt[2] == 'u')
 	{
-		st->fmt += 2;
-		st->hold_str = \
-			uint_str((unsigned char)va_arg(st->ap, unsigned long long), st);
+		data->fmt += 2;
+		data->hold_str = \
+			uint_str((unsigned char)va_arg(data->ap, unsigned long long), data);
 	}
-	else if (*st->fmt == 'l' && st->fmt[1] == 'l' && st->fmt[2] == 'u')
+	else if (*data->fmt == 'l' && data->fmt[1] == 'l' && data->fmt[2] == 'u')
 	{
-		st->fmt += 2;
-		st->hold_str = uint_str(va_arg(st->ap, unsigned long long), st);
+		data->fmt += 2;
+		data->hold_str = uint_str(va_arg(data->ap, unsigned long long), data);
 	}
 }
 
@@ -46,12 +46,12 @@ static int	uint_nbrlen(unsigned long long nbr)
 	return (++c);
 }
 
-char	*uint_str(unsigned long long nbr, t_var *st)
+char	*uint_str(unsigned long long nbr, t_ftprintf *data)
 {
 	char	*str;
 	int		l;
 
-	st->va_u_ret = nbr;
+	data->va_u_ret = nbr;
 	l = uint_nbrlen(nbr);
 	str = (char *)malloc(sizeof(char) * l + 1);
 	if (!str)
@@ -65,30 +65,26 @@ char	*uint_str(unsigned long long nbr, t_var *st)
 	return (str);
 }
 
-void	uint_print(t_var *st)
+void	uint_print(t_ftprintf *data)
 {
-	st->uint_check = 1;
-	if (st->zero_flag && st->precision_flag)
-		ignore_zero_flag(st);
-	exec_flags_and_length(st);
-	pf_write(st);
-	if (st->minus_flag)
-		exec_width(st);
-	/* if (st->astx_ret)
-		asterix_print(st); */
-	ft_strdel(&st->hold_str);
-	st->fmt++;
+	data->uint_check = 1;
+	if (data->zero_flag && data->precision_flag)
+		ignore_zero_flag(data);
+	exec_flags_and_length(data);
+	pf_write(data);
+	if (data->minus_flag)
+		exec_width(data);
+	ft_strdel(&data->hold_str);
+	data->fmt++;
 }
 
-void	binary_print(t_var *st)
+void	binary_print(t_ftprintf *data)
 {
-	pf_itoa_base(va_arg(st->ap, long long), 2, st);
-	exec_flags_and_length(st);
-	pf_write(st);
-	if (st->minus_flag)
-		exec_width(st);
-	/* if (st->astx_ret)
-		asterix_print(st); */
-	ft_strdel(&st->hold_str);
-	st->fmt++;
+	pf_itoa_base(va_arg(data->ap, long long), 2, data);
+	exec_flags_and_length(data);
+	pf_write(data);
+	if (data->minus_flag)
+		exec_width(data);
+	ft_strdel(&data->hold_str);
+	data->fmt++;
 }

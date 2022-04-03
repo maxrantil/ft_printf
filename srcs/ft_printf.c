@@ -6,86 +6,86 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 14:48:02 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:47:54 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-static void	initialize_st(const char *format, t_var *st, int flag)
+static void	initialize_data(const char *format, t_ftprintf *data, int flag)
 {
-	st->fmt = format;
-	st->hold_str = NULL;
+	data->fmt = format;
+	data->hold_str = NULL;
 	if (!flag)
-		st->char_count = 0;
-	st->space_count = 0;
-	st->astx_ret = 0;
-	st->len_va_arg = 0;
-	st->width = 0;
-	st->width_check = 0;
-	st->precision = 0;
-	st->plus_flag = 0;
-	st->minus_flag = 0;
-	st->va_ret = 0;
-	st->hash_flag = 0;
-	st->zero = 0;
-	st->zero_flag = 0;
-	st->le_f = 0;
-	st->for_plus = 0;
-	st->precision_flag = 0;
-	st->char_width = 0;
-	st->uint_check = 0;
-	st->sign = 1;
+		data->char_count = 0;
+	data->space_count = 0;
+	data->astx_ret = 0;
+	data->len_va_arg = 0;
+	data->width = 0;
+	data->width_check = 0;
+	data->precision = 0;
+	data->plus_flag = 0;
+	data->minus_flag = 0;
+	data->va_ret = 0;
+	data->hash_flag = 0;
+	data->zero = 0;
+	data->zero_flag = 0;
+	data->le_f = 0;
+	data->for_plus = 0;
+	data->precision_flag = 0;
+	//data->char_width = 0;
+	data->uint_check = 0;
+	data->sign = 1;
 }
 
-void	check_parser(t_var *st)
+void	check_parser(t_ftprintf *data)
 {
 	size_t	i;
 
 	i = 0;
 	while (FLAGS[i])
 	{
-		while (FLAGS[i] && FLAGS[i] != *st->fmt)
+		while (FLAGS[i] && FLAGS[i] != *data->fmt)
 			i++;
-		g_flag_disp_tbl[i](st);
-		if (!st->sign)
+		g_flag_disp_tbl[i](data);
+		if (!data->sign)
 			break ;
 		i = 0;
 	}
 	i = 0;
 	while (i < 6)
-		g_check_disp_tbl[i++](st);
+		g_check_disp_tbl[i++](data);
 	i = 0;
-	while (SPECIF[i] && SPECIF[i] != *st->fmt)
+	while (SPECIF[i] && SPECIF[i] != *data->fmt)
 		i++;
-	g_print_disp_tbl[i](st);
+	g_print_disp_tbl[i](data);
 }
 
-static void	parser_loop(t_var *st)
+static void	parser_loop(t_ftprintf *data)
 {
-	while (*st->fmt)
+	while (*data->fmt)
 	{
-		if (*st->fmt != '%')
+		if (*data->fmt != '%')
 		{
-			st->char_count += write(1, st->fmt++, 1);
+			data->char_count += write(1, data->fmt++, 1);
 			continue ;
 		}
-		++st->fmt;
-		check_parser(st);
-		initialize_st(st->fmt, st, 1);
+		++data->fmt;
+		check_parser(data);
+		initialize_data(data->fmt, data, 1);
 	}
 }
 
 int	ft_printf(const char *format, ...)
 {
-	t_var		st;
+	t_ftprintf		data;
 
-	va_start(st.ap, format);
-	initialize_st(format, &st, 0);
-	parser_loop(&st);
-	va_end(st.ap);
-	return ((int)st.char_count);
+	va_start(data.ap, format);
+	initialize_data(format, &data, 0);
+	parser_loop(&data);
+	va_end(data.ap);
+	return ((int)data.char_count);
 }
 
-//obj folder missing//change st-> to ->data
+//obj folder missing//change data-> to ->data
 //fix Makefile, and make better colours

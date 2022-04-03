@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 13:43:40 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:58:10 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # include <stdio.h> 						// remove before eval
 
-# define SPECIF "cspdiouxXf*b%"
+# define SPECIF "cspdiouxXfb%"				//remove * and function
 # define FLAGS "+-#0 "
 # define LENGTH "hhllL"
 # define NOR  "\x1B[0;0m"
@@ -30,7 +30,7 @@
 # define CYA  "\x1B[0;36m"
 # define WHI  "\x1B[0;37m"
 
-typedef struct s_var
+typedef struct s_ftprintf
 {
 	va_list				ap;
 	const char			*fmt;
@@ -52,85 +52,85 @@ typedef struct s_var
 	int					le_f;
 	int					for_plus;
 	int					precision_flag;
-	int					char_width;
+	//int					char_width;
 	int					uint_check;
 	int					sign;
-}						t_var;
+}						t_ftprintf;
 
 /*
 ** Functions for print dispatch table
 */
 
-void	int_print(t_var *st);
-void	char_print(t_var *st);
-void	str_print(t_var *st);
-void	uint_print(t_var *st);
-void	oct_print(t_var *st);
-void	hex_print(t_var *st);
-void	address_print(t_var *st);
-void	float_print(t_var *st);
-void	asterix_print(t_var *st);
-void	binary_print(t_var *st);
-void	print_procent(t_var *st);
-void	null_print(t_var *st);
+void	int_print(t_ftprintf *st);
+void	char_print(t_ftprintf *st);
+void	str_print(t_ftprintf *st);
+void	uint_print(t_ftprintf *st);
+void	oct_print(t_ftprintf *st);
+void	hex_print(t_ftprintf *st);
+void	address_print(t_ftprintf *st);
+void	float_print(t_ftprintf *st);
+void	asterix_print(t_ftprintf *st);
+void	binary_print(t_ftprintf *st);
+void	print_procent(t_ftprintf *st);
+void	null_print(t_ftprintf *st);
 
 /*
 ** Functions for flags dispatch table
 */
 
-void	flag_plus(t_var *st);
-void	flag_minus(t_var *st);
-void	procentage_print(t_var *st);
-void	get_flag_space(t_var *st);
-void	exec_flag_space(t_var *st);
-void	hash_flag(t_var *st);
-void	get_flag_zero(t_var *st);
-void	exec_flag_zero(t_var *st);
-void	null_flag(t_var *st);
+void	flag_plus(t_ftprintf *st);
+void	flag_minus(t_ftprintf *st);
+void	procentage_print(t_ftprintf *st);
+void	get_flag_space(t_ftprintf *st);
+void	exec_flag_space(t_ftprintf *st);
+void	hash_flag(t_ftprintf *st);
+void	get_flag_zero(t_ftprintf *st);
+void	exec_flag_zero(t_ftprintf *st);
+void	null_flag(t_ftprintf *st);
 
 /*
 ** check width and precision functions
 */
 
-void	check_width(t_var *st);
-void	exec_width(t_var *st);
-void	check_precision(t_var *st);
-void	exec_precision(t_var *st);
-void	check_signed_length(t_var *st);
-void	check_unsigned_length(t_var *st);
-void	check_hex_length(t_var *st);
-void	check_oct_length(t_var *st);
+void	check_width(t_ftprintf *st);
+void	exec_width(t_ftprintf *st);
+void	check_precision(t_ftprintf *st);
+void	exec_precision(t_ftprintf *st);
+void	check_signed_length(t_ftprintf *st);
+void	check_unsigned_length(t_ftprintf *st);
+void	check_hex_length(t_ftprintf *st);
+void	check_oct_length(t_ftprintf *st);
 
 /*
 ** Other functions
 */
 
-int		ft_printf(const char *fmt, ...);				//*restrict?
-void	check_parser(t_var *st);
-void	pf_putint(t_var *st);
-size_t	get_it(t_var *st);
-char	*conv_to_str(long long nbr, t_var *st);
-char	*uint_str(unsigned long long nbr, t_var *st);
-void	pf_print_hex_hash(t_var *st);
-void	pf_write_o(t_var *st);
-void	conv_float_str(long double nbr, t_var *st);
-void	ignore_zero_flag(t_var *st);
+int		ft_printf(const char *fmt, ...);
+void	check_parser(t_ftprintf *st);
+void	pf_putint(t_ftprintf *st);
+size_t	get_it(t_ftprintf *st);
+char	*conv_to_str(long long nbr, t_ftprintf *st);
+char	*uint_str(unsigned long long nbr, t_ftprintf *st);
+void	pf_print_hex_hash(t_ftprintf *st);
+void	pf_write_o(t_ftprintf *st);
+void	conv_float_str(long double nbr, t_ftprintf *st);
+void	ignore_zero_flag(t_ftprintf *st);
 
 /*
 ** Tools
 */
 
-void	pf_write(t_var *st);
-void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_var *st);
-void	pf_exec_before_flags(t_var *st);
-void	exec_flags_and_length(t_var *st);
+void	pf_write(t_ftprintf *st);
+void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_ftprintf *st);
+void	pf_exec_before_flags(t_ftprintf *st);
+void	exec_flags_and_length(t_ftprintf *st);
 
 
-typedef void					(*t_fptr_print_op)(t_var *st);
-typedef void					(*t_fptr_flag_op)(t_var *st);
-typedef void					(*t_fptr_check_op)(t_var *st);
+typedef void					(*t_fptr_print_op)(t_ftprintf *st);
+typedef void					(*t_fptr_flag_op)(t_ftprintf *st);
+typedef void					(*t_fptr_check_op)(t_ftprintf *st);
 
-static const t_fptr_print_op	g_print_disp_tbl[14] = {
+static const t_fptr_print_op	g_print_disp_tbl[13] = {
 	char_print,
 	str_print,
 	address_print,
@@ -141,7 +141,6 @@ static const t_fptr_print_op	g_print_disp_tbl[14] = {
 	hex_print,
 	hex_print,
 	float_print,
-	asterix_print,
 	binary_print,
 	print_procent,
 	null_print,

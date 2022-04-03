@@ -6,111 +6,111 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 14:47:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:49:04 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	check_precision(t_var *st)
+void	check_precision(t_ftprintf *data)
 {
 	int hold;
 
 	hold = 0;
-	if (*st->fmt == '.')
+	if (*data->fmt == '.')
 	{
-		st->precision_flag = 1;
-		st->fmt++;
-		if (*st->fmt == '*')
+		data->precision_flag = 1;
+		data->fmt++;
+		if (*data->fmt == '*')
 		{
-			hold = va_arg(st->ap, int);
+			hold = va_arg(data->ap, int);
 			if (hold < 0)
 			{
 				hold  *= 0;
-				st->astx_ret = 1;
-				st->precision = hold;
+				data->astx_ret = 1;
+				data->precision = hold;
 			}
 			else
-				st->precision = hold;
-			st->fmt++;
+				data->precision = hold;
+			data->fmt++;
 		}
 		else
-			st->precision = get_it(st);
+			data->precision = get_it(data);
 	}
 }
 
-void	check_width(t_var *st)
+void	check_width(t_ftprintf *data)
 {
 	int hold;
 
 	hold = 0;
-	if (*st->fmt == '*')
+	if (*data->fmt == '*')
 	{
-		hold = va_arg(st->ap, int);
+		hold = va_arg(data->ap, int);
 		if (hold < 0)
 		{
-			st->astx_ret = 1;
-			st->width_check = 1;
+			data->astx_ret = 1;
+			data->width_check = 1;
 			hold  *= -1;
-			st->minus_flag = 1;
-			st->width = hold;
+			data->minus_flag = 1;
+			data->width = hold;
 		}
 		else
-			st->width = hold;
-		st->fmt++;
+			data->width = hold;
+		data->fmt++;
 	}
-	if (ft_isdigit(*st->fmt) && (!st->zero_flag || st->width_check))
-		st->width = get_it(st);
+	if (ft_isdigit(*data->fmt) && (!data->zero_flag || data->width_check))
+		data->width = get_it(data);
 }
 
-void	exec_precision(t_var *st)
+void	exec_precision(t_ftprintf *data)
 {
 	long	sub;
 
-	sub = st->precision;
-	if (st->precision && !st->plus_flag && *st->fmt != '%')
+	sub = data->precision;
+	if (data->precision && !data->plus_flag && *data->fmt != '%')
 	{
-		sub += (st->va_ret < 0);
-		while ((size_t)sub-- > st->len_va_arg)
-			st->char_count += write(1, "0", 1);
+		sub += (data->va_ret < 0);
+		while ((size_t)sub-- > data->len_va_arg)
+			data->char_count += write(1, "0", 1);
 	}
 }
 
-static void	pf_exec_precision_with_width(t_var *st)
+static void	pf_exec_precision_with_width(t_ftprintf *data)
 {
 	long	sub;
 
 	sub = 0;
-	if (st->precision < st->len_va_arg)
+	if (data->precision < data->len_va_arg)
 	{
-		sub += st->width - st->len_va_arg;
-		sub += (st->va_ret < 0);
+		sub += data->width - data->len_va_arg;
+		sub += (data->va_ret < 0);
 	}
 	else
-		sub += st->width - st->precision;
-	sub -= (st->va_ret < 0 || st->plus_flag || st->space_count \
-		|| (st->minus_flag && st->for_plus));
+		sub += data->width - data->precision;
+	sub -= (data->va_ret < 0 || data->plus_flag || data->space_count \
+		|| (data->minus_flag && data->for_plus));
 	sub *= (sub > 0);
 	while (sub--)
-		st->char_count += write(1, " ", 1);
+		data->char_count += write(1, " ", 1);
 }
 
-void	exec_width(t_var *st)
+void	exec_width(t_ftprintf *data)
 {
 	long	sub;
 
 	sub = 0;
-	if (st->precision)
-		pf_exec_precision_with_width(st);
+	if (data->precision)
+		pf_exec_precision_with_width(data);
 	else
 	{
-		sub -= (st->for_plus > 0);
-		sub += (*st->fmt != 'd' && st->precision_flag && !st->precision && !st->astx_ret);		//chan you make this shorter
-		sub -= ((st->plus_flag > 0 && st->va_ret > 0) || st->space_count > 0 || st->char_width > 0);
-		sub += st->width;
-		sub -= (*st->fmt == 'f' && st->precision_flag && !st->precision);							//combined with this?
+		sub -= (data->for_plus > 0);
+		sub += (*data->fmt != 'd' && data->precision_flag && !data->precision && !data->astx_ret);		//chan you make this shorter
+		sub -= ((data->plus_flag > 0 && data->va_ret > 0) || data->space_count > 0 || *data->fmt == 'c');//|| data->char_width > 0);
+		sub += data->width;
+		sub -= (*data->fmt == 'f' && data->precision_flag && !data->precision);							//combined with this?
 		sub *= (sub > 0);
-		while ((size_t)sub-- > st->len_va_arg)
-			st->char_count += write(1, " ", 1);
+		while ((size_t)sub-- > data->len_va_arg)
+			data->char_count += write(1, " ", 1);
 	}
 }

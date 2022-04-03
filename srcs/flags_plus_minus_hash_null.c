@@ -6,45 +6,45 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 14:23:36 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:22:11 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	null_flag(t_var *st)
+void	null_flag(t_ftprintf *data)
 {
-	st->sign = 0;
+	data->sign = 0;
 }
 
-void	hash_flag(t_var *st)
+void	hash_flag(t_ftprintf *data)
 {
-	if (*st->fmt == '#')
+	if (*data->fmt == '#')
 	{
-		st->hash_flag = 1;
-		st->fmt++;
+		data->hash_flag = 1;
+		data->fmt++;
 	}
 }
 
-void	flag_minus(t_var *st)
+void	flag_minus(t_ftprintf *data)
 {
-	if (*st->fmt == '-')
+	if (*data->fmt == '-')
 	{
-		if (st->zero_flag)
-			st->zero_flag = 0;
-		st->minus_flag = 1;
-		st->fmt++;
+		if (data->zero_flag)
+			data->zero_flag = 0;
+		data->minus_flag = 1;
+		data->fmt++;
 	}
 }
 
-void	flag_plus(t_var *st)
+void	flag_plus(t_ftprintf *data)
 {
-	if (*st->fmt == '+')
+	if (*data->fmt == '+')
 	{
-		if (st->plus_flag)
-			st->char_count--;
-		st->plus_flag = 1;
-		st->fmt++;
-		st->char_count++;
+		if (data->plus_flag)
+			data->char_count--;
+		data->plus_flag = 1;
+		data->fmt++;
+		data->char_count++;
 	}
 }

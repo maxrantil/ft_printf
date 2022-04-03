@@ -3,52 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   flags_proc_zero_space.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:21:15 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:23:12 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	exec_flag_space(t_var *st)
+void	exec_flag_space(t_ftprintf *data)
 {
-	if (ft_isalpha(*st->fmt) && st->space_count && !st->plus_flag)
-		st->char_count += write(1, " ", 1);
+	if (ft_isalpha(*data->fmt) && data->space_count && !data->plus_flag)
+		data->char_count += write(1, " ", 1);
 }
 
-void	get_flag_space(t_var *st)
+void	get_flag_space(t_ftprintf *data)
 {
-	while (*st->fmt == ' ' && ++st->space_count)
-		st->fmt++;
+	while (*data->fmt == ' ' && ++data->space_count)
+		data->fmt++;
 }
 
-void	exec_flag_zero(t_var *st)
+void	exec_flag_zero(t_ftprintf *data)
 {
 	long	sub;
 
-	sub = st->zero;
-	sub += (st->width > 0 && st->zero_flag > 0) * st->width;
-	sub *= (!st->astx_ret);
-	if (*st->fmt == 'x' || *st->fmt == 'X')
-		sub -= (st->hash_flag > 0) * 2;
-	sub -= (st->for_plus > 0 || st->space_count > 0);
+	sub = data->zero;
+	sub += (data->width > 0 && data->zero_flag > 0) * data->width;
+	sub *= (!data->astx_ret);
+	if (*data->fmt == 'x' || *data->fmt == 'X')
+		sub -= (data->hash_flag > 0) * 2;
+	sub -= (data->for_plus > 0 || data->space_count > 0);
 	sub *= (sub > 0);
-	while ((size_t)sub-- > st->len_va_arg)
-		st->char_count += write(1, "0", 1);
+	while ((size_t)sub-- > data->len_va_arg)
+		data->char_count += write(1, "0", 1);
 }
 
-void	get_flag_zero(t_var *st)
+void	get_flag_zero(t_ftprintf *data)
 {
-	if (*st->fmt == '0')
+	if (*data->fmt == '0')
 	{
-		while (*st->fmt == '0')
-			st->fmt++;
-		if (!st->minus_flag)
+		while (*data->fmt == '0')
+			data->fmt++;
+		if (!data->minus_flag)
 		{
-			st->zero_flag = 1;
-			st->zero = get_it(st);
+			data->zero_flag = 1;
+			data->zero = get_it(data);
 		}
 	}
 }

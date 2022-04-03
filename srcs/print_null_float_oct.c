@@ -3,91 +3,87 @@
 /*                                                        :::      ::::::::   */
 /*   print_null_float_oct.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/02 16:21:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/03 20:40:23 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-void	null_print(t_var *st)
+void	null_print(t_ftprintf *data)
 {
-	st->sign = 0;
+	data->sign = 0;
 }
 
-void	pf_putfloat(t_var *st)
+void	pf_putfloat(t_ftprintf *data)
 {
-	pf_exec_before_flags(st);
-	if (st->sign < 0)
-		st->char_count += write(1, "-", 1);
-	st->char_count += write(1, st->hold_str, ft_strlen(st->hold_str));
-	if (st->hash_flag && !st->precision && st->precision_flag)
-		st->char_count += write(1, ".", 1);
+	pf_exec_before_flags(data);
+	if (data->sign < 0)
+		data->char_count += write(1, "-", 1);
+	data->char_count += write(1, data->hold_str, ft_strlen(data->hold_str));
+	if (data->hash_flag && !data->precision && data->precision_flag)
+		data->char_count += write(1, ".", 1);
 }
 
-void	float_print(t_var *st)
+void	float_print(t_ftprintf *data)
 {
-	if (!st->precision_flag)
-		st->precision = 6;
-	if (st->le_f)
-		conv_float_str(va_arg(st->ap, long double), st);
+	if (!data->precision_flag)
+		data->precision = 6;
+	if (data->le_f)
+		conv_float_str(va_arg(data->ap, long double), data);
 	else
-		conv_float_str(va_arg(st->ap, double), st);
-	exec_flags_and_length(st);
-	pf_putfloat(st);
-	if (st->minus_flag)
-		exec_width(st);
-	/* if (st->astx_ret)
-		asterix_print(st); */
-	ft_strdel(&st->hold_str);
-	st->fmt++;
+		conv_float_str(va_arg(data->ap, double), data);
+	exec_flags_and_length(data);
+	pf_putfloat(data);
+	if (data->minus_flag)
+		exec_width(data);
+	ft_strdel(&data->hold_str);
+	data->fmt++;
 }
 
-void	check_oct_length(t_var *st)
+void	check_oct_length(t_ftprintf *data)
 {
-	if (*st->fmt == 'o')
-		pf_itoa_base((unsigned int)va_arg(st->ap, unsigned long long), 8, st);
-	else if (*st->fmt == 'h' && st->fmt[1] == 'o' && ++st->fmt)
-		pf_itoa_base((unsigned short)va_arg(st->ap, unsigned long long), 8, st);
-	else if (*st->fmt == 'l' && st->fmt[1] == 'o' && ++st->fmt)
-		pf_itoa_base((unsigned long)va_arg(st->ap, unsigned long long), 8, st);
-	else if (*st->fmt == 'h' && st->fmt[1] == 'h' && st->fmt[2] == 'o')
+	if (*data->fmt == 'o')
+		pf_itoa_base((unsigned int)va_arg(data->ap, unsigned long long), 8, data);
+	else if (*data->fmt == 'h' && data->fmt[1] == 'o' && ++data->fmt)
+		pf_itoa_base((unsigned short)va_arg(data->ap, unsigned long long), 8, data);
+	else if (*data->fmt == 'l' && data->fmt[1] == 'o' && ++data->fmt)
+		pf_itoa_base((unsigned long)va_arg(data->ap, unsigned long long), 8, data);
+	else if (*data->fmt == 'h' && data->fmt[1] == 'h' && data->fmt[2] == 'o')
 	{
-		st->fmt += 2;
-		pf_itoa_base((unsigned char)va_arg(st->ap, unsigned long long), 8, st);
+		data->fmt += 2;
+		pf_itoa_base((unsigned char)va_arg(data->ap, unsigned long long), 8, data);
 	}
-	else if (*st->fmt == 'l' && st->fmt[1] == 'l' && st->fmt[2] == 'o')
+	else if (*data->fmt == 'l' && data->fmt[1] == 'l' && data->fmt[2] == 'o')
 	{
-		st->fmt += 2;
-		pf_itoa_base(va_arg(st->ap, unsigned long long), 8, st);
+		data->fmt += 2;
+		pf_itoa_base(va_arg(data->ap, unsigned long long), 8, data);
 	}
-	else if ((*st->fmt == 'L' || (*st->fmt == 'l' && st->fmt[1] == 'f')))
+	else if ((*data->fmt == 'L' || (*data->fmt == 'l' && data->fmt[1] == 'f')))
 	{
-		if (*st->fmt == 'L')
-			st->le_f = 1;
-		++st->fmt;
+		if (*data->fmt == 'L')
+			data->le_f = 1;
+		++data->fmt;
 	}
 }
 
-void	ignore_zero_flag(t_var *st)
+void	ignore_zero_flag(t_ftprintf *data)
 {
-	st->zero_flag = 0;
-	st->width = st->zero;
-	st->zero = 0;
+	data->zero_flag = 0;
+	data->width = data->zero;
+	data->zero = 0;
 }
 
-void	oct_print(t_var *st)
+void	oct_print(t_ftprintf *data)
 {
-	if (st->zero_flag && st->precision_flag)
-		ignore_zero_flag(st);
-	exec_flags_and_length(st);
-	pf_write(st);
-	if (st->minus_flag)
-		exec_width(st);
-	/* if (st->astx_ret)
-		asterix_print(st); */
-	ft_strdel(&st->hold_str);
-	st->fmt++;
+	if (data->zero_flag && data->precision_flag)
+		ignore_zero_flag(data);
+	exec_flags_and_length(data);
+	pf_write(data);
+	if (data->minus_flag)
+		exec_width(data);
+	ft_strdel(&data->hold_str);
+	data->fmt++;
 }
