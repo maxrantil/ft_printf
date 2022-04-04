@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 13:57:43 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 14:57:00 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,33 @@ void	pf_putfloat(t_ftprintf *data)
 		data->char_count += write(1, ".", 1);
 }
 
+static void	big_precision(long long hold, t_ftprintf *data)
+{
+	hold -= 200;
+	while (hold--)
+		data->char_count += write(1, "0", 1);
+}
+
 void	float_print(t_ftprintf *data)
 {
+	long long	hold;
+
+	hold = 0;
 	if (!data->precision_flag)
 		data->precision = 6;
+	if (data->precision > 200)
+	{
+		hold = data->precision;
+		data->precision = 200;
+	}
 	if (data->le_f)
 		conv_float_str(va_arg(data->ap, long double), data);
 	else
 		conv_float_str(va_arg(data->ap, double), data);
 	exec_flags_and_length(data);
 	pf_putfloat(data);
+	if (hold)
+		big_precision(hold, data);
 	if (data->minus_flag)
 		exec_width(data);
 	ft_strdel(&data->hold_str);
