@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 11:37:40 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 13:57:43 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,13 +62,6 @@ void	check_oct_length(t_ftprintf *data)
 			data->le_f = 1;
 		++data->fmt;
 	}
-}
-
-void	ignore_zero_flag(t_ftprintf *data)
-{
-	data->zero_flag = 0;
-	data->width = data->zero;
-	data->zero = 0;
 }
 
 void	oct_print(t_ftprintf *data)

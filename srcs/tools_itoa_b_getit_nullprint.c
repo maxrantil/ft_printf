@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools_getit_nullprint.c                            :+:      :+:    :+:   */
+/*   tools_itoa_b_getit_nullprint.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:14:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 11:44:30 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 13:57:57 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,13 @@
 void	null_print(t_ftprintf *data)
 {
 	data->sign = 0;
+}
+
+void	ignore_zero_flag(t_ftprintf *data)
+{
+	data->zero_flag = 0;
+	data->width = data->zero;
+	data->zero = 0;
 }
 
 size_t	get_it(t_ftprintf *data)
@@ -54,7 +61,7 @@ static int	pf_intlen(unsigned long long nbr, unsigned int base)
 void	itoa_b(unsigned long long nbr, \
 	unsigned int base, t_ftprintf *data)
 {
-	int	l;
+	unsigned long long	l;
 
 	l = pf_intlen(nbr, base);
 	data->hold_str = (char *)ft_strnew(l);

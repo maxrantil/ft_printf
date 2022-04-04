@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 11:42:21 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 13:45:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	check_signed_length(t_ftprintf *data)
 	}
 }
 
-static size_t	pf_nbrlen(long long nbr)
+static long long	pf_nbrlen(long long nbr)
 {
-	size_t	c;
+	int	c;
 
 	c = 0;
 	if (nbr < 0 && ++c)
@@ -51,7 +51,7 @@ static size_t	pf_nbrlen(long long nbr)
 char	*conv_to_str(long long nbr, t_ftprintf *data)
 {
 	char		*str;
-	size_t		l;
+	long long	l;
 
 	data->va_ret = nbr;
 	l = pf_nbrlen(nbr);
@@ -68,7 +68,7 @@ char	*conv_to_str(long long nbr, t_ftprintf *data)
 	}
 	if (data->va_ret < 0)
 		str[0] = '-';
-	if (!ft_strcmp(str, "-'..--).0-*(+,))+(0("))
+	if (!ft_strcmp(str, "-'..--).0-*(+,))+(0(") || !ft_strcmp(str, "-("))
 		return (ft_strdup("-9223372036854775808"));
 	return (str);
 }
