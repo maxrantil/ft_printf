@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 21:00:11 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 10:25:07 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	initialize_data(const char *format, t_ftprintf *data, int flag)
 	if (!flag)
 		data->char_count = 0;
 	data->space_count = 0;
-	data->astx_ret = 0;
+	data->astx_flag = 0;
 	data->len_va_arg = 0;
 	data->width = 0;
 	data->width_check = 0;
@@ -33,7 +33,6 @@ static void	initialize_data(const char *format, t_ftprintf *data, int flag)
 	data->le_f = 0;
 	data->for_plus = 0;
 	data->precision_flag = 0;
-	//data->char_width = 0;
 	data->uint_check = 0;
 	data->sign = 1;
 }

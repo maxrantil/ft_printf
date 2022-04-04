@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:58:10 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 10:25:04 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct s_ftprintf
 	const char			*fmt;
 	int					space_count;
 	ssize_t				char_count;
-	size_t				astx_ret;
+	size_t				astx_flag;
 	size_t				len_va_arg;
 	int					plus_flag;
 	int					minus_flag;
@@ -52,7 +52,6 @@ typedef struct s_ftprintf
 	int					le_f;
 	int					for_plus;
 	int					precision_flag;
-	//int					char_width;
 	int					uint_check;
 	int					sign;
 }						t_ftprintf;

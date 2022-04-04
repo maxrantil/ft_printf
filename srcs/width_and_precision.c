@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   width_and_precision.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:16:11 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:49:04 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 10:35:31 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	check_precision(t_ftprintf *data)
 			if (hold < 0)
 			{
 				hold  *= 0;
-				data->astx_ret = 1;
+				data->astx_flag = 1;
 				data->precision = hold;
 			}
 			else
@@ -49,10 +49,10 @@ void	check_width(t_ftprintf *data)
 		hold = va_arg(data->ap, int);
 		if (hold < 0)
 		{
-			data->astx_ret = 1;
+			data->astx_flag = 1;
 			data->width_check = 1;
-			hold  *= -1;
 			data->minus_flag = 1;
+			hold  *= -1;
 			data->width = hold;
 		}
 		else
@@ -105,10 +105,10 @@ void	exec_width(t_ftprintf *data)
 	else
 	{
 		sub -= (data->for_plus > 0);
-		sub += (*data->fmt != 'd' && data->precision_flag && !data->precision && !data->astx_ret);		//chan you make this shorter
+		sub += (data->precision_flag && !data->precision);// && !data->astx_flag);		//chan you make this shorter
 		sub -= ((data->plus_flag > 0 && data->va_ret > 0) || data->space_count > 0 || *data->fmt == 'c');//|| data->char_width > 0);
 		sub += data->width;
-		sub -= (*data->fmt == 'f' && data->precision_flag && !data->precision);							//combined with this?
+		sub -= ((*data->fmt == 'f' || ((*data->fmt == 'd' || *data->fmt == 'i') && data->va_ret != 0)) && data->precision_flag && !data->precision);							//combined with this?
 		sub *= (sub > 0);
 		while ((size_t)sub-- > data->len_va_arg)
 			data->char_count += write(1, " ", 1);

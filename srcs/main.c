@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 14:32:24 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 10:29:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3129,36 +3129,6 @@ void	crazy_big_float(void)
 	++done;
 }
 
-/* void	test_wildcard0(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: [%-*.*s]\n", "yolo");
-	a = ft_printf("ft_: [%-*.*s]\n", "yolo");
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_wildcard0 failed_______\033[0m\n\n"));
-	++done;
-} */
-
-void	test_wildcard1(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: [%*.*d]\n", 7, -13, 4242);
-	a = ft_printf("ft_: [%*.*d]\n", 7, -13, 4242);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_wildcard1 failed_______\033[0m\n\n"));
-	++done;
-}
-
 void	test_wildcard_i(void)
 {
 	int	a;
@@ -3249,37 +3219,7 @@ void	test_wildcard_ran1(void)
 	++done;
 }
 
-void	test_wildcard_ran2(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: [%.*p]\n", -3, 0);
-	a = ft_printf("ft_: [%.*p]\n", -3, 0);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_wildcard_ran2 failed_______\033[0m\n\n"));
-	++done;
-}
-
-void	test_wildcard_ran3(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: [%.5p]\n", 0);
-	a = ft_printf("ft_: [%.5p]\n", 0);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_wildcard_ran3 failed_______\033[0m\n\n"));
-	++done;
-}
-
-void	test_wildcard_ran4(void)
+/* void	test_wildcard_ran4(void)
 {
 	int	a;
 	int	b;
@@ -3292,7 +3232,7 @@ void	test_wildcard_ran4(void)
 	else
 		assert(printf("\033[1;31m _______test_wildcard_ran4 failed_______\033[0m\n\n"));
 	++done;
-}
+} */
 
 void	test_satu_test0(void)
 {
@@ -3339,6 +3279,35 @@ void	test_satu_test2(void)
 	++done;
 }
 
+void	test_last_basic(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%5.0d]\n", 0);
+	a = ft_printf("ft_: [%5.0d]\n", 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_last_basic failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	test_wildcard1(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%*.*d]\n", 7, -13, 4242);
+	a = ft_printf("ft_: [%*.*d]\n", 7, -13, 4242);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_wildcard1 failed_______\033[0m\n\n"));
+	++done;
+}
 
 int	main(void)
 {
@@ -3449,7 +3418,7 @@ int	main(void)
 	basic_hash2();
 	test_basic6();
 	basic_hash3();
- 	basic_hash4(); //zero-flag is ignored with minus-flag
+ 	basic_hash4();
 	basic_hash5();
 	basic_hexs10();
 	basic_hexs11();
@@ -3528,7 +3497,7 @@ int	main(void)
 	binary_bonus();
 	binary_bonus1();
 	test_mindfuck_simpleminus();
-//	pro_test_bi2();		//fix in school
+	pro_test_bi2();		//fix in school
 	mouli_test_final();
 	mouli_test_final1();
 	mouli_test_final2();
@@ -3546,19 +3515,18 @@ int	main(void)
 	test_basic0();
 	test_wildcard0();
 //	crazy_big_float();
-	test_wildcard1();
 	test_wildcard_i();
 	test_wildcard_i1();
 	test_wildcard_str0();
 	test_wildcard_str1();
 	test_wildcard_ran0();
 	test_wildcard_ran1();
-	test_wildcard_ran2();
-	test_wildcard_ran3();
-	test_wildcard_ran4();
+/* 	test_wildcard_ran4(); *///undefiend
 	test_satu_test0();
 	test_satu_test1();
 	test_satu_test2();
+	test_last_basic();
+	test_wildcard1();
 
 
 

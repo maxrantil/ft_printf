@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flags_proc_zero_space.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 18:05:47 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:23:12 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 10:26:39 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	exec_flag_zero(t_ftprintf *data)
 
 	sub = data->zero;
 	sub += (data->width > 0 && data->zero_flag > 0) * data->width;
-	sub *= (!data->astx_ret);
+	sub *= (!data->astx_flag);
 	if (*data->fmt == 'x' || *data->fmt == 'X')
 		sub -= (data->hash_flag > 0) * 2;
 	sub -= (data->for_plus > 0 || data->space_count > 0);

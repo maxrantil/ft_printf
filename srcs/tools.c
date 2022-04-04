@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tools.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:45:29 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 10:26:58 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ void	pf_write(t_ftprintf *data)
 		pf_exec_before_flags(data);
 	data->char_count -= ((*data->fmt == 'u') && (data->plus_flag > 0));
 	if (*data->fmt == 'o' && *data->hold_str == '0' && data->precision_flag \
-		&& !data->precision && !data->hash_flag && !data->astx_ret)
+		&& !data->precision && !data->hash_flag && !data->astx_flag)
 		return ;
 	else if (*data->fmt == 'p' && *data->hold_str == '0' && data->precision_flag \
-		&& !data->precision && !data->astx_ret)
+		&& !data->precision && !data->astx_flag)
 		return ;
 	else if (*data->fmt != 'o' && *data->hold_str == '0' \
-		&& data->precision_flag && !data->precision && !data->astx_ret)
+		&& data->precision_flag && !data->precision && !data->astx_flag)
 		return ;
 	else if (*data->hold_str == '-' && (*data->fmt == 'd' || *data->fmt == 'i'))
 		data->char_count += write(1, data->hold_str + 1, ft_strlen(data->hold_str) - 1);
