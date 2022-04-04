@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:32:09 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 10:26:22 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:33:03 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,20 @@ void	str_print(t_ftprintf *data)
 	if (data->hold_str == NULL)
 		data->hold_str = "(null)";
 	data->len_va_arg = ft_strlen(data->hold_str);
-	if ((!data->precision && data->precision_flag) && data->width && !data->astx_flag)
+	if ((!data->precision && data->precision_flag) \
+		&& data->width && !data->astx_flag)
 	{
 		while (data->width--)
 			data->char_count += write(1, " ", 1);
 		data->fmt++;
 		return ;
 	}
-/* 	if (data->astx_flag && !data->minus_flag)
-		asterix_print(st); */
 	pf_write_str(data);
 	data->fmt++;
 }
 
 void	char_print(t_ftprintf *data)
 {
-	//data->char_width = 1;
 	if (!data->minus_flag && data->width)
 		exec_width(data);
 	ft_putchar((char)va_arg(data->ap, int));

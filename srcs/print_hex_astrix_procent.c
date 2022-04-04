@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex_astrix_procent.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 15:01:29 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:58:33 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:36:28 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 void	check_hex_length(t_ftprintf *data)
 {
 	if (*data->fmt == 'x' || *data->fmt == 'X')
-		pf_itoa_base((unsigned int)va_arg(data->ap, unsigned long long), 16, data);
+		itoa_b((unsigned int)va_arg(data->ap, unsigned long long), 16, data);
 	else if (*data->fmt == 'h' && (data->fmt[1] == 'x' || data->fmt[1] == 'X') \
 		&& ++data->fmt)
-		pf_itoa_base((unsigned short)va_arg(data->ap, unsigned long long), 16, data);
+		itoa_b((unsigned short)va_arg(data->ap, unsigned long long), 16, data);
 	else if (*data->fmt == 'l' && (data->fmt[1] == 'x' || data->fmt[1] == 'X') \
 		&& ++data->fmt)
-		pf_itoa_base(va_arg(data->ap, unsigned long), 16, data);
+		itoa_b(va_arg(data->ap, unsigned long), 16, data);
 	else if (*data->fmt == 'h' && data->fmt[1] == 'h' \
 		&& (data->fmt[2] == 'x' || data->fmt[2] == 'X'))
 	{
 		data->fmt += 2;
-		pf_itoa_base((unsigned char)va_arg(data->ap, unsigned long long), 16, data);
+		itoa_b((unsigned char)va_arg(data->ap, unsigned long long), 16, data);
 	}
 	else if (*data->fmt == 'l' && data->fmt[1] == 'l' \
 		&& (data->fmt[2] == 'x' || data->fmt[2] == 'X'))
 	{
 		data->fmt += 2;
-		pf_itoa_base(va_arg(data->ap, unsigned long long), 16, data);
+		itoa_b(va_arg(data->ap, unsigned long long), 16, data);
 	}
 }
 

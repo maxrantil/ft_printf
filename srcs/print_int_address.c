@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_int_address.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:30:06 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:38:01 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:42:21 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	int_print(t_ftprintf *data)
 
 void	address_print(t_ftprintf *data)
 {
-	pf_itoa_base(va_arg(data->ap, long long unsigned), 16, data);
+	itoa_b(va_arg(data->ap, long long unsigned), 16, data);
 	data->len_va_arg = ft_strlen(data->hold_str);
 	if (data->width)
 		data->width -= 2;

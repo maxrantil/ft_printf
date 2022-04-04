@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   tools_write_flags.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/24 18:16:28 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 10:26:58 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:49:57 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,51 +20,17 @@ void	pf_write(t_ftprintf *data)
 	if (*data->fmt == 'o' && *data->hold_str == '0' && data->precision_flag \
 		&& !data->precision && !data->hash_flag && !data->astx_flag)
 		return ;
-	else if (*data->fmt == 'p' && *data->hold_str == '0' && data->precision_flag \
-		&& !data->precision && !data->astx_flag)
+	else if (*data->fmt == 'p' && *data->hold_str == '0' \
+		&& data->precision_flag && !data->precision && !data->astx_flag)
 		return ;
 	else if (*data->fmt != 'o' && *data->hold_str == '0' \
 		&& data->precision_flag && !data->precision && !data->astx_flag)
 		return ;
 	else if (*data->hold_str == '-' && (*data->fmt == 'd' || *data->fmt == 'i'))
-		data->char_count += write(1, data->hold_str + 1, ft_strlen(data->hold_str) - 1);
+		data->char_count += \
+		write(1, data->hold_str + 1, ft_strlen(data->hold_str) - 1);
 	else
 		data->char_count += write(1, data->hold_str, ft_strlen(data->hold_str));
-}
-
-static int	pf_intlen(unsigned long long nbr, unsigned int base)
-{
-	int	count;
-
-	count = 0;
-	if (!nbr)
-		return (1);
-	while (nbr)
-	{
-		nbr /= base;
-		count++;
-	}
-	return (count);
-}
-
-void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_ftprintf *data)
-{
-	int	l;
-
-	l = pf_intlen(nbr, base);
-	data->hold_str = (char *)ft_strnew(l);
-	if (!data->hold_str)
-		exit(1);
-	while (l--)
-	{
-		if ((*data->fmt == 'x' || *data->fmt == 'p') && nbr % base > 9)
-			data->hold_str[l] = (char)(nbr % base) + 87;
-		else if (*data->fmt == 'X' && nbr % base > 9)
-			data->hold_str[l] = (char)(nbr % base) + 55;
-		else
-			data->hold_str[l] = (char)(nbr % base) + 48;
-		nbr /= base;
-	}
 }
 
 void	pf_exec_before_flags(t_ftprintf *data)
@@ -86,6 +52,22 @@ void	pf_exec_before_flags(t_ftprintf *data)
 	}
 }
 
+static void	zero_under_flags(t_ftprintf *data)
+{
+	if (!data->uint_check && ft_isalpha(*data->fmt) \
+			&& data->space_count && !data->plus_flag)
+		exec_flag_space(data);
+	if (data->hash_flag && *data->hold_str != '0' \
+		&& (*data->fmt == 'x' || *data->fmt == 'X'))
+		pf_print_hex_hash(data);
+	if (data->hash_flag && *data->hold_str != '0' && *data->fmt == 'o')
+		data->char_count += write(1, "0", 1);
+	if (data->precision_flag)
+		exec_precision(data);
+	if (!data->plus_flag && data->zero_flag && !data->precision_flag)
+		exec_flag_zero(data);
+}	
+
 void	exec_flags_and_length(t_ftprintf *data)
 {
 	data->len_va_arg = ft_strlen(data->hold_str);
@@ -95,20 +77,7 @@ void	exec_flags_and_length(t_ftprintf *data)
 	if (!data->minus_flag && data->width && !data->zero_flag)
 		exec_width(data);
 	if (data->va_ret >= 0)
-	{
-		if (!data->uint_check && ft_isalpha(*data->fmt) \
-			&& data->space_count && !data->plus_flag)
-			exec_flag_space(data);
-		if (data->hash_flag && *data->hold_str != '0' \
-			&& (*data->fmt == 'x' || *data->fmt == 'X'))
-			pf_print_hex_hash(data);
-		if (data->hash_flag && *data->hold_str != '0' && *data->fmt == 'o')
-			data->char_count += write(1, "0", 1);
-		if (data->precision_flag)
-			exec_precision(data);
-		if (!data->plus_flag && data->zero_flag && !data->precision_flag)
-			exec_flag_zero(data);
-	}
+		zero_under_flags(data);
 	if (*data->hold_str == '-')
 	{
 		data->char_count += write(1, "-", 1);

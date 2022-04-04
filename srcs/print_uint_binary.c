@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_uint_binary.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 16:33:03 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:42:50 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:42:37 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 void	check_unsigned_length(t_ftprintf *data)
 {
 	if (*data->fmt == 'u')
-		data->hold_str = \
-			uint_str((unsigned int)va_arg(data->ap, unsigned long long), data);
+		data->hold_str = uint_str(\
+			(unsigned int)va_arg(data->ap, unsigned long long), data);
 	else if (*data->fmt == 'h' && data->fmt[1] == 'u' && ++data->fmt)
-		data->hold_str = \
-			uint_str((unsigned short)va_arg(data->ap, unsigned long long), data);
+		data->hold_str = uint_str(\
+			(unsigned short)va_arg(data->ap, unsigned long long), data);
 	else if (*data->fmt == 'l' && data->fmt[1] == 'u' && ++data->fmt)
-		data->hold_str = \
-			uint_str((unsigned long)va_arg(data->ap, unsigned long long), data);
+		data->hold_str = uint_str(\
+			(unsigned long)va_arg(data->ap, unsigned long long), data);
 	else if (*data->fmt == 'h' && data->fmt[1] == 'h' && data->fmt[2] == 'u')
 	{
 		data->fmt += 2;
-		data->hold_str = \
-			uint_str((unsigned char)va_arg(data->ap, unsigned long long), data);
+		data->hold_str = uint_str(\
+			(unsigned char)va_arg(data->ap, unsigned long long), data);
 	}
 	else if (*data->fmt == 'l' && data->fmt[1] == 'l' && data->fmt[2] == 'u')
 	{
@@ -80,7 +80,7 @@ void	uint_print(t_ftprintf *data)
 
 void	binary_print(t_ftprintf *data)
 {
-	pf_itoa_base(va_arg(data->ap, long long), 2, data);
+	itoa_b(va_arg(data->ap, long long), 2, data);
 	exec_flags_and_length(data);
 	pf_write(data);
 	if (data->minus_flag)

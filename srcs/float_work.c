@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   float_work.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/02 16:59:54 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:48:43 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:42:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	nine_rouning(char *mantissa, int i, t_ftprintf *data)
 {
-	long long	new_unit;		//long only??
+	long long	new_unit;
 
 	mantissa[--i] = '0';
 	while (i-- && mantissa[i] == '9')
@@ -25,7 +25,7 @@ static void	nine_rouning(char *mantissa, int i, t_ftprintf *data)
 	{
 		new_unit = ft_atoi(data->hold_str);
 		ft_strdel(&data->hold_str);
-		pf_itoa_base(new_unit + 1, 10, data);
+		itoa_b(new_unit + 1, 10, data);
 	}
 }
 
@@ -105,11 +105,11 @@ void	conv_float_str(long double nbr, t_ftprintf *data)
 	{
 		last_digit = (long long)nbr % 10;
 		round_up = bankers_rounding(nbr, last_digit + 48, data) * data->sign;
-		pf_itoa_base((long long)nbr + round_up, 10, data);
+		itoa_b((long long)nbr + round_up, 10, data);
 	}
 	else
 	{
-		pf_itoa_base((long long)nbr, 10, data);
+		itoa_b((long long)nbr, 10, data);
 		data->hold_str = mant_to_a(nbr, data);
 	}
 }

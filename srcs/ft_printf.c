@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 10:25:07 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:32:33 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,3 @@ int	ft_printf(const char *format, ...)
 	va_end(data.ap);
 	return ((int)data.char_count);
 }
-
-//obj folder missing
-//fix Makefile, and make better colours, NORM

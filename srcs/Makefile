@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/04/03 11:15:05 by mrantil          ###   ########.fr        #
+#    Updated: 2022/04/04 11:45:56 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,8 +37,8 @@ FUNCTIONS = ft_printf \
 			flags_plus_minus_hash_null \
 			flags_proc_zero_space \
 			width_and_precision \
-			tools \
-			tools_getit
+			tools_write_flags \
+			tools_itoa_b_getit_nullprint
 
 _OBJ = $(foreach function, $(FUNCTIONS), $(function).o)
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))

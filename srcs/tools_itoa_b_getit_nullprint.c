@@ -1,16 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools_getit.c                                      :+:      :+:    :+:   */
+/*   tools_getit_nullprint.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/01 15:14:00 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:43:35 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:44:30 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+void	null_print(t_ftprintf *data)
+{
+	data->sign = 0;
+}
 
 size_t	get_it(t_ftprintf *data)
 {
@@ -29,4 +34,40 @@ size_t	get_it(t_ftprintf *data)
 		data->fmt++;
 	}
 	return (ret);
+}
+
+static int	pf_intlen(unsigned long long nbr, unsigned int base)
+{
+	int	count;
+
+	count = 0;
+	if (!nbr)
+		return (1);
+	while (nbr)
+	{
+		nbr /= base;
+		count++;
+	}
+	return (count);
+}
+
+void	itoa_b(unsigned long long nbr, \
+	unsigned int base, t_ftprintf *data)
+{
+	int	l;
+
+	l = pf_intlen(nbr, base);
+	data->hold_str = (char *)ft_strnew(l);
+	if (!data->hold_str)
+		exit(1);
+	while (l--)
+	{
+		if ((*data->fmt == 'x' || *data->fmt == 'p') && nbr % base > 9)
+			data->hold_str[l] = (char)(nbr % base) + 87;
+		else if (*data->fmt == 'X' && nbr % base > 9)
+			data->hold_str[l] = (char)(nbr % base) + 55;
+		else
+			data->hold_str[l] = (char)(nbr % base) + 48;
+		nbr /= base;
+	}
 }

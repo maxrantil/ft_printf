@@ -6,19 +6,17 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 10:25:04 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:52:51 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
 # include <stdarg.h>
 # include "../libft/libft.h"
 
-# include <stdio.h> 						// remove before eval
-
-# define SPECIF "cspdiouxXfb%"				//remove * and function
+# define SPECIF "cspdiouxXfb%"
 # define FLAGS "+-#0 "
 # define LENGTH "hhllL"
 # define NOR  "\x1B[0;0m"
@@ -120,10 +118,9 @@ void	ignore_zero_flag(t_ftprintf *st);
 */
 
 void	pf_write(t_ftprintf *st);
-void	pf_itoa_base(unsigned long long nbr, unsigned int base, t_ftprintf *st);
+void	itoa_b(unsigned long long nbr, unsigned int base, t_ftprintf *st);
 void	pf_exec_before_flags(t_ftprintf *st);
 void	exec_flags_and_length(t_ftprintf *st);
-
 
 typedef void					(*t_fptr_print_op)(t_ftprintf *st);
 typedef void					(*t_fptr_flag_op)(t_ftprintf *st);

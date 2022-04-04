@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_null_float_oct.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/08 13:33:55 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/03 20:40:23 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/04 11:37:40 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-void	null_print(t_ftprintf *data)
-{
-	data->sign = 0;
-}
 
 void	pf_putfloat(t_ftprintf *data)
 {
@@ -46,20 +41,20 @@ void	float_print(t_ftprintf *data)
 void	check_oct_length(t_ftprintf *data)
 {
 	if (*data->fmt == 'o')
-		pf_itoa_base((unsigned int)va_arg(data->ap, unsigned long long), 8, data);
+		itoa_b((unsigned int)va_arg(data->ap, unsigned long long), 8, data);
 	else if (*data->fmt == 'h' && data->fmt[1] == 'o' && ++data->fmt)
-		pf_itoa_base((unsigned short)va_arg(data->ap, unsigned long long), 8, data);
+		itoa_b((unsigned short)va_arg(data->ap, unsigned long long), 8, data);
 	else if (*data->fmt == 'l' && data->fmt[1] == 'o' && ++data->fmt)
-		pf_itoa_base((unsigned long)va_arg(data->ap, unsigned long long), 8, data);
+		itoa_b((unsigned long)va_arg(data->ap, unsigned long long), 8, data);
 	else if (*data->fmt == 'h' && data->fmt[1] == 'h' && data->fmt[2] == 'o')
 	{
 		data->fmt += 2;
-		pf_itoa_base((unsigned char)va_arg(data->ap, unsigned long long), 8, data);
+		itoa_b((unsigned char)va_arg(data->ap, unsigned long long), 8, data);
 	}
 	else if (*data->fmt == 'l' && data->fmt[1] == 'l' && data->fmt[2] == 'o')
 	{
 		data->fmt += 2;
-		pf_itoa_base(va_arg(data->ap, unsigned long long), 8, data);
+		itoa_b(va_arg(data->ap, unsigned long long), 8, data);
 	}
 	else if ((*data->fmt == 'L' || (*data->fmt == 'l' && data->fmt[1] == 'f')))
 	{
