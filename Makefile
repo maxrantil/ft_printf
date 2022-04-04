@@ -6,40 +6,58 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/02/08 17:55:24 by mrantil          ###   ########.fr        #
+#    Updated: 2022/04/04 12:51:08 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-SRCS_PATH = srcs/
-SRCS = $(SRCS_PATH)ft_printf.c $(SRCS_PATH)check_ptr.c $(SRCS_PATH)int_print.c \
-	$(SRCS_PATH)char_print.c $(SRCS_PATH)str_print.c $(SRCS_PATH)uint_print.c \
-	$(SRCS_PATH)oct_print.c $(SRCS_PATH)hex_print.c
-O_FILES = ft_printf.o check_ptr.o int_print.o char_print.o str_print.o uint_print.o \
-	oct_print.o hex_print.o
-FLAGS = -Wall -Werror -Wextra
-LIBFT = libft
+NAME	=	libftprintf.a
+FLAGS	=	-Wall -Werror -Wextra
+LIBFT	=	libft
+LIBS	=	libft.a
+
+SRCS 	=	srcs/ft_printf.c \
+			srcs/print_int_address.c \
+			srcs/print_c_str.c \
+			srcs/print_uint_binary.c \
+			srcs/print_null_float_oct.c \
+			srcs/print_hex_astrix_procent.c \
+			srcs/float_work.c \
+			srcs/flags_plus_minus_hash_null.c \
+			srcs/flags_proc_zero_space.c \
+			srcs/width_and_precision.c \
+			srcs/tools_write_flags.c \
+			srcs/tools_itoa_b_getit_nullprint.c
+		
+OBJS	=	ft_printf.o \
+			print_int_address.o \
+			print_c_str.o \
+			print_uint_binary.o \
+			print_null_float_oct.o \
+			print_hex_astrix_procent.o \
+			float_work.o \
+			flags_plus_minus_hash_null.o \
+			flags_proc_zero_space.o \
+			width_and_precision.o \
+			tools_write_flags.o \
+			tools_itoa_b_getit_nullprint.o
 
 all: $(NAME)
 
-$(NAME):
+$(NAME): $(OBJ)
 	@echo "Compiling(libft)..."
-	@make -C libft
+	@make -C $(LIBFT)
+	@echo "libft done."
+	@cp $(LIBFT)/$(LIBS) ./$@
 	@echo "Compiling(libftprintf)..."
 	@gcc $(FLAGS) -c $(SRCS)
-# $(LIBFT)
-	@ar rc $(NAME) $(O_FILES)
-	@echo "$(NAME) created"
-	@ranlib $(NAME)
-	@echo "$(NAME) indexed"
-#after this line is just for testing, erase later
-	@gcc main.c libftprintf.a libft/libft.a -g
-	@echo "Compiling main.c..."
-	@echo '\n'a.out ready to \(run\)fire!
+	@ar rc $(NAME) $(OBJS)
+	@echo "$@ created"
+	@ranlib $@
+	@echo "$@ indexed"
 
 clean:
 	@echo "Cleaning object files..."
-	@rm -f $(O_FILES)
+	@rm -f $(OBJS)
 	@make -C libft clean
 
 fclean: clean
