@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 11:52:51 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/05 11:03:38 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,73 +58,73 @@ typedef struct s_ftprintf
 ** Functions for print dispatch table
 */
 
-void	int_print(t_ftprintf *st);
-void	char_print(t_ftprintf *st);
-void	str_print(t_ftprintf *st);
-void	uint_print(t_ftprintf *st);
-void	oct_print(t_ftprintf *st);
-void	hex_print(t_ftprintf *st);
-void	address_print(t_ftprintf *st);
-void	float_print(t_ftprintf *st);
-void	asterix_print(t_ftprintf *st);
-void	binary_print(t_ftprintf *st);
-void	print_procent(t_ftprintf *st);
-void	null_print(t_ftprintf *st);
+void	int_print(t_ftprintf *data);
+void	char_print(t_ftprintf *data);
+void	str_print(t_ftprintf *data);
+void	uint_print(t_ftprintf *data);
+void	oct_print(t_ftprintf *data);
+void	hex_print(t_ftprintf *data);
+void	address_print(t_ftprintf *data);
+void	float_print(t_ftprintf *data);
+void	asterix_print(t_ftprintf *data);
+void	binary_print(t_ftprintf *data);
+void	print_procent(t_ftprintf *data);
+void	null_print(t_ftprintf *data);
 
 /*
 ** Functions for flags dispatch table
 */
 
-void	flag_plus(t_ftprintf *st);
-void	flag_minus(t_ftprintf *st);
-void	procentage_print(t_ftprintf *st);
-void	get_flag_space(t_ftprintf *st);
-void	exec_flag_space(t_ftprintf *st);
-void	hash_flag(t_ftprintf *st);
-void	get_flag_zero(t_ftprintf *st);
-void	exec_flag_zero(t_ftprintf *st);
-void	null_flag(t_ftprintf *st);
+void	flag_plus(t_ftprintf *data);
+void	flag_minus(t_ftprintf *data);
+void	procentage_print(t_ftprintf *data);
+void	get_flag_space(t_ftprintf *data);
+void	exec_flag_space(t_ftprintf *data);
+void	hash_flag(t_ftprintf *data);
+void	get_flag_zero(t_ftprintf *data);
+void	exec_flag_zero(t_ftprintf *data);
+void	null_flag(t_ftprintf *data);
 
 /*
 ** check width and precision functions
 */
 
-void	check_width(t_ftprintf *st);
-void	exec_width(t_ftprintf *st);
-void	check_precision(t_ftprintf *st);
-void	exec_precision(t_ftprintf *st);
-void	check_signed_length(t_ftprintf *st);
-void	check_unsigned_length(t_ftprintf *st);
-void	check_hex_length(t_ftprintf *st);
-void	check_oct_length(t_ftprintf *st);
+void	check_width(t_ftprintf *data);
+void	exec_width(t_ftprintf *data);
+void	check_precision(t_ftprintf *data);
+void	exec_precision(t_ftprintf *data);
+void	check_signed_length(t_ftprintf *data);
+void	check_unsigned_length(t_ftprintf *data);
+void	check_hex_length(t_ftprintf *data);
+void	check_oct_length(t_ftprintf *data);
 
 /*
 ** Other functions
 */
 
 int		ft_printf(const char *fmt, ...);
-void	check_parser(t_ftprintf *st);
-void	pf_putint(t_ftprintf *st);
-size_t	get_it(t_ftprintf *st);
-char	*conv_to_str(long long nbr, t_ftprintf *st);
-char	*uint_str(unsigned long long nbr, t_ftprintf *st);
-void	pf_print_hex_hash(t_ftprintf *st);
-void	pf_write_o(t_ftprintf *st);
-void	conv_float_str(long double nbr, t_ftprintf *st);
-void	ignore_zero_flag(t_ftprintf *st);
+void	check_parser(t_ftprintf *data);
+void	pf_putint(t_ftprintf *data);
+size_t	get_it(t_ftprintf *data);
+char	*conv_to_str(long long nbr, t_ftprintf *data);
+char	*uint_str(unsigned long long nbr, t_ftprintf *data);
+void	pf_print_hex_hash(t_ftprintf *data);
+void	pf_write_o(t_ftprintf *data);
+void	conv_float_str(long double nbr, t_ftprintf *data);
+void	ignore_zero_flag(t_ftprintf *data);
 
 /*
 ** Tools
 */
 
-void	pf_write(t_ftprintf *st);
-void	itoa_b(unsigned long long nbr, unsigned int base, t_ftprintf *st);
-void	pf_exec_before_flags(t_ftprintf *st);
-void	exec_flags_and_length(t_ftprintf *st);
+void	pf_write(t_ftprintf *data);
+void	itoa_b(unsigned long long nbr, unsigned int base, t_ftprintf *data);
+void	pf_exec_before_flags(t_ftprintf *data);
+void	exec_flags_and_length(t_ftprintf *data);
 
-typedef void					(*t_fptr_print_op)(t_ftprintf *st);
-typedef void					(*t_fptr_flag_op)(t_ftprintf *st);
-typedef void					(*t_fptr_check_op)(t_ftprintf *st);
+typedef void					(*t_fptr_print_op)(t_ftprintf *data);
+typedef void					(*t_fptr_flag_op)(t_ftprintf *data);
+typedef void					(*t_fptr_check_op)(t_ftprintf *data);
 
 static const t_fptr_print_op	g_print_disp_tbl[13] = {
 	char_print,
