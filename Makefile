@@ -3,15 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
+#    By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/04/04 12:51:08 by mrantil          ###   ########.fr        #
+#    Updated: 2022/04/05 11:42:03 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libftprintf.a
-FLAGS	=	-Wall -Werror -Wextra
+FLAGS	=	-Wall -Werror -Wextra -O3
 LIBFT	=	libft
 LIBS	=	libft.a
 
@@ -27,7 +27,7 @@ SRCS 	=	srcs/ft_printf.c \
 			srcs/width_and_precision.c \
 			srcs/tools_write_flags.c \
 			srcs/tools_itoa_b_getit_nullprint.c
-		
+
 OBJS	=	ft_printf.o \
 			print_int_address.o \
 			print_c_str.o \
