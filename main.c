@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c.test                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 11:55:41 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/06 17:26:31 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "includes/ft_printf.h"
 #include <assert.h>
 #include <limits.h>
 
@@ -2497,21 +2497,6 @@ void	basic_hash4(void)
 	++done;
 }
 
-void	basic_hash5(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: [%5.x %5.0x]\n", 0, 0);
-	a = ft_printf("ft_: [%5.x %5.0x]\n", 0, 0);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______basic_hash5 failed_______\033[0m\n\n"));
-	++done;
-}
-
 void	basic_hexs10(void)
 {
 	int	a;
@@ -2921,8 +2906,8 @@ void	mouli_test_final3(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%llo, %llo]\n", 0llu, 18446744073709551615);
-	a = ft_printf("ft_: [%llo, %llo]\n", 0llu, 18446744073709551615);
+	b = printf("pri: [%llo, %llo]\n", 0, 18446744073709551615);
+	a = ft_printf("ft_: [%llo, %llo]\n", 0, 18446744073709551615);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -3118,10 +3103,10 @@ void	crazy_big_float(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%.2147483647f]\n", 13.13131313131313313);
-	/* a = ft_printf("ft_: [%.2147483647f]\n", 13.13131313131313313); */
+	b = printf("pri: [%.647f]\n", 13.13131313131313313);
+	a = ft_printf("ft_: [%.647f]\n", 13.13131313131313313);
 	printf("\nret: %d \n", b);
-	/* printf("ret: %d \n", a); */
+	printf("ret: %d \n", a);
 	if (a == b)
 		printf("%d tests complete.\n\n", ++tests);
 	else
@@ -3219,21 +3204,6 @@ void	test_wildcard_ran1(void)
 	++done;
 }
 
-/* void	test_wildcard_ran4(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: [%*3d]\n", 5, 0);
-	a = ft_printf("ft_: [%*3d]\n", 5, 0);
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______test_wildcard_ran4 failed_______\033[0m\n\n"));
-	++done;
-} */
-
 void	test_satu_test0(void)
 {
 	int	a;
@@ -3324,6 +3294,35 @@ void	test_more_satu(void)
 	++done;
 }
 
+void	test_evals0(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%10.0x]\n", 1233);
+	a = ft_printf("ft_: [%10.0x]\n", 1233);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______test_evals0 failed_______\033[0m\n\n"));
+	++done;
+}
+
+void	basic_hash5(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%5.x %5.0x]\n", 0, 0);
+	a = ft_printf("ft_: [%5.x %5.0x]\n", 0, 0);
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_hash5 failed_______\033[0m\n\n"));
+	++done;
+}
 
 int	main(void)
 {
@@ -3435,7 +3434,6 @@ int	main(void)
 	test_basic6();
 	basic_hash3();
  	basic_hash4();
-	basic_hash5();
 	basic_hexs10();
 	basic_hexs11();
 	basic_char1();
@@ -3530,20 +3528,21 @@ int	main(void)
 	test_basic1();
 	test_basic0();
 	test_wildcard0();
-//	crazy_big_float();
+	crazy_big_float();
 	test_wildcard_i();
 	test_wildcard_i1();
 	test_wildcard_str0();
 	test_wildcard_str1();
 	test_wildcard_ran0();
 	test_wildcard_ran1();
-// 	test_wildcard_ran4(); //undefiend
 	test_satu_test0();
 	test_satu_test1();
 	test_satu_test2();
 	test_last_basic();
 	test_wildcard1();
 	test_more_satu();
+	test_evals0();
+	basic_hash5();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
