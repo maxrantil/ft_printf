@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/06 17:26:31 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/27 12:37:59 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3324,6 +3324,21 @@ void	basic_hash5(void)
 	++done;
 }
 
+void	basic_emptystring(void)
+{
+	int	a;
+	int	b;
+	b = printf("pri: [%-3.s]\n", "string");
+	a = ft_printf("ft_: [%-3.s]\n", "string");
+	printf("\nret: %d \n", b);
+	printf("ret: %d \n", a);
+	if (a == b)
+		printf("%d tests complete.\n\n", ++tests);
+	else
+		assert(printf("\033[1;31m _______basic_emptystring failed_______\033[0m\n\n"));
+	++done;
+}
+
 int	main(void)
 {
     mix_ezz();
@@ -3543,6 +3558,7 @@ int	main(void)
 	test_more_satu();
 	test_evals0();
 	basic_hash5();
+	basic_emptystring();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
