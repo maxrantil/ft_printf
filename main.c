@@ -6,13 +6,14 @@
 /*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/27 12:37:59 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/04/28 16:12:49 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/ft_printf.h"
 #include <assert.h>
 #include <limits.h>
+#include <stdio.h>
 
 static unsigned int tests;
 static unsigned int done;
