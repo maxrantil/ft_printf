@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/05/03 19:12:22 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/05/03 19:15:48 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -2906,8 +2906,8 @@ void	mouli_test_final3(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%llo, %llo]\n", 0, 18446744073709551615);
-	a = ft_printf("ft_: [%llo, %llo]\n", 0, 18446744073709551615);
+	b = printf("pri: [%llo]\n", 1844674407370955161);
+	a = ft_printf("ft_: [%llo]\n", 1844674407370955161);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
@@ -3324,21 +3324,6 @@ void	basic_zer0_precision(void)
 	++done;
 }
 
-void	basic_write_colors(void)
-{
-	int	a;
-	int	b;
-	b = printf("pri: try this\n");
-	a = ft_printf("ft_: {red}try {nor}this\n");
-	printf("\nret: %d \n", b);
-	printf("ret: %d \n", a);
-	if (a == b)
-		printf("%d tests complete.\n\n", ++tests);
-	else
-		assert(printf("\033[1;31m _______basic_write_colors failed_______\033[0m\n\n"));
-	++done;
-}
-
 int	main(void)
 {
     mix_ezz();
@@ -3557,7 +3542,6 @@ int	main(void)
 	test_wildcard1();
 	test_more_satu();
 	test_evals0();
-	basic_write_colors();
 
 	if (tests == done)
 		printf("\n\033[1;32m%d\033[0m/\033[1;32m%d\033[0m completed\n", tests, done);
