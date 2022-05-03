@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 19:24:42 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/06 17:26:31 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/05/03 15:32:01 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -3313,8 +3313,8 @@ void	basic_hash5(void)
 {
 	int	a;
 	int	b;
-	b = printf("pri: [%5.x %5.0x]\n", 0, 0);
-	a = ft_printf("ft_: [%5.x %5.0x]\n", 0, 0);
+	b = printf("pri: [%5.d %5.d]\n", 10, 10);
+	a = ft_printf("ft_: [%5.d %5.d]\n", 10, 10);
 	printf("\nret: %d \n", b);
 	printf("ret: %d \n", a);
 	if (a == b)
