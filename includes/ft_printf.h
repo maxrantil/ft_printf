@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mrantil <mrantil@student.hive.fi>          +#+  +:+       +#+        */
+/*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 15:06:19 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/05 11:03:38 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/05/03 18:49:32 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 
 # define SPECIF "cspdiouxXfb%"
 # define FLAGS "+-#0 "
+# define COLORS "nrgybmcw"
 # define LENGTH "hhllL"
 # define NOR  "\x1B[0;0m"
 # define RED  "\x1B[0;31m"
@@ -121,6 +122,7 @@ void	pf_write(t_ftprintf *data);
 void	itoa_b(unsigned long long nbr, unsigned int base, t_ftprintf *data);
 void	pf_exec_before_flags(t_ftprintf *data);
 void	exec_flags_and_length(t_ftprintf *data);
+void	write_colors(t_ftprintf *data);
 
 typedef void					(*t_fptr_print_op)(t_ftprintf *data);
 typedef void					(*t_fptr_flag_op)(t_ftprintf *data);
