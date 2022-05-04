@@ -6,7 +6,7 @@
 /*   By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:46:14 by mrantil           #+#    #+#             */
-/*   Updated: 2022/04/04 11:32:33 by mrantil          ###   ########.fr       */
+/*   Updated: 2022/05/03 18:38:05 by mrantil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static void	parser_loop(t_ftprintf *data)
 {
 	while (*data->fmt)
 	{
+		if (*data->fmt == '{')
+			write_colors(data);
 		if (*data->fmt != '%')
 		{
 			data->char_count += write(1, data->fmt++, 1);

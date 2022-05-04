@@ -6,7 +6,7 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/04/06 17:31:40 by mrantil          ###   ########.fr        #
+#    Updated: 2022/05/03 18:31:12 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ SRCS 	=	srcs/ft_printf.c \
 			srcs/flags_proc_zero_space.c \
 			srcs/width_and_precision.c \
 			srcs/tools_write_flags.c \
-			srcs/tools_itoa_b_getit_nullprint.c
+			srcs/tools_itoa_b_getit_nullprint.c \
+			srcs/colors.c
 		
 OBJS	=	ft_printf.o \
 			print_int_address.o \
@@ -39,7 +40,8 @@ OBJS	=	ft_printf.o \
 			flags_proc_zero_space.o \
 			width_and_precision.o \
 			tools_write_flags.o \
-			tools_itoa_b_getit_nullprint.o
+			tools_itoa_b_getit_nullprint.o \
+			colors.o
 
 all: $(NAME)
 
