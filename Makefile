@@ -6,12 +6,12 @@
 #    By: mrantil <mrantil@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/26 15:01:43 by mrantil           #+#    #+#              #
-#    Updated: 2022/05/03 18:31:12 by mrantil          ###   ########.fr        #
+#    Updated: 2022/05/04 13:27:59 by mrantil          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libftprintf.a
-FLAGS	=	-Wall -Werror -Wextra -O3 -g
+FLAGS	=	-Wall -Werror -Wextra -O3
 LIBFT	=	libft
 LIBS	=	libft.a
 
