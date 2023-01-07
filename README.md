@@ -20,4 +20,5 @@ int main(void)
     ft_printf("The value of pi is approximately %f.\n", 3.14159);
     ft_printf("We have %d oranges and %d apples.\n", 4, 6);
     return 0;
-}```
+}
+```
